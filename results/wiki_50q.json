@@ -1,0 +1,361 @@
+{
+  "n_questions": 50,
+  "rag_accuracy": 0.8,
+  "engram_accuracy": 0.96,
+  "rag_tokens_avg": 3018.56,
+  "engram_tokens_avg": 46.56,
+  "token_efficiency": 64.83161512027492,
+  "compression": 256.0,
+  "results": [
+    {
+      "q": "When did World War II begin?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "World War II began on 1 September 1939, when Nazi Germany, under Adolf Hitler, invaded Poland, after which the United Kingdom and France declared war on Germany.",
+      "eng": " World War II began on September 1, 1939, when Germany invaded Poland."
+    },
+    {
+      "q": "When did World War II end?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "World War II is generally considered to have ended on 8 May 1945, when Germany surrendered to the Allies.",
+      "eng": " World War II ended on September 2, 1945, with the formal surrender of Japan to the Allied powers."
+    },
+    {
+      "q": "When did Germany invade Poland?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "World War II began with the German invasion of Poland on 1 September 1939 and the United Kingdom and France's declaration of war on Germany two days later.",
+      "eng": " September 1, 1939"
+    },
+    {
+      "q": "When did Japan attack Pearl Harbor?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "In December 1941, Japan attacked American and British territories in Asia and the Pacific, including Pearl Harbor in Hawaii, leading the United States to enter the war against the Axis.",
+      "eng": " December 7, 1941"
+    },
+    {
+      "q": "When was D-Day?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "D-Day was on 6 June 1944.",
+      "eng": " D-Day was on June 6, 1944."
+    },
+    {
+      "q": "When did Germany surrender?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Germany surrendered on 8 May 1945.",
+      "eng": " Germany surrendered on May 8, 1945, marking the end of World War II in Europe."
+    },
+    {
+      "q": "When did Japan surrender?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Japan announced its unconditional surrender on 15 August, and signed a surrender document on 2 September 1945.",
+      "eng": " Japan surrendered on August 15, 1945."
+    },
+    {
+      "q": "When did Italy surrender?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Italy surrendered in September 1943.",
+      "eng": " Italy surrendered on September 8, 1943."
+    },
+    {
+      "q": "When did the Battle of Stalingrad end?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Battle of Stalingrad ended on 2 February 1943.",
+      "eng": " The Battle of Stalingrad ended on February 2, 1943."
+    },
+    {
+      "q": "When did the Soviet Union enter the war against Japan?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Soviet Union entered the war against Japan on 9 August 1945.",
+      "eng": " The Soviet Union entered the war against Japan on August 8, 1945, as part of the broader Allied effort to defeat Nazi Germany and Imperial Japan during World War II. This entry was a result of the Yalta Conference held in"
+    },
+    {
+      "q": "Who was the leader of Nazi Germany?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Adolf Hitler",
+      "eng": " Adolf Hitler"
+    },
+    {
+      "q": "Who was the British Prime Minister during WWII?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Winston Churchill",
+      "eng": " Winston Churchill"
+    },
+    {
+      "q": "Who was the US President at the start of WWII?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Franklin D. Roosevelt",
+      "eng": " Franklin D. Roosevelt"
+    },
+    {
+      "q": "Who was the US President when WWII ended?",
+      "rag_ok": false,
+      "eng_ok": true,
+      "rag": "Franklin D. Roosevelt",
+      "eng": " Harry S. Truman"
+    },
+    {
+      "q": "Who was the leader of the Soviet Union during WWII?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Joseph Stalin was the leader of the Soviet Union during World War II.",
+      "eng": " Joseph Stalin"
+    },
+    {
+      "q": "Who was the leader of Italy during WWII?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Benito Mussolini.",
+      "eng": " Benito Mussolini"
+    },
+    {
+      "q": "Who was the Emperor of Japan during WWII?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Hirohito",
+      "eng": " The Emperor of Japan during World War II was Emperor Hirohito, also known as Emperor Showa. He ruled from December 25, 1926, until his death on January 7, 1989. During"
+    },
+    {
+      "q": "Who commanded Allied forces on D-Day?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "General Dwight D. Eisenhower commanded the Allied forces on D-Day.",
+      "eng": " Dwight D. Eisenhower"
+    },
+    {
+      "q": "Who was the leader of Free France?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Charles de Gaulle",
+      "eng": " Charles de Gaulle"
+    },
+    {
+      "q": "Who commanded German forces in North Africa?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Erwin Rommel",
+      "eng": " Erwin Rommel"
+    },
+    {
+      "q": "What started World War II in Europe?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "World War II began with the German invasion of Poland on 1 September 1939 and the United Kingdom and France's declaration of war on Germany two days later.",
+      "eng": " The invasion of Poland by Germany on September 1, 1939, is generally considered the start of World War II in Europe."
+    },
+    {
+      "q": "What brought the US into World War II?",
+      "rag_ok": false,
+      "eng_ok": true,
+      "rag": "The exact date of the war's end is also not universally agreed upon. It was generally accepted at the time that the war ended with the armistice of 15 August 1945 (V-J Day), rather than with the",
+      "eng": " The United States entered World War II on December 8, 1941, after the Japanese attack on Pearl Harbor. The attack on Pearl Harbor was a surprise military strike by the Imperial Japanese Navy Air Service against the United States naval base at"
+    },
+    {
+      "q": "What was the turning point on the Eastern Front?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The turning point on the Eastern Front was the Battle of Stalingrad.",
+      "eng": " The turning point on the Eastern Front was the Battle of Stalingrad, which took place from August 1942 to February 1943. This battle was a major turning point in World War II as it marked the first major"
+    },
+    {
+      "q": "What was the largest naval battle of WWII?",
+      "rag_ok": false,
+      "eng_ok": true,
+      "rag": "The Battle of Midway",
+      "eng": " The largest naval battle of World War II was the Battle of Leyte Gulf, which took place from October 23 to October 26, 1944. It was a series of engagements between the Imperial Japanese Navy and the United"
+    },
+    {
+      "q": "What was Operation Barbarossa?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Operation Barbarossa was the code name for Nazi Germany's invasion of the Soviet Union during World War II, which began on 22 June 1941.",
+      "eng": " Operation Barbarossa was the code name for the German invasion of the Soviet Union during World War II. It was launched on June 22, 1941, and was the largest military operation in history. The operation was named after the"
+    },
+    {
+      "q": "What was the Battle of Britain?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Battle of Britain was the aerial Battle of Britain and the Blitz, and the naval Battle of the Atlantic.",
+      "eng": " The Battle of Britain was a major air campaign fought between the Royal Air Force (RAF) and the German Luftwaffe (air force) during the summer and autumn of 1940. It was the first major campaign fought entirely by"
+    },
+    {
+      "q": "What was the Blitzkrieg?",
+      "rag_ok": false,
+      "eng_ok": true,
+      "rag": "The Blitzkrieg was a military strategy used by Germany in World War II.",
+      "eng": " The Blitzkrieg was a military strategy used by Germany during World War II. It involved a rapid and coordinated attack using tanks, aircraft, and infantry to overwhelm the enemy's defenses and achieve a quick victory. The term \"Blitzkrieg\""
+    },
+    {
+      "q": "What happened at Dunkirk?",
+      "rag_ok": true,
+      "eng_ok": false,
+      "rag": "The evacuation of Dunkirk (French: \"Op\u00e9ration Dynamo\", 26 May \u2013 4 June 1940) was the evacuation of Allied soldiers from the beaches and harbour of Dunkirk, France, during World War II.",
+      "eng": " The Battle of Dunkirk was a major battle of World War II, fought in May and June 1940, in which the British Expeditionary Force (BEF) and other Allied forces were trapped by the German Army in the French port"
+    },
+    {
+      "q": "What was the Battle of the Bulge?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Battle of the Bulge was the last major German offensive of World War II.",
+      "eng": " The Battle of the Bulge was a major German offensive launched through the Ardennes region of Belgium, Luxembourg, and France during World War II. It was the last major German offensive of the war and was launched on December 16, 1"
+    },
+    {
+      "q": "What was Operation Overlord?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Operation Overlord was the codename for the Allied invasion of Normandy in France on 6 June 1944, during World War II.",
+      "eng": " Operation Overlord was the code name for the Allied invasion of Normandy, France, during World War II. It was the largest amphibious military operation in history, involving over 150,000 troops from the United States, the"
+    },
+    {
+      "q": "What was the Holocaust?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Holocaust, also known as the Shoah, was a genocide during World War II in which Adolf Hitler's Nazi Germany and its collaborators killed about six million Jews.",
+      "eng": " The Holocaust was the systematic, bureaucratic, state-sponsored persecution and murder of six million Jews by the Nazi regime and its collaborators. The Nazis, who came to power in Germany in January 1933, believed that Germans were \"racially superior"
+    },
+    {
+      "q": "How many Jews died in the Holocaust?",
+      "rag_ok": false,
+      "eng_ok": true,
+      "rag": "Millions died in genocides, including the Holocaust, and by massacres, starvation, and disease.",
+      "eng": " 6 million Jews died in the Holocaust."
+    },
+    {
+      "q": "What were concentration camps?",
+      "rag_ok": false,
+      "eng_ok": false,
+      "rag": "Concentration camps were places where people were held against their will, often because they were considered enemies of the state or had done something wrong.",
+      "eng": " Concentration camps were places where people were held against their will. They were usually located in remote areas and were guarded by armed soldiers. The conditions in concentration camps were often very harsh, with little food, water, or medical care. Many people died"
+    },
+    {
+      "q": "What was Auschwitz?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Auschwitz was a network of German Nazi concentration camps and extermination camps built and operated by the Third Reich in Polish areas annexed by Nazi Germany during World War II.",
+      "eng": " Auschwitz was a concentration camp in Poland during World War II. It was one of the largest and most notorious Nazi concentration camps, where millions of people, including Jews, Poles, Roma, and others, were killed or subjected to forced labor and in"
+    },
+    {
+      "q": "What were the Nuremberg Trials?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Nuremberg Trials were a series of military tribunals held by the Allied forces after World War II to prosecute prominent members of the political, military, and economic leadership of Nazi Germany for their role in the Holocaust and other war crimes.",
+      "eng": " The Nuremberg Trials were a series of military tribunals held after World War II to prosecute prominent Nazi leaders for war crimes, crimes against humanity, and other offenses. The trials were conducted by the Allied forces, primarily the United States,"
+    },
+    {
+      "q": "What was the Manhattan Project?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Manhattan Project was a research and development project that produced the first nuclear weapons during World War II.",
+      "eng": " The Manhattan Project was a research and development project that produced the first nuclear weapons during World War II. It was named after the location of its headquarters, the Manhattan Engineer District in New York City. The project was led by the United States, with the"
+    },
+    {
+      "q": "What city was the first atomic bomb dropped on?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "Hiroshima",
+      "eng": " Hiroshima"
+    },
+    {
+      "q": "What city was the second atomic bomb dropped on?",
+      "rag_ok": false,
+      "eng_ok": true,
+      "rag": "Hiroshima",
+      "eng": " Nagasaki"
+    },
+    {
+      "q": "What was the V-2?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The V-2 was a long-range ballistic missile developed by Nazi Germany towards the end of World War II.",
+      "eng": " The V-2 was a rocket-powered ballistic missile developed by Nazi Germany during World War II. It was the world's first long-range guided ballistic missile and was used as a weapon against Allied forces, particularly in the final months of the war. The"
+    },
+    {
+      "q": "What was the Enigma machine?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Enigma machine was a portable, electro-mechanical rotor cipher machine used by Germany and other Axis states before and during World War II.",
+      "eng": " The Enigma machine was a cipher machine used by the German military during World War II. It was designed to encrypt and decrypt messages by substituting letters with other letters. The machine was considered to be unbreakable, but British mathematician Alan Turing"
+    },
+    {
+      "q": "What were the Axis powers?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Axis powers were Germany, Italy, and Japan.",
+      "eng": " The Axis powers were a group of countries that fought together during World War II. They included Germany, Italy, and Japan. These countries worked together to try to win the war against the Allied powers, which were made up of many other countries like the"
+    },
+    {
+      "q": "What were the Allied powers?",
+      "rag_ok": false,
+      "eng_ok": true,
+      "rag": "The Allied powers included the United Kingdom, France, and Italy.",
+      "eng": " The Allied powers were the countries that fought against the Axis powers during World War II. They included the United States, the United Kingdom, the Soviet Union, China, and many other countries. These countries worked together to stop the spread of Nazi Germany,"
+    },
+    {
+      "q": "Which countries remained neutral?",
+      "rag_ok": false,
+      "eng_ok": true,
+      "rag": "The United Kingdom and France supported imposing sanctions on Italy for the invasion, but the sanctions were not fully enforced and failed to end the Italian invasion. Italy subsequently dropped its objections to Germany's goal of absorbing Austria.",
+      "eng": " The countries that remained neutral during World War II were: Sweden, Switzerland, Spain, Portugal, Finland, Turkey, and China."
+    },
+    {
+      "q": "When did the Soviet Union join the Allies?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Soviet Union joined the Allies in 1941.",
+      "eng": " The Soviet Union joined the Allies on June 22, 1941, when Germany invaded the Soviet Union. This event is known as the beginning of the Soviet-German War, which was a part of World War II. The Soviet"
+    },
+    {
+      "q": "What was the Tripartite Pact?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Tripartite Pact was a military alliance between Germany, Italy, and Japan, signed on 27 September 1940, during World War II.",
+      "eng": " The Tripartite Pact was an agreement signed by Germany, Italy, and Japan on September 27, 1940, during World War II. It was a military alliance that aimed to coordinate the actions of the three Axis powers against"
+    },
+    {
+      "q": "Where did D-Day take place?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "D-Day took place on the beaches of Normandy, France.",
+      "eng": " D-Day took place on June 6, 1944, when Allied forces landed on the beaches of Normandy, France, during World War II. The invasion, codenamed Operation Overlord, was the largest amphibious military operation"
+    },
+    {
+      "q": "What was the Atlantic Wall?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Atlantic Wall was a series of coastal defences built by Nazi Germany in Western Europe between 1942 and 1944 in preparation for an expected Allied invasion of German-occupied Europe during World War II.",
+      "eng": " The Atlantic Wall was a series of fortifications built by Nazi Germany along the coast of Western Europe during World War II. It was intended to protect the German-occupied territories from Allied invasions, particularly from the United Kingdom and the United States. The"
+    },
+    {
+      "q": "What island was heavily fought over in the Pacific?",
+      "rag_ok": false,
+      "eng_ok": true,
+      "rag": "Japan suffered major setbacks, including the crippling of its navy by the United States, the loss of key Western Pacific islands, and defeats in South-Central China and Burma.",
+      "eng": " Guadalcanal"
+    },
+    {
+      "q": "What was the Burma Road?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The Burma Road was a road that connected China to the outside world.",
+      "eng": " The Burma Road was a vital supply line for the Allies during World War II. It was a 1,140-mile (1,835 km) road that connected the Chinese city of Kunming with the port of Rangoon"
+    },
+    {
+      "q": "Where was the final major battle in Europe?",
+      "rag_ok": true,
+      "eng_ok": true,
+      "rag": "The final major battle in Europe was the Battle of Berlin.",
+      "eng": " The final major battle in Europe during World War II was the Battle of Berlin, which took place from April 16 to May 2, 1945. This battle marked the end of Nazi Germany's resistance and the beginning of the"
+    }
+  ]
+}

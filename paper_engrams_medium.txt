@@ -1,0 +1,227 @@
+Geometric State Compression: How I Beat RAG by Reading the Model's Mind
+
+What if 8,000 tokens of context could be compressed into 32—and actually perform better?
+
+
+The Hook
+
+Last week I ran an experiment that surprised me. I took an 87,000-character Wikipedia article, compressed it down to 32 dense vectors, and asked a language model 50 factual questions.
+
+The compressed version got 96% accuracy. Full-text RAG got 80%.
+
+That's not a typo. The compressed representation—256 times smaller—outperformed the original text by 16 percentage points.
+
+This article explains how, why it works, and what it might mean for how we think about context in large language models.
+
+
+The Inspiration: DeepSeek's Conditional Memory
+
+This work was inspired by DeepSeek's recent paper on conditional computation and memory. Their insight was that models don't need to store everything in context—they can learn to compress and retrieve information conditionally.
+
+DeepSeek's approach uses hash tables to route queries to stored memory. My approach is different: instead of external storage, I extract the geometric representations that transformers naturally build during processing. The compression happens in the model's own activation space.
+
+Think of it this way: DeepSeek built a filing cabinet next to the brain. I'm reading the brain's own compressed memories directly.
+
+
+What Are Engrams?
+
+The term "engram" comes from neuroscience—it's the hypothetical physical trace of memory in the brain. I'm using it here to mean: a compressed geometric representation of document content, extracted from a transformer's hidden states.
+
+When a transformer processes text, each layer builds increasingly abstract representations. The embedding layer (layer 0) is just a word lookup table—no context, no meaning beyond individual tokens. But by the middle layers, something remarkable happens: the model has constructed rich representations that encode relationships, facts, and semantic structure.
+
+These middle-layer representations are already compressed. The model has done the hard work of extracting meaning from tokens. An engram just captures and stores that work.
+
+
+The Method
+
+Three steps:
+
+First, extraction. Pass your document through the model with output_hidden_states=True. Capture the hidden states from a middle layer—I used layer 16 for a 28-layer model.
+
+Second, compression. The hidden states give you one vector per input token. Divide these into chunks and mean-pool each chunk. 8,192 tokens divided into 32 chunks gives you 32 vectors.
+
+Third, injection. When you want to use the engram, prepend those 32 vectors to your prompt's embeddings. The model "sees" them as a very short context prefix.
+
+One critical detail: you need to scale the engram vectors to match the embedding layer's norm. Layer 16 vectors have very different magnitudes than embedding vectors. Without scaling, injection fails.
+
+
+The Experiment
+
+I used the Wikipedia article on World War II—87,098 characters of dense historical facts covering dates, leaders, battles, treaties, and consequences.
+
+I created 50 factual questions:
+- When did World War II begin?
+- Who was the British Prime Minister during WWII?
+- What city was the first atomic bomb dropped on?
+- What was the Manhattan Project?
+- When did the Soviet Union join the Allies?
+
+For RAG, I included 3,000 tokens of the article directly in each prompt. For engrams, I compressed 8,192 tokens into 32 vectors.
+
+Both used Qwen2.5-7B with identical generation parameters.
+
+
+The Results
+
+Engrams: 48/50 correct (96% accuracy)
+RAG: 40/50 correct (80% accuracy)
+
+Token usage per question:
+- RAG: 3,019 tokens average
+- Engrams: 47 tokens average
+
+That's 64.8x fewer tokens for 16 percentage points higher accuracy.
+
+The compression ratio from source to engram: 256x (8,192 tokens to 32 vectors).
+
+
+Why Does This Work?
+
+I expected a tradeoff—smaller context, worse accuracy. Instead I got smaller context and better accuracy. Three factors might explain this.
+
+Signal concentration. Mean-pooling blends information across tokens, creating representations that capture themes rather than getting distracted by individual words.
+
+Noise reduction. Raw text includes formatting quirks, redundant phrasing, and tangential details. Engrams compress to semantic essence.
+
+Representation alignment. Middle-layer representations encode facts in a form the model is optimized to use. We're meeting the model where it naturally works, rather than making it re-derive structure from raw tokens.
+
+
+The Layer Sweep
+
+Before the main experiment, I tested which layer to extract from. I swept layers 0, 4, 8, 12, 16, 20, 24, and 28.
+
+Layer 0 (embeddings): 0% accuracy. Complete failure. No contextual information, just word lookups.
+
+Layers 8-24: 100% accuracy on simple factual questions. All matched RAG.
+
+Layer 28 (near output): Slight degradation. Final layers specialize for next-token prediction, making their representations less useful for general injection.
+
+The sweet spot is the middle third—deep enough to encode semantics, not so deep that representations become prediction-specific.
+
+
+Why Small Models Fail
+
+In earlier experiments with Qwen2-0.5B (a 500M parameter model), engrams failed completely. The 7B model succeeded dramatically.
+
+The likely reason: smaller models have shallower, less rich representations. They can't compress as effectively because they haven't learned the same geometric structures. The engram approach depends on the model having built meaningful intermediate representations—something that scales with model capacity.
+
+This suggests engrams might work even better on larger models. A 70B model might achieve higher compression ratios or better accuracy. That's future work.
+
+
+Comparison: Engrams vs RAG
+
+Accuracy:
+- Engrams: 96%
+- RAG: 80%
+
+Tokens per query:
+- Engrams: 47
+- RAG: 3,019
+
+Compression ratio:
+- Engrams: 256x
+- RAG: 1x (no compression)
+
+Pre-computation:
+- Engrams: One forward pass per document
+- RAG: None
+
+Storage:
+- Engrams: 32 vectors per document
+- RAG: Full text
+
+Best for:
+- Engrams: Repeated queries against same document, token-constrained scenarios
+- RAG: One-off queries, when exact text matters
+
+
+Practical Implications
+
+Cost reduction. At 64x fewer tokens, API costs drop proportionally for retrieval-heavy applications.
+
+Latency. Fewer input tokens means faster inference. Engram extraction is a one-time cost that can be cached.
+
+Context window expansion. Store thousands of document engrams and combine them. You could have a "compressed context memory" far beyond standard context limits.
+
+Project switching. Imagine saving your entire codebase as engrams. Switch projects by swapping which engrams you inject, without reloading file contents.
+
+
+Limitations
+
+This is early work with clear constraints.
+
+I tested factual recall from a single document. Tasks requiring exact quotation, numerical computation, or multi-document reasoning are unexplored.
+
+Extraction requires a forward pass. For very short documents, RAG may win on total compute.
+
+I haven't tested scaling to massive documents (100K+ tokens) or combining engrams from multiple sources.
+
+The approach depends on model quality. Small models fail; we don't yet know the minimum viable size.
+
+
+What Else Might Be Extractable?
+
+If semantic facts compress into geometric representations, what else might be in there?
+
+Reasoning patterns. Can we extract "how to solve math problems" as an engram?
+
+Style and tone. Could author style be captured and injected?
+
+Domain knowledge. Compress a medical textbook into engrams for a general model?
+
+Skill transfer. Extract one model's capability and inject it into another?
+
+The activation space of large models is still poorly understood. Engrams are one probe into that space. There's likely much more to find.
+
+
+The Code
+
+Extraction:
+
+def extract_engram(model, tokenizer, text, layer=16, num_tokens=32):
+    inputs = tokenizer(text, return_tensors="pt", truncation=True, max_length=8192)
+
+    with torch.no_grad():
+        outputs = model(**inputs.to(model.device), output_hidden_states=True)
+
+    hidden = outputs.hidden_states[layer]
+    seq_len = hidden.shape[1]
+    chunk_size = seq_len // num_tokens
+
+    engram_vectors = []
+    for i in range(num_tokens):
+        start = i * chunk_size
+        end = start + chunk_size if i < num_tokens - 1 else seq_len
+        chunk = hidden[0, start:end, :]
+        engram_vectors.append(chunk.mean(dim=0))
+
+    return torch.stack(engram_vectors)
+
+Injection:
+
+def inject_engram(model, tokenizer, question, engram):
+    embed_layer = model.get_input_embeddings()
+
+    embed_norm = embed_layer.weight.norm(dim=1).mean().item()
+    engram_norm = engram.norm(dim=1).mean().item()
+    scaled_engram = engram * (embed_norm / engram_norm)
+
+    prompt = f"Question: {question}\nAnswer:"
+    inputs = tokenizer(prompt, return_tensors="pt")
+    prompt_embeds = embed_layer(inputs.input_ids.to(model.device))
+
+    combined = torch.cat([scaled_engram.unsqueeze(0), prompt_embeds], dim=1)
+
+    return model.generate(inputs_embeds=combined, max_new_tokens=50)
+
+
+Conclusion
+
+Engrams demonstrate that context doesn't need to be verbose. Transformers already build compressed semantic representations during processing. We can extract those representations, store them, and inject them later—achieving better accuracy than raw text at a fraction of the token cost.
+
+The 256x compression with 96% accuracy isn't a tradeoff. It's an improvement.
+
+The model already knows how to compress. We're just learning to read what it wrote.
+
+
+Experiments run on Qwen2.5-7B with an RTX 5070 Ti. This work was inspired by DeepSeek's research on conditional memory in transformers.

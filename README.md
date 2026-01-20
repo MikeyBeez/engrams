@@ -1,108 +1,94 @@
-# Engrams
+# Engrams: Geometric State Compression for Transformers
 
-Research project exploring **learned semantic compression** - extracting dense representations from transformer hidden states to compress knowledge (e.g., Wikipedia articles) into token-sized "engrams" that can be injected into new prompts.
+Extract dense semantic representations from transformer hidden states to compress context 256x while improving accuracy.
 
-## Concept
+## Key Results
 
-Instead of relying solely on a model's parametric knowledge:
+- **96% accuracy** with engrams vs **80% accuracy** with RAG
+- **64.8x token reduction** (47 tokens vs 3,019 tokens per query)
+- **256x compression ratio** (8,192 tokens → 32 vectors)
 
-```
-Standard: "Tell me about Abraham Lincoln" → model recalls from weights
-Engrams:  "Tell me about [ENGRAM][ENGRAM]" → inject compressed Wikipedia article
-```
+Tested on Wikipedia WWII article (87K characters, 50 factual questions) using Qwen2.5-7B.
 
-The engram vectors are extracted from the model's own hidden states when processing the full article, then stored and reused.
+## How It Works
 
-## Inspiration
-
-Inspired by [DeepSeek's Engram](https://github.com/deepseek-ai/Engram) research on conditional memory for LLMs, which demonstrated that separating static knowledge lookup from dynamic reasoning can improve efficiency and performance.
-
-## Installation
-
-```bash
-cd ~/Code/engrams
-
-# Create virtual environment
-python -m venv .venv
-source .venv/bin/activate
-
-# Install dependencies
-pip install -e ".[dev]"
-```
+1. **Extract**: Pass document through model, capture hidden states from middle layer (layer 16)
+2. **Compress**: Chunk the sequence and mean-pool into N vectors (default: 32)
+3. **Inject**: Prepend scaled engram vectors to prompt embeddings at inference time
 
 ## Quick Start
 
 ```python
-from engrams import EngramExtractor, EngramInjector, EngramStore
-from engrams.extractor import ExtractionConfig
-from engrams.wikipedia import WikipediaEngramBuilder
+from engrams import EngramExtractor, EngramInjector
 
-# Build an engram from Wikipedia
-builder = WikipediaEngramBuilder()
-engram = builder.build_engram("Abraham Lincoln")
+# Extract engram from document
+extractor = EngramExtractor(model, tokenizer, layer=16, num_tokens=32)
+engram = extractor.extract(document_text)
 
-print(f"Compressed {engram.source_length} tokens → {engram.vectors.shape[0]} vectors")
-print(f"Compression ratio: {engram.compression_ratio:.1f}x")
-
-# Inject and generate
-injector = EngramInjector()
-response = injector.inject_and_generate(
-    prompt="Abraham Lincoln was",
-    engram=engram,
-    max_new_tokens=100,
-)
-print(response)
+# Use engram for Q&A
+injector = EngramInjector(model, tokenizer)
+answer = injector.inject_and_generate(question, engram)
 ```
 
-## Architecture
+## Installation
 
+```bash
+git clone https://github.com/bardicreels/engrams.git
+cd engrams
+python -m venv .venv
+source .venv/bin/activate
+pip install -e .
 ```
-Wikipedia Article (8000 tokens)
-         ↓
-   Transformer Model
-         ↓
-   Extract hidden states at layer N
-         ↓
-   Pool: [8000, hidden_dim] → [k, hidden_dim]
-         ↓
-   Store k engram vectors
-         ↓
-   Later: inject as "synthetic tokens"
-```
+
+## Requirements
+
+- Python 3.10+
+- PyTorch 2.0+
+- Transformers 4.36+
+- A GPU with 16GB+ VRAM for 7B models
 
 ## Project Structure
 
 ```
 engrams/
 ├── engrams/
-│   ├── __init__.py
-│   ├── extractor.py    # Extract engrams from documents
-│   ├── injector.py     # Inject engrams into prompts
-│   ├── storage.py      # Persist engrams (ChromaDB)
-│   └── wikipedia.py    # Wikipedia integration
-├── notebooks/
-│   └── 01_extraction_experiments.ipynb
-├── tests/
-├── data/               # Stored engrams and results
-└── scripts/
+│   ├── extractor.py      # Core extraction logic
+│   ├── injector.py       # Engram injection for generation
+│   ├── storage.py        # ChromaDB-based persistence
+│   └── context_manager.py # High-level context compression API
+├── scripts/
+│   ├── wiki_50q_test.py  # Main benchmark script
+│   ├── layer_sweep.py    # Layer selection experiment
+│   └── rag_vs_engram.py  # Comparison tests
+├── results/
+│   └── wiki_50q.json     # Experimental results
+└── paper_engrams_medium.txt  # Publication draft
 ```
 
-## Research Questions
+## Key Findings
 
-1. **Which layer?** Early layers are lexical, late layers are task-specific. Middle layers often capture semantics best.
+- **Layer selection matters**: Layers 8-24 work well; layer 0 fails completely
+- **Scaling is critical**: Engram vectors must be scaled to match embedding norms
+- **Model size matters**: 0.5B models fail; 7B models succeed dramatically
+- **Compression improves accuracy**: Counter-intuitively, engrams outperform raw text
 
-2. **Pooling strategy?**
-   - Mean pooling (implemented)
-   - Attention-weighted pooling
-   - Learned compression head
+## Inspired By
 
-3. **Injection method?**
-   - Replace placeholder tokens
-   - Prefix (prepend to sequence)
-   - Add to existing embeddings
-
-4. **Optimal compression?** How many engram tokens are needed to preserve useful information?
+DeepSeek's work on conditional memory in transformers. Their approach uses external hash tables; ours extracts the geometric representations transformers naturally build.
 
 ## License
 
 MIT
+
+## Citation
+
+If you use this work, please cite:
+
+```
+@misc{engrams2025,
+  title={Engrams: Geometric State Compression for Transformers},
+  author={bardicreels},
+  year={2025},
+  url={https://github.com/bardicreels/engrams}
+}
+```

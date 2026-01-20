@@ -1,0 +1,168 @@
+{
+  "rag_accuracy": 0.55,
+  "engram_accuracy": 0.6,
+  "compression": 256.0,
+  "token_savings": 60.498997995991985,
+  "results": [
+    {
+      "q": "When did World War II begin?",
+      "exp": "1939",
+      "rag": "World War II began on 1 September 1939, when Nazi Germany, under Adolf Hitler, invaded Poland, after which the United Kingdom and France declared war on Germany.",
+      "rag_ok": true,
+      "eng": "World War II began on September 1, 1939, when Nazi Germany invaded Poland.",
+      "eng_ok": true
+    },
+    {
+      "q": "When did World War II end?",
+      "exp": "1945",
+      "rag": "World War II ended on 2 September 1945.",
+      "rag_ok": true,
+      "eng": "World War II ended on September 2, 1945, with the formal surrender of Japan.",
+      "eng_ok": true
+    },
+    {
+      "q": "What event started World War II in Europe?",
+      "exp": "invasion of Poland",
+      "rag": "World War II began with the German invasion of Poland on 1 September 1939 and the United Kingdom and France's declaration of war on Germany two days later.",
+      "rag_ok": true,
+      "eng": "The event that started World War II in Europe was the invasion of Poland by Nazi Germany on September 1, 1939. This act of aggression led to a declaration of war by the United Kingdom and France against Germany, marking the beginning",
+      "eng_ok": true
+    },
+    {
+      "q": "Who was the leader of Nazi Germany?",
+      "exp": "Hitler",
+      "rag": "Adolf Hitler",
+      "rag_ok": true,
+      "eng": "Adolf Hitler",
+      "eng_ok": true
+    },
+    {
+      "q": "What was the date of D-Day?",
+      "exp": "June 6, 1944",
+      "rag": "6 June 1944",
+      "rag_ok": true,
+      "eng": "D-Day was on June 6, 1944.",
+      "eng_ok": true
+    },
+    {
+      "q": "When did Japan attack Pearl Harbor?",
+      "exp": "December 7, 1941",
+      "rag": "In December 1941, Japan attacked American and British territories in Asia and the Pacific, including Pearl Harbor in Hawaii, leading the United States to enter the war against the Axis.",
+      "rag_ok": true,
+      "eng": "1941",
+      "eng_ok": true
+    },
+    {
+      "q": "What caused the United States to enter World War II?",
+      "exp": "Pearl Harbor",
+      "rag": "Japan attacked American and British territories in Asia and the Pacific, including Pearl Harbor in Hawaii, leading the United States to enter the war against the Axis.",
+      "rag_ok": true,
+      "eng": "The United States entered World War II after the attack on Pearl Harbor by Japan on December 7, 1941. This event led to the United States declaring war on Japan, and later, on Germany and Italy, as part of the",
+      "eng_ok": true
+    },
+    {
+      "q": "What was the Battle of Stalingrad?",
+      "exp": "turning point",
+      "rag": "The Battle of Stalingrad was a major battle of World War II in which German forces and their allies fought against the Soviet Union for control of the city of Stalingrad (now Volgograd) in Southern Russia.",
+      "rag_ok": false,
+      "eng": "The Battle of Stalingrad was a major battle during World War II, fought between Nazi Germany and the Soviet Union. It took place from August 23, 1942, to February 2, 1943,",
+      "eng_ok": false
+    },
+    {
+      "q": "Who won the Battle of Britain?",
+      "exp": "Britain",
+      "rag": "The Western Allies invaded France at Normandy, and the Soviet Union advanced into Central Europe.",
+      "rag_ok": false,
+      "eng": "The Battle of Britain was won by the United Kingdom.",
+      "eng_ok": true
+    },
+    {
+      "q": "What was the Manhattan Project?",
+      "exp": "atomic bomb",
+      "rag": "The Manhattan Project was a research and development project that produced the first nuclear weapons during World War II.",
+      "rag_ok": false,
+      "eng": "The Manhattan Project was a research and development project that produced the first nuclear weapons during World War II.",
+      "eng_ok": false
+    },
+    {
+      "q": "What city was the first atomic bomb dropped on?",
+      "exp": "Hiroshima",
+      "rag": "Hiroshima",
+      "rag_ok": true,
+      "eng": "The first atomic bomb was dropped on the city of Hiroshima, Japan, on August 6, 1945.",
+      "eng_ok": true
+    },
+    {
+      "q": "What city was the second atomic bomb dropped on?",
+      "exp": "Nagasaki",
+      "rag": "Hiroshima",
+      "rag_ok": false,
+      "eng": "Nagasaki",
+      "eng_ok": true
+    },
+    {
+      "q": "When did Germany surrender?",
+      "exp": "May 1945",
+      "rag": "Germany surrendered on 8 May 1945.",
+      "rag_ok": true,
+      "eng": "Germany surrendered on May 8, 1945, marking the end of World War II in Europe.",
+      "eng_ok": false
+    },
+    {
+      "q": "When did Japan surrender?",
+      "exp": "August 1945",
+      "rag": "Japan announced its unconditional surrender on 15 August, and signed a surrender document on 2 September 1945.",
+      "rag_ok": false,
+      "eng": "Japan surrendered on August 15, 1945.",
+      "eng_ok": false
+    },
+    {
+      "q": "What was the Holocaust?",
+      "exp": "genocide",
+      "rag": "The Holocaust (German: die Verfolgung und Ermordung der europ\u00e4ischen Juden durch die nationalsozialistische Gestapo, Polizei, SS und Wehrmacht, literally \"persecution and murder of",
+      "rag_ok": false,
+      "eng": "The Holocaust was the systematic, bureaucratic, state-sponsored persecution and murder of six million Jews by the Nazi regime and its collaborators. The victims included 1.5 million children and represented about two-thirds of the 9 million Jews who had resided in",
+      "eng_ok": false
+    },
+    {
+      "q": "How many Jews were killed in the Holocaust?",
+      "exp": "six million",
+      "rag": "Millions died in genocides, including the Holocaust, and by massacres, starvation, and disease.",
+      "rag_ok": false,
+      "eng": "6 million",
+      "eng_ok": false
+    },
+    {
+      "q": "What was the Blitzkrieg?",
+      "exp": "lightning war",
+      "rag": "Blitzkrieg, or \"lightning war\", was a military strategy used by Germany in World War II.",
+      "rag_ok": true,
+      "eng": "The Blitzkrieg was a military strategy used by Germany during World War II, which involved rapid, coordinated attacks using tanks, aircraft, and infantry. This strategy was first employed by Germany in the invasion of Poland in 1939 and later",
+      "eng_ok": false
+    },
+    {
+      "q": "Who was the British Prime Minister during most of WWII?",
+      "exp": "Churchill",
+      "rag": "Winston Churchill.",
+      "rag_ok": true,
+      "eng": "Winston Churchill",
+      "eng_ok": true
+    },
+    {
+      "q": "Who was the US President when WWII ended?",
+      "exp": "Truman",
+      "rag": "Franklin D. Roosevelt",
+      "rag_ok": false,
+      "eng": "The US President when World War II ended was Harry S. Truman.",
+      "eng_ok": true
+    },
+    {
+      "q": "What alliance fought against the Axis powers?",
+      "exp": "Allies",
+      "rag": "The United Kingdom and France declared war on Germany.",
+      "rag_ok": false,
+      "eng": "The alliance that fought against the Axis powers during World War II was the Allied Powers, which included countries such as the United States, the United Kingdom, the Soviet Union, and China.",
+      "eng_ok": false
+    }
+  ]
+}

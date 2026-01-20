@@ -1,6 +1,6 @@
 # Engrams: Beyond Compression to Persistent Memory
 
-## Date: 2025-01-19 (late night session)
+## Date: 2026-01-19 (late night session)
 
 ## What We Started With
 - Compress Wikipedia articles for QA
@@ -91,7 +91,7 @@ If this works as theorized:
 
 ## Credit
 - DeepSeek: inspiration on conditional memory (their approach: hash tables; ours: geometric extraction)
-- This session: Mikey + Claude, 2025-01-19
+- This session: Mikey + Claude, 2026-01-19
 
 ---
 

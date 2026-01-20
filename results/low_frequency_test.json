@@ -1,0 +1,212 @@
+{
+  "test": "low_frequency_facts",
+  "n_questions": 20,
+  "baseline_accuracy": 0.55,
+  "rag_accuracy": 0.6,
+  "engram_accuracy": 0.65,
+  "baseline_correct": 11,
+  "rag_correct": 12,
+  "engram_correct": 13,
+  "results": [
+    {
+      "q": "How many military personnel were mobilized during World War II?",
+      "expected": "70 million,seventy million",
+      "baseline": "The total number of military and civilian casualties in World War II \u2013 at least 60 million, including between 19 and 28 million military personnel and between 15 and 18 million civilians \u2013 has been described as the largest",
+      "baseline_ok": false,
+      "rag": "Nearly all of the world's countries participated, with many nations mobilising their resources in pursuit of total war.",
+      "rag_ok": false,
+      "engram": " 16,112,566",
+      "engram_ok": false
+    },
+    {
+      "q": "What percentage of the world population died in World War II?",
+      "expected": "3%,three percent",
+      "baseline": "The war is generally considered to have begun on 1 September 1939, with the invasion of Poland by Germany and subsequent declarations of war on Germany by France and the United Kingdom.",
+      "baseline_ok": false,
+      "rag": "Millions died in genocides, including the Holocaust, and by massacres, starvation, and disease.",
+      "rag_ok": false,
+      "engram": " 1.5%",
+      "engram_ok": false
+    },
+    {
+      "q": "How many civilians died in World War II?",
+      "expected": "50 million,fifty million,50-55",
+      "baseline": "The total number of military and civilian casualties in World War II\u201440 to 50\u00a0million\u2014is larger than that of any other war in human history.",
+      "baseline_ok": false,
+      "rag": "Millions died in genocides, including the Holocaust, and by massacres, starvation, and disease.",
+      "rag_ok": false,
+      "engram": " 50 million",
+      "engram_ok": true
+    },
+    {
+      "q": "When was the Atlantic Charter signed?",
+      "expected": "August 1941,1941",
+      "baseline": "The Atlantic Charter was signed by Churchill and Roosevelt on August 14, 1941, off the coast of Newfoundland in North America.",
+      "baseline_ok": true,
+      "rag": "The Atlantic Charter was signed on 14 August 1941.",
+      "rag_ok": true,
+      "engram": " The Atlantic Charter was signed on August 14, 1941.",
+      "engram_ok": true
+    },
+    {
+      "q": "When did the Winter War between Soviet Union and Finland end?",
+      "expected": "March 1940,1940",
+      "baseline": "The Winter War ended on 13 March 1940 with the Moscow Peace Treaty.",
+      "baseline_ok": true,
+      "rag": "The Winter War ended in March 1940.",
+      "rag_ok": true,
+      "engram": " The Winter War ended on March 13, 1940, when the Moscow Peace Treaty was signed.",
+      "engram_ok": true
+    },
+    {
+      "q": "When was the Tripartite Pact signed?",
+      "expected": "September 1940,27 September",
+      "baseline": "The Tripartite Pact was signed on 27 September 1940.",
+      "baseline_ok": true,
+      "rag": "The Tripartite Pact was signed on 27 September 1940.",
+      "rag_ok": true,
+      "engram": " The Tripartite Pact was signed on September 27, 1940.",
+      "engram_ok": false
+    },
+    {
+      "q": "What was the code name for the German invasion of Yugoslavia?",
+      "expected": "Directive 25,Operation 25",
+      "baseline": "The invasion of Yugoslavia by Nazi Germany and its allies during World War II began on 6 April 1941, when German, Italian, Hungarian, and Bulgarian forces invaded the Kingdom of Yugoslavia.",
+      "baseline_ok": false,
+      "rag": "The code name for the German invasion of Yugoslavia was Operation Marita.",
+      "rag_ok": false,
+      "engram": " Operation 25",
+      "engram_ok": true
+    },
+    {
+      "q": "What was Operation Torch?",
+      "expected": "Allied invasion,North Africa,1942",
+      "baseline": "The invasion of French North Africa, Operation Torch, was the first American land campaign of World War II.",
+      "baseline_ok": true,
+      "rag": "Operation Torch was the Allied invasion of French North Africa in November 1942.",
+      "rag_ok": true,
+      "engram": " Operation Torch was the Allied invasion of French North Africa during World War II. It was the first major Allied offensive of the war and was a success, leading to the liberation of North Africa and the defeat of the Axis powers in the region.",
+      "engram_ok": true
+    },
+    {
+      "q": "What was Operation Bagration?",
+      "expected": "Soviet,Belarus,1944",
+      "baseline": "The Soviet Union launched Operation Bagration on 22 June 1944, the second anniversary of Germany's invasion of the Soviet Union.",
+      "baseline_ok": true,
+      "rag": "Operation Bagration was the codename for the Soviet 1944 Belorussian Strategic Offensive Operation (Belorusskaya nastupatelnaya Operatsiya \"Bagration\") during World War II, which resulted in the liberation of",
+      "rag_ok": true,
+      "engram": " Operation Bagration was a Soviet military operation during World War II that took place in June and July 1944. It was a major offensive against Nazi Germany and its allies in the Eastern Front. The operation was named after the Battle of Bag",
+      "engram_ok": true
+    },
+    {
+      "q": "What country had the highest military casualties as a percentage of population?",
+      "expected": "Soviet Union,USSR,Russia",
+      "baseline": "The highest military casualties as a percentage of population were suffered by the Soviet Union, which lost 27 million people during World War II.",
+      "baseline_ok": true,
+      "rag": "The Soviet Union had the highest military casualties as a percentage of population.",
+      "rag_ok": true,
+      "engram": " The country with the highest military casualties as a percentage of population is the United States. During World War II, the United States had a total of 405,399 military casualties, which is approximately 0.3% of the",
+      "engram_ok": false
+    },
+    {
+      "q": "What was the last country Germany invaded before its surrender?",
+      "expected": "Czechoslovakia,Czech",
+      "baseline": "The last country to be invaded was Denmark.",
+      "baseline_ok": false,
+      "rag": "Germany invaded the Soviet Union, opening the Eastern Front and initially making large territorial gains along with Axis allies.",
+      "rag_ok": false,
+      "engram": " The last country Germany invaded before its surrender was France.",
+      "engram_ok": false
+    },
+    {
+      "q": "Which neutral country was invaded by both Allied and Axis forces?",
+      "expected": "Iran,Persia",
+      "baseline": "The only neutral country to be invaded was Iceland, which was invaded by the United Kingdom to prevent it from falling into German hands.",
+      "baseline_ok": false,
+      "rag": "Italy",
+      "rag_ok": false,
+      "engram": " Yugoslavia",
+      "engram_ok": false
+    },
+    {
+      "q": "What was the name of the first jet-powered fighter used in combat?",
+      "expected": "Messerschmitt,Me 262",
+      "baseline": "The first jet-powered fighter to see combat was the German Messerschmitt Me 262, which first saw operational use in 1944.",
+      "baseline_ok": true,
+      "rag": "The Messerschmitt Me 262",
+      "rag_ok": true,
+      "engram": " The first jet-powered fighter used in combat was the Messerschmitt Me 262.",
+      "engram_ok": true
+    },
+    {
+      "q": "What treaty ended the war between Finland and the Soviet Union in 1944?",
+      "expected": "Moscow Armistice,armistice",
+      "baseline": "The Continuation War (Finnish: jatkosota, Swedish: fortidskriget) was fought between Finland and the Soviet Union from 25 June 1941 to 19 September 1944",
+      "baseline_ok": false,
+      "rag": "The Moscow Armistice",
+      "rag_ok": true,
+      "engram": " Moscow Armistice",
+      "engram_ok": true
+    },
+    {
+      "q": "What was the largest encirclement of troops in history during WWII?",
+      "expected": "Kiev,Kyiv,1941",
+      "baseline": "The largest encirclement of troops in history was that of the German 6th Army at Stalingrad, where over 250,000 Germans were captured by Soviet forces.",
+      "baseline_ok": false,
+      "rag": "The Battle of Stalingrad was the largest encirclement of troops in history.",
+      "rag_ok": false,
+      "engram": " The largest encirclement of troops in history during WWII was the Battle of Stalingrad, where the German Sixth Army was surrounded and eventually surrendered to the Soviet Union.",
+      "engram_ok": false
+    },
+    {
+      "q": "Who was the Supreme Commander of Allied Forces in Southeast Asia?",
+      "expected": "Mountbatten,Louis",
+      "baseline": "The Supreme Commander of Allied Forces in Southeast Asia was Admiral Louis Mountbatten.",
+      "baseline_ok": true,
+      "rag": "General Douglas MacArthur",
+      "rag_ok": false,
+      "engram": " Admiral Louis Mountbatten",
+      "engram_ok": true
+    },
+    {
+      "q": "Who led the Polish government-in-exile?",
+      "expected": "Sikorski,Raczkie",
+      "baseline": "The Polish government-in-exile continued to operate from London throughout the war and maintained control of all Polish military and civilian affairs.",
+      "baseline_ok": false,
+      "rag": "The Polish government-in-exile was led by General W\u0142adys\u0142aw Sikorski.",
+      "rag_ok": true,
+      "engram": " W\u0142adys\u0142aw Sikorski",
+      "engram_ok": true
+    },
+    {
+      "q": "Who commanded the Japanese forces at Iwo Jima?",
+      "expected": "Kuribayashi",
+      "baseline": "The Japanese forces on Iwo Jima were commanded by Lieutenant General Tadamichi Kuribayashi.",
+      "baseline_ok": true,
+      "rag": "The Japanese forces were commanded by Lieutenant General Tadamichi Kuribayashi.",
+      "rag_ok": true,
+      "engram": " Lieutenant General Tadamichi Kuribayashi",
+      "engram_ok": true
+    },
+    {
+      "q": "What was the Katyn massacre?",
+      "expected": "Polish,officers,Soviet,NKVD",
+      "baseline": "The Katyn massacre was the mass execution of some 22,000 Polish prisoners of war by the Soviet Union in 1940.",
+      "baseline_ok": true,
+      "rag": "The Katyn massacre was the mass killing of Polish military officers and intelligentsia by the Soviet secret police in 1940.",
+      "rag_ok": true,
+      "engram": " The Katyn massacre was a mass killing of Polish military officers and intelligentsia by the Soviet Union in 1940. The victims were executed by the NKVD, the Soviet secret police, and the bodies were buried in mass graves in",
+      "engram_ok": true
+    },
+    {
+      "q": "What was the Rape of Nanking?",
+      "expected": "massacre,Chinese,Japanese,1937",
+      "baseline": "The Rape of Nanking, also known as the Nanking Massacre, was the mass murder of approximately 300,000 Chinese civilians and prisoners of war by Japanese troops in Nanking, China, during the Second Sino-J",
+      "baseline_ok": true,
+      "rag": "The Rape of Nanking, also known as the Nanking Massacre, was the mass murder of hundreds of thousands of Chinese civilians and prisoners of war by the Imperial Japanese Army at Nanking (present-day Nanjing), the capital of the Republic of",
+      "rag_ok": true,
+      "engram": " The Rape of Nanking was a massacre of Chinese civilians and prisoners of war by the Imperial Japanese Army at Nanking, the capital of the Republic of China, during the Second Sino-Japanese War, from December 13, 19",
+      "engram_ok": true
+    }
+  ]
+}

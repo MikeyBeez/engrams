@@ -1,0 +1,308 @@
+{
+  "method": "no_context_baseline",
+  "accuracy": 0.76,
+  "correct": 38,
+  "total": 50,
+  "results": [
+    {
+      "q": "When did World War II begin?",
+      "expected": "1939",
+      "answer": "World War II began in 1939 when Germany invaded Poland.",
+      "correct": true
+    },
+    {
+      "q": "When did World War II end?",
+      "expected": "1945",
+      "answer": "The war ended in 1945 with the defeat of the Axis powers and the dissolution of the Soviet Union.",
+      "correct": true
+    },
+    {
+      "q": "When did Germany invade Poland?",
+      "expected": "1939,September",
+      "answer": "The invasion of Poland by Germany, followed by the Soviet Union one month later, marked the beginning of World War II in Europe.",
+      "correct": false
+    },
+    {
+      "q": "When did Japan attack Pearl Harbor?",
+      "expected": "1941,December",
+      "answer": "The Japanese attack on Pearl Harbor on December 7, 1941, brought the United States into the war.",
+      "correct": true
+    },
+    {
+      "q": "When was D-Day?",
+      "expected": "1944,June",
+      "answer": "The Normandy landings (codenamed Operation Neptune) were the landing operations on the coast of Normandy in France during the Second World War.",
+      "correct": false
+    },
+    {
+      "q": "When did Germany surrender?",
+      "expected": "1945,May",
+      "answer": "The German Instrument of Surrender was signed on 7 May 1945, ending the war in Europe.",
+      "correct": true
+    },
+    {
+      "q": "When did Japan surrender?",
+      "expected": "1945,August",
+      "answer": "The Japanese government surrendered unconditionally on 15 August 1945, and formally signed the surrender documents on 2 September 1945.",
+      "correct": true
+    },
+    {
+      "q": "When did Italy surrender?",
+      "expected": "1943",
+      "answer": "Italy surrendered on 8 September 1943.",
+      "correct": true
+    },
+    {
+      "q": "When did the Battle of Stalingrad end?",
+      "expected": "1943,February",
+      "answer": "The Battle of Stalingrad was the largest battle in the history of warfare, with more than a million men engaged.",
+      "correct": false
+    },
+    {
+      "q": "When did the Soviet Union enter the war against Japan?",
+      "expected": "1945,August",
+      "answer": "The Soviet Union entered the war against Japan on 9 August 1945, and quickly advanced across Manchuria.",
+      "correct": true
+    },
+    {
+      "q": "Who was the leader of Nazi Germany?",
+      "expected": "Hitler,Adolf",
+      "answer": "The Nazi Party was founded in 1920 by Adolf Hitler.",
+      "correct": true
+    },
+    {
+      "q": "Who was the British Prime Minister during WWII?",
+      "expected": "Churchill,Winston",
+      "answer": "winston churchill",
+      "correct": true
+    },
+    {
+      "q": "Who was the US President at the start of WWII?",
+      "expected": "Roosevelt,Franklin",
+      "answer": "The United States was not directly involved in the war until 1941, when the Japanese attack on Pearl Harbor brought the country into the conflict.",
+      "correct": false
+    },
+    {
+      "q": "Who was the US President when WWII ended?",
+      "expected": "Truman,Harry",
+      "answer": "The war ended in 1945 with the victory of the Allies.",
+      "correct": false
+    },
+    {
+      "q": "Who was the leader of the Soviet Union during WWII?",
+      "expected": "Stalin,Joseph",
+      "answer": "joseph stalin",
+      "correct": true
+    },
+    {
+      "q": "Who was the leader of Italy during WWII?",
+      "expected": "Mussolini,Benito",
+      "answer": "Benito Mussolini",
+      "correct": true
+    },
+    {
+      "q": "Who was the Emperor of Japan during WWII?",
+      "expected": "Hirohito",
+      "answer": "The Japanese government's initial stance was one of neutrality, but they were concerned about the expansion of American power in the region.",
+      "correct": false
+    },
+    {
+      "q": "Who commanded Allied forces on D-Day?",
+      "expected": "Eisenhower",
+      "answer": "The Allied invasion of Normandy, France, on 6 June 1944, a World War II turning point, involved the most massive armada of ships ever assembled.",
+      "correct": false
+    },
+    {
+      "q": "Who was the leader of Free France?",
+      "expected": "Gaulle,Charles",
+      "answer": "Charles de Gaulle",
+      "correct": true
+    },
+    {
+      "q": "Who commanded German forces in North Africa?",
+      "expected": "Rommel",
+      "answer": "The German Afrika Korps, commanded by Erwin Rommel, was sent to North Africa in February 1941 to reinforce the Italian 10th Army.",
+      "correct": true
+    },
+    {
+      "q": "What started World War II in Europe?",
+      "expected": "invasion,Poland",
+      "answer": "The war began in Europe on 1 September 1939, when the German army invaded Poland from the west.",
+      "correct": true
+    },
+    {
+      "q": "What brought the US into World War II?",
+      "expected": "Pearl Harbor",
+      "answer": "The United States was officially neutral, but was already supplying war material to Britain, China, and the Soviet Union.",
+      "correct": false
+    },
+    {
+      "q": "What was the turning point on the Eastern Front?",
+      "expected": "Stalingrad",
+      "answer": "The turning point on the Eastern Front was the Battle of Stalingrad, which was a major battle of World War II and a major victory for the Soviet Union that was the beginning of the Soviet advance to victory.",
+      "correct": true
+    },
+    {
+      "q": "What was the largest naval battle of WWII?",
+      "expected": "Leyte,Philippine",
+      "answer": "The largest naval battle of World War II was the Battle of Leyte Gulf, in which more than 200 Japanese and American ships engaged in some of the largest naval battles in history for over four days.",
+      "correct": true
+    },
+    {
+      "q": "What was Operation Barbarossa?",
+      "expected": "invasion,Soviet,Russia",
+      "answer": "The invasion was a massive strategic surprise for the Soviets.",
+      "correct": true
+    },
+    {
+      "q": "What was the Battle of Britain?",
+      "expected": "air,aerial,RAF",
+      "answer": "The Battle of Britain was the first major campaign to be fought entirely by air forces.",
+      "correct": true
+    },
+    {
+      "q": "What was the Blitzkrieg?",
+      "expected": "lightning,fast,quick",
+      "answer": "The Blitzkrieg was a strategy used by the Germans in World War II.",
+      "correct": false
+    },
+    {
+      "q": "What happened at Dunkirk?",
+      "expected": "evacuation,rescue",
+      "answer": "The evacuation of Dunkirk (French: \"Op\u00e9ration Dynamo\", 26 May \u2013 4 June 1940) was the largest naval rescue mission in history.",
+      "correct": true
+    },
+    {
+      "q": "What was the Battle of the Bulge?",
+      "expected": "Ardennes,offensive,German",
+      "answer": "The Battle of the Bulge was the last major German offensive of World War II.",
+      "correct": true
+    },
+    {
+      "q": "What was Operation Overlord?",
+      "expected": "Normandy,D-Day,invasion",
+      "answer": "The Normandy landings (codenamed Operation Neptune) were the landing operations on the coast of Normandy in France during the Second World War.",
+      "correct": true
+    },
+    {
+      "q": "What was the Holocaust?",
+      "expected": "genocide,Jews,murder",
+      "answer": "The Holocaust (from the Greek \u1f41\u03bb\u03cc\u03ba\u03b1\u03c5\u03c3\u03c4\u03bf\u03c2 hol\u00f3kaustos: h\u00f3los, \"whole\" and kaust\u00f3s, \"burnt\"), also known as the Shoah (Hebrew:",
+      "correct": false
+    },
+    {
+      "q": "How many Jews died in the Holocaust?",
+      "expected": "six million,6 million",
+      "answer": "The Holocaust (also called Shoah) was a genocide in which Adolf Hitler's Nazi Germany and its collaborators killed about six million Jews.",
+      "correct": true
+    },
+    {
+      "q": "What were concentration camps?",
+      "expected": "prison,detention,death",
+      "answer": "The concentration camps were used to hold political prisoners and others deemed undesirable by the Nazi regime.",
+      "correct": true
+    },
+    {
+      "q": "What was Auschwitz?",
+      "expected": "concentration,death,camp",
+      "answer": "The largest and most important of the German concentration camps was Auschwitz, where more than a million people were killed.",
+      "correct": true
+    },
+    {
+      "q": "What were the Nuremberg Trials?",
+      "expected": "trial,war crimes,prosecution",
+      "answer": "The Nuremberg Trials were a series of military tribunals held after World War II to prosecute prominent Nazi leaders for war crimes and crimes against humanity.",
+      "correct": true
+    },
+    {
+      "q": "What was the Manhattan Project?",
+      "expected": "atomic,nuclear,bomb",
+      "answer": "The Manhattan Project was a research and development project that produced the first nuclear weapons during World War II.",
+      "correct": true
+    },
+    {
+      "q": "What city was the first atomic bomb dropped on?",
+      "expected": "Hiroshima",
+      "answer": "The first atomic bomb was dropped on the Japanese city of Hiroshima on 6 August 1945, by the United States Army Air Forces B-29 Superfortress Enola Gay, piloted by Colonel Paul Tibbets.",
+      "correct": true
+    },
+    {
+      "q": "What city was the second atomic bomb dropped on?",
+      "expected": "Nagasaki",
+      "answer": "The second bomb, \"Fat Man\", was dropped on Nagasaki, on 9 August 1945.",
+      "correct": true
+    },
+    {
+      "q": "What was the V-2?",
+      "expected": "rocket,missile,weapon",
+      "answer": "The V-2 was a long-range ballistic missile developed by Nazi Germany towards the end of World War II.",
+      "correct": true
+    },
+    {
+      "q": "What was the Enigma machine?",
+      "expected": "code,cipher,encryption",
+      "answer": "The Enigma machine was a cipher device used by the German military during World War II.",
+      "correct": true
+    },
+    {
+      "q": "What were the Axis powers?",
+      "expected": "Germany,Italy,Japan",
+      "answer": "The Axis powers were the countries that fought in World War II against the Allies.",
+      "correct": false
+    },
+    {
+      "q": "What were the Allied powers?",
+      "expected": "Britain,United States,Soviet",
+      "answer": "The Allied powers were initially made up of the United Kingdom, France, Russia and Siam, with Belgium, Serbia, Greece, Italy, Japan and the United States later joining them.",
+      "correct": true
+    },
+    {
+      "q": "Which countries remained neutral?",
+      "expected": "Switzerland,Sweden,Spain",
+      "answer": "The only countries that remained neutral were Switzerland, Portugal, Spain, China, Turkey, and the Ottoman Empire.",
+      "correct": true
+    },
+    {
+      "q": "When did the Soviet Union join the Allies?",
+      "expected": "1941,Germany attacked",
+      "answer": "The Soviet Union joined the Allies in 1941 and made a major contribution to the Allied victory in World War II.",
+      "correct": true
+    },
+    {
+      "q": "What was the Tripartite Pact?",
+      "expected": "Axis,Germany,Italy,Japan",
+      "answer": "The Tripartite Pact was a mutual defense treaty signed by Germany, Italy and Japan on 27 September 1940.",
+      "correct": true
+    },
+    {
+      "q": "Where did D-Day take place?",
+      "expected": "Normandy,France",
+      "answer": "The Normandy landings (codenamed Operation Neptune) were the landing operations on the coast of Normandy in France, commenced on 6 June 1944, during World War II.",
+      "correct": true
+    },
+    {
+      "q": "What was the Atlantic Wall?",
+      "expected": "defense,fortification,German",
+      "answer": "The Atlantic Wall was a series of fortifications built by Nazi Germany along the coast of the English Channel and North Sea during World War II.",
+      "correct": true
+    },
+    {
+      "q": "What island was heavily fought over in the Pacific?",
+      "expected": "Iwo Jima,Okinawa,Guadalcanal",
+      "answer": "The Japanese were driven from the Marshall Islands in 1944 and from the Marianas in 1945.",
+      "correct": false
+    },
+    {
+      "q": "What was the Burma Road?",
+      "expected": "supply,China",
+      "answer": "The Burma Road was a vital supply route from China to the rest of the world.",
+      "correct": true
+    },
+    {
+      "q": "Where was the final major battle in Europe?",
+      "expected": "Berlin",
+      "answer": "The final major battle in Europe was the Battle of Berlin, which lasted from April 16 to May 2, 1945.",
+      "correct": true
+    }
+  ]
+}

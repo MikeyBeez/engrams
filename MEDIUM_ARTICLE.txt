@@ -27,7 +27,7 @@ Baseline (no context): 68%
 RAG (full article in prompt): 80%
 Engram only (32 tokens): 96%
 
-The engram crushed RAG while using roughly 100 times fewer tokens. This seemed like a clear win.
+The engram outperformed RAG while using roughly 100 times fewer tokens. But this does not mean engrams retrieve facts better than text. What's happening is different: the engram positions the model closer to regions of the latent space where those facts are already well learned. RAG adds surface form tokens; the engram adds latent state alignment. They're doing different things.
 
 Then I tested on biology research papers with novel findings — specific percentages, gene names, experimental results that couldn't possibly be in training data.
 
@@ -40,7 +40,9 @@ Zero. The engram was completely useless for novel information. Worse than useles
 
 What's Actually Happening
 
-Engrams don't store information. They provide topic cueing.
+Engrams do not reliably encode novel, symbolic facts. But they do encode statistical structure correlated with known concepts.
+
+While engrams contain information in the Shannon sense, they do not make novel facts functionally retrievable by the model. The 0% on biology papers is not a failure — it's a diagnostic success that falsifies the "engrams as compressed documents" story.
 
 When you prepend an engram from a WWII article, you're not injecting facts about D-Day into the model. You're priming the model to access its existing knowledge about WWII more effectively. The engram acts like a focused retrieval cue that helps the model find relevant information it already has.
 
@@ -60,6 +62,8 @@ Engram plus RAG: 55.6%
 
 The engram didn't interfere. RAG performance was identical whether the engram was present or not. You can safely combine them.
 
+This result is arguably more important than any performance gain. It establishes monotonicity: engrams are a non-destructive augmentation when done correctly. That's exactly the property you want in real systems.
+
 
 The 100-Turn Experiment
 
@@ -75,9 +79,22 @@ Engram only: 11/80 facts (13.8%)
 
 Engram plus RAG beat RAG alone by 10 percentage points.
 
-This is the key result. The session engram, accumulating topic context throughout the conversation, helps the model make better use of the RAG context. The improvement is consistent and substantial.
+This is the key result. The session engram, accumulating topic context throughout the conversation, helps the model make better use of the RAG context. The engram doesn't add facts — it improves alignment between the query and the retrieved context.
 
 The engram similarity to the initial state remained high (0.99) throughout all 100 turns, showing that the session engram stays stable while accumulating useful topic signal.
+
+
+A Three-Tier Memory Architecture
+
+What emerges from these experiments is a three-tier memory model for agents:
+
+RAG provides external episodic memory — the novel facts, specific details, and information that isn't in the model's training data.
+
+Engrams provide internal semantic state bias — topic cueing that helps the model access its existing knowledge more effectively.
+
+EMA provides temporal smoothing — a slow-moving latent state tracking conversational topic across turns.
+
+This explains why memory plugins feel flaky, why long context windows don't solve coherence, and why agents drift without state anchoring. You need all three tiers working together.
 
 
 The Recommended Architecture
@@ -107,7 +124,7 @@ If you're working with a specific document repeatedly, pre-compute its engram:
 
 Everything in the document that overlaps with training data will be easier to access via the engram. Everything novel will be available via RAG. No conflict between the mechanisms.
 
-The storage cost is trivial — a small numpy array you can save to disk and load instantly. Much cheaper than re-processing thousands of tokens every time.
+On storage cost: 115K floats is approximately 460KB at fp32 or 230KB at fp16. That's larger than a single embedding vector, but amortizes well across repeated queries and avoids repeated forward passes through the document.
 
 
 When to Use What
@@ -161,7 +178,7 @@ The experiments show this works. Engram plus RAG performs at least as well as RA
 
 Running the Experiments Yourself
 
-All code is available at [repository URL]. To replicate:
+All code is available at github.com/MikeyBeez/engrams. To replicate:
 
 1. Install requirements: torch, transformers, biopython
 2. Fetch test papers: python fetch_pubmed_papers.py
@@ -173,6 +190,8 @@ The experiments use Qwen2.5-7B and require a GPU with about 16GB VRAM.
 Summary
 
 Engrams are not a replacement for RAG. They're not a way to compress documents into a few tokens. They're a topic cueing mechanism that helps models access their existing knowledge more effectively.
+
+To put it simply: engrams don't compress documents — they compress conversational intent.
 
 The practical value is real but specific: when working with content that overlaps with training data, an engram can improve accuracy beyond what RAG achieves alone. And since the computation is already happening during inference, the engram is essentially free — you're just keeping vectors that would otherwise be discarded.
 

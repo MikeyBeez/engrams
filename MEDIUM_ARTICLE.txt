@@ -81,7 +81,7 @@ Engram plus RAG beat RAG alone by 10 percentage points.
 
 This is the key result. The session engram, accumulating topic context throughout the conversation, helps the model make better use of the RAG context. The engram doesn't add facts — it improves alignment between the query and the retrieved context.
 
-The engram similarity to the initial state remained high (0.99) throughout all 100 turns, showing that the session engram stays stable while accumulating useful topic signal.
+The engram similarity to the initial state remained high (0.99) throughout all 100 turns. This indicates that EMA accumulation primarily adds low-magnitude directional bias rather than overwriting the session state — which explains why stability and improvement can coexist.
 
 
 A Three-Tier Memory Architecture
@@ -124,7 +124,7 @@ If you're working with a specific document repeatedly, pre-compute its engram:
 
 Everything in the document that overlaps with training data will be easier to access via the engram. Everything novel will be available via RAG. No conflict between the mechanisms.
 
-On storage cost: 115K floats is approximately 460KB at fp32 or 230KB at fp16. That's larger than a single embedding vector, but amortizes well across repeated queries and avoids repeated forward passes through the document.
+On storage cost: 115K floats is approximately 460KB at fp32 or 230KB at fp16. For reference, this is comparable to storing 50–100 standard embedding vectors. That's larger than a single embedding, but amortizes well across repeated queries and avoids repeated forward passes through the document.
 
 
 When to Use What
@@ -145,7 +145,7 @@ Use engram plus RAG when:
 - You can afford the RAG tokens but want the extra edge
 
 Avoid engrams when:
-- The engram's topic doesn't match the query (causes interference)
+- The engram's topic doesn't match the query (causes interference by biasing attention toward an irrelevant region of latent space)
 - You need precise recall of details not in training data
 - The model is too small (experiments used 7B parameters; 3B didn't work well)
 

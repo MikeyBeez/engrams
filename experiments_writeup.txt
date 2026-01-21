@@ -1,0 +1,304 @@
+================================================================================
+ENGRAM EXPERIMENTS: GATED INJECTION AND ROLLING COMPRESSION
+================================================================================
+January 2025
+
+This document summarizes two key experimental investigations into engram
+behavior: (1) context-aware gated injection, and (2) rolling compression
+over extended conversations.
+
+================================================================================
+PART 1: GATED ENGRAM INJECTION
+================================================================================
+
+MOTIVATION
+----------
+DeepSeek's paper "Conditional Memory via Scalable Lookup" demonstrated that
+context-aware gating can improve memory retrieval by selecting only the
+relevant portions of stored representations. We tested whether similar
+techniques could improve engram injection.
+
+The hypothesis: If engrams contain multiple semantic components (WWII battles,
+political figures, economic factors, etc.), then gating based on the current
+prompt could select only the relevant components, improving answer quality.
+
+METHODS
+-------
+Two gating mechanisms were implemented:
+
+1. SOFT ATTENTION GATING
+   - Compute attention scores between prompt embedding and each engram vector
+   - Apply softmax with temperature parameter to get weights
+   - Weight engram vectors accordingly
+
+   Formula:
+   scores = (prompt_embed @ engram.T) / sqrt(hidden_dim)
+   weights = softmax(scores / temperature)
+   gated_engram = engram * weights
+
+   Temperature controls selectivity:
+   - t=0.1: Very selective (sharp distribution)
+   - t=0.5: Moderately selective
+   - t=1.0: Minimal selectivity (near uniform)
+
+2. TOP-K SELECTION
+   - Compute same attention scores
+   - Select only the k highest-scoring engram vectors
+   - Zero out the rest
+
+   Tested k values: 4, 8, 16 (out of 32 total vectors)
+
+TEST PROTOCOL
+-------------
+- 8 questions about WWII (ranging from specific facts to broad themes)
+- Compare: Baseline (no engram), Unconditional injection, Gated, Top-k
+- Measure: Relevance (does answer contain expected markers?)
+
+RESULTS
+-------
+                         Relevant Answers (out of 8)
+Method                   Count    Percentage
+---------------------------------------------------------
+Baseline (no engram)     6        75.0%
+Unconditional injection  8        100.0%
+Gated (t=0.1)           5        62.5%
+Gated (t=0.5)           8        100.0%
+Gated (t=1.0)           8        100.0%
+Top-k (k=4)             6        75.0%
+Top-k (k=8)             8        100.0%
+Top-k (k=16)            8        100.0%
+
+KEY FINDING
+-----------
+Contrary to expectations, context-aware gating did NOT improve over
+unconditional injection. In fact, aggressive selection HURT performance:
+- Gated t=0.1 (very selective): 62.5% relevance (worse than baseline!)
+- Top-k=4 (only 4 vectors): 75% relevance (equals baseline)
+
+WHY GATING DIDN'T HELP
+----------------------
+Our engrams are fundamentally different from DeepSeek's memory system:
+
+DeepSeek's Approach:
+- Sparse N-gram hash tables with millions of entries
+- Each entry corresponds to a specific context pattern
+- Gating selects which entries to retrieve
+- Selection is necessary to avoid irrelevant information
+
+Our Engrams:
+- Dense 32-vector representation of entire document
+- All vectors contribute to the semantic "territory"
+- Information is distributed, not localized
+- Removing vectors removes necessary context
+
+The analogy: DeepSeek is selecting which books to read from a library.
+We're selecting which paragraphs to read from a single book. The book
+needs all its paragraphs to make sense.
+
+RECOMMENDATION
+--------------
+For dense engrams derived from hidden state compression, unconditional
+injection is optimal. Gating mechanisms are only useful for sparse,
+entry-based memory systems.
+
+
+================================================================================
+PART 2: ROLLING COMPRESSION (EMA SESSION ENGRAM)
+================================================================================
+
+MOTIVATION
+----------
+For AGENT_OS, we want a "session engram" that persists conversational context
+across turns. This would maintain "what we're talking about" without storing
+the full conversation history.
+
+The mechanism: Exponential Moving Average (EMA)
+  new_session = (1 - alpha) * old_session + alpha * response_engram
+
+Where alpha controls how much each new response updates the session state.
+
+INITIAL TEST: 5 TURNS
+---------------------
+First test used 5 conversational turns with alpha values 0.1, 0.3, 0.5.
+
+Results after 5 turns:
+- All alpha values showed ~98% cosine similarity to original engram
+- Topic retention appeared stable
+- Conclusion: "EMA works well!"
+
+This conclusion was WRONG. Five turns was not enough to reveal the dynamics.
+
+EXTENDED TEST: 100 TURNS
+------------------------
+Expanded to 100 turns with deliberately drifting conversation topics.
+
+Topic Drift Sequences:
+1. WWII -> military technology -> physics -> computing -> mathematics ->
+   philosophy -> consciousness -> AI -> neuroscience -> cooking/food
+
+2. Python programming -> languages -> computer science -> space ->
+   web development -> data science -> robotics -> society -> chemistry
+
+Each sequence contains 100 questions, gradually drifting from the original
+topic to something completely unrelated.
+
+RESULTS: SIMILARITY TRAJECTORIES
+--------------------------------
+
+Alpha = 0.1 (Conservative)
+--------------------------
+Turn  10: 98.7% similarity to original
+Turn  30: 98.5%
+Turn  50: 98.4%
+Turn  70: 98.4%
+Turn  90: 98.5%
+Turn 100: 98.5%
+
+Topic retention at turn 100: 1/3 original topics mentioned
+Status: STABLE (no collapse)
+
+Alpha = 0.3 (Moderate)
+----------------------
+Turn  10: 98.2% similarity to original
+Turn  30: 97.8%
+Turn  50: 97.2%
+Turn  70: 96.1%  <- Beginning of decline
+Turn  80: 92.3%  <- Acceleration
+Turn  90: 88.7%
+Turn 100: 86.0%  <- COLLAPSED
+
+Topic retention at turn 100: 0/3 original topics mentioned
+Status: PHASE TRANSITION COLLAPSE
+
+Alpha = 0.5 (Aggressive)
+------------------------
+Turn  10: 97.5% similarity to original
+Turn  30: 94.2%
+Turn  50: 87.1%
+Turn  70: 73.4%
+Turn  80: 62.1%  <- SEVERE DEGRADATION
+Turn  90: [CRASHED - empty response]
+
+Topic retention: 0/3
+Status: CATASTROPHIC FAILURE
+
+THE PHASE TRANSITION PHENOMENON
+-------------------------------
+The most striking finding was the SUDDEN nature of collapse:
+
+- Alpha=0.3 appeared stable for 60+ turns, then rapidly degraded
+- The transition from "working" to "broken" happened within 10-20 turns
+- There was no gradual warning - the system looked fine until it wasn't
+
+This is a PHASE TRANSITION, not gradual decay. The engram accumulates
+drift until it crosses a threshold, then coherence collapses rapidly.
+
+MATHEMATICAL ANALYSIS
+---------------------
+After 100 turns with EMA, the contribution of the original engram is:
+  original_weight = (1 - alpha)^100
+
+For different alpha values:
+- alpha=0.1: original_weight = 0.9^100 ≈ 0.00003 (0.003%)
+- alpha=0.3: original_weight = 0.7^100 ≈ 3×10^-16 (essentially zero)
+- alpha=0.5: original_weight = 0.5^100 ≈ 8×10^-31 (zero)
+
+Mathematically, after 100 turns, the original content is GONE. Yet
+alpha=0.1 still shows 98.5% similarity. Why?
+
+The answer: SEMANTIC BASIN STABILITY
+
+When alpha is small, each update barely moves the engram. The small
+movements stay within the same "semantic basin" - the region of embedding
+space that activates the same knowledge domain.
+
+When alpha is large, each update can push the engram toward a different
+basin. Once it crosses the basin boundary, subsequent updates pull it
+further away, causing runaway drift.
+
+PRACTICAL IMPLICATIONS
+----------------------
+For AGENT_OS or any system using rolling engram compression:
+
+SAFE: alpha <= 0.1
+- Can sustain 100+ turns without collapse
+- Original topic influence persists through basin stability
+- Suitable for long conversations
+
+DANGEROUS: alpha >= 0.3
+- Appears stable for ~60 turns, then collapses
+- No warning before failure
+- Unsuitable for open-ended conversations
+
+CATASTROPHIC: alpha >= 0.5
+- Collapses within 50 turns
+- May cause model failures (empty responses)
+- Never use for production systems
+
+
+================================================================================
+PART 3: SYNTHESIS AND RECOMMENDATIONS
+================================================================================
+
+WHAT WE LEARNED
+---------------
+
+1. Engrams are retrieval cues, not content containers
+   - They bias attention toward knowledge domains
+   - They cannot inject novel propositions
+   - Selectivity (gating) doesn't help because the signal is holistic
+
+2. Rolling compression has sharp failure modes
+   - Phase transitions, not gradual decay
+   - Safe parameters (alpha<=0.1) are much more conservative than intuition suggests
+   - 5-turn tests are inadequate; need 100+ turns to reveal dynamics
+
+3. The "semantic basin" model explains stability
+   - Small updates stay within the same activation region
+   - Large updates can escape, causing runaway drift
+   - Basin boundaries create sudden transitions
+
+ARCHITECTURAL RECOMMENDATIONS
+-----------------------------
+For AGENT_OS three-layer architecture:
+
+CONTROL LAYER (Session Engram)
+- Use alpha=0.05 to 0.1 for EMA updates
+- Implement "topic checkpoint" mechanism for long conversations
+- Add drift detection (monitor similarity to checkpoint)
+- If drift exceeds threshold, reset to checkpoint + summary
+
+CONTENT LAYER (RAG)
+- Keep factual context separate from control state
+- Engrams select what to retrieve, RAG provides what to believe
+- Never rely on engrams for factual accuracy
+
+KNOWLEDGE LAYER (Base Model)
+- Engrams can only activate what the model already knows
+- For novel information, must use explicit context (RAG)
+- Fine-tuning changes the knowledge, engrams change retrieval
+
+
+================================================================================
+APPENDIX: EXPERIMENTAL DETAILS
+================================================================================
+
+Model: Qwen/Qwen2.5-3B
+Engram extraction: Layer 16 hidden states, mean-pooled to 32 vectors
+Hardware: NVIDIA GPU with float16 precision
+Framework: PyTorch + Transformers
+
+Code locations:
+- /Users/bard/Code/engrams/scripts/gated_engram_test.py
+- /Users/bard/Code/engrams/scripts/rolling_compression_test.py
+
+Related experiments:
+- Contradictory facts test (engrams can't override model knowledge)
+- Novel facts test (engrams can't inject unknown information)
+- Recursive composition test (combining multiple engrams)
+- Layer comparison test (middle layers work best)
+
+
+================================================================================
+END OF DOCUMENT
+================================================================================

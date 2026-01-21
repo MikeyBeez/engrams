@@ -1,0 +1,582 @@
+{
+  "config": {
+    "alpha": 0.1,
+    "n_papers": 100,
+    "model": "Qwen/Qwen2.5-7B",
+    "timestamp": "2026-01-21T10:30:36.397331"
+  },
+  "recall_tests": [
+    {
+      "turn": 25,
+      "similarity_to_initial": 0.9931640625,
+      "lookbacks": {
+        "5_turns": {
+          "paper_index": 20,
+          "paper_title": "Adult hippocampal neurogenesis and its impairment ",
+          "facts_available": 3,
+          "rag_only": 1,
+          "engram_plus_rag": 3,
+          "engram_only": 2,
+          "engram_plus_rag_vs_rag": 2
+        },
+        "10_turns": {
+          "paper_index": 15,
+          "paper_title": "Blood-brain barrier-penetrating single CRISPR-Cas9",
+          "facts_available": 8,
+          "rag_only": 4,
+          "engram_plus_rag": 4,
+          "engram_only": 0,
+          "engram_plus_rag_vs_rag": 0
+        },
+        "25_turns": {
+          "paper_index": 0,
+          "paper_title": "Dopamine: The Neuromodulator of Long-Term Synaptic",
+          "facts_available": 6,
+          "rag_only": 3,
+          "engram_plus_rag": 3,
+          "engram_only": 1,
+          "engram_plus_rag_vs_rag": 0
+        }
+      }
+    },
+    {
+      "turn": 50,
+      "similarity_to_initial": 0.99169921875,
+      "lookbacks": {
+        "5_turns": {
+          "paper_index": 45,
+          "paper_title": "Genomic architecture of autism from comprehensive ",
+          "facts_available": 11,
+          "rag_only": 3,
+          "engram_plus_rag": 6,
+          "engram_only": 0,
+          "engram_plus_rag_vs_rag": 3
+        },
+        "10_turns": {
+          "paper_index": 40,
+          "paper_title": "Human microglial state dynamics in Alzheimer's dis",
+          "facts_available": 3,
+          "rag_only": 0,
+          "engram_plus_rag": 0,
+          "engram_only": 0,
+          "engram_plus_rag_vs_rag": 0
+        },
+        "25_turns": {
+          "paper_index": 25,
+          "paper_title": "A blood-brain barrier overview on structure, funct",
+          "facts_available": 4,
+          "rag_only": 1,
+          "engram_plus_rag": 3,
+          "engram_only": 2,
+          "engram_plus_rag_vs_rag": 2
+        },
+        "50_turns": {
+          "paper_index": 0,
+          "paper_title": "Dopamine: The Neuromodulator of Long-Term Synaptic",
+          "facts_available": 6,
+          "rag_only": 3,
+          "engram_plus_rag": 3,
+          "engram_only": 1,
+          "engram_plus_rag_vs_rag": 0
+        }
+      }
+    },
+    {
+      "turn": 75,
+      "similarity_to_initial": 0.9921875,
+      "lookbacks": {
+        "5_turns": {
+          "paper_index": 70,
+          "paper_title": "Cellular Circuits in the Brain and Their Modulatio",
+          "facts_available": 3,
+          "rag_only": 0,
+          "engram_plus_rag": 0,
+          "engram_only": 0,
+          "engram_plus_rag_vs_rag": 0
+        },
+        "10_turns": {
+          "paper_index": 65,
+          "paper_title": "Aggregation and structure of amyloid \u03b2-protein.",
+          "facts_available": 4,
+          "rag_only": 0,
+          "engram_plus_rag": 2,
+          "engram_only": 0,
+          "engram_plus_rag_vs_rag": 2
+        },
+        "25_turns": {
+          "paper_index": 50,
+          "paper_title": "Functional connectivity in reward circuitry and sy",
+          "facts_available": 6,
+          "rag_only": 5,
+          "engram_plus_rag": 4,
+          "engram_only": 1,
+          "engram_plus_rag_vs_rag": -1
+        },
+        "50_turns": {
+          "paper_index": 25,
+          "paper_title": "A blood-brain barrier overview on structure, funct",
+          "facts_available": 4,
+          "rag_only": 1,
+          "engram_plus_rag": 3,
+          "engram_only": 1,
+          "engram_plus_rag_vs_rag": 2
+        }
+      }
+    },
+    {
+      "turn": 100,
+      "similarity_to_initial": 0.99169921875,
+      "lookbacks": {
+        "5_turns": {
+          "paper_index": 95,
+          "paper_title": "Tau biomarkers in Alzheimer's disease: towards imp",
+          "facts_available": 5,
+          "rag_only": 2,
+          "engram_plus_rag": 2,
+          "engram_only": 1,
+          "engram_plus_rag_vs_rag": 0
+        },
+        "10_turns": {
+          "paper_index": 90,
+          "paper_title": "Discriminating \u03b1-synuclein strains in Parkinson's ",
+          "facts_available": 5,
+          "rag_only": 2,
+          "engram_plus_rag": 1,
+          "engram_only": 0,
+          "engram_plus_rag_vs_rag": -1
+        },
+        "25_turns": {
+          "paper_index": 75,
+          "paper_title": "Single-cell RNA sequencing reveals functional hete",
+          "facts_available": 6,
+          "rag_only": 3,
+          "engram_plus_rag": 3,
+          "engram_only": 1,
+          "engram_plus_rag_vs_rag": 0
+        },
+        "50_turns": {
+          "paper_index": 50,
+          "paper_title": "Functional connectivity in reward circuitry and sy",
+          "facts_available": 6,
+          "rag_only": 5,
+          "engram_plus_rag": 4,
+          "engram_only": 1,
+          "engram_plus_rag_vs_rag": -1
+        }
+      }
+    }
+  ],
+  "similarity_trajectory": [
+    {
+      "turn": 1,
+      "similarity": 0.99853515625
+    },
+    {
+      "turn": 2,
+      "similarity": 0.99853515625
+    },
+    {
+      "turn": 3,
+      "similarity": 0.998046875
+    },
+    {
+      "turn": 4,
+      "similarity": 0.9970703125
+    },
+    {
+      "turn": 5,
+      "similarity": 0.9970703125
+    },
+    {
+      "turn": 6,
+      "similarity": 0.99658203125
+    },
+    {
+      "turn": 7,
+      "similarity": 0.99609375
+    },
+    {
+      "turn": 8,
+      "similarity": 0.99609375
+    },
+    {
+      "turn": 9,
+      "similarity": 0.9951171875
+    },
+    {
+      "turn": 10,
+      "similarity": 0.9951171875
+    },
+    {
+      "turn": 11,
+      "similarity": 0.99462890625
+    },
+    {
+      "turn": 12,
+      "similarity": 0.994140625
+    },
+    {
+      "turn": 13,
+      "similarity": 0.99365234375
+    },
+    {
+      "turn": 14,
+      "similarity": 0.99365234375
+    },
+    {
+      "turn": 15,
+      "similarity": 0.99365234375
+    },
+    {
+      "turn": 16,
+      "similarity": 0.9931640625
+    },
+    {
+      "turn": 17,
+      "similarity": 0.9931640625
+    },
+    {
+      "turn": 18,
+      "similarity": 0.9931640625
+    },
+    {
+      "turn": 19,
+      "similarity": 0.9931640625
+    },
+    {
+      "turn": 20,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 21,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 22,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 23,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 24,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 25,
+      "similarity": 0.9931640625
+    },
+    {
+      "turn": 26,
+      "similarity": 0.9931640625
+    },
+    {
+      "turn": 27,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 28,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 29,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 30,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 31,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 32,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 33,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 34,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 35,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 36,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 37,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 38,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 39,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 40,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 41,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 42,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 43,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 44,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 45,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 46,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 47,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 48,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 49,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 50,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 51,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 52,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 53,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 54,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 55,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 56,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 57,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 58,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 59,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 60,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 61,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 62,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 63,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 64,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 65,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 66,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 67,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 68,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 69,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 70,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 71,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 72,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 73,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 74,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 75,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 76,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 77,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 78,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 79,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 80,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 81,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 82,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 83,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 84,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 85,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 86,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 87,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 88,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 89,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 90,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 91,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 92,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 93,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 94,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 95,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 96,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 97,
+      "similarity": 0.99169921875
+    },
+    {
+      "turn": 98,
+      "similarity": 0.99267578125
+    },
+    {
+      "turn": 99,
+      "similarity": 0.9921875
+    },
+    {
+      "turn": 100,
+      "similarity": 0.99169921875
+    }
+  ],
+  "summary": {
+    "total_comparisons": 15,
+    "total_facts": 80,
+    "rag_only_facts": 33,
+    "engram_plus_rag_facts": 41,
+    "engram_only_facts": 11,
+    "rag_only_pct": 41.25,
+    "engram_plus_rag_pct": 51.25,
+    "engram_only_pct": 13.75,
+    "engram_plus_rag_advantage": 8
+  }
+}

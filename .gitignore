@@ -24,6 +24,7 @@ wheels/
 .venv/
 venv/
 ENV/
+env/
 
 # IDE
 .idea/
@@ -61,3 +62,6 @@ htmlcov/
 # Environment
 .env
 .env.local
+
+# Keep results but not huge ones
+# results/*.json is fine

@@ -4,11 +4,23 @@ Extract dense semantic representations from transformer hidden states to compres
 
 ## Key Results
 
+**Original findings (single document):**
 - **96% accuracy** with engrams vs **80% accuracy** with RAG
 - **64.8x token reduction** (47 tokens vs 3,019 tokens per query)
 - **256x compression ratio** (8,192 tokens → 32 vectors)
 
-Tested on Wikipedia WWII article (87K characters, 50 factual questions) using Qwen2.5-7B.
+**New findings (100-turn sessions with Engram + RAG):**
+- **Engram + RAG: 51.2%** fact recall
+- **RAG only: 41.2%** fact recall
+- **Engram only: 13.8%** fact recall
+
+Adding a session engram on top of RAG improves performance by **10 percentage points**.
+
+## The Key Insight
+
+Engrams don't replace RAG — they complement it.
+
+Engrams provide "topic cueing" that helps the model access its existing knowledge. For novel information not in training data, RAG is essential. The two mechanisms layer together without interference.
 
 ## How It Works
 
@@ -30,10 +42,26 @@ injector = EngramInjector(model, tokenizer)
 answer = injector.inject_and_generate(question, engram)
 ```
 
+## Recommended Architecture: Engram + RAG
+
+```
+┌─────────────────────────────────────────────────┐
+│                   Each Turn                      │
+├─────────────────────────────────────────────────┤
+│  1. Retrieve relevant context (RAG)             │
+│  2. Prepend session engram (32 tokens)          │
+│  3. Generate response                           │
+│  4. Extract engram from response                │
+│  5. Update session engram via EMA               │
+└─────────────────────────────────────────────────┘
+```
+
+The session engram handles everything that overlaps with training data — it makes that knowledge easier to access with focused topic cueing. RAG handles the novel specifics.
+
 ## Installation
 
 ```bash
-git clone https://github.com/bardicreels/engrams.git
+git clone https://github.com/MikeyBeez/engrams.git
 cd engrams
 python -m venv .venv
 source .venv/bin/activate
@@ -47,6 +75,39 @@ pip install -e .
 - Transformers 4.36+
 - A GPU with 16GB+ VRAM for 7B models
 
+## Running the Experiments
+
+### 1. Fetch test papers from PubMed
+
+```bash
+cd scripts
+pip install biopython
+python fetch_pubmed_papers.py
+```
+
+This downloads 100 neuroscience paper abstracts.
+
+### 2. Run the main experiment (100 turns, Engram + RAG)
+
+```bash
+python chained_engram_plus_rag.py --n-papers 100 --alpha 0.1
+```
+
+Results are saved to `results/chained_engram_plus_rag_alpha0.1.json`.
+
+### 3. Run comparison tests
+
+**Known vs Novel Facts:**
+```bash
+python known_facts_test.py
+```
+
+**Engram + RAG vs RAG alone:**
+```bash
+python engram_plus_rag_test.py      # Known facts (WWII)
+python engram_plus_rag_novel.py     # Novel facts (biology papers)
+```
+
 ## Project Structure
 
 ```
@@ -58,11 +119,12 @@ engrams/
 │   └── context_manager.py # High-level context compression API
 ├── scripts/
 │   ├── wiki_50q_test.py  # Main benchmark script
-│   ├── layer_sweep.py    # Layer selection experiment
+│   ├── chained_engram_plus_rag.py  # 100-turn Engram+RAG experiment
+│   ├── fetch_pubmed_papers.py      # PubMed paper fetcher
 │   └── rag_vs_engram.py  # Comparison tests
 ├── results/
-│   └── wiki_50q.json     # Experimental results
-└── paper_engrams_medium.txt  # Publication draft
+│   └── *.json            # Experimental results
+└── MEDIUM_ARTICLE.txt    # Publication draft
 ```
 
 ## Key Findings
@@ -70,7 +132,102 @@ engrams/
 - **Layer selection matters**: Layers 8-24 work well; layer 0 fails completely
 - **Scaling is critical**: Engram vectors must be scaled to match embedding norms
 - **Model size matters**: 0.5B models fail; 7B models succeed dramatically
-- **Compression improves accuracy**: Counter-intuitively, engrams outperform raw text
+- **Compression improves accuracy**: Counter-intuitively, engrams outperform raw text for known facts
+- **Engram + RAG > RAG alone**: 10 percentage point improvement in 100-turn sessions
+- **No interference**: Engrams don't hurt RAG performance on novel facts
+
+## Core Functions
+
+### Extract an engram
+
+```python
+def extract_engram(model, tokenizer, text, layer=16, num_tokens=32):
+    inputs = tokenizer(text, return_tensors="pt", truncation=True, max_length=2048)
+
+    with torch.no_grad():
+        outputs = model(**inputs.to(model.device), output_hidden_states=True)
+
+    hidden = outputs.hidden_states[layer]
+    seq_len = hidden.shape[1]
+
+    chunk_size = max(1, seq_len // num_tokens)
+    engram_vectors = []
+    for i in range(num_tokens):
+        start = i * chunk_size
+        end = start + chunk_size if i < num_tokens - 1 else seq_len
+        engram_vectors.append(hidden[0, start:end].mean(dim=0))
+
+    return torch.stack(engram_vectors)
+```
+
+### Generate with engram + RAG
+
+```python
+def generate_engram_plus_rag(model, tokenizer, context, question, engram):
+    embed_layer = model.get_input_embeddings()
+
+    # Scale engram to match embedding norms
+    embed_norm = embed_layer.weight.norm(dim=1).mean().item()
+    engram_norm = engram.norm(dim=1).mean().item()
+    scaled_engram = engram * (embed_norm / engram_norm)
+
+    # Build RAG prompt
+    prompt = f"Context: {context}\n\nQuestion: {question}\nAnswer:"
+    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    prompt_embeds = embed_layer(inputs.input_ids)
+
+    # Prepend engram
+    combined = torch.cat([scaled_engram.unsqueeze(0), prompt_embeds], dim=1)
+
+    with torch.no_grad():
+        output = model.generate(inputs_embeds=combined, max_new_tokens=100)
+
+    return tokenizer.decode(output[0], skip_special_tokens=True)
+```
+
+### Update session engram via EMA
+
+```python
+def ema_update(current_engram, new_engram, alpha=0.1):
+    return (1 - alpha) * current_engram + alpha * new_engram
+```
+
+## Experimental Results
+
+### 100-Turn Chained Experiment
+
+Processing 100 biology papers, testing recall at turns 25, 50, 75, and 100:
+
+| Condition | Facts Recalled | Percentage |
+|-----------|----------------|------------|
+| RAG only | 33/80 | 41.2% |
+| Engram + RAG | 41/80 | 51.2% |
+| Engram only | 11/80 | 13.8% |
+
+**Engram + RAG outperforms RAG alone by +10 percentage points.**
+
+### Wiki Facts (Known Information)
+
+Testing on WWII facts (in training data):
+
+| Condition | Accuracy |
+|-----------|----------|
+| Baseline | 68% |
+| RAG | 80% |
+| Engram | 96% |
+
+### Novel Facts (Not in Training)
+
+Testing on recent biology paper abstracts:
+
+| Condition | Accuracy |
+|-----------|----------|
+| Baseline | 5.6% |
+| RAG | 55.6% |
+| Engram | 0% |
+| Engram + RAG | 55.6% |
+
+The engram doesn't interfere with RAG on novel facts.
 
 ## Inspired By
 
@@ -85,10 +242,10 @@ MIT
 If you use this work, please cite:
 
 ```
-@misc{engrams2025,
+@misc{engrams2026,
   title={Engrams: Geometric State Compression for Transformers},
-  author={bardicreels},
-  year={2025},
-  url={https://github.com/bardicreels/engrams}
+  author={MikeyBeez},
+  year={2026},
+  url={https://github.com/MikeyBeez/engrams}
 }
 ```

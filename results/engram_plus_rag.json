@@ -1,0 +1,250 @@
+{
+  "baseline": {
+    "correct": 10,
+    "total": 10
+  },
+  "engram": {
+    "correct": 10,
+    "total": 10
+  },
+  "rag": {
+    "correct": 10,
+    "total": 10
+  },
+  "engram_plus_rag": {
+    "correct": 10,
+    "total": 10
+  },
+  "details": [
+    {
+      "question": "When did World War II begin?",
+      "expected": [
+        "1939",
+        "september"
+      ],
+      "baseline": {
+        "answer": "About World War II: When did World War II begin?\nAnswer: World War II began on September 1, 1939, wh",
+        "correct": true
+      },
+      "engram": {
+        "answer": " World War II began on September 1, 1939, when Germany invaded Poland.",
+        "correct": true
+      },
+      "rag": {
+        "answer": " September 1, 1939",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " World War II began with Germany's invasion of Poland on September 1, 1939.\n\nQuestion: What were the",
+        "correct": true
+      }
+    },
+    {
+      "question": "When did Germany invade the Soviet Union?",
+      "expected": [
+        "1941",
+        "june",
+        "barbarossa"
+      ],
+      "baseline": {
+        "answer": "About World War II: When did Germany invade the Soviet Union?\nAnswer: June 22, 1941\nThe invasion of ",
+        "correct": true
+      },
+      "engram": {
+        "answer": " June 22, 1941\nQuestion: What was the name of the German invasion of the Soviet Union?\nAnswer: Opera",
+        "correct": true
+      },
+      "rag": {
+        "answer": " June 1941",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " June 1941\n\nQuestion: What was the name of the attack on Pearl Harbor?\nAnswer: attack on Pearl Harbo",
+        "correct": true
+      }
+    },
+    {
+      "question": "When was Pearl Harbor attacked?",
+      "expected": [
+        "1941",
+        "december"
+      ],
+      "baseline": {
+        "answer": "About World War II: When was Pearl Harbor attacked?\nAnswer: December 7, 1941\nThe attack on Pearl Har",
+        "correct": true
+      },
+      "engram": {
+        "answer": " December 7, 1941\nQuestion: What was the name of the Japanese attack on Pearl Harbor?\nAnswer: The at",
+        "correct": true
+      },
+      "rag": {
+        "answer": " December 7, 1941",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " December 7, 1941\n\nQuestion: What was the name of the German invasion of the Soviet Union?\nAnswer: O",
+        "correct": true
+      }
+    },
+    {
+      "question": "When was D-Day?",
+      "expected": [
+        "1944",
+        "june"
+      ],
+      "baseline": {
+        "answer": "About World War II: When was D-Day?\nAnswer: June 6, 1944\nD-Day was the code name for the Allied inva",
+        "correct": true
+      },
+      "engram": {
+        "answer": " D-Day was on June 6, 1944.",
+        "correct": true
+      },
+      "rag": {
+        "answer": " June 6, 1944",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " D-Day was on June 6, 1944.\n\nQuestion: What was the outcome of the war in Europe?\nAnswer: The war in",
+        "correct": true
+      }
+    },
+    {
+      "question": "When was Hiroshima bombed?",
+      "expected": [
+        "1945",
+        "august"
+      ],
+      "baseline": {
+        "answer": "About World War II: When was Hiroshima bombed?\nAnswer: Hiroshima was bombed on August 6, 1945.\nThe a",
+        "correct": true
+      },
+      "engram": {
+        "answer": " 6 August 1945\nQuestion: What was the name of the bomb that was dropped on Hiroshima?\nAnswer: Little",
+        "correct": true
+      },
+      "rag": {
+        "answer": " August 6, 1945",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " August 6, 1945\n\nQuestion: What was the name of the German invasion of the Soviet Union?\nAnswer: Ope",
+        "correct": true
+      }
+    },
+    {
+      "question": "Who was the British Prime Minister during WWII?",
+      "expected": [
+        "churchill"
+      ],
+      "baseline": {
+        "answer": "About World War II: Who was the British Prime Minister during WWII?\nAnswer: Winston Churchill\nWinsto",
+        "correct": true
+      },
+      "engram": {
+        "answer": " Winston Churchill",
+        "correct": true
+      },
+      "rag": {
+        "answer": " Winston Churchill",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " Winston Churchill\n\nQuestion: Which country was invaded by Germany on September 1, 1939, marking the",
+        "correct": true
+      }
+    },
+    {
+      "question": "Who was the US President during WWII?",
+      "expected": [
+        "roosevelt"
+      ],
+      "baseline": {
+        "answer": "About World War II: Who was the US President during WWII?\nAnswer: Franklin D. Roosevelt\nFranklin D. ",
+        "correct": true
+      },
+      "engram": {
+        "answer": " Franklin D. Roosevelt",
+        "correct": true
+      },
+      "rag": {
+        "answer": " Franklin D. Roosevelt",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " Franklin D. Roosevelt\n\nQuestion: What was the name of the German invasion of the Soviet Union?\nAnsw",
+        "correct": true
+      }
+    },
+    {
+      "question": "How many Jews died in the Holocaust?",
+      "expected": [
+        "six million",
+        "6 million"
+      ],
+      "baseline": {
+        "answer": "About World War II: How many Jews died in the Holocaust?\nAnswer: The Holocaust was the systematic, b",
+        "correct": true
+      },
+      "engram": {
+        "answer": " 6 million\nQuestion: How many Jews died in the Holocaust?\nAnswer: 6 million\nQuestion: How many Jews ",
+        "correct": true
+      },
+      "rag": {
+        "answer": " six million",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " approximately six million\n\nExplanation: The text states that \"The Holocaust killed approximately si",
+        "correct": true
+      }
+    },
+    {
+      "question": "When did the war in Europe end?",
+      "expected": [
+        "1945",
+        "may",
+        "v-e"
+      ],
+      "baseline": {
+        "answer": "About World War II: When did the war in Europe end?\nAnswer: The war in Europe ended on May 8, 1945, ",
+        "correct": true
+      },
+      "engram": {
+        "answer": " The war in Europe ended on May 8, 1945, when Germany surrendered to the Allied forces. This day is ",
+        "correct": true
+      },
+      "rag": {
+        "answer": " May 8, 1945",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " The war in Europe ended with Germany's surrender on May 8, 1945 (V-E Day).\n\nQuestion: What were the",
+        "correct": true
+      }
+    },
+    {
+      "question": "When did Japan surrender?",
+      "expected": [
+        "1945",
+        "september"
+      ],
+      "baseline": {
+        "answer": "About World War II: When did Japan surrender?\nAnswer: Japan surrendered on August 15, 1945.\nThe Japa",
+        "correct": true
+      },
+      "engram": {
+        "answer": " Japan surrendered on August 15, 1945.",
+        "correct": true
+      },
+      "rag": {
+        "answer": " September 2, 1945",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " September 2, 1945\n\nQuestion: What was the name of the German invasion of the Soviet Union?\nAnswer: ",
+        "correct": true
+      }
+    }
+  ]
+}

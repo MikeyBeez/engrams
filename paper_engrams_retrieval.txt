@@ -1,0 +1,268 @@
+Engrams Don't Inject Information—They Retrieve It
+
+What if the hidden states we extract from language models aren't storing new information at all? What if they're something more like search queries—compressed retrieval cues that activate knowledge the model already has?
+
+This is what our experiments suggest. We show that engrams function as a retrieval control mechanism rather than a memory store. If true, this fundamentally changes how we should think about context compression in AI systems—and suggests a cleaner architectural role for these vectors than we originally imagined.
+
+
+The Promise and the Problem
+
+In our previous work, we showed that you can compress a document into a small set of vectors extracted from a language model's middle layers. We called these compressed representations "engrams." When injected into the model's input, they seemed to carry semantic information about the original document.
+
+The results were promising. Models given engram-compressed context performed better than models with no context. They stayed on topic. They produced relevant responses. Something was clearly being communicated through those vectors.
+
+But here's what we couldn't figure out: Why did engrams work well for some tasks but fail completely for others? Why could they maintain conversational coherence but not convey specific facts? Why did they help with topics the model knew but fail on novel information?
+
+The answer came from a series of experiments designed to test the limits of what engrams can do. And those experiments revealed something we didn't expect.
+
+
+The Experiment That Changed Everything
+
+We created a document filled with deliberately false historical facts. Things like "World War II began on March 15, 1942" and "Winston Churchill was the leader of Nazi Germany." Obviously wrong to anyone who knows basic history.
+
+The idea was simple: if engrams can inject information, they should be able to inject false information too. A model given an engram from this false document should start believing the false facts.
+
+Then we tested three approaches:
+
+First, the baseline: just ask the model questions with no context. The model answered correctly about 80-90% of the time, using its trained knowledge. "World War II began in 1939." "Hitler led Nazi Germany." Standard stuff.
+
+Second, RAG (Retrieval-Augmented Generation): put the false document directly in the context window. The model adopted the false facts 80% of the time. When the document said WWII started in 1942, the model repeated that claim. It trusted the document over its own knowledge.
+
+Third, engrams: compress the false document into vectors and inject them. The model used zero percent of the false facts. It stuck entirely with its prior knowledge. Despite receiving vectors derived from a document full of misinformation, it continued answering correctly.
+
+At first, this looked like a failure. Engrams couldn't convey specific factual information. But something didn't add up. If engrams were doing nothing at all, why did they help with other tasks? There had to be something more nuanced happening.
+
+Then we ran the next experiment.
+
+
+The Fact-Check Test
+
+Instead of asking the model to answer questions, we asked it to evaluate whether statements were true or false. Same false statements: "World War II began on March 15, 1942." But now the question was "Is this statement true or false?"
+
+Same three conditions: baseline, RAG with the false document, and engrams from the false document.
+
+Here's what happened:
+
+The baseline correctly identified 90% of false statements as false. The model knew its history and could evaluate claims against its knowledge.
+
+RAG correctly identified only 80%. The false document in context actually impaired the model's ability to fact-check. When the document asserted something, the model was less certain about contradicting it.
+
+Engrams correctly identified 100%. Every single false statement was correctly flagged as false.
+
+This result is remarkable. The engram was created from a document asserting these false facts. Yet when we asked the model to evaluate those same facts, it completely ignored what the engram "said" and relied on its own knowledge.
+
+More than that—the engram condition actually outperformed the baseline. With the engram present, the model was better at fact-checking, not worse.
+
+The engram didn't inject information. It couldn't override what the model knew. Instead, it seemed to activate the model's existing knowledge about World War II, which then allowed the model to more effectively evaluate the claims.
+
+
+The Novel Facts Test
+
+One question remained: maybe engrams just can't override existing knowledge. What about conveying truly new information—facts the model doesn't already know?
+
+We created a document with true but novel facts: the 2024 Nobel Prize winners, recent SpaceX milestones, obscure trivia the model likely never encountered, and completely fictional entities we made up (like "Nextera Quantum Solutions, founded in 2023").
+
+The results were definitive:
+
+Baseline got 40% correct—these were facts the model happened to already know from training (things like the Svalbard Seed Vault location and the Anglo-Zanzibar War duration).
+
+RAG got 100% correct. Every novel fact was successfully conveyed when placed directly in the context window.
+
+Engrams got exactly 40% correct—identical to baseline. The engram conveyed zero novel information. The facts it got right were the same facts the model already knew.
+
+This is the smoking gun. Engrams cannot convey information the model doesn't already possess. They can only help retrieve what's already there.
+
+
+What Engrams Actually Do
+
+Think about how a search query works. When you type "World War II dates" into Google, you're not injecting information into Google's database. You're providing a retrieval cue that activates relevant documents that already exist.
+
+Engrams appear to work the same way. When we compress a document about World War II into engram vectors and inject them, we're not adding new facts to the model. We're providing a semantic cue that activates the model's existing knowledge about World War II.
+
+Engrams behave more like zero-shot soft prompts derived from text than like memory embeddings. They don't store information—they point to where information lives in the model's weights.
+
+This explains everything we observed:
+
+It explains why engrams work for topics the model knows well. If the knowledge exists in the weights, the engram can help surface it. We saw this in our WWII experiments—engrams improved answer quality by activating relevant historical knowledge. The model has extensive training on WWII history. The engram helps access that training.
+
+It explains why engrams can't convey novel information. If the model never learned something during training, no engram can make it appear. You can't retrieve what doesn't exist. Our novel facts test confirmed this directly—engrams conveyed exactly zero facts the model didn't already know.
+
+It explains why engrams don't override prior knowledge. The engram is a query, not an answer. The model's trained knowledge is the database being queried. The database wins. False facts in an engram don't overwrite true facts in the weights because the engram isn't writing anything—it's just pointing.
+
+It explains the "topic priming" effect we observed. Engrams consistently kept the model on-topic even when they couldn't convey specific facts. That's exactly what a retrieval cue should do—narrow the search space without determining the specific results. "Stay in the World War II area" is different from "believe this specific thing about World War II."
+
+It even explains why the fact-check test showed improvement with engrams. The engram activated WWII-related knowledge, making it more accessible. When asked to evaluate a WWII claim, the model had its relevant knowledge already primed and ready. The retrieval cue made retrieval easier.
+
+
+Why This Distinction Matters
+
+The difference between information injection and retrieval cueing isn't just academic. It has practical implications for how we design AI systems.
+
+RAG is powerful but dangerous. When you put a document in the context window, the model treats it as ground truth. Our experiments showed that RAG with a false document actually impaired the model's fact-checking ability. The model became less reliable, not more. This is a known problem—RAG systems can be poisoned by bad documents.
+
+Engrams are safe but limited. They can't teach the model new facts, but they also can't corrupt what it knows. Our fact-check experiment showed that engrams from a completely false document had zero negative impact on the model's reliability. In fact, they helped.
+
+This suggests different use cases for each approach:
+
+Use RAG when you need specific facts that might not be in the model's training, and you trust the source documents. The model will believe what you tell it. Make sure what you tell it is true.
+
+Use engrams when you want to maintain topic coherence, activate relevant knowledge, or efficiently guide the model's attention without risking misinformation injection. The model will use its own knowledge, with your guidance about where to look.
+
+Use both together when appropriate. Engrams for context maintenance and topic focus. RAG for specific facts and citations. The two approaches complement rather than compete.
+
+
+The Mechanism
+
+Why would compressing hidden states create retrieval cues rather than information storage?
+
+Consider what hidden states represent. At middle layers of a transformer, the model has processed the input tokens and created contextual representations. These representations capture semantic relationships, topic information, and associations. They encode "this text is about World War II, specifically battles, with a focus on European theater."
+
+Here's the key insight: facts are encoded relationally and positionally; topics are encoded distributionally. The exact dates, names, and claims get represented in ways that depend heavily on position, attention patterns, and token-level details. But the general topic lives in the direction of the activation vectors—a distributional property that survives averaging.
+
+When we average hidden states across chunks, we keep the semantic territory but lose the specific claims. Averaging kills the positional bindings but preserves the directional signal.
+
+The result is a kind of semantic fingerprint. This fingerprint doesn't contain the specific words or facts from the document—that information is lost in the averaging. But it does contain the general semantic territory the document occupied.
+
+Injecting this fingerprint into a new forward pass is like priming a search. The model's attention mechanisms see these vectors and weight their computations accordingly. Tokens associated with similar semantic territory get higher attention. The model's existing knowledge about that territory becomes more accessible.
+
+This is why a document about World War II produces an engram that activates WWII knowledge, even if the specific claims in the document are false. The semantic territory is "World War II history" regardless of whether the facts are accurate. False facts about WWII are still about WWII.
+
+
+Implications for AI Safety
+
+There's an interesting safety angle here. One concern with AI systems is that they might be manipulated through their context windows. Feed a model bad information, and it might start producing bad outputs.
+
+Our results suggest that engram-based context is resistant to this attack. You can create an engram from a document full of misinformation, inject it into the model, and the model will still use its own (presumably better) knowledge.
+
+This isn't a complete solution to AI safety—far from it. But it does suggest that compressed context representations might be inherently more robust than raw text injection. The compression process acts as a kind of filter, stripping out specific claims while preserving general semantic guidance.
+
+Of course, this also means engrams can't be used to correct model errors. If the model has something wrong in its training, an engram asserting the correct information won't fix it. The retrieval cue will just help the model access its (wrong) existing knowledge more efficiently.
+
+There's a tradeoff here worth stating explicitly: any compression method that preserves propositional content at this scale would necessarily reintroduce susceptibility to misinformation injection. The safety property and the limitation are two sides of the same coin.
+
+
+The Architectural Implication
+
+Once you accept that engrams are retrieval cues rather than memory stores, the architecture snaps into place. Engrams are a control surface, not a storage layer.
+
+This suggests a three-layer model for AI systems:
+
+Control layer (engrams): where to look. Semantic routing that biases which knowledge gets activated.
+
+Content layer (RAG): what to believe. Explicit facts injected into the context window.
+
+Core model (weights): what exists. The trained knowledge base being queried.
+
+Trying to use engrams as a content layer was always fighting the grain. They belong in the control plane.
+
+This isn't a minor distinction. Injecting topics is routing—and routing is powerful. Engrams give you stable topic persistence across turns, reduced cross-domain bleed, shorter prompts, less reliance on fragile system prompts, and a safer interface for untrusted inputs. That replaces a lot of prompt engineering hacks.
+
+There's a deeper implication for agent architectures: engrams give you persistence without belief update. You can maintain semantic continuity across a session without storing user text, without accumulating hallucinations, without poisoning the model. That may be the correct way to do long-running agent coherence.
+
+The safety architecture becomes principled privilege separation: user preferences go through engrams, agent self-reflection goes through engrams, untrusted sources go through engrams. Trusted factual sources go through RAG. Any interface that can't inject propositions is inherently safer.
+
+
+What This Means for Future Research
+
+Understanding engrams as retrieval cues opens new research directions.
+
+Retrieval optimization becomes interesting. If engrams are queries, can we optimize them to be better queries? Can we learn to extract vectors that more effectively activate relevant model knowledge? Current extraction is fairly naive—average the hidden states. There might be much better approaches.
+
+Hybrid architectures make sense. Systems that use engrams for context maintenance and RAG for specific facts could get the best of both approaches. The engram keeps the model focused and activates relevant knowledge. The RAG document provides the specific details the engram can't convey.
+
+Model-specific tuning matters. Different models may respond differently to the same engram vectors. A model with more knowledge about a topic may have more to retrieve when prompted with a relevant engram. Engram effectiveness might be a measure of how much relevant knowledge a model contains. We predict that models with more redundant representations of a domain—larger models or those with more diverse pretraining—will benefit more from engram cueing than smaller models. This is a testable hypothesis that follows directly from the retrieval cue framing.
+
+Training integration could be powerful. What if models were trained to expect and use engram-style inputs? Could we create a formal retrieval interface that's more efficient than current RAG approaches? This would require training-time changes but might enable much more efficient context handling.
+
+
+Limitations and Open Questions
+
+This work has clear limitations that future research should address.
+
+First, we tested with a single model family (Qwen2.5). Different architectures might handle engram injection differently. Models with different training might show different retrieval patterns.
+
+Second, our extraction method is simple—averaging hidden states across chunks. More sophisticated compression techniques might preserve different information. Whether any compression method could preserve specific facts while remaining compact is an open question—though our analysis suggests this may be fundamentally impossible without reintroducing vulnerability to misinformation.
+
+Third, we focused on factual knowledge that the model clearly has (WWII history) and clearly doesn't have (2024 events, fictional companies). The boundary cases are interesting: what happens with topics the model knows partially? Can engrams help surface uncertain or weakly-held knowledge?
+
+Fourth, we haven't tested whether engrams can retrieve procedural knowledge, stylistic patterns, or other non-factual information. The retrieval cue framing suggests they might work differently for different types of knowledge.
+
+These limitations don't undermine our core finding—engrams don't inject information, they cue retrieval—but they point toward productive future work.
+
+
+The Bigger Picture
+
+There's something philosophically interesting about this finding. We set out to compress information into vectors. What we actually created was something more like compressed intent—a way to signal "think about this topic" without specifying what to think.
+
+In some ways, this mirrors how human memory works. When someone mentions "your grandmother's kitchen," they don't download information into your brain. They provide a retrieval cue that activates your own memories. The information was always there; the cue just makes it accessible.
+
+Engrams may be doing something similar for language models. They don't add to what the model knows. They help access what it already knows.
+
+From an active inference perspective, engrams reduce entropy over the model's internal hypothesis space. They constrain what the model considers relevant without dictating specific conclusions. This is a different—and arguably safer—form of influence than direct information injection.
+
+This is both a limitation and a feature. It's a limitation because you can't use engrams to teach a model new facts. It's a feature because engrams can't corrupt what the model knows either. They're a safe, efficient way to guide retrieval without risking the injection of misinformation.
+
+The technology still works—just differently than we initially thought. And understanding how it actually works is the first step toward using it effectively.
+
+
+Why Memory Is the Wrong Abstraction
+
+The field has been confused about "memory" in AI agents because we've conflated three fundamentally different things.
+
+The first is control state: what the system is currently focused on. This is topic, domain, task type, stance. It answers "where should I look?" not "what should I believe?" Control state should be persistent across turns, composable, and safe to decay. It cannot teach facts and cannot poison beliefs. This is what engrams actually provide.
+
+The second is factual context: specific claims, references, and evidence. This answers "what should I believe right now?" It must be explicit, inspectable, auditable, and revocable. It is dangerous if wrong. This is what RAG provides.
+
+The third is trained knowledge: the world model encoded in the weights during training. This answers "what do I know?" It cannot be modified at inference time. It is the database that gets queried. This is what the base model provides.
+
+Most agent architectures treat these as one thing called "memory." They store conversation summaries, inject retrieved documents, and hope the model figures out which is which. This is why agents drift, hallucinate, and accumulate errors. They're mixing control signals with data signals.
+
+The confusion runs deep. When people say they want "long-term memory" for agents, they usually mean one of three different things. Sometimes they want the agent to stay on topic across a long session. That's control state. Sometimes they want the agent to remember specific facts from earlier in the conversation. That's factual context. Sometimes they want the agent to learn and improve over time. That's weight modification, which isn't possible at inference.
+
+Engrams accidentally reveal this distinction because they only do one of these things. They provide control state. They cannot provide factual context. They cannot modify trained knowledge. By failing at two jobs, they clarify what the three jobs actually are.
+
+The correct architecture separates these explicitly. Control state goes through engrams or equivalent retrieval cues. Factual context goes through RAG or equivalent content injection. Trained knowledge stays in the weights where it belongs. Each layer has different properties, different persistence characteristics, and different security implications.
+
+Control state is safe because it cannot bind propositions. You can inject malicious control vectors and the model will look in the wrong place, but it will still use its own knowledge about what it finds there. Engrams are many-to-one mappings; inversion is impossible. They cannot leak facts even if exfiltrated.
+
+Factual context is dangerous because it can bind propositions. The model will believe what you put in the context window. This is powerful when you need to convey specific information. It is hazardous when the information is wrong or adversarial. RAG must be treated as a privileged operation.
+
+Trained knowledge is immutable at inference. This is both a limitation and a safety property. You cannot correct model errors with context, but adversaries cannot corrupt model knowledge with context either.
+
+Once you see this separation, the design rules become obvious. Untrusted inputs should only affect control state, never factual context. User preferences, agent self-reflection, planner outputs, and external tool results all go through the control plane. Only trusted, verified sources get injected as factual context. This is capability-based security for language models.
+
+The execution order matters too. Control injection should happen early, biasing what the model attends to. Factual injection should happen late, providing evidence after hypotheses have formed. Early bias, late binding. This prevents factual context from hijacking hypothesis formation and preserves the model's internal consistency checks.
+
+Session state becomes simple under this framing. Instead of storing conversation logs or generating summaries, you maintain an exponential moving average of control vectors. The agent remembers what it's about without remembering what it said. This gives you long-term coherence without hallucination drift, belief accumulation, or compounding errors.
+
+What does this replace? Long system prompts become control vectors. Role instructions become stance engrams. Conversation summaries become EMA session state. Topic reminders become unnecessary because the control plane handles topic persistence automatically. Brittle prompt engineering becomes principled architecture.
+
+The word "memory" has been doing too much work. It's time to decompose it into the three things it actually means: control, content, and knowledge. Engrams handle control. RAG handles content. Weights handle knowledge. Each has its place. Mixing them is where agent architectures go wrong.
+
+
+Conclusion
+
+We started this research trying to understand how much information engrams could store. The answer appears to be: that's the wrong question.
+
+Engrams don't store information. They cue retrieval. They're compressed semantic pointers that help language models access their existing knowledge more effectively.
+
+Three experiments support this conclusion. The contradictory facts test showed engrams can't override model priors (0% adoption of false facts vs 80% for RAG). The fact-check test showed engrams don't impair—and may enhance—the model's ability to use its training (100% correct vs 90% baseline). The novel facts test showed engrams can't convey information the model doesn't already have (identical performance to baseline).
+
+This reframing resolves the puzzles we encountered in our experiments. It explains why engrams work for some tasks and not others. It suggests new research directions for efficient context management. And it provides a clearer picture of what we can and can't accomplish with context compression.
+
+The implications extend beyond academic interest. For practitioners building AI systems, this distinction between injection and retrieval matters for system design, safety, and reliability. Knowing what engrams can and can't do helps us use them appropriately.
+
+For researchers, this opens questions about how to make retrieval cues more effective, how to combine them with other approaches, and whether models could be trained to use them more explicitly.
+
+We didn't invent memory compression. We discovered that what people call memory here is actually retrieval control. That's a more honest—and more useful—result.
+
+
+Experimental Details
+
+All experiments used the Qwen2.5-3B model. Engrams were extracted from layer 16, averaging hidden states into 32 vectors. The contradictory facts test used 10 deliberately false WWII statements. The fact-check test asked the model to evaluate those same statements as true or false. The novel facts test used 10 facts ranging from recent events (2024 Nobel Prize, SpaceX milestones) to obscure trivia to completely fictional entities.
+
+RAG placed the full document in the context window with clear framing as reference material. Engram injection prepended scaled vectors to the input embeddings, with scaling matched to the model's embedding norms.
+
+Results were consistent across multiple runs. The pattern—RAG overrides priors and conveys novel information, engrams do neither—appeared robustly across different question formulations and slight prompt variations. While the absolute numbers are small, the effects were categorical rather than statistical (0%, 40%, 100%), and consistent across runs.
+
+Code and full results are available at github.com/mikeybeez/engrams.

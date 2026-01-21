@@ -1,0 +1,454 @@
+{
+  "baseline": {
+    "correct": 1,
+    "total": 18
+  },
+  "engram": {
+    "correct": 0,
+    "total": 18
+  },
+  "rag": {
+    "correct": 10,
+    "total": 18
+  },
+  "engram_plus_rag": {
+    "correct": 10,
+    "total": 18
+  },
+  "details": [
+    {
+      "paper": "Dopamine: The Neuromodulator of Long-Ter",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "ADHD"
+      ],
+      "baseline": {
+        "answer": "About this research: What gene or protein is discussed in this research?\nAnswer: The research discus",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is called \"RhoA.\" RhoA is a protein that helps cells",
+        "correct": false
+      },
+      "rag": {
+        "answer": " dopamine",
+        "correct": false
+      },
+      "engram_plus_rag": {
+        "answer": " Dopamine (DA)\n\nQuestion: What are the two forms of synaptic plasticity mentioned in the research?\nA",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Dopamine: The Neuromodulator of Long-Ter",
+      "question": "What was the main finding of this study?",
+      "expected": [
+        "neurotransmitter",
+        "physiological",
+        "functions"
+      ],
+      "baseline": {
+        "answer": "About this research: What was the main finding of this study?\nAnswer: The main finding of this study",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The main finding of this study was that the use of a specific type of medication, called a proton p",
+        "correct": false
+      },
+      "rag": {
+        "answer": " Dopamine (DA) is a key neurotransmitter involved in multiple physiological functions including moto",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " Dopamine (DA) is a key neurotransmitter involved in multiple physiological functions including moto",
+        "correct": true
+      }
+    },
+    {
+      "paper": "Neuroplasticity in the transition from a",
+      "question": "What was the main finding of this study?",
+      "expected": [
+        "transient",
+        "sensation",
+        "typically"
+      ],
+      "baseline": {
+        "answer": "About this research: What was the main finding of this study?\nAnswer: The main finding of this study",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The main finding of this study was that the use of a specific type of medication, called a proton p",
+        "correct": false
+      },
+      "rag": {
+        "answer": " Neuroplasticity plays a significant role in the transmission and modulation of pain.",
+        "correct": false
+      },
+      "engram_plus_rag": {
+        "answer": " The main finding of this study was that neuroplasticity plays a significant role in the transition ",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Synaptic plasticity during systems memor",
+      "question": "What was the main finding of this study?",
+      "expected": [
+        "initially",
+        "hippocampus",
+        "subsequently"
+      ],
+      "baseline": {
+        "answer": "About this research: What was the main finding of this study?\nAnswer: The main finding of this study",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The main finding of this study was that the use of a specific type of fertilizer significantly incr",
+        "correct": false
+      },
+      "rag": {
+        "answer": " Synaptic plasticity is the major cellular mechanism underlying learning and memory",
+        "correct": false
+      },
+      "engram_plus_rag": {
+        "answer": " Synaptic plasticity is the major cellular mechanism underlying learning and memory, and is therefor",
+        "correct": false
+      }
+    },
+    {
+      "paper": "All-optical physiology resolves a synapt",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "CA1"
+      ],
+      "baseline": {
+        "answer": "About this research: What gene or protein is discussed in this research?\nAnswer: The research discus",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is called \"RhoA.\" It's like a special switch inside ",
+        "correct": false
+      },
+      "rag": {
+        "answer": " CA1 cells",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " The research discusses the gene or protein associated with the induction of plasticity in CA1 cells",
+        "correct": true
+      }
+    },
+    {
+      "paper": "All-optical physiology resolves a synapt",
+      "question": "What was the main finding of this study?",
+      "expected": [
+        "associated",
+        "modifications",
+        "information"
+      ],
+      "baseline": {
+        "answer": "About this research: What was the main finding of this study?\nAnswer: The main finding of this study",
+        "correct": true
+      },
+      "engram": {
+        "answer": " The main finding of this study was that the use of a specific type of microscope, called a confocal",
+        "correct": false
+      },
+      "rag": {
+        "answer": " The main finding of this study was that the activity in presynaptic CA2/3 cells was required for th",
+        "correct": false
+      },
+      "engram_plus_rag": {
+        "answer": " The main finding of this study was that activity in presynaptic CA2/3 cells was required for the in",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Astrocyte and neuron cooperation in long",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "LTD"
+      ],
+      "baseline": {
+        "answer": "About this research: What gene or protein is discussed in this research?\nAnswer: The research discus",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is called \"Rab11.\" It's like a special helper in our",
+        "correct": false
+      },
+      "rag": {
+        "answer": " LTD",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " astrocytes",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Astrocyte and neuron cooperation in long",
+      "question": "What was the main finding of this study?",
+      "expected": [
+        "transmission",
+        "plasticity",
+        "fundamental"
+      ],
+      "baseline": {
+        "answer": "About this research: What was the main finding of this study?\nAnswer: The main finding of this study",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The main finding of this study was that the use of a specific type of medication, called a proton p",
+        "correct": false
+      },
+      "rag": {
+        "answer": " astrocytes are emerging as important cells that regulate synaptic function by interacting with neur",
+        "correct": false
+      },
+      "engram_plus_rag": {
+        "answer": " astrocytes are emerging as important cells that regulate synaptic function by interacting with neur",
+        "correct": false
+      }
+    },
+    {
+      "paper": "NMDA receptor functions in health and di",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "NMDAR"
+      ],
+      "baseline": {
+        "answer": "About this research: What gene or protein is discussed in this research?\nAnswer: The research discus",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is the \"Cyclin D1\" gene, which encodes for the Cycli",
+        "correct": false
+      },
+      "rag": {
+        "answer": " N-Methyl-D-aspartate ionotropic glutamate receptors (NMDARs)",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " NMDARs\n\nQuestion: What is the role of NMDARs in the brain?\nAnswer: NMDARs play key roles in synapto",
+        "correct": true
+      }
+    },
+    {
+      "paper": "NMDA receptor functions in health and di",
+      "question": "What was the main finding of this study?",
+      "expected": [
+        "ionotropic",
+        "glutamate",
+        "receptors"
+      ],
+      "baseline": {
+        "answer": "About this research: What was the main finding of this study?\nAnswer: The main finding of this study",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The main finding of this study was that the use of a specific type of medication, called a proton p",
+        "correct": false
+      },
+      "rag": {
+        "answer": " NMDARs play key roles in synaptogenesis, synaptic maturation, long-term plasticity, neuronal networ",
+        "correct": false
+      },
+      "engram_plus_rag": {
+        "answer": " NMDARs play key roles in synaptogenesis, synaptic maturation, long-term plasticity, neuronal networ",
+        "correct": true
+      }
+    },
+    {
+      "paper": "Chimeric autoantibody receptor T\u00a0cells d",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "NMDA"
+      ],
+      "baseline": {
+        "answer": "About this research: What gene or protein is discussed in this research?\nAnswer: The research discus",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is the \"Cyclin D1\" gene, which encodes for the Cycli",
+        "correct": false
+      },
+      "rag": {
+        "answer": " NMDAR",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " NMDAR-CAAR T cells are discussed in this research, which is related to the NMDA receptor (NMDAR) au",
+        "correct": true
+      }
+    },
+    {
+      "paper": "Chimeric autoantibody receptor T\u00a0cells d",
+      "question": "What was the main finding of this study?",
+      "expected": [
+        "autoantibodies",
+        "autoimmune",
+        "autonomic"
+      ],
+      "baseline": {
+        "answer": "About this research: What was the main finding of this study?\nAnswer: The main finding of this study",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The main finding of this study was that the use of a specific type of medication, called a proton p",
+        "correct": false
+      },
+      "rag": {
+        "answer": " NMDAR-CAAR T cells selectively eliminate anti-NMDAR B cells and disease-causing autoantibodies, pot",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " The main finding of this study was the development of NMDAR-specific chimeric autoantibody receptor",
+        "correct": true
+      }
+    },
+    {
+      "paper": "Disease-Associated Variants in GRIN1, GR",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "GRIN"
+      ],
+      "baseline": {
+        "answer": "About this research: What gene or protein is discussed in this research?\nAnswer: The research discus",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is called \"Caspase-3.\" Caspase-3 is an enzyme that p",
+        "correct": false
+      },
+      "rag": {
+        "answer": " N-methyl-D-aspartate receptors (NMDARs)",
+        "correct": false
+      },
+      "engram_plus_rag": {
+        "answer": " N-methyl-D-aspartate receptors (NMDARs)\n\nQuestion: What are some of the neurodevelopmental disorder",
+        "correct": true
+      }
+    },
+    {
+      "paper": "Disease-Associated Variants in GRIN1, GR",
+      "question": "What was the main finding of this study?",
+      "expected": [
+        "receptors",
+        "ionotropic",
+        "glutamate"
+      ],
+      "baseline": {
+        "answer": "About this research: What was the main finding of this study?\nAnswer: The main finding of this study",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The main finding of this study was that the use of a specific type of medication, called a proton p",
+        "correct": false
+      },
+      "rag": {
+        "answer": " N-methyl-D-aspartate receptors (NMDARs) are a subtype of ionotropic glutamate receptors critical fo",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " The main finding of this study is that rare or de-novo variants in GRIN genes encoding NMDAR subuni",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Mechanisms of NMDA receptor regulation.",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "NMDAR"
+      ],
+      "baseline": {
+        "answer": "About this research: What gene or protein is discussed in this research?\nAnswer: The research discus",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The research discusses the gene and protein called \"RhoA.\" RhoA is a protein that helps cells move ",
+        "correct": false
+      },
+      "rag": {
+        "answer": " N-methyl-D-aspartate receptors (NMDARs)",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " N-methyl-D-aspartate receptors (NMDARs)\n\nQuestion: What are NMDARs?\nAnswer: glutamate-gated ion cha",
+        "correct": true
+      }
+    },
+    {
+      "paper": "Mechanisms of NMDA receptor regulation.",
+      "question": "What was the main finding of this study?",
+      "expected": [
+        "receptors",
+        "expressed",
+        "development"
+      ],
+      "baseline": {
+        "answer": "About this research: What was the main finding of this study?\nAnswer: The main finding of this study",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The main finding of this study was that the use of a specific type of medication, called a proton p",
+        "correct": false
+      },
+      "rag": {
+        "answer": " NMDAR dysfunction, be it hyperactivity or hypofunction, is harmful to neuronal function and has eme",
+        "correct": false
+      },
+      "engram_plus_rag": {
+        "answer": " NMDAR dysfunction, be it hyperactivity or hypofunction, is harmful to neuronal function and has eme",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Magnesium and Pain.",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "NMDA"
+      ],
+      "baseline": {
+        "answer": "About this research: What gene or protein is discussed in this research?\nAnswer: The research discus",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is called \"Cyclin D1.\" It's like a special helper in",
+        "correct": false
+      },
+      "rag": {
+        "answer": " N-methyl-d-aspartate (NMDA) receptor",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " N-methyl-d-aspartate (NMDA) receptor\n\nJustification:\nThe text mentions \"the main mode of action of ",
+        "correct": true
+      }
+    },
+    {
+      "paper": "Magnesium and Pain.",
+      "question": "What was the main finding of this study?",
+      "expected": [
+        "antinociceptive",
+        "magnesium",
+        "antagonist"
+      ],
+      "baseline": {
+        "answer": "About this research: What was the main finding of this study?\nAnswer: The main finding of this study",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The main finding of this study was that the use of a specific type of medication, called a proton p",
+        "correct": false
+      },
+      "rag": {
+        "answer": " magnesium has been investigated in a variety of pain conditions",
+        "correct": true
+      },
+      "engram_plus_rag": {
+        "answer": " magnesium has been investigated in a variety of pain conditions\n\nStep 1: Identify the main topic of",
+        "correct": true
+      }
+    }
+  ]
+}

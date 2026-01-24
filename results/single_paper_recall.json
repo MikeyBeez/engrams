@@ -1,0 +1,136 @@
+{
+  "total_engram_facts": 6,
+  "total_baseline_facts": 8,
+  "total_facts": 48,
+  "engram_wins": 1,
+  "details": [
+    {
+      "paper": "Dopamine: The Neuromodulator of Long-Term Synaptic Plasticity, Reward and Movement Control.",
+      "facts": [
+        "ADHD",
+        "physiological",
+        "LTD",
+        "neurotransmitter",
+        "reinforcement",
+        "LTP"
+      ],
+      "engram_facts": 0,
+      "baseline_facts": 0,
+      "engram_wins": false
+    },
+    {
+      "paper": "Neuroplasticity in the transition from acute to chronic pain.",
+      "facts": [
+        "functionality",
+        "alterations",
+        "Neuroplasticity"
+      ],
+      "engram_facts": 1,
+      "baseline_facts": 1,
+      "engram_wins": false
+    },
+    {
+      "paper": "Synaptic plasticity during systems memory consolidation.",
+      "facts": [
+        "fundamental",
+        "subsequently",
+        "hippocampus"
+      ],
+      "engram_facts": 1,
+      "baseline_facts": 0,
+      "engram_wins": true
+    },
+    {
+      "paper": "All-optical physiology resolves a synaptic basis for behavioral timescale plasticity.",
+      "facts": [
+        "CA1",
+        "modifications",
+        "CA2",
+        "genetically",
+        "information"
+      ],
+      "engram_facts": 0,
+      "baseline_facts": 1,
+      "engram_wins": false
+    },
+    {
+      "paper": "Astrocyte and neuron cooperation in long-term depression.",
+      "facts": [
+        "fundamental",
+        "LTD",
+        "transmission",
+        "involvement"
+      ],
+      "engram_facts": 0,
+      "baseline_facts": 0,
+      "engram_wins": false
+    },
+    {
+      "paper": "NMDA receptor functions in health and disease: Old actor, new dimensions.",
+      "facts": [
+        "neurological",
+        "instrumental",
+        "NMDAR",
+        "abnormalities"
+      ],
+      "engram_facts": 0,
+      "baseline_facts": 1,
+      "engram_wins": false
+    },
+    {
+      "paper": "Chimeric autoantibody receptor T\u00a0cells deplete NMDA receptor-specific B cells.",
+      "facts": [
+        "NMDAR",
+        "CAAR",
+        "immunosuppression",
+        "NMDA",
+        "autoantibody",
+        "NMDAR-CAAR",
+        "autoantibodies"
+      ],
+      "engram_facts": 2,
+      "baseline_facts": 2,
+      "engram_wins": false
+    },
+    {
+      "paper": "Disease-Associated Variants in GRIN1, GRIN2A and GRIN2B genes: Insights into NMDA Receptor Structure, Function, and Pathophysiology.",
+      "facts": [
+        "GRIN",
+        "development",
+        "GRIN1",
+        "transmission",
+        "NMDAR",
+        "GRIN2A",
+        "neurodevelopmental",
+        "NMDA"
+      ],
+      "engram_facts": 2,
+      "baseline_facts": 3,
+      "engram_wins": false
+    },
+    {
+      "paper": "Mechanisms of NMDA receptor regulation.",
+      "facts": [
+        "development",
+        "hyperactivity",
+        "neuropsychiatric",
+        "NMDAR"
+      ],
+      "engram_facts": 0,
+      "baseline_facts": 0,
+      "engram_wins": false
+    },
+    {
+      "paper": "Magnesium and Pain.",
+      "facts": [
+        "preexisting",
+        "antinociceptive",
+        "sensitization",
+        "NMDA"
+      ],
+      "engram_facts": 0,
+      "baseline_facts": 0,
+      "engram_wins": false
+    }
+  ]
+}

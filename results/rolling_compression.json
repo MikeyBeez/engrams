@@ -1,0 +1,699 @@
+{
+  "timestamp": "2026-01-20T19:39:27.372567",
+  "test": "rolling_compression",
+  "model": "Qwen/Qwen2.5-3B",
+  "alphas_tested": [
+    0.1,
+    0.3,
+    0.5
+  ],
+  "results": [
+    {
+      "topic": "wwii",
+      "alpha": 0.1,
+      "num_turns": 5,
+      "final_similarity_to_initial": 0.99755859375,
+      "topic_retention": {
+        "session_engram": 2,
+        "initial_engram": 2,
+        "baseline": 1,
+        "total_questions": 3
+      },
+      "session_log": [
+        {
+          "turn": 1,
+          "question": "What were the major battles of World War II?",
+          "response": " The major battles of World War II were the Battle of Britain, the Battle of Midway, the Battle of Stalingrad, the Battle of El Alamein, the Battle of the Atlantic, the Battle of the Atlantic, the Bat",
+          "sim_to_initial_before": 1.0,
+          "sim_to_response": 0.9638671875,
+          "sim_to_initial_after": 1.0
+        },
+        {
+          "turn": 2,
+          "question": "Tell me more about D-Day specifically.",
+          "response": " D-Day was a military operation that took place on June 6, 1944, during World War II. It was a major Allied invasion of Nazi-occupied France, which was intended to liberate France from Nazi control an",
+          "sim_to_initial_before": 1.0,
+          "sim_to_response": 0.96142578125,
+          "sim_to_initial_after": 0.99951171875
+        },
+        {
+          "turn": 3,
+          "question": "What was the weather like on D-Day?",
+          "response": " The weather on D-Day was sunny and clear.",
+          "sim_to_initial_before": 0.99951171875,
+          "sim_to_response": 0.98095703125,
+          "sim_to_initial_after": 0.99853515625
+        },
+        {
+          "turn": 4,
+          "question": "How did weather affect other military operations in history?",
+          "response": " Weather can have a significant impact on military operations. For example, during World War II, the Battle of Midway was affected by a typhoon that caused the Japanese fleet to scatter and allowed th",
+          "sim_to_initial_before": 0.99853515625,
+          "sim_to_response": 0.9736328125,
+          "sim_to_initial_after": 0.99853515625
+        },
+        {
+          "turn": 5,
+          "question": "What role does logistics play in military success?",
+          "response": " Logistics plays a crucial role in military success by ensuring that the necessary resources, equipment, and personnel are available to the military at the right time and place. This includes the tran",
+          "sim_to_initial_before": 0.99853515625,
+          "sim_to_response": 0.984375,
+          "sim_to_initial_after": 0.99755859375
+        }
+      ],
+      "test_results": [
+        {
+          "question": "When did the war end?",
+          "expected": [
+            "1945"
+          ],
+          "session_engram": {
+            "answer": " 1945",
+            "correct": true
+          },
+          "initial_engram": {
+            "answer": " 1945",
+            "correct": true
+          },
+          "baseline": {
+            "answer": "The war ended in 1945.",
+            "correct": true
+          }
+        },
+        {
+          "question": "Who was the British Prime Minister?",
+          "expected": [
+            "churchill"
+          ],
+          "session_engram": {
+            "answer": " Winston Churchill\n\nExplanation: Winston Churchill was a British statesman who served as the Prime M",
+            "correct": true
+          },
+          "initial_engram": {
+            "answer": " Winston Churchill",
+            "correct": true
+          },
+          "baseline": {
+            "answer": "The British Prime Minister is the head of the government of the United Kingdom.",
+            "correct": false
+          }
+        },
+        {
+          "question": "What was the final major event?",
+          "expected": [
+            "atomic",
+            "hiroshima",
+            "nagasaki",
+            "bomb"
+          ],
+          "session_engram": {
+            "answer": " The final major event was the Battle of Waterloo.",
+            "correct": false
+          },
+          "initial_engram": {
+            "answer": " The final major event was the Battle of Waterloo.",
+            "correct": false
+          },
+          "baseline": {
+            "answer": "The final major event was the Battle of the Bulge, which took place in December 1944.",
+            "correct": false
+          }
+        }
+      ]
+    },
+    {
+      "topic": "python",
+      "alpha": 0.1,
+      "num_turns": 5,
+      "final_similarity_to_initial": 0.99658203125,
+      "topic_retention": {
+        "session_engram": 1,
+        "initial_engram": 1,
+        "baseline": 1,
+        "total_questions": 3
+      },
+      "session_log": [
+        {
+          "turn": 1,
+          "question": "What are the main features of Python?",
+          "response": " Python is a high-level, interpreted, and general-purpose programming language. It is known for its simplicity and readability, and it has a large standard library. Python is also known for its dynami",
+          "sim_to_initial_before": 1.0,
+          "sim_to_response": 0.984375,
+          "sim_to_initial_after": 0.9990234375
+        },
+        {
+          "turn": 2,
+          "question": "How does Python handle memory management?",
+          "response": " Python uses a garbage collector to automatically manage memory. When an object is no longer needed, the garbage collector will automatically free up the memory it occupies. This helps to prevent memo",
+          "sim_to_initial_before": 0.9990234375,
+          "sim_to_response": 0.9873046875,
+          "sim_to_initial_after": 0.998046875
+        },
+        {
+          "turn": 3,
+          "question": "What is garbage collection in general?",
+          "response": " Garbage collection is the process of identifying and removing objects that are no longer needed by the program.",
+          "sim_to_initial_before": 0.998046875,
+          "sim_to_response": 0.9892578125,
+          "sim_to_initial_after": 0.9970703125
+        },
+        {
+          "turn": 4,
+          "question": "How do other languages handle memory?",
+          "response": " In other languages, memory is managed differently. In some languages, memory is managed by the programmer, while in others, it is managed by the language itself. In some languages, memory is managed ",
+          "sim_to_initial_before": 0.9970703125,
+          "sim_to_response": 0.96240234375,
+          "sim_to_initial_after": 0.9970703125
+        },
+        {
+          "turn": 5,
+          "question": "What are the tradeoffs between manual and automatic memory management?",
+          "response": " The tradeoffs between manual and automatic memory management are:\n\n1. Manual memory management requires more effort and time to write and maintain code, but it can lead to more efficient use of memor",
+          "sim_to_initial_before": 0.9970703125,
+          "sim_to_response": 0.96728515625,
+          "sim_to_initial_after": 0.99658203125
+        }
+      ],
+      "test_results": [
+        {
+          "question": "Who created this language?",
+          "expected": [
+            "guido",
+            "rossum"
+          ],
+          "session_engram": {
+            "answer": " The language was created by the people of the region.",
+            "correct": false
+          },
+          "initial_engram": {
+            "answer": " The language was created by the people of the island of Crete.",
+            "correct": false
+          },
+          "baseline": {
+            "answer": "The language was created by a group of people who were interested in creating a new language. They u",
+            "correct": false
+          }
+        },
+        {
+          "question": "What is it known for?",
+          "expected": [
+            "readability",
+            "simple",
+            "easy"
+          ],
+          "session_engram": {
+            "answer": " The city is known for its rich history, diverse culture, and natural beauty. It is also a major cen",
+            "correct": false
+          },
+          "initial_engram": {
+            "answer": " The city is known for its rich history, cultural diversity, and natural beauty. It is also a major ",
+            "correct": false
+          },
+          "baseline": {
+            "answer": "The city is known for its rich history, cultural heritage, and natural beauty. It is also known for ",
+            "correct": false
+          }
+        },
+        {
+          "question": "What frameworks are popular?",
+          "expected": [
+            "django",
+            "flask",
+            "pytorch",
+            "tensorflow"
+          ],
+          "session_engram": {
+            "answer": " There are many popular frameworks, including Django, Ruby on Rails, and Laravel.",
+            "correct": true
+          },
+          "initial_engram": {
+            "answer": " The most popular frameworks are Django, Ruby on Rails, and PHP.",
+            "correct": true
+          },
+          "baseline": {
+            "answer": "There are several popular frameworks for web development, including:\n\n1. Django: A high-level Python",
+            "correct": true
+          }
+        }
+      ]
+    },
+    {
+      "topic": "wwii",
+      "alpha": 0.3,
+      "num_turns": 5,
+      "final_similarity_to_initial": 0.990234375,
+      "topic_retention": {
+        "session_engram": 2,
+        "initial_engram": 2,
+        "baseline": 1,
+        "total_questions": 3
+      },
+      "session_log": [
+        {
+          "turn": 1,
+          "question": "What were the major battles of World War II?",
+          "response": " The major battles of World War II were the Battle of Britain, the Battle of Midway, the Battle of Stalingrad, the Battle of El Alamein, the Battle of the Atlantic, the Battle of the Atlantic, the Bat",
+          "sim_to_initial_before": 1.0,
+          "sim_to_response": 0.9638671875,
+          "sim_to_initial_after": 0.99853515625
+        },
+        {
+          "turn": 2,
+          "question": "Tell me more about D-Day specifically.",
+          "response": " D-Day was a major military operation that took place on June 6, 1944, during World War II. It was a massive invasion of Nazi-occupied France by Allied forces, including the United States, Great Brita",
+          "sim_to_initial_before": 0.99853515625,
+          "sim_to_response": 0.96533203125,
+          "sim_to_initial_after": 0.99609375
+        },
+        {
+          "turn": 3,
+          "question": "What was the weather like on D-Day?",
+          "response": " The weather was sunny and clear on D-Day.",
+          "sim_to_initial_before": 0.99609375,
+          "sim_to_response": 0.9794921875,
+          "sim_to_initial_after": 0.99267578125
+        },
+        {
+          "turn": 4,
+          "question": "How did weather affect other military operations in history?",
+          "response": " Weather can affect other military operations in history in several ways. For example, during World War II, the Battle of Midway was affected by bad weather, which allowed the Japanese to surprise the",
+          "sim_to_initial_before": 0.99267578125,
+          "sim_to_response": 0.95849609375,
+          "sim_to_initial_after": 0.99169921875
+        },
+        {
+          "turn": 5,
+          "question": "What role does logistics play in military success?",
+          "response": " Logistics plays a crucial role in military success by ensuring that the necessary resources, equipment, and personnel are available to the military at the right time and place. This includes the tran",
+          "sim_to_initial_before": 0.99169921875,
+          "sim_to_response": 0.98779296875,
+          "sim_to_initial_after": 0.990234375
+        }
+      ],
+      "test_results": [
+        {
+          "question": "When did the war end?",
+          "expected": [
+            "1945"
+          ],
+          "session_engram": {
+            "answer": " 1945",
+            "correct": true
+          },
+          "initial_engram": {
+            "answer": " 1945",
+            "correct": true
+          },
+          "baseline": {
+            "answer": "The war ended in 1945.",
+            "correct": true
+          }
+        },
+        {
+          "question": "Who was the British Prime Minister?",
+          "expected": [
+            "churchill"
+          ],
+          "session_engram": {
+            "answer": " Winston Churchill\n\nExplanation: Winston Churchill was a British statesman who served as the Prime M",
+            "correct": true
+          },
+          "initial_engram": {
+            "answer": " Winston Churchill",
+            "correct": true
+          },
+          "baseline": {
+            "answer": "The British Prime Minister is the head of the government of the United Kingdom.",
+            "correct": false
+          }
+        },
+        {
+          "question": "What was the final major event?",
+          "expected": [
+            "atomic",
+            "hiroshima",
+            "nagasaki",
+            "bomb"
+          ],
+          "session_engram": {
+            "answer": " The final major event was the Battle of Waterloo.",
+            "correct": false
+          },
+          "initial_engram": {
+            "answer": " The final major event was the Battle of Waterloo.",
+            "correct": false
+          },
+          "baseline": {
+            "answer": "The final major event was the Battle of the Bulge, which took place in December 1944.",
+            "correct": false
+          }
+        }
+      ]
+    },
+    {
+      "topic": "python",
+      "alpha": 0.3,
+      "num_turns": 5,
+      "final_similarity_to_initial": 0.98876953125,
+      "topic_retention": {
+        "session_engram": 0,
+        "initial_engram": 1,
+        "baseline": 1,
+        "total_questions": 3
+      },
+      "session_log": [
+        {
+          "turn": 1,
+          "question": "What are the main features of Python?",
+          "response": " Python is a high-level, interpreted, and general-purpose programming language. It is known for its simplicity and readability, and it has a large standard library. Python is also known for its dynami",
+          "sim_to_initial_before": 1.0,
+          "sim_to_response": 0.984375,
+          "sim_to_initial_after": 0.99560546875
+        },
+        {
+          "turn": 2,
+          "question": "How does Python handle memory management?",
+          "response": " Python uses a garbage collector to automatically manage memory. When an object is no longer needed, the garbage collector will reclaim the memory it occupies. This helps to prevent memory leaks and e",
+          "sim_to_initial_before": 0.99560546875,
+          "sim_to_response": 0.99169921875,
+          "sim_to_initial_after": 0.99267578125
+        },
+        {
+          "turn": 3,
+          "question": "What is garbage collection in general?",
+          "response": " Garbage collection is the process of identifying and removing unreferenced objects from memory.",
+          "sim_to_initial_before": 0.99267578125,
+          "sim_to_response": 0.99365234375,
+          "sim_to_initial_after": 0.990234375
+        },
+        {
+          "turn": 4,
+          "question": "How do other languages handle memory?",
+          "response": " In other languages, memory is handled differently. In some languages, memory is managed by the programmer, while in others, it is managed by the language itself. In some languages, memory is allocate",
+          "sim_to_initial_before": 0.990234375,
+          "sim_to_response": 0.9755859375,
+          "sim_to_initial_after": 0.99072265625
+        },
+        {
+          "turn": 5,
+          "question": "What are the tradeoffs between manual and automatic memory management?",
+          "response": " Manual memory management requires more effort and attention to detail, but it can be more efficient and faster than automatic memory management. Automatic memory management is easier to use and can b",
+          "sim_to_initial_before": 0.99072265625,
+          "sim_to_response": 0.99560546875,
+          "sim_to_initial_after": 0.98876953125
+        }
+      ],
+      "test_results": [
+        {
+          "question": "Who created this language?",
+          "expected": [
+            "guido",
+            "rossum"
+          ],
+          "session_engram": {
+            "answer": " The language was created by the people of the region.",
+            "correct": false
+          },
+          "initial_engram": {
+            "answer": " The language was created by the people of the island of Crete.",
+            "correct": false
+          },
+          "baseline": {
+            "answer": "The language was created by a group of people who were interested in creating a new language. They u",
+            "correct": false
+          }
+        },
+        {
+          "question": "What is it known for?",
+          "expected": [
+            "readability",
+            "simple",
+            "easy"
+          ],
+          "session_engram": {
+            "answer": " The 2014\u201315 season was the 11th season of the National Basketball Association (NBA) for the 2014\u201315",
+            "correct": false
+          },
+          "initial_engram": {
+            "answer": " The city is known for its rich history, cultural diversity, and natural beauty. It is also a major ",
+            "correct": false
+          },
+          "baseline": {
+            "answer": "The city is known for its rich history, cultural heritage, and natural beauty. It is also known for ",
+            "correct": false
+          }
+        },
+        {
+          "question": "What frameworks are popular?",
+          "expected": [
+            "django",
+            "flask",
+            "pytorch",
+            "tensorflow"
+          ],
+          "session_engram": {
+            "answer": " Ruby, Python, and Java are popular programming languages.",
+            "correct": false
+          },
+          "initial_engram": {
+            "answer": " The most popular frameworks are Django, Ruby on Rails, and PHP.",
+            "correct": true
+          },
+          "baseline": {
+            "answer": "There are several popular frameworks for web development, including:\n\n1. Django: A high-level Python",
+            "correct": true
+          }
+        }
+      ]
+    },
+    {
+      "topic": "wwii",
+      "alpha": 0.5,
+      "num_turns": 5,
+      "final_similarity_to_initial": 0.9833984375,
+      "topic_retention": {
+        "session_engram": 2,
+        "initial_engram": 2,
+        "baseline": 1,
+        "total_questions": 3
+      },
+      "session_log": [
+        {
+          "turn": 1,
+          "question": "What were the major battles of World War II?",
+          "response": " The major battles of World War II were the Battle of Britain, the Battle of Midway, the Battle of Stalingrad, the Battle of El Alamein, the Battle of the Atlantic, the Battle of the Atlantic, the Bat",
+          "sim_to_initial_before": 1.0,
+          "sim_to_response": 0.9638671875,
+          "sim_to_initial_after": 0.99560546875
+        },
+        {
+          "turn": 2,
+          "question": "Tell me more about D-Day specifically.",
+          "response": " D-Day was a major military operation that took place on June 6, 1944, during World War II. It was a turning point in the war, as it marked the beginning of the end of Nazi Germany's control over Euro",
+          "sim_to_initial_before": 0.99560546875,
+          "sim_to_response": 0.96728515625,
+          "sim_to_initial_after": 0.9892578125
+        },
+        {
+          "turn": 3,
+          "question": "What was the weather like on D-Day?",
+          "response": " The weather was sunny and clear.\n\nExplanation: The question asks about the weather on D-Day, which is a specific historical event. The answer states that the weather was sunny and clear, which is a d",
+          "sim_to_initial_before": 0.9892578125,
+          "sim_to_response": 0.97802734375,
+          "sim_to_initial_after": 0.98828125
+        },
+        {
+          "turn": 4,
+          "question": "How did weather affect other military operations in history?",
+          "response": " Weather can affect other military operations in history by causing delays, hindering troop movements, and causing logistical issues. For example, during World War II, the Battle of Midway was delayed",
+          "sim_to_initial_before": 0.98828125,
+          "sim_to_response": 0.9599609375,
+          "sim_to_initial_after": 0.98681640625
+        },
+        {
+          "turn": 5,
+          "question": "What role does logistics play in military success?",
+          "response": " Logistics plays a crucial role in military success by ensuring that the necessary supplies, equipment, and personnel are available to the military at the right time and place. This includes the trans",
+          "sim_to_initial_before": 0.98681640625,
+          "sim_to_response": 0.9775390625,
+          "sim_to_initial_after": 0.9833984375
+        }
+      ],
+      "test_results": [
+        {
+          "question": "When did the war end?",
+          "expected": [
+            "1945"
+          ],
+          "session_engram": {
+            "answer": " 1945",
+            "correct": true
+          },
+          "initial_engram": {
+            "answer": " 1945",
+            "correct": true
+          },
+          "baseline": {
+            "answer": "The war ended in 1945.",
+            "correct": true
+          }
+        },
+        {
+          "question": "Who was the British Prime Minister?",
+          "expected": [
+            "churchill"
+          ],
+          "session_engram": {
+            "answer": " Winston Churchill\n\nExplanation: Winston Churchill was a British statesman who served as the Prime M",
+            "correct": true
+          },
+          "initial_engram": {
+            "answer": " Winston Churchill",
+            "correct": true
+          },
+          "baseline": {
+            "answer": "The British Prime Minister is the head of the government of the United Kingdom.",
+            "correct": false
+          }
+        },
+        {
+          "question": "What was the final major event?",
+          "expected": [
+            "atomic",
+            "hiroshima",
+            "nagasaki",
+            "bomb"
+          ],
+          "session_engram": {
+            "answer": " The final major event was the Battle of Waterloo.",
+            "correct": false
+          },
+          "initial_engram": {
+            "answer": " The final major event was the Battle of Waterloo.",
+            "correct": false
+          },
+          "baseline": {
+            "answer": "The final major event was the Battle of the Bulge, which took place in December 1944.",
+            "correct": false
+          }
+        }
+      ]
+    },
+    {
+      "topic": "python",
+      "alpha": 0.5,
+      "num_turns": 5,
+      "final_similarity_to_initial": 0.98583984375,
+      "topic_retention": {
+        "session_engram": 1,
+        "initial_engram": 1,
+        "baseline": 1,
+        "total_questions": 3
+      },
+      "session_log": [
+        {
+          "turn": 1,
+          "question": "What are the main features of Python?",
+          "response": " Python is a high-level, interpreted, and general-purpose programming language. It is known for its simplicity and readability, and it has a large standard library. Python is also known for its dynami",
+          "sim_to_initial_before": 1.0,
+          "sim_to_response": 0.984375,
+          "sim_to_initial_after": 0.99267578125
+        },
+        {
+          "turn": 2,
+          "question": "How does Python handle memory management?",
+          "response": " Python uses a garbage collector to automatically manage memory. When an object is no longer needed, the garbage collector will automatically free up the memory it occupies. This helps to prevent memo",
+          "sim_to_initial_before": 0.99267578125,
+          "sim_to_response": 0.99365234375,
+          "sim_to_initial_after": 0.98876953125
+        },
+        {
+          "turn": 3,
+          "question": "What is garbage collection in general?",
+          "response": " Garbage collection is the process of identifying and removing unreferenced objects from memory.",
+          "sim_to_initial_before": 0.98876953125,
+          "sim_to_response": 0.9951171875,
+          "sim_to_initial_after": 0.986328125
+        },
+        {
+          "turn": 4,
+          "question": "How do other languages handle memory?",
+          "response": " In other languages, memory is handled differently. In some languages, memory is managed by the programmer, while in others, it is managed by the language itself. In some languages, memory is allocate",
+          "sim_to_initial_before": 0.986328125,
+          "sim_to_response": 0.9736328125,
+          "sim_to_initial_after": 0.9873046875
+        },
+        {
+          "turn": 5,
+          "question": "What are the tradeoffs between manual and automatic memory management?",
+          "response": " Manual memory management requires more effort and attention to detail, but it can be more efficient and faster than automatic memory management. Automatic memory management is easier to use and can b",
+          "sim_to_initial_before": 0.9873046875,
+          "sim_to_response": 0.99462890625,
+          "sim_to_initial_after": 0.98583984375
+        }
+      ],
+      "test_results": [
+        {
+          "question": "Who created this language?",
+          "expected": [
+            "guido",
+            "rossum"
+          ],
+          "session_engram": {
+            "answer": " The language was created by the people of the region.",
+            "correct": false
+          },
+          "initial_engram": {
+            "answer": " The language was created by the people of the island of Crete.",
+            "correct": false
+          },
+          "baseline": {
+            "answer": "The language was created by a group of people who were interested in creating a new language. They u",
+            "correct": false
+          }
+        },
+        {
+          "question": "What is it known for?",
+          "expected": [
+            "readability",
+            "simple",
+            "easy"
+          ],
+          "session_engram": {
+            "answer": " The city is known for its rich history, diverse culture, and its status as the capital of the Unite",
+            "correct": false
+          },
+          "initial_engram": {
+            "answer": " The city is known for its rich history, cultural diversity, and natural beauty. It is also a major ",
+            "correct": false
+          },
+          "baseline": {
+            "answer": "The city is known for its rich history, cultural heritage, and natural beauty. It is also known for ",
+            "correct": false
+          }
+        },
+        {
+          "question": "What frameworks are popular?",
+          "expected": [
+            "django",
+            "flask",
+            "pytorch",
+            "tensorflow"
+          ],
+          "session_engram": {
+            "answer": " Django, Ruby on Rails, and Laravel are popular frameworks.",
+            "correct": true
+          },
+          "initial_engram": {
+            "answer": " The most popular frameworks are Django, Ruby on Rails, and PHP.",
+            "correct": true
+          },
+          "baseline": {
+            "answer": "There are several popular frameworks for web development, including:\n\n1. Django: A high-level Python",
+            "correct": true
+          }
+        }
+      ]
+    }
+  ]
+}

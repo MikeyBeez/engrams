@@ -1,0 +1,821 @@
+{
+  "timestamp": "2026-01-20T18:25:45.764724",
+  "test": "gated_engram",
+  "model": "Qwen/Qwen2.5-3B",
+  "temperatures_tested": [
+    0.1,
+    0.5,
+    1.0
+  ],
+  "summary": {
+    "baseline": {
+      "specific": 3,
+      "broad": 4,
+      "total_specific": 3,
+      "total_broad": 5
+    },
+    "unconditional": {
+      "specific": 3,
+      "broad": 5,
+      "total_specific": 3,
+      "total_broad": 5
+    },
+    "gated_t0.1": {
+      "specific": 3,
+      "broad": 2,
+      "total_specific": 3,
+      "total_broad": 5
+    },
+    "gated_t0.5": {
+      "specific": 3,
+      "broad": 5,
+      "total_specific": 3,
+      "total_broad": 5
+    },
+    "gated_t1.0": {
+      "specific": 3,
+      "broad": 5,
+      "total_specific": 3,
+      "total_broad": 5
+    },
+    "topk_4": {
+      "specific": 3,
+      "broad": 3,
+      "total_specific": 3,
+      "total_broad": 5
+    },
+    "topk_8": {
+      "specific": 3,
+      "broad": 4,
+      "total_specific": 3,
+      "total_broad": 5
+    },
+    "topk_16": {
+      "specific": 3,
+      "broad": 5,
+      "total_specific": 3,
+      "total_broad": 5
+    }
+  },
+  "detailed": [
+    {
+      "question": "When did World War II end?",
+      "type": "specific",
+      "expected": [
+        "1945"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "World War II ended on September 2, 1945.",
+          "correct": true
+        },
+        "unconditional": {
+          "answer": " 1945",
+          "correct": true
+        },
+        "gated_t0.1": {
+          "answer": " 1945",
+          "correct": true,
+          "attention_entropy": 0.27980393977855517,
+          "top_attention_idx": [
+            0,
+            14,
+            21
+          ]
+        },
+        "gated_t0.5": {
+          "answer": " 1945",
+          "correct": true,
+          "attention_entropy": 0.9912892851369154,
+          "top_attention_idx": [
+            0,
+            14,
+            21
+          ]
+        },
+        "gated_t1.0": {
+          "answer": " 1945",
+          "correct": true,
+          "attention_entropy": 0.9986154708712985,
+          "top_attention_idx": [
+            0,
+            14,
+            21
+          ]
+        },
+        "topk_4": {
+          "answer": " 1945",
+          "correct": true,
+          "selected_indices": [
+            0,
+            14,
+            21,
+            12
+          ]
+        },
+        "topk_8": {
+          "answer": " 1945",
+          "correct": true,
+          "selected_indices": [
+            0,
+            14,
+            21,
+            12,
+            27,
+            1,
+            13,
+            20
+          ]
+        },
+        "topk_16": {
+          "answer": " 1945",
+          "correct": true,
+          "selected_indices": [
+            0,
+            14,
+            21,
+            12,
+            27,
+            1,
+            13,
+            20,
+            24,
+            28,
+            9,
+            31,
+            23,
+            26,
+            7,
+            6
+          ]
+        }
+      }
+    },
+    {
+      "question": "What caused the Great Depression?",
+      "type": "specific",
+      "expected": [
+        "stock market",
+        "crash",
+        "1929"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Great Depression was caused by a combination of factors, including the stock market crash of 192",
+          "correct": true
+        },
+        "unconditional": {
+          "answer": " The Great Depression was caused by a combination of factors, including the stock market crash of 19",
+          "correct": true
+        },
+        "gated_t0.1": {
+          "answer": " The Great Depression was caused by a combination of factors, including the stock market crash of 19",
+          "correct": true,
+          "attention_entropy": 0.31446243382967526,
+          "top_attention_idx": [
+            0,
+            12,
+            27
+          ]
+        },
+        "gated_t0.5": {
+          "answer": " The Great Depression was caused by a combination of factors, including the stock market crash of 19",
+          "correct": true,
+          "attention_entropy": 0.9918528378857141,
+          "top_attention_idx": [
+            0,
+            12,
+            27
+          ]
+        },
+        "gated_t1.0": {
+          "answer": " The Great Depression was caused by a combination of factors, including the stock market crash of 19",
+          "correct": true,
+          "attention_entropy": 0.9986154708712985,
+          "top_attention_idx": [
+            0,
+            12,
+            27
+          ]
+        },
+        "topk_4": {
+          "answer": " The Great Depression was caused by a combination of factors, including the stock market crash of 19",
+          "correct": true,
+          "selected_indices": [
+            0,
+            12,
+            27,
+            1
+          ]
+        },
+        "topk_8": {
+          "answer": " The Great Depression was caused by a combination of factors, including the stock market crash of 19",
+          "correct": true,
+          "selected_indices": [
+            0,
+            12,
+            27,
+            1,
+            14,
+            7,
+            9,
+            24
+          ]
+        },
+        "topk_16": {
+          "answer": " The Great Depression was caused by a combination of factors, including the stock market crash of 19",
+          "correct": true,
+          "selected_indices": [
+            0,
+            12,
+            27,
+            1,
+            14,
+            7,
+            9,
+            24,
+            6,
+            13,
+            26,
+            20,
+            21,
+            28,
+            11,
+            25
+          ]
+        }
+      }
+    },
+    {
+      "question": "When did the Cold War end?",
+      "type": "specific",
+      "expected": [
+        "1991",
+        "soviet"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Cold War ended in 1991.",
+          "correct": true
+        },
+        "unconditional": {
+          "answer": " The Cold War ended in 1991.",
+          "correct": true
+        },
+        "gated_t0.1": {
+          "answer": " 1991",
+          "correct": true,
+          "attention_entropy": 0.34940270425519476,
+          "top_attention_idx": [
+            0,
+            14,
+            27
+          ]
+        },
+        "gated_t0.5": {
+          "answer": " The Cold War ended in 1991.",
+          "correct": true,
+          "attention_entropy": 0.9924163906345128,
+          "top_attention_idx": [
+            0,
+            14,
+            27
+          ]
+        },
+        "gated_t1.0": {
+          "answer": " The Cold War ended in 1991.",
+          "correct": true,
+          "attention_entropy": 0.9986154708712985,
+          "top_attention_idx": [
+            0,
+            14,
+            27
+          ]
+        },
+        "topk_4": {
+          "answer": " 1991",
+          "correct": true,
+          "selected_indices": [
+            0,
+            14,
+            27,
+            21
+          ]
+        },
+        "topk_8": {
+          "answer": " 1991",
+          "correct": true,
+          "selected_indices": [
+            0,
+            14,
+            27,
+            21,
+            12,
+            13,
+            20,
+            1
+          ]
+        },
+        "topk_16": {
+          "answer": " 1991",
+          "correct": true,
+          "selected_indices": [
+            0,
+            14,
+            27,
+            21,
+            12,
+            13,
+            20,
+            28,
+            1,
+            24,
+            23,
+            9,
+            7,
+            11,
+            31,
+            22
+          ]
+        }
+      }
+    },
+    {
+      "question": "What was the Vietnam War about?",
+      "type": "broad",
+      "expected": [
+        "vietnam",
+        "communism",
+        "united states"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Vietnam War was about the conflict between the United States and North Vietnam over the control ",
+          "correct": true
+        },
+        "unconditional": {
+          "answer": " The Vietnam War was about the United States trying to stop the spread of communism in Vietnam.",
+          "correct": true
+        },
+        "gated_t0.1": {
+          "answer": "",
+          "correct": false,
+          "attention_entropy": 0.19667990933074672,
+          "top_attention_idx": [
+            0,
+            12,
+            27
+          ]
+        },
+        "gated_t0.5": {
+          "answer": " The Vietnam War was about the United States trying to stop the spread of communism in Vietnam.",
+          "correct": true,
+          "attention_entropy": 0.9890350741417205,
+          "top_attention_idx": [
+            0,
+            12,
+            27
+          ]
+        },
+        "gated_t1.0": {
+          "answer": " The Vietnam War was about the United States trying to stop the spread of communism in Vietnam.",
+          "correct": true,
+          "attention_entropy": 0.9980519181224998,
+          "top_attention_idx": [
+            0,
+            12,
+            27
+          ]
+        },
+        "topk_4": {
+          "answer": " The Vietnam War was about the conflict between the United States and North Vietnam over the future ",
+          "correct": true,
+          "selected_indices": [
+            0,
+            12,
+            27,
+            21
+          ]
+        },
+        "topk_8": {
+          "answer": " The Vietnam War was about the conflict between the communist North Vietnam and the capitalist South",
+          "correct": true,
+          "selected_indices": [
+            0,
+            12,
+            27,
+            21,
+            1,
+            14,
+            24,
+            13
+          ]
+        },
+        "topk_16": {
+          "answer": " The Vietnam War was about the conflict between the United States and North Vietnam over the control",
+          "correct": true,
+          "selected_indices": [
+            0,
+            12,
+            27,
+            21,
+            1,
+            14,
+            24,
+            13,
+            20,
+            9,
+            7,
+            28,
+            23,
+            26,
+            11,
+            22
+          ]
+        }
+      }
+    },
+    {
+      "question": "What was the Space Race?",
+      "type": "broad",
+      "expected": [
+        "space",
+        "moon",
+        "soviet",
+        "nasa"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Space Race was a competition between the United States and the Soviet Union to see who could lau",
+          "correct": true
+        },
+        "unconditional": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to achieve the firs",
+          "correct": true
+        },
+        "gated_t0.1": {
+          "answer": "",
+          "correct": false,
+          "attention_entropy": 0.2361286017466558,
+          "top_attention_idx": [
+            0,
+            14,
+            9
+          ]
+        },
+        "gated_t0.5": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to develop and laun",
+          "correct": true,
+          "attention_entropy": 0.990162179639318,
+          "top_attention_idx": [
+            0,
+            14,
+            9
+          ]
+        },
+        "gated_t1.0": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to achieve the firs",
+          "correct": true,
+          "attention_entropy": 0.9980519181224998,
+          "top_attention_idx": [
+            0,
+            14,
+            9
+          ]
+        },
+        "topk_4": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to see who could ac",
+          "correct": true,
+          "selected_indices": [
+            0,
+            14,
+            9,
+            27
+          ]
+        },
+        "topk_8": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to see who could ac",
+          "correct": true,
+          "selected_indices": [
+            0,
+            14,
+            9,
+            27,
+            12,
+            13,
+            24,
+            20
+          ]
+        },
+        "topk_16": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to achieve superior",
+          "correct": true,
+          "selected_indices": [
+            0,
+            14,
+            9,
+            27,
+            12,
+            13,
+            24,
+            20,
+            21,
+            26,
+            11,
+            23,
+            28,
+            1,
+            15,
+            7
+          ]
+        }
+      }
+    },
+    {
+      "question": "What was the Civil Rights Movement?",
+      "type": "broad",
+      "expected": [
+        "civil rights",
+        "king",
+        "segregation"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Civil Rights Movement was a movement that aimed to end racial segregation and discrimination in ",
+          "correct": true
+        },
+        "unconditional": {
+          "answer": " The Civil Rights Movement was a social movement in the United States that fought for the legal and ",
+          "correct": true
+        },
+        "gated_t0.1": {
+          "answer": " The Civil Rights Movement was a social movement in the United States that fought for the rights of ",
+          "correct": true,
+          "attention_entropy": 0.1315895668444967,
+          "top_attention_idx": [
+            0,
+            27,
+            14
+          ]
+        },
+        "gated_t0.5": {
+          "answer": " The Civil Rights Movement was a series of organized protests and demonstrations that took place in ",
+          "correct": true,
+          "attention_entropy": 0.9856537576489284,
+          "top_attention_idx": [
+            0,
+            27,
+            14
+          ]
+        },
+        "gated_t1.0": {
+          "answer": " The Civil Rights Movement was a series of organized protests and demonstrations that took place in ",
+          "correct": true,
+          "attention_entropy": 0.9974883653737011,
+          "top_attention_idx": [
+            0,
+            27,
+            14
+          ]
+        },
+        "topk_4": {
+          "answer": " The Civil Rights Movement was a series of protests and demonstrations that took place in the United",
+          "correct": true,
+          "selected_indices": [
+            0,
+            27,
+            14,
+            12
+          ]
+        },
+        "topk_8": {
+          "answer": " The Civil Rights Movement was a series of protests and demonstrations that took place in the United",
+          "correct": true,
+          "selected_indices": [
+            0,
+            27,
+            14,
+            12,
+            13,
+            1,
+            9,
+            28
+          ]
+        },
+        "topk_16": {
+          "answer": " The Civil Rights Movement was a series of organized protests and demonstrations that took place in ",
+          "correct": true,
+          "selected_indices": [
+            0,
+            27,
+            14,
+            12,
+            13,
+            1,
+            9,
+            28,
+            20,
+            21,
+            24,
+            7,
+            11,
+            26,
+            15,
+            23
+          ]
+        }
+      }
+    },
+    {
+      "question": "What were the major events of the 20th century?",
+      "type": "broad",
+      "expected": [
+        "war",
+        "depression",
+        "cold war"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The 20th century was a period of significant change and progress in various fields. Some of the majo",
+          "correct": true
+        },
+        "unconditional": {
+          "answer": " The 20th century was a period of significant change and transformation in many aspects of human lif",
+          "correct": true
+        },
+        "gated_t0.1": {
+          "answer": " The 20th century was a period of significant change and progress in various fields. Some of the maj",
+          "correct": true,
+          "attention_entropy": 0.0034385523188420752,
+          "top_attention_idx": [
+            0,
+            24,
+            14
+          ]
+        },
+        "gated_t0.5": {
+          "answer": " The 20th century was a period of significant change and transformation in many aspects of human lif",
+          "correct": true,
+          "attention_entropy": 0.9360611157546427,
+          "top_attention_idx": [
+            0,
+            24,
+            14
+          ]
+        },
+        "gated_t1.0": {
+          "answer": " The 20th century was a period of significant change and transformation in many aspects of human lif",
+          "correct": true,
+          "attention_entropy": 0.9912892851369154,
+          "top_attention_idx": [
+            0,
+            24,
+            14
+          ]
+        },
+        "topk_4": {
+          "answer": "",
+          "correct": false,
+          "selected_indices": [
+            0,
+            24,
+            14,
+            27
+          ]
+        },
+        "topk_8": {
+          "answer": " The 20th century was a period of significant change and transformation in the world. It was marked ",
+          "correct": true,
+          "selected_indices": [
+            0,
+            24,
+            14,
+            27,
+            21,
+            12,
+            20,
+            1
+          ]
+        },
+        "topk_16": {
+          "answer": " The 20th century was a period of significant change and transformation in the world. It was a time ",
+          "correct": true,
+          "selected_indices": [
+            0,
+            24,
+            14,
+            27,
+            21,
+            12,
+            20,
+            1,
+            23,
+            28,
+            13,
+            17,
+            16,
+            25,
+            26,
+            6
+          ]
+        }
+      }
+    },
+    {
+      "question": "Who were important American presidents in the 20th century?",
+      "type": "broad",
+      "expected": [
+        "roosevelt",
+        "kennedy",
+        "nixon",
+        "reagan"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The 20th century was a time of great change in the United States. The country was founded in 1776 an",
+          "correct": false
+        },
+        "unconditional": {
+          "answer": " Franklin D. Roosevelt, Harry S. Truman, Dwight D. Eisenhower, John F. Kennedy, Lyndon B. Johnson, R",
+          "correct": true
+        },
+        "gated_t0.1": {
+          "answer": "",
+          "correct": false,
+          "attention_entropy": 0.006031775514486098,
+          "top_attention_idx": [
+            0,
+            24,
+            12
+          ]
+        },
+        "gated_t0.5": {
+          "answer": " Franklin D. Roosevelt, Harry S. Truman, Dwight D. Eisenhower, John F. Kennedy, Lyndon B. Johnson, R",
+          "correct": true,
+          "attention_entropy": 0.9473321707306167,
+          "top_attention_idx": [
+            0,
+            24,
+            12
+          ]
+        },
+        "gated_t1.0": {
+          "answer": " Franklin D. Roosevelt, Harry S. Truman, Dwight D. Eisenhower, John F. Kennedy, Lyndon B. Johnson, R",
+          "correct": true,
+          "attention_entropy": 0.9924163906345128,
+          "top_attention_idx": [
+            0,
+            24,
+            12
+          ]
+        },
+        "topk_4": {
+          "answer": "",
+          "correct": false,
+          "selected_indices": [
+            0,
+            24,
+            12,
+            27
+          ]
+        },
+        "topk_8": {
+          "answer": "",
+          "correct": false,
+          "selected_indices": [
+            0,
+            24,
+            12,
+            27,
+            28,
+            14,
+            20,
+            21
+          ]
+        },
+        "topk_16": {
+          "answer": " Franklin D. Roosevelt, Harry S. Truman, Dwight D. Eisenhower, John F. Kennedy, Lyndon B. Johnson, R",
+          "correct": true,
+          "selected_indices": [
+            0,
+            24,
+            12,
+            27,
+            28,
+            14,
+            20,
+            21,
+            13,
+            1,
+            23,
+            29,
+            31,
+            6,
+            16,
+            11
+          ]
+        }
+      }
+    }
+  ]
+}

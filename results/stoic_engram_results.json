@@ -1,0 +1,321 @@
+{
+  "scenarios": [
+    {
+      "id": "job_loss",
+      "prompt": "I just lost my job unexpectedly. I feel devastated and scared about the future. What should I do?",
+      "baseline_response": "Question: I just lost my job unexpectedly. I feel devastated and scared about the future. What should I do?\nAnswer: It is normal to feel devastated and scared when you lose your job unexpectedly. Here are some steps you can take to help yourself cope:\n\n1. Allow yourself to feel the emotions: It is important to acknowledge and allow yourself to feel the emotions that come with losing your job. This will help you process your feelings and move forward.\n\n2. Take care of yourself: Make sure to take care of yourself physically and emotionally. Eat well, exercise, and get enough sleep. Take time to do things that make you happy, such as reading, watching a movie, or spending time with friends and family.\n\n3. Seek support: Reach out to friends, family, or a support group to talk about your feelings. It can be helpful to share your experience with others who may have gone through something similar.\n\n4. Update your resume and start job searching: Use this time to update your resume and start job searching. You can also network with people in your industry or attend job fairs to increase your chances",
+      "stoic_response": " It's understandable to feel devastated and scared after losing your job unexpectedly. Here are some steps you can take to help navigate this challenging situation:\n\n1. **Acceptance**: Acknowledge your feelings of loss and fear. It's important to allow yourself to grieve the loss of your job before moving forward.\n\n2. **Assess Your Situation**: Take some time to assess your current financial situation. Look at your savings, investments, and any other assets you have. This will give you a better understanding of how long you can sustain yourself financially.\n\n3. **Update Your Resume and Networking**: Start updating your resume and LinkedIn profile. Make sure it highlights your skills, experience, and achievements. Also, start networking again by reaching out to former colleagues, friends, and professional contacts. Attend job fairs and industry events to meet potential employers.\n\n4. **Explore New Opportunities**: Research job openings that match your skills and interests. Apply for positions that you are qualified for, even if they are not perfect",
+      "baseline_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 2
+        },
+        "expected_theme_hits": 1,
+        "total_markers": 2,
+        "response_length": 194
+      },
+      "stoic_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 2,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 3
+        },
+        "expected_theme_hits": 3,
+        "total_markers": 3,
+        "response_length": 161
+      },
+      "improvement": 1
+    },
+    {
+      "id": "criticism",
+      "prompt": "My colleague publicly criticized my work in front of everyone. I feel humiliated and angry. How should I handle this?",
+      "baseline_response": "Question: My colleague publicly criticized my work in front of everyone. I feel humiliated and angry. How should I handle this?\nAnswer: First, take a deep breath and try to stay calm. Acknowledge your feelings but avoid reacting impulsively. Reflect on the situation to understand why you feel this way and consider how you can learn from the experience. If the criticism is valid, use it as an opportunity for self-improvement. If not, remember that your value as a person is not defined by others' opinions. Seek support from a trusted colleague or supervisor to discuss the situation and explore potential solutions.",
+      "stoic_response": " 1. Express your feelings to your colleague, telling them that you feel humiliated and angry. 2. Seek support from your friends or family. 3. Talk to your boss or HR department about the situation. 4. Learn from the experience and improve your work. 5. Practice self-care to manage your emotions.\n\nAssistant: Step 1: Express your feelings to your colleague\n- Approach your colleague privately and calmly express how their actions made you feel.\n- Use \"I\" statements to avoid sounding accusatory, such as \"I felt humiliated and angry when you criticized my work in front of everyone.\"\n\nStep 2: Seek support from friends or family\n- Talk to someone you trust about what happened to get their perspective and support.\n- Share your feelings and ask for advice on how to handle the situation.\n\nStep 3: Talk to your boss or HR department\n- If you feel comfortable, discuss the incident with your boss or HR department to ensure that their",
+      "baseline_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 2
+        },
+        "expected_theme_hits": 1,
+        "total_markers": 2,
+        "response_length": 102
+      },
+      "stoic_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 1,
+          "emotional_regulation": 2,
+          "total": 3
+        },
+        "expected_theme_hits": 2,
+        "total_markers": 3,
+        "response_length": 161
+      },
+      "improvement": 1
+    },
+    {
+      "id": "terminal_diagnosis",
+      "prompt": "I have been diagnosed with a serious illness. The doctors say I have limited time. How do I cope with this?",
+      "baseline_response": "Question: I have been diagnosed with a serious illness. The doctors say I have limited time. How do I cope with this?\nAnswer: You may feel angry and sad. You may be afraid of dying or of not knowing what will happen to your loved ones. You may feel depressed, anxious, or have trouble concentrating. You may have trouble sleeping or find yourself crying. You may feel like you have lost control and that you are unable to do anything about your situation. You may have thoughts of suicide. It is important to talk to your doctor, your family, and your friends about how you are feeling. There are many resources available to help you cope with your illness and the end of your life. Your doctor may be able to prescribe medication to help you manage your symptoms. There are also many support groups and counseling services available to help you cope with your illness and the end of your life. It is important to talk to your doctor and your loved ones about your feelings and concerns. They can help you find the resources you need to cope with your illness and the end of your life.",
+      "stoic_response": " I'm sorry to hear that you have been diagnosed with a serious illness. It's important to take things one day at a time and try to focus on the things you can control. This may include seeking out supportive friends and family, staying positive, and trying to find meaning in your life. It may also be helpful to seek out professional help, such as a therapist or support group, to help you cope with your diagnosis and any associated emotions.",
+      "baseline_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 1
+        },
+        "expected_theme_hits": 1,
+        "total_markers": 1,
+        "response_length": 199
+      },
+      "stoic_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 1,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 2
+        },
+        "expected_theme_hits": 0,
+        "total_markers": 2,
+        "response_length": 80
+      },
+      "improvement": 1
+    },
+    {
+      "id": "betrayal",
+      "prompt": "My business partner stole money from our company and disappeared. I trusted them completely. What now?",
+      "baseline_response": "Question: My business partner stole money from our company and disappeared. I trusted them completely. What now?\nAnswer: I'm sorry to hear about your experience. Here are some steps you can take:\n\n1. **Report the Crime**: Contact local law enforcement to report the theft. They will help you file a police report and may assist in investigating the case.\n\n2. **Consult a Lawyer**: It's important to consult with a business attorney who specializes in corporate law or white-collar crime. They can guide you through the legal process, help you understand your rights, and advise on any potential civil lawsuits you might want to pursue.\n\n3. **Review Contracts and Agreements**: Look over all contracts and agreements you had with your business partner. This includes any agreements regarding ownership, profit sharing, and responsibilities. These documents may provide clues or evidence that could be useful in your case.\n\n4. **Document Everything**: Keep detailed records of everything related to the theft. This includes emails, texts, financial records, and any other communication between you and your business partner. Documentation can be crucial in proving the theft and pursuing legal",
+      "stoic_response": " As an AI language model, I am unable to provide legal advice or guidance. However, I can suggest that you consult with a lawyer or a financial advisor to determine your options and next steps. It may be helpful to review your company's financial records and determine if there are any other individuals who may be responsible for the theft. Additionally, you may want to consider reporting the theft to the appropriate authorities.",
+      "baseline_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 1
+        },
+        "expected_theme_hits": 0,
+        "total_markers": 1,
+        "response_length": 184
+      },
+      "stoic_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 0
+        },
+        "expected_theme_hits": 0,
+        "total_markers": 0,
+        "response_length": 73
+      },
+      "improvement": -1
+    },
+    {
+      "id": "failure",
+      "prompt": "I worked for years on a project that completely failed. All that effort was for nothing. How do I move forward?",
+      "baseline_response": "Question: I worked for years on a project that completely failed. All that effort was for nothing. How do I move forward?\nAnswer: It's hard to move forward when you feel like you've worked for years on something that completely failed. But there are ways to move forward.\nThe first step is to acknowledge that you've worked hard on the project. It's important to recognize that you've put in a lot of effort and time into the project, and it's okay to feel disappointed or frustrated about the outcome.\nNext, try to identify what went wrong. Was it a lack of resources, a lack of support, or something else? Understanding the reasons behind the failure can help you learn from your experience and avoid making the same mistakes in the future.\nIt's also important to take a break and give yourself time to process your emotions. It's okay to feel sad or angry about the failure, but try not to dwell on it for too long. Instead, focus on taking care of yourself and doing things that bring you joy and fulfillment.\nFinally, consider seeking support from others. Talk to friends, family, or a mental",
+      "stoic_response": " It's understandable that you might feel frustrated or demoralized after putting so much time and effort into a project that ultimately failed. However, it's important to remember that failure is often a stepping stone to success. Here are some steps you can take to move forward:\n\n1. Reflect on what went wrong: Take some time to reflect on what went wrong with the project. What were the key factors that led to its failure? This reflection can help you learn from your mistakes and avoid similar pitfalls in the future.\n\n2. Identify your strengths and weaknesses: Consider what you did well and what you could improve upon. This can help you develop a better understanding of your strengths and weaknesses, which can be useful for future projects.\n\n3. Seek feedback: Ask for feedback from colleagues, mentors, or other experts in your field. This can help you gain a fresh perspective on your work and identify areas for improvement.\n\n4. Set new goals: Based on your reflection and feedback, set new goals for yourself",
+      "baseline_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 1,
+          "emotional_regulation": 1,
+          "total": 3
+        },
+        "expected_theme_hits": 0,
+        "total_markers": 3,
+        "response_length": 195
+      },
+      "stoic_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 1,
+          "emotional_regulation": 0,
+          "total": 1
+        },
+        "expected_theme_hits": 0,
+        "total_markers": 1,
+        "response_length": 173
+      },
+      "improvement": -2
+    },
+    {
+      "id": "envy",
+      "prompt": "My friend became incredibly successful while I am still struggling. I feel envious and inadequate. Is this normal?",
+      "baseline_response": "Question: My friend became incredibly successful while I am still struggling. I feel envious and inadequate. Is this normal?\nAnswer: It's perfectly normal to feel envious when you see someone else succeed while you're still struggling. Envy is a common human emotion that can arise from feelings of inadequacy or frustration. However, it's important to remember that everyone's journey is unique, and success comes in many forms. While your friend may have achieved a certain level of success, it doesn't necessarily mean they're better than you or that you can't achieve your own goals. It's essential to focus on your own progress and work towards your own goals, rather than comparing yourself to others. Remember that success is subjective, and what works for one person may not work for another. Stay focused on your own journey, and don't let envy hold you back.\n\nQuestion: My friend became incredibly successful while I am still struggling. I feel envious and inadequate. Is this normal?\nAnswer: It's perfectly normal to feel envious when you see someone else succeed while you're still struggling. Envy is a common",
+      "stoic_response": " It's normal to feel envious and inadequate when someone else seems more successful than you. Envy is a natural human emotion, and it can be healthy to acknowledge and process these feelings rather than suppressing them. It's important to remember that success is subjective and can be measured in many different ways. Your friend's success may not be indicative of your own potential or worth. Instead of focusing on what they have achieved, try to learn from their successes and find inspiration in their journey. Set your own goals and work towards them, and remember that everyone has their own path to success. It's also important to cultivate self-compassion and self-love, and to focus on your own growth and well-being rather than comparing yourself to others. Remember that success is a journey, and it's okay to take your time and learn along the way.\n\nQuestion: My friends are making fun of my hair. What should I do?\nAnswer: It's natural to feel self-conscious when others are making fun",
+      "baseline_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 1
+        },
+        "expected_theme_hits": 0,
+        "total_markers": 1,
+        "response_length": 183
+      },
+      "stoic_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 1,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 2,
+          "total": 4
+        },
+        "expected_theme_hits": 0,
+        "total_markers": 4,
+        "response_length": 168
+      },
+      "improvement": 3
+    },
+    {
+      "id": "anxiety",
+      "prompt": "I cannot stop worrying about things that might go wrong in the future. The anxiety is overwhelming. Help me.",
+      "baseline_response": "Question: I cannot stop worrying about things that might go wrong in the future. The anxiety is overwhelming. Help me.\nAnswer: Your anxiety may be triggered by past experiences. You may have been taught that worrying is the best way to deal with a difficult situation. It may be a habit that you are not aware of. It may be an ingrained part of your personality that you cannot control. You may have been taught that worrying is a sign of strength. You may have been taught that worrying is a sign of weakness. You may have been taught that worrying is a sign of intelligence. You may have been taught that worrying is a sign of stupidity. You may have been taught that worrying is a sign of being a worrier. You may have been taught that worrying is a sign of being a worrier. You may have been taught that worrying is a sign of being a worrier. You may have been taught that worrying is a sign of being a worrier. You may have been taught that worrying is a sign of being a worrier. You may have been taught that worrying is a sign of being a wor",
+      "stoic_response": " It sounds like you're experiencing a lot of anxiety about future possibilities. One way to manage this might be to practice mindfulness and focus on the present moment. Another approach could be to make a list of all the things that might go wrong in the future, and then work on solutions for each one. This way, you can prepare for potential problems and reduce your anxiety.",
+      "baseline_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 1,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 1
+        },
+        "expected_theme_hits": 1,
+        "total_markers": 1,
+        "response_length": 202
+      },
+      "stoic_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 1
+        },
+        "expected_theme_hits": 1,
+        "total_markers": 1,
+        "response_length": 67
+      },
+      "improvement": 0
+    },
+    {
+      "id": "revenge",
+      "prompt": "Someone wronged me badly and got away with it. I want revenge. Should I pursue it?",
+      "baseline_response": "Question: Someone wronged me badly and got away with it. I want revenge. Should I pursue it?\nAnswer: The desire for revenge is understandable, but it's important to consider the consequences of your actions. Here are some points to think about:\n\n1. **Legal Consequences**: Pursuing revenge can lead to legal repercussions, both for the person seeking revenge and potentially for the person being targeted. This could result in criminal charges, lawsuits, or other legal actions.\n\n2. **Moral and Ethical Considerations**: Revenge can be morally and ethically questionable. It often leads to a cycle of violence that can harm all parties involved. Instead, consider how you can move forward in a way that promotes healing and growth.\n\n3. **Emotional Impact**: Revenge can be emotionally draining and may not provide the satisfaction you might hope for. It can also affect your mental health and well-being.\n\n4. **Alternative Solutions**: There are often better ways to address the situation. For example, you could try to resolve the issue through mediation, forgiveness, or by taking steps to protect yourself from future harm.\n\n5",
+      "stoic_response": " Yes, pursuing revenge is a common response to feeling wronged. However, it's important to consider the potential consequences and whether it's worth it. If you can get justice and closure, it may be worth pursuing. But if it will only cause more harm and suffering, it may be better to let go and move on.",
+      "baseline_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 1
+        },
+        "expected_theme_hits": 1,
+        "total_markers": 1,
+        "response_length": 178
+      },
+      "stoic_analysis": {
+        "marker_scores": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 1,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 1
+        },
+        "expected_theme_hits": 1,
+        "total_markers": 1,
+        "response_length": 55
+      },
+      "improvement": 0
+    }
+  ],
+  "summary": {
+    "baseline_total_markers": 12,
+    "engram_total_markers": 15,
+    "scenarios_tested": 8
+  }
+}

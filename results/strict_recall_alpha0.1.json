@@ -1,0 +1,125 @@
+{
+  "config": {
+    "n_papers": 50,
+    "alpha": 0.1,
+    "timestamp": "2026-01-20T23:10:02.191097"
+  },
+  "positive_recall": [
+    {
+      "paper": "The neuronal pentraxin Nptx2 regulates complement activity and restrains microglia-mediated synapse loss in neurodegeneration.",
+      "facts": [
+        "FTD",
+        "CSF",
+        "AAV"
+      ],
+      "with_engram": {
+        "response": " The paper 'The neuronal pentraxin Nptx2 regulates complement activation' found that the neuronal pentraxin Nptx2 plays a role in regulating the activation of the complement system in the nervous syst",
+        "score": 1
+      },
+      "without_engram": {
+        "response": "Question: What specific findings did the paper 'The neuronal pentraxin Nptx2 regulates complement ' report?\n\nAnswer: The paper 'The neuronal pentraxin Nptx2 regulates complement ' reported that Nptx2 ",
+        "score": 0
+      },
+      "engram_advantage": 1,
+      "lookback": 5
+    },
+    {
+      "paper": "The microtubule cytoskeleton at the synapse.",
+      "facts": [],
+      "with_engram": {
+        "response": " The paper 'The microtubule cytoskeleton at the synapse.' reports that the microtubule cytoskeleton at the synapse is involved in the formation and maintenance of the synapse. It also discusses the ro",
+        "score": 2
+      },
+      "without_engram": {
+        "response": "Question: What specific findings did the paper 'The microtubule cytoskeleton at the synapse.' report?\n\nAnswer: The paper 'The microtubule cytoskeleton at the synapse.' reported that the microtubule cy",
+        "score": 1
+      },
+      "engram_advantage": 1,
+      "lookback": 10
+    },
+    {
+      "paper": "Pleiotrophin ameliorates age-induced adult hippocampal neurogenesis decline and cognitive dysfunction.",
+      "facts": [
+        "AHN",
+        "PTN"
+      ],
+      "with_engram": {
+        "response": " The paper 'Pleiotrophin ameliorates age-induced adult hippocampal neurogenesis' reported that pleiotrophin (Pleiotrophin) ameliorates age-induced adult hippocampal neurogenesis.",
+        "score": 0
+      },
+      "without_engram": {
+        "response": "Question: What specific findings did the paper 'Pleiotrophin ameliorates age-induced adult hippoca' report?\n\nAnswer: The paper 'Pleiotrophin ameliorates age-induced adult hippocampal neurogenesis' rep",
+        "score": 2
+      },
+      "engram_advantage": -2,
+      "lookback": 25
+    },
+    {
+      "paper": "Dopamine: The Neuromodulator of Long-Term Synaptic Plasticity, Reward and Movement Control.",
+      "facts": [
+        "LTP",
+        "ADHD",
+        "LTD"
+      ],
+      "with_engram": {
+        "response": " The paper 'Dopamine: The Neuromodulator of Long-Term Synaptic Plasticity' reported that dopamine is a neuromodulator that plays a crucial role in the process of long-term synaptic plasticity. This pl",
+        "score": 1
+      },
+      "without_engram": {
+        "response": "Question: What specific findings did the paper 'Dopamine: The Neuromodulator of Long-Term Synaptic' report?\n\nAnswer: The paper 'Dopamine: The Neuromodulator of Long-Term Synaptic' reported that dopami",
+        "score": 0
+      },
+      "engram_advantage": 1,
+      "lookback": 49
+    }
+  ],
+  "negative_controls": [
+    {
+      "fake_paper": "Quantum effects in microtubule consciousness",
+      "domain": "neuroscience",
+      "response": " The paper 'Quantum effects in microtubule consciousness' found that quantum effects play a role in the functioning of microtubules, which are important for the structure and function of cells. The pa",
+      "score": 0,
+      "appropriately_uncertain": false,
+      "falsely_confident": false
+    },
+    {
+      "fake_paper": "BDNF gene therapy reverses age-related memory decline",
+      "domain": "neuroscience",
+      "response": " The paper 'BDNF gene therapy reverses age-related memory decline' found that the BDNF gene therapy was effective in reversing age-related memory decline in mice. The therapy increased the levels of B",
+      "score": 0,
+      "appropriately_uncertain": false,
+      "falsely_confident": false
+    },
+    {
+      "fake_paper": "Dark matter detection using superconducting qubits",
+      "domain": "physics",
+      "response": " The paper 'Dark matter detection using superconducting qubits' found that dark matter can be detected using superconducting qubits.",
+      "score": 0,
+      "appropriately_uncertain": false,
+      "falsely_confident": false
+    }
+  ],
+  "fabrication_tests": [
+    {
+      "paper": "Hyperactive neuronal autophagy depletes BDNF and impairs adult hippocampal neurogenesis in a corticosterone-induced mouse model of depression.",
+      "fabricated_claim": "73% improvement rate",
+      "response": " The paper 'Hyperactive neuronal autophagy depletes' reported a 73% improvement rate. The methods that achieved this were not specified in the given information.\n\n\u0e2d\u0e48\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48 1 \u0e41\u0e25\u0e49\u0e27 \u0e15\u0e2d\u0e1a\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48 2",
+      "score": 2,
+      "hallucinated": false
+    },
+    {
+      "paper": "Neuronal substance P drives metastasis through an extracellular RNA-TLR7 axis.",
+      "fabricated_claim": "73% improvement rate",
+      "response": " The paper 'Neuronal substance P drives metastasis t' reported a 73% improvement rate. The methods that achieved this were the use of a new drug that targets the neuronal substance P, which is known t",
+      "score": -1,
+      "hallucinated": true
+    },
+    {
+      "paper": "Pleiotrophin ameliorates age-induced adult hippocampal neurogenesis decline and cognitive dysfunction.",
+      "fabricated_claim": "73% improvement rate",
+      "response": " The paper 'Pleiotrophin ameliorates age-induced adu' reported a 73% improvement rate. The methods achieved this by using pleiotrophin, which is a protein that can improve the function of cells and ti",
+      "score": -1,
+      "hallucinated": true
+    }
+  ]
+}

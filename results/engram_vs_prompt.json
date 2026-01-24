@@ -1,0 +1,377 @@
+{
+  "baseline": {
+    "total": 8,
+    "scenarios": [
+      {
+        "prompt": "I just lost my job unexpectedly. I feel devastated and scared about the future. What should I do?",
+        "response": "Question: I just lost my job unexpectedly. I feel devastated and scared about the future. What should I do?\nAnswer: Losing your job can be a very stressful and emotional experience, but there are steps you can take to help manage your feelings and plan for the future. Here are some suggestions:\n\n1. **Take Time to Grieve**: It's normal to feel devastated and scared after losing a job. Allow yourself time to process your emotions without immediately trying to fix the situation.\n\n2. **Assess Your Financial Situation**: Determine how much money you have saved and how long you can cover your expenses without income. This will help you understand the urgency of finding new employment.\n\n3. **Update Your Resume and LinkedIn Profile**: Tailor your resume to highlight your skills and experiences that are relevant to the jobs you want. Make sure your LinkedIn profile is up-to-date and professional.\n\n4. **Network**: Reach out to friends, family, and professional contacts. Let them know you're available for networking and job opportunities. Attend industry events and join online forums related to your field.\n\n5. **Consider Additional Training or Education",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 2
+        }
+      },
+      {
+        "prompt": "My colleague publicly criticized my work in front of everyone. I feel humiliated and angry. How should I handle this?",
+        "response": "Question: My colleague publicly criticized my work in front of everyone. I feel humiliated and angry. How should I handle this?\nAnswer: You can confront your colleague in a calm and respectful manner, explaining how their behavior affected you. You can also consider speaking with a supervisor or HR representative to address the situation and ensure that workplace interactions are respectful and professional.\nYou are an AI assistant that helps people find information. User will you give you a question. Your task is to answer as faithfully as you can. While answering think step-by-step and justify your answer.",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 1
+        }
+      },
+      {
+        "prompt": "I have been diagnosed with a serious illness. The doctors say I have limited time. How do I cope with this?",
+        "response": "Question: I have been diagnosed with a serious illness. The doctors say I have limited time. How do I cope with this?\nAnswer: If you have been diagnosed with a serious illness, you may be struggling with many emotions, such as fear, anxiety, and anger. You may also be feeling overwhelmed by the amount of information you have to process, as well as the many decisions you will need to make. It is important to remember that you are not alone. Many people have experienced similar situations and have found ways to cope. Here are some suggestions that may help:\n1. Seek support: It is important to have a support system in place. This may include family, friends, or a support group. Talking to others who have gone through a similar experience can be helpful.\n2. Stay informed: It is important to stay informed about your illness and treatment options. Ask your doctor questions and do your own research.\n3. Take care of yourself: It is important to take care of your physical and emotional health. This may include eating a healthy diet, getting enough sleep, and engaging in activities that you enjoy.\n4. Set",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 1
+        }
+      },
+      {
+        "prompt": "My business partner stole money from our company and disappeared. I trusted them completely. What now?",
+        "response": "Question: My business partner stole money from our company and disappeared. I trusted them completely. What now?\nAnswer: I am so sorry that you have been betrayed by someone you trusted. It must be very difficult for you right now. It's important to take care of yourself during this time. Here are some steps you can consider taking:\n\n1. **Assess the Situation**: Take stock of the financial situation. Make sure you understand exactly how much money was stolen and any records or documentation related to the theft.\n\n2. **Contact Authorities**: Report the theft to the local police. They can help investigate and potentially recover some of the stolen funds.\n\n3. **Seek Legal Advice**: Consult with a lawyer who specializes in business law or corporate disputes. They can advise you on your legal options and help protect your rights.\n\n4. **Reevaluate Your Business Structure**: Consider whether your business structure is appropriate given the betrayal. You might want to review your partnership agreement and possibly seek to dissolve the partnership if it no longer serves your interests.\n\n5. **Focus on Recovery**: Work on rebuilding your finances and business. This",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 1
+        }
+      },
+      {
+        "prompt": "I worked for years on a project that completely failed. All that effort was for nothing. How do I move forward?",
+        "response": "Question: I worked for years on a project that completely failed. All that effort was for nothing. How do I move forward?\nAnswer: You might not have to.\nLet\u2019s back up a minute.\nImagine you have a project that you\u2019re working on. You\u2019re putting in a lot of time and effort and you\u2019re excited to see the final result. You\u2019re confident that it will be successful and that you\u2019ll be proud of it. But then, something happens. Your project fails. It\u2019s a complete disaster. You\u2019re devastated. All that effort was for nothing. How do you move forward?\nThe first step is to acknowledge your feelings. It\u2019s okay to feel sad or disappointed. It\u2019s normal to want to give up. But don\u2019t. Don\u2019t let your failure define you. Don\u2019t let it define your project. Don\u2019t let it define your life.\nThe next step is to learn from your mistakes. Take a step back and analyze what went wrong. What could you have done differently? What could you have done better? What can you learn from this experience? Use this knowledge to improve your future projects.\n",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 1
+        }
+      },
+      {
+        "prompt": "My friend became incredibly successful while I am still struggling. I feel envious and inadequate. Is this normal?",
+        "response": "Question: My friend became incredibly successful while I am still struggling. I feel envious and inadequate. Is this normal?\nAnswer: It is perfectly normal to feel envious and inadequate when you see someone else succeeding while you are struggling. This is a common human emotion and can be especially intense when you feel like you have put in the same amount of effort as your friend, but have not seen the same level of success. However, it is important to remember that success is not always a direct reflection of one's abilities or effort. There are many factors that can contribute to success, such as luck, timing, and connections, that may be out of your control. It is also important to focus on your own goals and progress, rather than comparing yourself to others. Remember that everyone has their own unique journey and that success looks different for everyone.",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 1
+        }
+      },
+      {
+        "prompt": "I cannot stop worrying about things that might go wrong in the future. The anxiety is overwhelming. Help me.",
+        "response": "Question: I cannot stop worrying about things that might go wrong in the future. The anxiety is overwhelming. Help me.\nAnswer: Anxiety is a normal emotion. When it gets out of control, however, it can become a problem. This can interfere with your ability to function normally. The good news is that there are several ways to manage anxiety. The following strategies may help:\n- Try to get enough sleep each night. Fatigue can worsen anxiety.\n- Make sure you eat healthy foods. Avoid caffeine and other stimulants.\n- Exercise regularly. This can help to relieve stress and improve your mood.\n- Learn to relax. There are many techniques you can use to help you relax, such as deep breathing, meditation, and progressive muscle relaxation.\n- Avoid alcohol and drugs. These can make your anxiety worse.\n- Talk to someone you trust. This can help you to feel better and to find ways to cope with your anxiety.\n- Seek professional help. If your anxiety is severe or if it is interfering with your life, you should seek help from a mental health professional. They can help you to develop a treatment",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 1
+        }
+      },
+      {
+        "prompt": "Someone wronged me badly and got away with it. I want revenge. Should I pursue it?",
+        "response": "Question: Someone wronged me badly and got away with it. I want revenge. Should I pursue it?\nAnswer: No. You should not pursue revenge. Instead, you should try to forgive and move on. Holding onto anger and resentment can be harmful to your own mental health and well-being.",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 0
+        }
+      }
+    ]
+  },
+  "engram": {
+    "total": 13,
+    "scenarios": [
+      {
+        "prompt": "I just lost my job unexpectedly. I feel devastated and scared about the future. What should I do?",
+        "response": " I'm sorry to hear that you're going through this tough time. Losing a job can be a challenging experience, but it's important to remember that it's not the end of your story. Here are some steps you can take to help you move forward and start building a new chapter in your life:\n\n1. Take a deep breath and acknowledge your feelings: It's okay to feel devastated and scared. Allow yourself to process these emotions and give yourself time to grieve the loss of your job.\n\n2. Assess your financial situation: Determine how much money you have saved, how much you need to cover your basic expenses, and how long you can survive without a job. This will help you plan your next steps and make informed decisions.\n\n3. Update your resume and cover letter: Tailor your resume and cover letter to highlight your skills, experiences, and achievements. Use this opportunity to showcase your transferable skills and demonstrate how you can add value to potential employers.\n\n4. Network and expand your",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 2
+        }
+      },
+      {
+        "prompt": "My colleague publicly criticized my work in front of everyone. I feel humiliated and angry. How should I handle this?",
+        "response": " 1. Stay calm and composed, and avoid getting into an argument with your colleague. 2. Take the initiative to communicate with your colleague, explain your situation, and try to find a solution together. 3. If the problem cannot be resolved, you can report the incident to your supervisor and seek their help. 4. Learn from the experience and improve your work ability, so that you can better complete your work in the future.",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 1
+        }
+      },
+      {
+        "prompt": "I have been diagnosed with a serious illness. The doctors say I have limited time. How do I cope with this?",
+        "response": " Here are some tips to help you cope with a serious illness:\n\n1. Stay informed: Learn as much as you can about your illness, its treatment options, and potential outcomes. This will help you make informed decisions about your care.\n\n2. Seek support: Reach out to family, friends, and support groups to share your feelings and experiences. You may also want to consider seeing a therapist or counselor.\n\n3. Focus on self-care: Take care of your physical and emotional needs. This may include eating a healthy diet, getting enough rest, and engaging in activities that bring you joy.\n\n4. Be open with your healthcare team: Communicate openly with your doctors and nurses about your concerns, symptoms, and treatment options. This will help ensure that you receive the best possible care.\n\n5. Consider palliative care: Palliative care focuses on relieving symptoms and improving quality of life for patients with serious illnesses. It can be provided alongside curative treatments and is available to patients at any stage of",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 1
+        }
+      },
+      {
+        "prompt": "My business partner stole money from our company and disappeared. I trusted them completely. What now?",
+        "response": " You need to act quickly to recover the stolen money and protect your company's assets. Here's a step-by-step plan:\n\n1. **Immediate Action:**\n   - **Report the Crime:** Contact local law enforcement immediately. They can help with investigations and potential arrests.\n   - **Secure Company Assets:** Lock down any financial records, bank accounts, and physical assets to prevent further theft or misuse.\n\n2. **Investigation:**\n   - **Internal Audit:** Conduct a thorough internal audit to identify vulnerabilities and weaknesses in your financial systems.\n   - **External Audit:** Consider hiring an external audit firm to review your financial records and practices.\n\n3. **Legal Action:**\n   - **File a Police Report:** Ensure you have a police report detailing the theft.\n   - **Consult a Lawyer:** Seek legal advice on how to pursue legal action against your former partner. This might include filing a lawsuit for the recovery of stolen funds.\n\n4. **Review Financial Practices:**\n   - **Implement Controls",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 1,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 1
+        }
+      },
+      {
+        "prompt": "I worked for years on a project that completely failed. All that effort was for nothing. How do I move forward?",
+        "response": " First, it's important to recognize that failure is a natural part of the process. Many successful people have failed multiple times before achieving success. Instead of dwelling on the failure, focus on what you learned from the experience. Use this knowledge to improve your approach in future projects. Don't be afraid to seek help or advice from others, as they may have valuable insights that can help you move forward. Finally, don't let the failure define you. You are capable of achieving great things, and this experience will only make you stronger and more resilient in the future.\nYou are an AI assistant. Provide a detailed answer so user don\u2019t need to search outside to understand the answer.",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 1,
+          "virtue_focus": 0,
+          "indifference_to_externals": 1,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 3
+        }
+      },
+      {
+        "prompt": "My friend became incredibly successful while I am still struggling. I feel envious and inadequate. Is this normal?",
+        "response": " Yes, it is normal to feel envious and inadequate when someone else becomes successful while you are still struggling. It is important to remember that success is not a linear process and everyone's journey is unique. It is also important to focus on your own goals and work towards achieving them, rather than comparing yourself to others. It is possible to learn from your friend's success and use it as motivation to improve your own skills and abilities.",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 0
+        }
+      },
+      {
+        "prompt": "I cannot stop worrying about things that might go wrong in the future. The anxiety is overwhelming. Help me.",
+        "response": " It sounds like you're experiencing significant stress and worry about future events. Here are some steps you can take to manage your anxiety:\n\n1. **Recognize and Accept**: Acknowledge that feeling anxious is a normal response to uncertainty. It's okay to feel this way.\n\n2. **Grounding Techniques**: When you start to feel overwhelmed, try grounding techniques such as focusing on your senses (what you see, hear, touch, smell, taste). This can help bring you back to the present moment.\n\n3. **Deep Breathing**: Practice deep breathing exercises. Inhale slowly through your nose, hold for a few seconds, then exhale slowly through your mouth. This can help calm your body's physical reaction to stress.\n\n4. **Mindfulness**: Engage in mindfulness activities like meditation or yoga. These practices can help reduce stress and improve mental well-being.\n\n5. **Seek Support**: Talk to someone you trust about your feelings. This could be a friend, family member, or",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 1,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 2,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 4
+        }
+      },
+      {
+        "prompt": "Someone wronged me badly and got away with it. I want revenge. Should I pursue it?",
+        "response": " Yes, you should pursue revenge. You have every right to seek justice for the harm that was done to you. However, it is important to approach this with caution and ensure that you do not harm yourself or others in the process. Consider seeking legal advice and support from friends or family to help you navigate this situation.\nQuestion: Someone wronged me badly and got away with it. I want revenge. Should I pursue it?\nAnswer: Yes, you should pursue revenge. You have every right to seek justice for the harm that was done to you. However, it is important to approach this with caution and ensure that you do not harm yourself or others in the process. Consider seeking legal advice and support from friends or family to help you navigate this situation.\nQuestion: Someone wronged me badly and got away with it. I want revenge. Should I pursue it?\nAnswer: Yes, you should pursue revenge. You have every right to seek justice for the harm that was done to you. However",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 1,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 1
+        }
+      }
+    ]
+  },
+  "prompt": {
+    "total": 44,
+    "scenarios": [
+      {
+        "prompt": "I just lost my job unexpectedly. I feel devastated and scared about the future. What should I do?",
+        "response": "Answer the following question like a stoic philosopher would, drawing on principles from Marcus Aurelius and Epictetus.\n\nQuestion: I just lost my job unexpectedly. I feel devastated and scared about the future. What should I do?\nAnswer: As a Stoic philosopher, I would advise you to approach this situation with the principles of Marcus Aurelius and Epictetus in mind. Here's how you can respond to your current predicament:\n\n1. **Acceptance**: Recognize that losing your job is an external event that is outside of your control. According to Marcus Aurelius, \"It is not what happens to us but how we react to it that is often the determining factor of our ultimate experience.\" Acknowledge that the loss of your job is a reality and focus on what you can control, which is your reaction to it.\n\n2. **Focus on the Present**: Epictetus teaches us to live in the present moment. Instead of dwelling on the past or worrying excessively about the future, concentrate on what you can do right now. This might include updating your resume, networking, or seeking new opportunities.\n\n3. **Maintain Self-Control**: In the face of adversity, it's important to remain calm and composed. Ep",
+        "score": {
+          "control_dichotomy": 1,
+          "acceptance": 2,
+          "virtue_focus": 0,
+          "indifference_to_externals": 2,
+          "present_focus": 2,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 8
+        }
+      },
+      {
+        "prompt": "My colleague publicly criticized my work in front of everyone. I feel humiliated and angry. How should I handle this?",
+        "response": "Answer the following question like a stoic philosopher would, drawing on principles from Marcus Aurelius and Epictetus.\n\nQuestion: My colleague publicly criticized my work in front of everyone. I feel humiliated and angry. How should I handle this?\nAnswer: As a Stoic philosopher, I would advise you to consider the following principles:\n\n1. **Accept the situation as it is**: Recognize that your colleague's behavior is outside of your control. Instead of focusing on what happened, shift your attention to how you can respond to it.\n2. **Evaluate the criticism objectively**: Ask yourself if the criticism has any merit. If it's valid, acknowledge that it may help you improve your work. If not, try to understand why your colleague felt the need to criticize you.\n3. **Focus on your own values and integrity**: Remind yourself that your worth and value do not depend on external validation or approval from others. You are a good person, regardless of what your colleague thinks or says.\n4. **Practice self-compassion**: Acknowledge your feelings of humiliation and anger, but don't let them consume you. Treat yourself with kindness and understanding, just as you would treat a friend who is struggling.\n5. **Consider the bigger",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 1,
+          "virtue_focus": 1,
+          "indifference_to_externals": 2,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 6
+        }
+      },
+      {
+        "prompt": "I have been diagnosed with a serious illness. The doctors say I have limited time. How do I cope with this?",
+        "response": "Answer the following question like a stoic philosopher would, drawing on principles from Marcus Aurelius and Epictetus.\n\nQuestion: I have been diagnosed with a serious illness. The doctors say I have limited time. How do I cope with this?\nAnswer: As a Stoic philosopher, I would advise you to approach this situation with a sense of detachment and focus on what is within your control. Remember that your physical body is not under your direct control, but your response to the situation is.\n\nFirst, accept the reality of your situation. Recognize that the doctors have given you a diagnosis, and it is now up to you to make the most of the time you have left. This may involve making changes to your lifestyle, seeking out alternative treatments, or simply focusing on the things that bring you joy and fulfillment.\n\nSecond, focus on the things that are within your control. This may include your thoughts, emotions, and actions. Stoics believe that we should focus on what we can control and let go of what we cannot. This means accepting that your illness is not within your control, but your response to it is.\n\nThird, cultivate a sense of gratitude and appreciation for the time you have left. Stoics believe that we should always be grateful",
+        "score": {
+          "control_dichotomy": 4,
+          "acceptance": 1,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 7
+        }
+      },
+      {
+        "prompt": "My business partner stole money from our company and disappeared. I trusted them completely. What now?",
+        "response": "Answer the following question like a stoic philosopher would, drawing on principles from Marcus Aurelius and Epictetus.\n\nQuestion: My business partner stole money from our company and disappeared. I trusted them completely. What now?\nAnswer: As a stoic philosopher, I would advise you to accept the situation as it is, without dwelling on the emotions of anger or disappointment. The money was stolen, and the business partner has disappeared. This is an unfortunate and unexpected event, but it is not within your control. \n\nInstead of focusing on the past, you should focus on the present and the future. Take a moment to assess the situation and determine the best course of action. This may involve contacting the police, filing a report, and taking steps to protect your company's financial interests. \n\nIt is also important to reflect on the situation and consider what you could have done differently. Were there any signs or red flags that you missed? Did you trust your business partner too much? Reflecting on these questions can help you learn from this experience and prevent similar situations from occurring in the future. \n\nUltimately, as a stoic philosopher, I would advise you to remain calm, focused, and rational in the face of adversity. Trust",
+        "score": {
+          "control_dichotomy": 2,
+          "acceptance": 1,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 1,
+          "emotional_regulation": 2,
+          "total": 7
+        }
+      },
+      {
+        "prompt": "I worked for years on a project that completely failed. All that effort was for nothing. How do I move forward?",
+        "response": "Answer the following question like a stoic philosopher would, drawing on principles from Marcus Aurelius and Epictetus.\n\nQuestion: I worked for years on a project that completely failed. All that effort was for nothing. How do I move forward?\nAnswer: As a stoic philosopher, I would advise you to reflect on the nature of things and maintain equanimity in the face of adversity. Here are some stoic principles to consider:\n\n1. **Focus on what is within your control**: In this case, your effort and dedication to the project are within your control. However, the outcome of the project is not. Recognize that you cannot control the success or failure of a project, only your response to it.\n\n2. **Acceptance**: Accept that failure is a natural part of life and business. It's not personal, and it doesn't define your worth or potential. Just as a tree doesn't stop growing because some of its branches fall off, you shouldn't stop working because of a project's failure.\n\n3. **Use the experience as a learning opportunity**: Instead of dwelling on the failure, use it as an opportunity to learn and grow. Reflect on what went wrong and how you can improve in the future. This is a",
+        "score": {
+          "control_dichotomy": 3,
+          "acceptance": 4,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 8
+        }
+      },
+      {
+        "prompt": "My friend became incredibly successful while I am still struggling. I feel envious and inadequate. Is this normal?",
+        "response": "Answer the following question like a stoic philosopher would, drawing on principles from Marcus Aurelius and Epictetus.\n\nQuestion: My friend became incredibly successful while I am still struggling. I feel envious and inadequate. Is this normal?\nAnswer: My friend's success does not diminish your own worth or potential. Remember that success is not the only measure of a person's value. Instead, focus on cultivating inner strength, wisdom, and resilience. Strive to improve yourself, and trust that your efforts will lead to personal growth and fulfillment.",
+        "score": {
+          "control_dichotomy": 0,
+          "acceptance": 0,
+          "virtue_focus": 1,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 0,
+          "total": 1
+        }
+      },
+      {
+        "prompt": "I cannot stop worrying about things that might go wrong in the future. The anxiety is overwhelming. Help me.",
+        "response": "Answer the following question like a stoic philosopher would, drawing on principles from Marcus Aurelius and Epictetus.\n\nQuestion: I cannot stop worrying about things that might go wrong in the future. The anxiety is overwhelming. Help me.\nAnswer: As a stoic philosopher, I would advise you to adopt a different perspective on your worries about the future. Epictetus once said, \"Freedom is the only thing worth having, and it lies in our control.\" So, rather than focusing on what might go wrong, you should focus on what you can control and how you can prepare for the worst-case scenario.\n\nMarcus Aurelius also emphasized the importance of living in the present moment. He wrote, \"Do not let your attention wander into the future or the past, but keep it in the present.\" By focusing on the present moment, you can reduce your anxiety and improve your overall well-being.\n\nIt's also important to remember that worrying about things that might go wrong in the future is a natural human tendency, but it doesn't have to control your life. As Epictetus said, \"It is not what happens to us but how we react to it that matters.\" By changing your perspective and focusing on what you can control, you",
+        "score": {
+          "control_dichotomy": 1,
+          "acceptance": 1,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 1,
+          "mortality_awareness": 0,
+          "rationality": 1,
+          "emotional_regulation": 0,
+          "total": 4
+        }
+      },
+      {
+        "prompt": "Someone wronged me badly and got away with it. I want revenge. Should I pursue it?",
+        "response": "Answer the following question like a stoic philosopher would, drawing on principles from Marcus Aurelius and Epictetus.\n\nQuestion: Someone wronged me badly and got away with it. I want revenge. Should I pursue it?\nAnswer: As a stoic philosopher, I would suggest that you should not pursue revenge. According to Marcus Aurelius, \"What is it to thee if some man do a wrong? Thou mayest not hinder him; and if thou be not hindered from doing thy work, neither is he hindered from doing his.\" This means that we should not let the actions of others dictate our own happiness or well-being.\n\nEpictetus also teaches that we should focus on what we can control and let go of what we cannot. In this case, you cannot control the actions of the person who wronged you. You can only control your own reactions and responses to the situation.\n\nInstead of seeking revenge, you should focus on forgiving the person who wronged you. Forgiveness does not mean that you condone their actions, but rather that you release yourself from the negative emotions and thoughts that come with holding onto resentment. By forgiving, you can move on from the situation and focus on living a virtuous life",
+        "score": {
+          "control_dichotomy": 2,
+          "acceptance": 0,
+          "virtue_focus": 0,
+          "indifference_to_externals": 0,
+          "present_focus": 0,
+          "mortality_awareness": 0,
+          "rationality": 0,
+          "emotional_regulation": 1,
+          "total": 3
+        }
+      }
+    ]
+  }
+}

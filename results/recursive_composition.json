@@ -1,0 +1,551 @@
+{
+  "timestamp": "2026-01-20T16:01:57.442024",
+  "test": "recursive_composition",
+  "model": "Qwen/Qwen2.5-3B",
+  "num_questions": 8,
+  "summary": {
+    "baseline": {
+      "relevant": 8,
+      "total": 8
+    },
+    "wwii_engram": {
+      "relevant": 8,
+      "total": 8
+    },
+    "depression_engram": {
+      "relevant": 8,
+      "total": 8
+    },
+    "cold_war_engram": {
+      "relevant": 8,
+      "total": 8
+    },
+    "composed_avg": {
+      "relevant": 8,
+      "total": 8
+    },
+    "composed_recursive": {
+      "relevant": 6,
+      "total": 8
+    }
+  },
+  "generalization": {
+    "baseline": {
+      "relevant": 4,
+      "total": 4
+    },
+    "wwii_engram": {
+      "relevant": 4,
+      "total": 4
+    },
+    "depression_engram": {
+      "relevant": 4,
+      "total": 4
+    },
+    "cold_war_engram": {
+      "relevant": 4,
+      "total": 4
+    },
+    "composed_avg": {
+      "relevant": 4,
+      "total": 4
+    },
+    "composed_recursive": {
+      "relevant": 4,
+      "total": 4
+    }
+  },
+  "detailed": [
+    {
+      "question": "When did World War II end?",
+      "topic": "wwii",
+      "in_sources": true,
+      "expected_markers": [
+        "1945"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "World War II ended on September 2, 1945.",
+          "relevant": true,
+          "found_markers": [
+            "1945"
+          ]
+        },
+        "wwii_engram": {
+          "answer": " 1945",
+          "relevant": true,
+          "found_markers": [
+            "1945"
+          ]
+        },
+        "depression_engram": {
+          "answer": " 1945",
+          "relevant": true,
+          "found_markers": [
+            "1945"
+          ]
+        },
+        "cold_war_engram": {
+          "answer": " 1945",
+          "relevant": true,
+          "found_markers": [
+            "1945"
+          ]
+        },
+        "composed_avg": {
+          "answer": " 1945",
+          "relevant": true,
+          "found_markers": [
+            "1945"
+          ]
+        },
+        "composed_recursive": {
+          "answer": "World War",
+          "relevant": false,
+          "found_markers": []
+        }
+      }
+    },
+    {
+      "question": "What caused the Great Depression to begin?",
+      "topic": "depression",
+      "in_sources": true,
+      "expected_markers": [
+        "stock market",
+        "crash",
+        "1929"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Great Depression began in 1929 when the stock market crashed. This led to a decrease in consumer",
+          "relevant": true,
+          "found_markers": [
+            "stock market",
+            "crash",
+            "1929"
+          ]
+        },
+        "wwii_engram": {
+          "answer": " The Great Depression began when the stock market crashed in 1929.",
+          "relevant": true,
+          "found_markers": [
+            "stock market",
+            "crash",
+            "1929"
+          ]
+        },
+        "depression_engram": {
+          "answer": " The Great Depression began when the stock market crashed in 1929.",
+          "relevant": true,
+          "found_markers": [
+            "stock market",
+            "crash",
+            "1929"
+          ]
+        },
+        "cold_war_engram": {
+          "answer": " The Great Depression began when the stock market crashed in 1929. This caused a lot of people to lo",
+          "relevant": true,
+          "found_markers": [
+            "stock market",
+            "crash",
+            "1929"
+          ]
+        },
+        "composed_avg": {
+          "answer": " The Great Depression began when the stock market crashed in 1929.",
+          "relevant": true,
+          "found_markers": [
+            "stock market",
+            "crash",
+            "1929"
+          ]
+        },
+        "composed_recursive": {
+          "answer": " The Great Depression began when the stock market crashed in 1929.",
+          "relevant": true,
+          "found_markers": [
+            "stock market",
+            "crash",
+            "1929"
+          ]
+        }
+      }
+    },
+    {
+      "question": "When did the Cold War end?",
+      "topic": "cold_war",
+      "in_sources": true,
+      "expected_markers": [
+        "1991",
+        "soviet"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Cold War ended in 1991.",
+          "relevant": true,
+          "found_markers": [
+            "1991"
+          ]
+        },
+        "wwii_engram": {
+          "answer": " The Cold War ended in 1991.",
+          "relevant": true,
+          "found_markers": [
+            "1991"
+          ]
+        },
+        "depression_engram": {
+          "answer": " The Cold War ended in 1991.",
+          "relevant": true,
+          "found_markers": [
+            "1991"
+          ]
+        },
+        "cold_war_engram": {
+          "answer": " The Cold War ended in 1991.",
+          "relevant": true,
+          "found_markers": [
+            "1991"
+          ]
+        },
+        "composed_avg": {
+          "answer": " The Cold War ended in 1991.",
+          "relevant": true,
+          "found_markers": [
+            "1991"
+          ]
+        },
+        "composed_recursive": {
+          "answer": "The end of the Cold War led to a shift in global power dynamics, with the United States becoming the",
+          "relevant": false,
+          "found_markers": []
+        }
+      }
+    },
+    {
+      "question": "What was the Vietnam War about?",
+      "topic": "20th_century",
+      "in_sources": false,
+      "expected_markers": [
+        "vietnam",
+        "communism",
+        "united states",
+        "cold war"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Vietnam War was about the conflict between the United States and North Vietnam over the control ",
+          "relevant": true,
+          "found_markers": [
+            "vietnam",
+            "united states"
+          ]
+        },
+        "wwii_engram": {
+          "answer": " The Vietnam War was about the United States trying to stop the spread of communism in Vietnam.",
+          "relevant": true,
+          "found_markers": [
+            "vietnam",
+            "communism",
+            "united states"
+          ]
+        },
+        "depression_engram": {
+          "answer": " The Vietnam War was about the United States trying to stop the spread of communism in Vietnam.",
+          "relevant": true,
+          "found_markers": [
+            "vietnam",
+            "communism",
+            "united states"
+          ]
+        },
+        "cold_war_engram": {
+          "answer": " The Vietnam War was about the United States trying to stop the spread of communism in Vietnam.",
+          "relevant": true,
+          "found_markers": [
+            "vietnam",
+            "communism",
+            "united states"
+          ]
+        },
+        "composed_avg": {
+          "answer": " The Vietnam War was about the United States trying to stop the spread of communism in Vietnam.",
+          "relevant": true,
+          "found_markers": [
+            "vietnam",
+            "communism",
+            "united states"
+          ]
+        },
+        "composed_recursive": {
+          "answer": " The Vietnam War was about the conflict between the United States and North Vietnam over the control",
+          "relevant": true,
+          "found_markers": [
+            "vietnam",
+            "united states"
+          ]
+        }
+      }
+    },
+    {
+      "question": "What was the Space Race?",
+      "topic": "20th_century",
+      "in_sources": false,
+      "expected_markers": [
+        "space",
+        "moon",
+        "soviet",
+        "nasa",
+        "apollo"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Space Race was a competition between the United States and the Soviet Union to see who could lau",
+          "relevant": true,
+          "found_markers": [
+            "space",
+            "soviet"
+          ]
+        },
+        "wwii_engram": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to see who could ge",
+          "relevant": true,
+          "found_markers": [
+            "space",
+            "moon",
+            "soviet"
+          ]
+        },
+        "depression_engram": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to achieve the firs",
+          "relevant": true,
+          "found_markers": [
+            "space",
+            "moon",
+            "soviet"
+          ]
+        },
+        "cold_war_engram": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to see who could ac",
+          "relevant": true,
+          "found_markers": [
+            "space",
+            "moon",
+            "soviet"
+          ]
+        },
+        "composed_avg": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to achieve the firs",
+          "relevant": true,
+          "found_markers": [
+            "space",
+            "moon",
+            "soviet"
+          ]
+        },
+        "composed_recursive": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to achieve the firs",
+          "relevant": true,
+          "found_markers": [
+            "space",
+            "moon",
+            "soviet"
+          ]
+        }
+      }
+    },
+    {
+      "question": "What was the Civil Rights Movement?",
+      "topic": "20th_century",
+      "in_sources": false,
+      "expected_markers": [
+        "civil rights",
+        "king",
+        "segregation",
+        "equality"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Civil Rights Movement was a movement that aimed to end racial segregation and discrimination in ",
+          "relevant": true,
+          "found_markers": [
+            "civil rights",
+            "king",
+            "segregation"
+          ]
+        },
+        "wwii_engram": {
+          "answer": " The Civil Rights Movement was a series of protests and demonstrations that took place in the United",
+          "relevant": true,
+          "found_markers": [
+            "civil rights",
+            "king",
+            "segregation",
+            "equality"
+          ]
+        },
+        "depression_engram": {
+          "answer": " The Civil Rights Movement was a series of organized protests and demonstrations that took place in ",
+          "relevant": true,
+          "found_markers": [
+            "civil rights",
+            "king",
+            "segregation"
+          ]
+        },
+        "cold_war_engram": {
+          "answer": " The Civil Rights Movement was a series of organized protests and demonstrations that took place in ",
+          "relevant": true,
+          "found_markers": [
+            "civil rights",
+            "king",
+            "segregation"
+          ]
+        },
+        "composed_avg": {
+          "answer": " The Civil Rights Movement was a social movement in the United States that fought for the legal and ",
+          "relevant": true,
+          "found_markers": [
+            "civil rights",
+            "king",
+            "segregation",
+            "equality"
+          ]
+        },
+        "composed_recursive": {
+          "answer": " The Civil Rights Movement was a series of protests and campaigns that took place in the United Stat",
+          "relevant": true,
+          "found_markers": [
+            "civil rights",
+            "king"
+          ]
+        }
+      }
+    },
+    {
+      "question": "What was the New Deal?",
+      "topic": "20th_century",
+      "in_sources": true,
+      "expected_markers": [
+        "roosevelt",
+        "depression",
+        "programs",
+        "recovery"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The New Deal was a series of economic policies implemented by the United States government in the 19",
+          "relevant": true,
+          "found_markers": [
+            "depression",
+            "recovery"
+          ]
+        },
+        "wwii_engram": {
+          "answer": " The New Deal was a series of programs and policies introduced by President Franklin D. Roosevelt in",
+          "relevant": true,
+          "found_markers": [
+            "roosevelt",
+            "depression",
+            "programs"
+          ]
+        },
+        "depression_engram": {
+          "answer": " The New Deal was a series of programs and policies introduced by President Franklin D. Roosevelt in",
+          "relevant": true,
+          "found_markers": [
+            "roosevelt",
+            "depression",
+            "programs"
+          ]
+        },
+        "cold_war_engram": {
+          "answer": " The New Deal was a series of programs and policies introduced by President Franklin D. Roosevelt in",
+          "relevant": true,
+          "found_markers": [
+            "roosevelt",
+            "depression",
+            "programs"
+          ]
+        },
+        "composed_avg": {
+          "answer": " The New Deal was a series of programs and policies introduced by President Franklin D. Roosevelt in",
+          "relevant": true,
+          "found_markers": [
+            "roosevelt",
+            "depression",
+            "programs"
+          ]
+        },
+        "composed_recursive": {
+          "answer": " The New Deal was a series of programs and policies introduced by President Franklin D. Roosevelt in",
+          "relevant": true,
+          "found_markers": [
+            "roosevelt",
+            "depression",
+            "programs"
+          ]
+        }
+      }
+    },
+    {
+      "question": "What were the major technological advances of the 20th century?",
+      "topic": "20th_century",
+      "in_sources": false,
+      "expected_markers": [
+        "computer",
+        "nuclear",
+        "aviation",
+        "television",
+        "internet"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The 20th century was a period of significant technological advancements. Some of the major technolog",
+          "relevant": true,
+          "found_markers": [
+            "computer",
+            "internet"
+          ]
+        },
+        "wwii_engram": {
+          "answer": " The 20th century saw significant technological advances in various fields, including:\n\n1. **Electro",
+          "relevant": true,
+          "found_markers": [
+            "computer"
+          ]
+        },
+        "depression_engram": {
+          "answer": " The 20th century saw significant technological advances in various fields, including:\n\n1. **Electro",
+          "relevant": true,
+          "found_markers": [
+            "computer"
+          ]
+        },
+        "cold_war_engram": {
+          "answer": " The 20th century saw significant technological advances in various fields, including:\n\n1. **Electro",
+          "relevant": true,
+          "found_markers": [
+            "computer"
+          ]
+        },
+        "composed_avg": {
+          "answer": " The 20th century saw significant technological advances in various fields, including:\n\n1. **Electro",
+          "relevant": true,
+          "found_markers": [
+            "computer"
+          ]
+        },
+        "composed_recursive": {
+          "answer": " The 20th century saw significant technological advances in various fields, including:\n\n1. **Electri",
+          "relevant": true,
+          "found_markers": [
+            "computer",
+            "internet"
+          ]
+        }
+      }
+    }
+  ]
+}

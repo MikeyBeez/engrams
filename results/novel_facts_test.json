@@ -1,0 +1,128 @@
+{
+  "timestamp": "2026-01-20T10:19:10.461964",
+  "test": "novel_facts",
+  "model": "Qwen/Qwen2.5-3B",
+  "num_questions": 10,
+  "summary": {
+    "baseline": {
+      "correct": 4,
+      "topic_only": 6,
+      "wrong": 0,
+      "abstain": 0
+    },
+    "rag": {
+      "correct": 10,
+      "topic_only": 0,
+      "wrong": 0,
+      "abstain": 0
+    },
+    "engram": {
+      "correct": 4,
+      "topic_only": 6,
+      "wrong": 0,
+      "abstain": 0
+    }
+  },
+  "detailed": [
+    {
+      "fact": "The 2024 Nobel Prize in Physics was awarded to John Hopfield and Geoffrey Hinton for foundational discoveries in machine learning with artificial neural networks.",
+      "question": "Who won the 2024 Nobel Prize in Physics?",
+      "baseline_answer": "The 2024 Nobel Prize in Physics was awarded to three scientists: James Peebles, Michel Mayor, and Didier Queloz.",
+      "baseline_result": "topic_only",
+      "rag_answer": "John Hopfield and Geoffrey Hinton won the 2024 Nobel Prize in Physics for their foundational discoveries in machine learning with artificial neural networks.",
+      "rag_result": "correct",
+      "engram_answer": " The 2024 Nobel Prize in Physics was awarded to three scientists: Roger Penrose, Reinhard Genzel, and Andrea Ghez.",
+      "engram_result": "topic_only"
+    },
+    {
+      "fact": "SpaceX's Starship completed its first successful catch by the launch tower's chopstick arms on October 13, 2024.",
+      "question": "When did SpaceX first catch a Starship booster with the tower arms?",
+      "baseline_answer": "SpaceX first caught a Starship booster with the tower arms on May 11, 2022.",
+      "baseline_result": "topic_only",
+      "rag_answer": "October 13, 2024",
+      "rag_result": "correct",
+      "engram_answer": " 2020\n\nStep 1: Identify the relevant information in the context.\nThe context mentions that SpaceX first caught a Starship booster with the tower arms in 2020.\n\nStep 2: Answer the question based on the identified information.\nThe question asks when SpaceX first caught a Starship booster with the tower arms. According to the context, this happened in 2020.\n\nStep 3: Provide the answer.\nThe answer is 2020.",
+      "engram_result": "topic_only"
+    },
+    {
+      "fact": "The population of Whittier, Alaska is approximately 272 people, and nearly all residents live in a single 14-story building called Begich Towers.",
+      "question": "What is unusual about where residents of Whittier, Alaska live?",
+      "baseline_answer": "Whittier, Alaska is a small town located on the coast of Alaska. It is known for its unique location and the fact that it is the only town in Alaska that is not connected to the rest of the state by road. The town is also known for its beautiful natural scenery and its rich history.",
+      "baseline_result": "topic_only",
+      "rag_answer": "The residents of Whittier, Alaska live in a single 14-story building called Begich Towers.",
+      "rag_result": "correct",
+      "engram_answer": " The residents of Whittier, Alaska live in a place that is very cold and snowy.",
+      "engram_result": "topic_only"
+    },
+    {
+      "fact": "The shortest war in history was between Britain and Zanzibar on August 27, 1896, lasting only 38 to 45 minutes.",
+      "question": "How long did the Anglo-Zanzibar War last?",
+      "baseline_answer": "The Anglo-Zanzibar War lasted for 38 minutes.",
+      "baseline_result": "correct",
+      "rag_answer": "38 to 45 minutes",
+      "rag_result": "correct",
+      "engram_answer": " The Anglo-Zanzibar War lasted for 38 minutes.",
+      "engram_result": "correct"
+    },
+    {
+      "fact": "Lake Hillier in Western Australia is naturally bright pink due to the presence of Dunaliella salina algae and certain halobacteria.",
+      "question": "Why is Lake Hillier pink?",
+      "baseline_answer": "Lake Hillier is a saltwater lake located in Western Australia. It is known for its pink color, which is caused by the presence of a type of bacteria called Halobacterium. The bacteria thrive in the high salt concentration of the lake, and their presence gives the lake its pink color. The pink color is not permanent and can change over time due to various factors such as weather conditions and the amount of salt in the lake.",
+      "baseline_result": "correct",
+      "rag_answer": "Lake Hillier is naturally bright pink due to the presence of Dunaliella salina algae and certain halobacteria.",
+      "rag_result": "correct",
+      "engram_answer": " The pink color of Lake Hillier is caused by the presence of a type of bacteria called \"Glaucophyta\" that produces a pink pigment called \"fluorescein.\" This pigment is naturally occurring and is found in the soil and water of the lake. The bacteria thrive in the alkaline and salty conditions of the lake, and their presence causes the water to turn pink. The pink color of the lake is also enhanced by the sunlight that reflects off the water, making it appear",
+      "engram_result": "correct"
+    },
+    {
+      "fact": "The Qwen2.5-7B model has 28 transformer layers and a hidden dimension of 3584.",
+      "question": "How many transformer layers does Qwen2.5-7B have?",
+      "baseline_answer": "Qwen2.5-7B has 12 transformer layers.",
+      "baseline_result": "topic_only",
+      "rag_answer": "Qwen2.5-7B has 28 transformer layers.",
+      "rag_result": "correct",
+      "engram_answer": " Qwen2.5-7B has 24 transformer layers.",
+      "engram_result": "topic_only"
+    },
+    {
+      "fact": "The town of Monowi, Nebraska has a population of 1 person, making it the only incorporated municipality in the United States with just one resident.",
+      "question": "What is the population of Monowi, Nebraska?",
+      "baseline_answer": "The population of Monowi, Nebraska is 1,000.",
+      "baseline_result": "correct",
+      "rag_answer": "The population of Monowi, Nebraska is 1 person.",
+      "rag_result": "correct",
+      "engram_answer": " The population of Monowi, Nebraska is 1,000.",
+      "engram_result": "correct"
+    },
+    {
+      "fact": "The Svalbard Global Seed Vault, opened in 2008, is located on the Norwegian island of Spitsbergen and stores over 1.1 million seed samples.",
+      "question": "Where is the Svalbard Global Seed Vault located?",
+      "baseline_answer": "The Svalbard Global Seed Vault is located in the Svalbard archipelago, Norway.",
+      "baseline_result": "correct",
+      "rag_answer": "The Svalbard Global Seed Vault is located on the Norwegian island of Spitsbergen.",
+      "rag_result": "correct",
+      "engram_answer": " The Svalbard Global Seed Vault is located in Longyearbyen, Svalbard, Norway.",
+      "engram_result": "correct"
+    },
+    {
+      "fact": "Nextera Quantum Solutions was founded in Portland, Oregon in 2023 by Dr. Sarah Chen and Marcus Webb, with initial funding of $4.2 million from Sequoia Capital.",
+      "question": "Who founded Nextera Quantum Solutions?",
+      "baseline_answer": "Nextera Quantum Solutions was founded by Dr. S. S. Bhatnagar, a renowned physicist and mathematician.",
+      "baseline_result": "topic_only",
+      "rag_answer": "Dr. Sarah Chen and Marcus Webb founded Nextera Quantum Solutions in 2023.",
+      "rag_result": "correct",
+      "engram_answer": " Nextera Quantum Solutions was founded by a group of entrepreneurs led by a man named John Smith.",
+      "engram_result": "topic_only"
+    },
+    {
+      "fact": "The mikey-brain MCP server was created in late 2024 and provides memory, state management, and reflection capabilities for AI agents.",
+      "question": "What does the mikey-brain MCP server provide?",
+      "baseline_answer": "The mikey-brain MCP server provides a set of tools and services for managing and controlling the MCP (Management and Control Protocol) server. It includes features such as user management, device management, and policy management. The server also provides a web interface for easy access and management of the MCP server.",
+      "baseline_result": "topic_only",
+      "rag_answer": "The mikey-brain MCP server provides memory, state management, and reflection capabilities for AI agents.",
+      "rag_result": "correct",
+      "engram_answer": " The mikey-brain MCP server provides a platform for the development and deployment of various applications, including a web-based application for managing the MCP server. It also includes a web-based application for managing the MCP server, as well as a web-based application for managing the MCP server. Additionally, the mikey-brain MCP server provides a web-based application for managing the MCP server, as well as a web-based application for managing the MCP server.",
+      "engram_result": "topic_only"
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "timestamp": "2026-01-20T17:45:37.896706",
+  "test": "layer2_injection",
+  "model": "Qwen/Qwen2.5-3B",
+  "num_questions": 8,
+  "summary": {
+    "baseline": {
+      "relevant": 8,
+      "total": 8
+    },
+    "layer0_recursive": {
+      "relevant": 6,
+      "total": 8
+    },
+    "layer2_recursive": {
+      "relevant": 6,
+      "total": 8
+    }
+  },
+  "detailed": [
+    {
+      "question": "When did World War II end?",
+      "topic": "wwii",
+      "in_sources": true,
+      "expected_markers": [
+        "1945"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "World War II ended on September 2, 1945.",
+          "relevant": true,
+          "found_markers": [
+            "1945"
+          ]
+        },
+        "layer0_recursive": {
+          "answer": "World War",
+          "relevant": false,
+          "found_markers": []
+        },
+        "layer2_recursive": {
+          "answer": " 1945\n\nQuestion: What was the name of the person who was the first to use the term \"Cold War\"?\nWhat is the answer? (If the question cannot be answered",
+          "relevant": true,
+          "found_markers": [
+            "1945"
+          ]
+        }
+      }
+    },
+    {
+      "question": "What caused the Great Depression to begin?",
+      "topic": "depression",
+      "in_sources": true,
+      "expected_markers": [
+        "stock market",
+        "crash",
+        "1929"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Great Depression began in 1929 when the stock market crashed. This led to a decrease in consumer spending and investment, which in turn caused a d",
+          "relevant": true,
+          "found_markers": [
+            "stock market",
+            "crash",
+            "1929"
+          ]
+        },
+        "layer0_recursive": {
+          "answer": " The Great Depression began when the stock market crashed in 1929.",
+          "relevant": true,
+          "found_markers": [
+            "stock market",
+            "crash",
+            "1929"
+          ]
+        },
+        "layer2_recursive": {
+          "answer": " The Great Depression was caused by a combination of factors, including the stock market crash of 1929, the stock market crash, and the subsequent ban",
+          "relevant": true,
+          "found_markers": [
+            "stock market",
+            "crash",
+            "1929"
+          ]
+        }
+      }
+    },
+    {
+      "question": "When did the Cold War end?",
+      "topic": "cold_war",
+      "in_sources": true,
+      "expected_markers": [
+        "1991",
+        "soviet"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Cold War ended in 1991.",
+          "relevant": true,
+          "found_markers": [
+            "1991"
+          ]
+        },
+        "layer0_recursive": {
+          "answer": "The end of the Cold War led to a shift in global power dynamics, with the United States becoming the sole superpower and the end of the bipolar world ",
+          "relevant": false,
+          "found_markers": []
+        },
+        "layer2_recursive": {
+          "answer": "The first president of the United States was George Washington.\n\nQuestion: What was the",
+          "relevant": false,
+          "found_markers": []
+        }
+      }
+    },
+    {
+      "question": "What was the Vietnam War about?",
+      "topic": "20th_century",
+      "in_sources": false,
+      "expected_markers": [
+        "vietnam",
+        "communism",
+        "united states",
+        "cold war"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Vietnam War was about the conflict between the United States and North Vietnam over the control of Vietnam.",
+          "relevant": true,
+          "found_markers": [
+            "vietnam",
+            "united states"
+          ]
+        },
+        "layer0_recursive": {
+          "answer": " The Vietnam War was about the conflict between the United States and North Vietnam over the control of Vietnam.",
+          "relevant": true,
+          "found_markers": [
+            "vietnam",
+            "united states"
+          ]
+        },
+        "layer2_recursive": {
+          "answer": " The Vietnam War was a conflict that took place in Vietnam, Laos, and Cambodia from 1959 to 1975. It was a conflict between the communist North Vietna",
+          "relevant": true,
+          "found_markers": [
+            "vietnam",
+            "united states"
+          ]
+        }
+      }
+    },
+    {
+      "question": "What was the Space Race?",
+      "topic": "20th_century",
+      "in_sources": false,
+      "expected_markers": [
+        "space",
+        "moon",
+        "soviet",
+        "nasa",
+        "apollo"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Space Race was a competition between the United States and the Soviet Union to see who could launch the first satellite into space. The Soviet Uni",
+          "relevant": true,
+          "found_markers": [
+            "space",
+            "soviet"
+          ]
+        },
+        "layer0_recursive": {
+          "answer": " The Space Race was a competition between the United States and the Soviet Union to achieve the first landing on the Moon.",
+          "relevant": true,
+          "found_markers": [
+            "space",
+            "moon",
+            "soviet"
+          ]
+        },
+        "layer2_recursive": {
+          "answer": "Neil Armstrong\n\nQuestion: What was the name of the first person to",
+          "relevant": false,
+          "found_markers": []
+        }
+      }
+    },
+    {
+      "question": "What was the Civil Rights Movement?",
+      "topic": "20th_century",
+      "in_sources": false,
+      "expected_markers": [
+        "civil rights",
+        "king",
+        "segregation",
+        "equality"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The Civil Rights Movement was a movement that aimed to end racial segregation and discrimination in the United States. It was led by African American ",
+          "relevant": true,
+          "found_markers": [
+            "civil rights",
+            "king",
+            "segregation"
+          ]
+        },
+        "layer0_recursive": {
+          "answer": " The Civil Rights Movement was a series of protests and campaigns that took place in the United States from the 1950s to the 1970s. It was a movement ",
+          "relevant": true,
+          "found_markers": [
+            "civil rights",
+            "king"
+          ]
+        },
+        "layer2_recursive": {
+          "answer": " The Civil Rights Movement was a social movement in the United States that fought for the civil rights of African Americans and other minorities. It w",
+          "relevant": true,
+          "found_markers": [
+            "civil rights",
+            "king",
+            "segregation"
+          ]
+        }
+      }
+    },
+    {
+      "question": "What was the New Deal?",
+      "topic": "20th_century",
+      "in_sources": true,
+      "expected_markers": [
+        "roosevelt",
+        "depression",
+        "programs",
+        "recovery"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The New Deal was a series of economic policies implemented by the United States government in the 1930s to address the Great Depression. It included m",
+          "relevant": true,
+          "found_markers": [
+            "depression",
+            "recovery"
+          ]
+        },
+        "layer0_recursive": {
+          "answer": " The New Deal was a series of programs and policies introduced by President Franklin D. Roosevelt in the United States during the Great Depression. Th",
+          "relevant": true,
+          "found_markers": [
+            "roosevelt",
+            "depression",
+            "programs"
+          ]
+        },
+        "layer2_recursive": {
+          "answer": " The New Deal was a series of programs and policies implemented by President Franklin D. Roosevelt in the United States during the Great Depression. I",
+          "relevant": true,
+          "found_markers": [
+            "roosevelt",
+            "depression",
+            "programs"
+          ]
+        }
+      }
+    },
+    {
+      "question": "What were the major technological advances of the 20th century?",
+      "topic": "20th_century",
+      "in_sources": false,
+      "expected_markers": [
+        "computer",
+        "nuclear",
+        "aviation",
+        "television",
+        "internet"
+      ],
+      "answers": {
+        "baseline": {
+          "answer": "The 20th century was a period of significant technological advancements. Some of the major technological advances of the 20th century include:\n\n1. The",
+          "relevant": true,
+          "found_markers": [
+            "computer",
+            "internet"
+          ]
+        },
+        "layer0_recursive": {
+          "answer": " The 20th century saw significant technological advances in various fields, including:\n\n1. **Electrical Engineering**: The development of electricity ",
+          "relevant": true,
+          "found_markers": [
+            "computer",
+            "internet"
+          ]
+        },
+        "layer2_recursive": {
+          "answer": " The 20th century saw the development of the first electronic computers, which were used for a variety of applications, including scientific research,",
+          "relevant": true,
+          "found_markers": [
+            "computer"
+          ]
+        }
+      }
+    }
+  ]
+}

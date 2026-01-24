@@ -1,0 +1,33 @@
+{
+  "baseline": 6,
+  "layers": {
+    "4": {
+      "total": 10,
+      "improvement": 4
+    },
+    "8": {
+      "total": 9,
+      "improvement": 3
+    },
+    "12": {
+      "total": 6,
+      "improvement": 0
+    },
+    "16": {
+      "total": 4,
+      "improvement": -2
+    },
+    "20": {
+      "total": 6,
+      "improvement": 0
+    },
+    "24": {
+      "total": 10,
+      "improvement": 4
+    },
+    "27": {
+      "total": 6,
+      "improvement": 0
+    }
+  }
+}

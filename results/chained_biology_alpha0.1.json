@@ -1,0 +1,2006 @@
+{
+  "config": {
+    "alpha": 0.1,
+    "n_papers": 100,
+    "model": "Qwen/Qwen2.5-3B",
+    "timestamp": "2026-01-20T22:17:21.585975"
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "pmid": "33810328",
+      "title": "Dopamine: The Neuromodulator of Long-Term Synaptic Plasticity, Reward and Movement Control.",
+      "sim_to_initial": 0.99755859375,
+      "response_length": 820
+    },
+    {
+      "turn": 2,
+      "pmid": "39438166",
+      "title": "Neuroplasticity in the transition from acute to chronic pain.",
+      "sim_to_initial": 0.99560546875,
+      "response_length": 865
+    },
+    {
+      "turn": 3,
+      "pmid": "35667493",
+      "title": "Synaptic plasticity during systems memory consolidation.",
+      "sim_to_initial": 0.98974609375,
+      "response_length": 786
+    },
+    {
+      "turn": 4,
+      "pmid": "36669484",
+      "title": "All-optical physiology resolves a synaptic basis for behavioral timescale plasticity.",
+      "sim_to_initial": 0.98583984375,
+      "response_length": 789
+    },
+    {
+      "turn": 5,
+      "pmid": "34334233",
+      "title": "Astrocyte and neuron cooperation in long-term depression.",
+      "sim_to_initial": 0.9814453125,
+      "response_length": 807
+    },
+    {
+      "turn": 6,
+      "pmid": "37236178",
+      "title": "NMDA receptor functions in health and disease: Old actor, new dimensions.",
+      "sim_to_initial": 0.978515625,
+      "response_length": 855
+    },
+    {
+      "turn": 7,
+      "pmid": "37918394",
+      "title": "Chimeric autoantibody receptor T\u00a0cells deplete NMDA receptor-specific B cells.",
+      "sim_to_initial": 0.97412109375,
+      "response_length": 608
+    },
+    {
+      "turn": 8,
+      "pmid": "38836461",
+      "title": "Disease-Associated Variants in GRIN1, GRIN2A and GRIN2B genes: Insights into NMDA Receptor Structure, Function, and Pathophysiology.",
+      "sim_to_initial": 0.970703125,
+      "response_length": 860
+    },
+    {
+      "turn": 9,
+      "pmid": "37988826",
+      "title": "Mechanisms of NMDA receptor regulation.",
+      "sim_to_initial": 0.96826171875,
+      "response_length": 860
+    },
+    {
+      "turn": 10,
+      "pmid": "32718032",
+      "title": "Magnesium and Pain.",
+      "sim_to_initial": 0.9658203125,
+      "response_length": 788
+    },
+    {
+      "turn": 11,
+      "pmid": "35522844",
+      "title": "The role of mitochondrial dysfunction in Alzheimer's disease pathogenesis.",
+      "sim_to_initial": 0.96337890625,
+      "response_length": 875
+    },
+    {
+      "turn": 12,
+      "pmid": "36917977",
+      "title": "Gasdermin-E mediates mitochondrial damage in axons and neurodegeneration.",
+      "sim_to_initial": 0.96044921875,
+      "response_length": 668
+    },
+    {
+      "turn": 13,
+      "pmid": "37155124",
+      "title": "Omaveloxolone: First Approval.",
+      "sim_to_initial": 0.95849609375,
+      "response_length": 702
+    },
+    {
+      "turn": 14,
+      "pmid": "36943668",
+      "title": "Mitochondrial Dysfunction and Parkinson's Disease: Pathogenesis and Therapeutic Strategies.",
+      "sim_to_initial": 0.95654296875,
+      "response_length": 816
+    },
+    {
+      "turn": 15,
+      "pmid": "32471464",
+      "title": "Mitochondria dysfunction in the pathogenesis of Alzheimer's disease: recent advances.",
+      "sim_to_initial": 0.955078125,
+      "response_length": 896
+    },
+    {
+      "turn": 16,
+      "pmid": "35442747",
+      "title": "Blood-brain barrier-penetrating single CRISPR-Cas9 nanocapsules for effective and safe glioblastoma gene therapy.",
+      "sim_to_initial": 0.95263671875,
+      "response_length": 746
+    },
+    {
+      "turn": 17,
+      "pmid": "39209994",
+      "title": "Polymer-locking fusogenic liposomes for glioblastoma-targeted siRNA delivery and CRISPR-Cas gene editing.",
+      "sim_to_initial": 0.951171875,
+      "response_length": 613
+    },
+    {
+      "turn": 18,
+      "pmid": "35716694",
+      "title": "Potential disease-modifying therapies for Huntington's disease: lessons learned and future opportunities.",
+      "sim_to_initial": 0.9501953125,
+      "response_length": 851
+    },
+    {
+      "turn": 19,
+      "pmid": "36755494",
+      "title": "Advances in gene therapy hold promise for treating hereditary hearing loss.",
+      "sim_to_initial": 0.94921875,
+      "response_length": 803
+    },
+    {
+      "turn": 20,
+      "pmid": "39555828",
+      "title": "CRISPR-Cas9 Gene Editing with Nexiguran Ziclumeran for ATTR Cardiomyopathy.",
+      "sim_to_initial": 0.947265625,
+      "response_length": 643
+    },
+    {
+      "turn": 21,
+      "pmid": "35503338",
+      "title": "Adult hippocampal neurogenesis and its impairment in Alzheimer's disease.",
+      "sim_to_initial": 0.94677734375,
+      "response_length": 790
+    },
+    {
+      "turn": 22,
+      "pmid": "36793868",
+      "title": "Hyperactive neuronal autophagy depletes BDNF and impairs adult hippocampal neurogenesis in a corticosterone-induced mouse model of depression.",
+      "sim_to_initial": 0.9462890625,
+      "response_length": 791
+    },
+    {
+      "turn": 23,
+      "pmid": "37881439",
+      "title": "Roles of microglia in adult hippocampal neurogenesis in depression and their therapeutics.",
+      "sim_to_initial": 0.9453125,
+      "response_length": 753
+    },
+    {
+      "turn": 24,
+      "pmid": "33636114",
+      "title": "Adult Hippocampal Neurogenesis in Aging and Alzheimer's Disease.",
+      "sim_to_initial": 0.9453125,
+      "response_length": 857
+    },
+    {
+      "turn": 25,
+      "pmid": "37610873",
+      "title": "Pleiotrophin ameliorates age-induced adult hippocampal neurogenesis decline and cognitive dysfunction.",
+      "sim_to_initial": 0.9443359375,
+      "response_length": 720
+    },
+    {
+      "turn": 26,
+      "pmid": "33208141",
+      "title": "A blood-brain barrier overview on structure, function, impairment, and biomarkers of integrity.",
+      "sim_to_initial": 0.94384765625,
+      "response_length": 867
+    },
+    {
+      "turn": 27,
+      "pmid": "35568085",
+      "title": "Factors influencing the blood-brain barrier permeability.",
+      "sim_to_initial": 0.94384765625,
+      "response_length": 875
+    },
+    {
+      "turn": 28,
+      "pmid": "32691713",
+      "title": "Angiogenesis and Blood-Brain Barrier Permeability in Vascular Remodeling after Stroke.",
+      "sim_to_initial": 0.94287109375,
+      "response_length": 832
+    },
+    {
+      "turn": 29,
+      "pmid": "34594000",
+      "title": "The blood-brain barrier in systemic infection and inflammation.",
+      "sim_to_initial": 0.94287109375,
+      "response_length": 878
+    },
+    {
+      "turn": 30,
+      "pmid": "33028591",
+      "title": "Preclinical Comparison of the Blood-brain barrier Permeability of Osimertinib with Other EGFR TKIs.",
+      "sim_to_initial": 0.9423828125,
+      "response_length": 665
+    },
+    {
+      "turn": 31,
+      "pmid": "39112700",
+      "title": "Neuronal substance P drives metastasis through an extracellular RNA-TLR7 axis.",
+      "sim_to_initial": 0.94189453125,
+      "response_length": 674
+    },
+    {
+      "turn": 32,
+      "pmid": "33334813",
+      "title": "Cancer-Associated Neurogenesis and Nerve-Cancer Cross-talk.",
+      "sim_to_initial": 0.94140625,
+      "response_length": 828
+    },
+    {
+      "turn": 33,
+      "pmid": "33888612",
+      "title": "Barcoded viral tracing of single-cell interactions in central nervous system inflammation.",
+      "sim_to_initial": 0.94140625,
+      "response_length": 719
+    },
+    {
+      "turn": 34,
+      "pmid": "36231105",
+      "title": "Axon Guidance Molecules and Pain.",
+      "sim_to_initial": 0.94091796875,
+      "response_length": 831
+    },
+    {
+      "turn": 35,
+      "pmid": "37941008",
+      "title": "Efferocytosis is restricted by axon guidance molecule EphA4 via ERK/Stat6/MERTK signaling following brain injury.",
+      "sim_to_initial": 0.94091796875,
+      "response_length": 691
+    },
+    {
+      "turn": 36,
+      "pmid": "36056211",
+      "title": "CaMKII: a central molecular organizer of synaptic plasticity, learning and memory.",
+      "sim_to_initial": 0.94091796875,
+      "response_length": 788
+    },
+    {
+      "turn": 37,
+      "pmid": "35422062",
+      "title": "PINK1-mediated Drp1<sup>S616</sup> phosphorylation modulates synaptic development and plasticity via promoting mitochondrial fission.",
+      "sim_to_initial": 0.94091796875,
+      "response_length": 624
+    },
+    {
+      "turn": 38,
+      "pmid": "39002543",
+      "title": "Cortico-basal ganglia plasticity in motor learning.",
+      "sim_to_initial": 0.94140625,
+      "response_length": 911
+    },
+    {
+      "turn": 39,
+      "pmid": "37142767",
+      "title": "Glutamate indicators with improved activation kinetics and localization for imaging synaptic transmission.",
+      "sim_to_initial": 0.9404296875,
+      "response_length": 760
+    },
+    {
+      "turn": 40,
+      "pmid": "33775740",
+      "title": "The microtubule cytoskeleton at the synapse.",
+      "sim_to_initial": 0.94091796875,
+      "response_length": 835
+    },
+    {
+      "turn": 41,
+      "pmid": "37774678",
+      "title": "Human microglial state dynamics in Alzheimer's disease progression.",
+      "sim_to_initial": 0.9404296875,
+      "response_length": 751
+    },
+    {
+      "turn": 42,
+      "pmid": "37029500",
+      "title": "Parkin regulates microglial NLRP3 and represses neurodegeneration in Parkinson's disease.",
+      "sim_to_initial": 0.93994140625,
+      "response_length": 678
+    },
+    {
+      "turn": 43,
+      "pmid": "37105172",
+      "title": "Microglial-to-neuronal CCR5 signaling regulates autophagy in neurodegeneration.",
+      "sim_to_initial": 0.93994140625,
+      "response_length": 693
+    },
+    {
+      "turn": 44,
+      "pmid": "34082381",
+      "title": "Quercetin hinders microglial activation to alleviate neurotoxicity via the interplay between NLRP3 inflammasome and mitophagy.",
+      "sim_to_initial": 0.93994140625,
+      "response_length": 592
+    },
+    {
+      "turn": 45,
+      "pmid": "36989373",
+      "title": "The neuronal pentraxin Nptx2 regulates complement activity and restrains microglia-mediated synapse loss in neurodegeneration.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 679
+    },
+    {
+      "turn": 46,
+      "pmid": "36368308",
+      "title": "Genomic architecture of autism from comprehensive whole-genome sequence annotation.",
+      "sim_to_initial": 0.9384765625,
+      "response_length": 536
+    },
+    {
+      "turn": 47,
+      "pmid": "32699506",
+      "title": "Neurodevelopmental disorders-the history and future of a diagnostic concept\u2029.",
+      "sim_to_initial": 0.9384765625,
+      "response_length": 850
+    },
+    {
+      "turn": 48,
+      "pmid": "32730804",
+      "title": "Variants in SCAF4 Cause a Neurodevelopmental Disorder and Are Associated with Impaired mRNA Processing.",
+      "sim_to_initial": 0.93798828125,
+      "response_length": 798
+    },
+    {
+      "turn": 49,
+      "pmid": "32992620",
+      "title": "Neuron-Glia Interactions in Neurodevelopmental Disorders.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 863
+    },
+    {
+      "turn": 50,
+      "pmid": "34748075",
+      "title": "MYT1L-associated neurodevelopmental disorder: description of 40 new cases and literature review of clinical and molecular aspects.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 843
+    },
+    {
+      "turn": 51,
+      "pmid": "35927580",
+      "title": "Functional connectivity in reward circuitry and symptoms of anhedonia as therapeutic targets in depression with high inflammation: evidence from a dopamine challenge study.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 763
+    },
+    {
+      "turn": 52,
+      "pmid": "37776853",
+      "title": "Stress relief as a natural resilience mechanism against depression-like behaviors.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 969
+    },
+    {
+      "turn": 53,
+      "pmid": "36271048",
+      "title": "Reward and aversion processing by input-defined parallel nucleus accumbens circuits in mice.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 652
+    },
+    {
+      "turn": 54,
+      "pmid": "37924513",
+      "title": "Top-down circuitry from the anterior insular cortex to VTA dopamine neurons modulates reward-related memory.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 734
+    },
+    {
+      "turn": 55,
+      "pmid": "38052989",
+      "title": "In vitro modeling of the human dopaminergic system using spatially arranged ventral midbrain-striatum-cortex assembloids.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 750
+    },
+    {
+      "turn": 56,
+      "pmid": "38768971",
+      "title": "Astrocyte Calcium Signaling.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 787
+    },
+    {
+      "turn": 57,
+      "pmid": "37679321",
+      "title": "Astrocyte reactivity and inflammation-induced depression-like behaviors are regulated by Orai1 calcium channels.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 733
+    },
+    {
+      "turn": 58,
+      "pmid": "34139149",
+      "title": "Specific and behaviorally consequential astrocyte G<sub>q</sub> GPCR signaling attenuation in\u00a0vivo with i\u03b2ARK.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 703
+    },
+    {
+      "turn": 59,
+      "pmid": "37857773",
+      "title": "A conceptual framework for astrocyte function.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 828
+    },
+    {
+      "turn": 60,
+      "pmid": "32139688",
+      "title": "Identification of region-specific astrocyte subtypes at single cell resolution.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 835
+    },
+    {
+      "turn": 61,
+      "pmid": "34239348",
+      "title": "Interaction between A\u03b2 and Tau in the Pathogenesis of Alzheimer's Disease.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 722
+    },
+    {
+      "turn": 62,
+      "pmid": "39014245",
+      "title": "Cellular and pathological functions of tau.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 896
+    },
+    {
+      "turn": 63,
+      "pmid": "39241780",
+      "title": "Gut-induced alpha-Synuclein and Tau propagation initiate Parkinson's and Alzheimer's disease co-pathology and behavior impairments.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 662
+    },
+    {
+      "turn": 64,
+      "pmid": "37452321",
+      "title": "Tau and neuroinflammation in Alzheimer's disease: interplay mechanisms and clinical translation.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 929
+    },
+    {
+      "turn": 65,
+      "pmid": "37832941",
+      "title": "Neurodegenerative Disease Tauopathies.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 876
+    },
+    {
+      "turn": 66,
+      "pmid": "34655726",
+      "title": "Aggregation and structure of amyloid \u03b2-protein.",
+      "sim_to_initial": 0.9384765625,
+      "response_length": 723
+    },
+    {
+      "turn": 67,
+      "pmid": "33278431",
+      "title": "Review on Alzheimer's disease: Inhibition of amyloid beta and tau tangle formation.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 763
+    },
+    {
+      "turn": 68,
+      "pmid": "34082772",
+      "title": "Crosstalk between astrocytes and microglia results in increased degradation of \u03b1-synuclein and amyloid-\u03b2 aggregates.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 696
+    },
+    {
+      "turn": 69,
+      "pmid": "38888453",
+      "title": "Aggregation Mechanisms and Molecular Structures of Amyloid-\u03b2 in Alzheimer's Disease.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 826
+    },
+    {
+      "turn": 70,
+      "pmid": "33668406",
+      "title": "Promotion and Inhibition of Amyloid-\u03b2 Peptide Aggregation: Molecular Dynamics Studies.",
+      "sim_to_initial": 0.9384765625,
+      "response_length": 636
+    },
+    {
+      "turn": 71,
+      "pmid": "32525759",
+      "title": "Cellular Circuits in the Brain and Their Modulation in Acute and Chronic Pain.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 810
+    },
+    {
+      "turn": 72,
+      "pmid": "38935778",
+      "title": "GLP-1 increases preingestive satiation via hypothalamic circuits in mice and humans.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 610
+    },
+    {
+      "turn": 73,
+      "pmid": "31952856",
+      "title": "Amygdala Reward Neurons Form and Store Fear Extinction Memory.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 858
+    },
+    {
+      "turn": 74,
+      "pmid": "36224417",
+      "title": "Maturation and circuit integration of transplanted human cortical organoids.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 814
+    },
+    {
+      "turn": 75,
+      "pmid": "36232917",
+      "title": "Studying Synaptic Connectivity and Strength with Optogenetics and Patch-Clamp Electrophysiology.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 864
+    },
+    {
+      "turn": 76,
+      "pmid": "33608526",
+      "title": "Single-cell RNA sequencing reveals functional heterogeneity of glioma-associated brain macrophages.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 675
+    },
+    {
+      "turn": 77,
+      "pmid": "36580914",
+      "title": "Molecular and spatial signatures of mouse brain aging at single-cell resolution.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 902
+    },
+    {
+      "turn": 78,
+      "pmid": "32341560",
+      "title": "Systematic comparison of single-cell and single-nucleus RNA-sequencing methods.",
+      "sim_to_initial": 0.9384765625,
+      "response_length": 830
+    },
+    {
+      "turn": 79,
+      "pmid": "37824663",
+      "title": "Transcriptomic diversity of cell types across the adult human brain.",
+      "sim_to_initial": 0.93798828125,
+      "response_length": 734
+    },
+    {
+      "turn": 80,
+      "pmid": "38233398",
+      "title": "Leveraging single-cell ATAC-seq and RNA-seq to identify disease-critical fetal and adult brain cell types.",
+      "sim_to_initial": 0.9375,
+      "response_length": 631
+    },
+    {
+      "turn": 81,
+      "pmid": "35136018",
+      "title": "Molecular regulations of circadian rhythm and implications for physiology and diseases.",
+      "sim_to_initial": 0.9384765625,
+      "response_length": 905
+    },
+    {
+      "turn": 82,
+      "pmid": "34396981",
+      "title": "Human circadian variations.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 893
+    },
+    {
+      "turn": 83,
+      "pmid": "36115370",
+      "title": "Circadian rhythms and disorders of the timing of sleep.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 924
+    },
+    {
+      "turn": 84,
+      "pmid": "37369203",
+      "title": "Circadian clocks are modulated by compartmentalized oscillating translation.",
+      "sim_to_initial": 0.9384765625,
+      "response_length": 748
+    },
+    {
+      "turn": 85,
+      "pmid": "33445491",
+      "title": "Circadian Rhythm: Potential Therapeutic Target for Atherosclerosis and Thrombosis.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 940
+    },
+    {
+      "turn": 86,
+      "pmid": "35283168",
+      "title": "Exerkines and long-term synaptic potentiation: Mechanisms of exercise-induced neuroplasticity.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 856
+    },
+    {
+      "turn": 87,
+      "pmid": "34375719",
+      "title": "Molecular mechanism of hippocampal long-term potentiation - Towards multiscale understanding of learning and memory.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 741
+    },
+    {
+      "turn": 88,
+      "pmid": "37290118",
+      "title": "Synaptic memory and CaMKII.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 720
+    },
+    {
+      "turn": 89,
+      "pmid": "34109726",
+      "title": "Long-term plasticity in the hippocampus: maintaining within and 'tagging' between synapses.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 783
+    },
+    {
+      "turn": 90,
+      "pmid": "38853558",
+      "title": "Interplay of hippocampal long-term potentiation and long-term depression in enabling memory representations.",
+      "sim_to_initial": 0.93994140625,
+      "response_length": 784
+    },
+    {
+      "turn": 91,
+      "pmid": "32025029",
+      "title": "Discriminating \u03b1-synuclein strains in Parkinson's disease and multiple system atrophy.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 776
+    },
+    {
+      "turn": 92,
+      "pmid": "35176268",
+      "title": "\u03b1-Synuclein in Parkinson's disease and advances in detection.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 753
+    },
+    {
+      "turn": 93,
+      "pmid": "38377788",
+      "title": "Gut microbiome, short-chain fatty acids, alpha-synuclein, neuroinflammation, and ROS/RNS: Relevance to Parkinson's disease and therapeutic implications.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 708
+    },
+    {
+      "turn": 94,
+      "pmid": "35552614",
+      "title": "Tau accelerates \u03b1-synuclein aggregation and spreading in Parkinson's disease.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 717
+    },
+    {
+      "turn": 95,
+      "pmid": "37339636",
+      "title": "Advanced human iPSC-based preclinical model for Parkinson's disease with optogenetic alpha-synuclein aggregation.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 647
+    },
+    {
+      "turn": 96,
+      "pmid": "35643092",
+      "title": "Tau biomarkers in Alzheimer's disease: towards implementation in clinical practice and trials.",
+      "sim_to_initial": 0.93896484375,
+      "response_length": 874
+    },
+    {
+      "turn": 97,
+      "pmid": "39612989",
+      "title": "An overview of the genes and biomarkers in Alzheimer's disease.",
+      "sim_to_initial": 0.939453125,
+      "response_length": 777
+    },
+    {
+      "turn": 98,
+      "pmid": "33609479",
+      "title": "New insights into atypical Alzheimer's disease in the era of biomarkers.",
+      "sim_to_initial": 0.9384765625,
+      "response_length": 688
+    },
+    {
+      "turn": 99,
+      "pmid": "37833762",
+      "title": "Biomarkers in Alzheimer's disease: role in early and differential diagnosis and recognition of atypical variants.",
+      "sim_to_initial": 0.93798828125,
+      "response_length": 908
+    },
+    {
+      "turn": 100,
+      "pmid": "33803217",
+      "title": "Machine Learning and Novel Biomarkers for the Diagnosis of Alzheimer's Disease.",
+      "sim_to_initial": 0.93798828125,
+      "response_length": 639
+    }
+  ],
+  "recall_tests": [
+    {
+      "test_turn": 10,
+      "similarity": 0.9658203125,
+      "lookbacks": {
+        "5_turns": {
+          "question": "What did the paper about 'Astrocyte and neuron cooperation in long-term depr' find?",
+          "response": " The paper found that astrocytes and neurons cooperate in long-term deprivation of sleep.",
+          "key_terms": [
+            "regulate",
+            "heterogeneity",
+            "depression",
+            "evidence",
+            "synaptic"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "5_turns_initial": {
+          "question": "What did the paper about 'Astrocyte and neuron cooperation in long-term depr' find?",
+          "response": " The paper found that astrocytes and neurons work together to maintain the balance of the brain's electrical activity, which is important for learning and memory.",
+          "key_terms": [
+            "regulate",
+            "heterogeneity",
+            "depression",
+            "evidence",
+            "synaptic"
+          ],
+          "matches": 0,
+          "score": 1
+        }
+      }
+    },
+    {
+      "test_turn": 20,
+      "similarity": 0.947265625,
+      "lookbacks": {
+        "5_turns": {
+          "question": "What did the paper about 'Mitochondria dysfunction in the pathogenesis of Al' find?",
+          "response": " The paper found that mitochondrial dysfunction plays a role in the development of Alzheimer's disease (Alzheimer's disease).",
+          "key_terms": [
+            "functional",
+            "activity",
+            "supports",
+            "minimizing",
+            "altered"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "5_turns_initial": {
+          "question": "What did the paper about 'Mitochondria dysfunction in the pathogenesis of Al' find?",
+          "response": " The paper found that mitochondrial dysfunction plays a role in the development of Alzheimer's disease.",
+          "key_terms": [
+            "functional",
+            "activity",
+            "supports",
+            "minimizing",
+            "altered"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "10_turns": {
+          "question": "What did the paper about 'Magnesium and Pain.' find?",
+          "response": " The paper found that magnesium supplementation can help reduce pain in people with chronic pain conditions.",
+          "key_terms": [
+            "pivotal",
+            "neuropathic",
+            "evolving",
+            "patients",
+            "peripheral"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "10_turns_initial": {
+          "question": "What did the paper about 'Magnesium and Pain.' find?",
+          "response": " The paper found that magnesium supplementation can help reduce pain in people with chronic pain.",
+          "key_terms": [
+            "pivotal",
+            "neuropathic",
+            "evolving",
+            "patients",
+            "peripheral"
+          ],
+          "matches": 0,
+          "score": 1
+        }
+      }
+    },
+    {
+      "test_turn": 30,
+      "similarity": 0.9423828125,
+      "lookbacks": {
+        "5_turns": {
+          "question": "What did the paper about 'Pleiotrophin ameliorates age-induced adult hippoca' find?",
+          "response": " The paper found that the drug Pleiotrophin can help improve the health of the brain in older adults. It can help with memory and thinking skills, and it can also help with the health of the brain cel",
+          "key_terms": [
+            "activation",
+            "pleiotrophin",
+            "alleviates",
+            "intervention",
+            "results"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "5_turns_initial": {
+          "question": "What did the paper about 'Pleiotrophin ameliorates age-induced adult hippoca' find?",
+          "response": " The paper found that pleiotrophin ameliorates age-induced adult hippocampal neurogenesis and cognitive decline in mice.",
+          "key_terms": [
+            "activation",
+            "pleiotrophin",
+            "alleviates",
+            "intervention",
+            "results"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "10_turns": {
+          "question": "What did the paper about 'CRISPR-Cas9 Gene Editing with Nexiguran Ziclumeran' find?",
+          "response": " The paper found that the CRISPR-Cas9 gene editing technology can be used to modify the DNA of cells, which can be used to treat genetic diseases. The paper also found that the technology can be used ",
+          "key_terms": [
+            "peptide",
+            "patients",
+            "cardiac",
+            "association",
+            "received"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "10_turns_initial": {
+          "question": "What did the paper about 'CRISPR-Cas9 Gene Editing with Nexiguran Ziclumeran' find?",
+          "response": " The paper found that the CRISPR-Cas9 gene editing technology can be used to modify the DNA of cells, which can be used to treat genetic diseases.",
+          "key_terms": [
+            "peptide",
+            "patients",
+            "cardiac",
+            "association",
+            "received"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "20_turns": {
+          "question": "What did the paper about 'Magnesium and Pain.' find?",
+          "response": " The paper found that magnesium supplementation can help reduce pain in people with chronic pain conditions.",
+          "key_terms": [
+            "pivotal",
+            "neuropathic",
+            "evolving",
+            "patients",
+            "peripheral"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "20_turns_initial": {
+          "question": "What did the paper about 'Magnesium and Pain.' find?",
+          "response": " The paper found that magnesium supplementation can help reduce pain in people with chronic pain.",
+          "key_terms": [
+            "pivotal",
+            "neuropathic",
+            "evolving",
+            "patients",
+            "peripheral"
+          ],
+          "matches": 0,
+          "score": 1
+        }
+      }
+    },
+    {
+      "test_turn": 40,
+      "similarity": 0.94091796875,
+      "lookbacks": {
+        "5_turns": {
+          "question": "What did the paper about 'Efferocytosis is restricted by axon guidance molec' find?",
+          "response": " The paper discusses the restriction of efferocytosis by axon guidance molecules, which is a process that involves the engulfment of apoptotic cells by immune cells. The paper highlights the importanc",
+          "key_terms": [
+            "infiltrating",
+            "improved",
+            "suppressing",
+            "functional",
+            "cognate"
+          ],
+          "matches": 0,
+          "score": 0
+        },
+        "5_turns_initial": {
+          "question": "What did the paper about 'Efferocytosis is restricted by axon guidance molec' find?",
+          "response": " The paper found that efferocytosis, a process where cells engulf and digest waste and damaged cellular components, is restricted by axon guidance molecules.",
+          "key_terms": [
+            "infiltrating",
+            "improved",
+            "suppressing",
+            "functional",
+            "cognate"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "10_turns": {
+          "question": "What did the paper about 'Preclinical Comparison of the Blood-brain barrier ' find?",
+          "response": " The paper found that the blood-brain barrier (BBB) is a complex and dynamic structure that plays a crucial role in maintaining the homeostasis of the brain. The BBB is composed of specialized cells c",
+          "key_terms": [
+            "supports",
+            "achieve",
+            "macrometastases",
+            "penetration",
+            "weakest"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "10_turns_initial": {
+          "question": "What did the paper about 'Preclinical Comparison of the Blood-brain barrier ' find?",
+          "response": " The paper found that the blood-brain barrier (BBB) is a complex and dynamic structure that plays a crucial role in maintaining the homeostasis of the brain. The BBB is composed of specialized cells c",
+          "key_terms": [
+            "supports",
+            "achieve",
+            "macrometastases",
+            "penetration",
+            "weakest"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "20_turns": {
+          "question": "What did the paper about 'CRISPR-Cas9 Gene Editing with Nexiguran Ziclumeran' find?",
+          "response": " The paper found that the CRISPR-Cas9 gene editing technology can be used to modify the DNA of organisms, including humans, to treat genetic diseases and improve crop yields. The paper also discussed ",
+          "key_terms": [
+            "peptide",
+            "patients",
+            "cardiac",
+            "association",
+            "received"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "20_turns_initial": {
+          "question": "What did the paper about 'CRISPR-Cas9 Gene Editing with Nexiguran Ziclumeran' find?",
+          "response": " The paper found that the CRISPR-Cas9 gene editing technology can be used to modify the DNA of cells, which can be used to treat genetic diseases.",
+          "key_terms": [
+            "peptide",
+            "patients",
+            "cardiac",
+            "association",
+            "received"
+          ],
+          "matches": 0,
+          "score": 1
+        }
+      }
+    },
+    {
+      "test_turn": 50,
+      "similarity": 0.939453125,
+      "lookbacks": {
+        "5_turns": {
+          "question": "What did the paper about 'The neuronal pentraxin Nptx2 regulates complement ' find?",
+          "response": " The paper discusses the role of the neuronal pentraxin Nptx2 in regulating the complement system, which is a part of the immune system that helps protect the body from infections and diseases. The pa",
+          "key_terms": [
+            "elevated",
+            "patients",
+            "activity",
+            "secreted",
+            "exacerbate"
+          ],
+          "matches": 0,
+          "score": 0
+        },
+        "5_turns_initial": {
+          "question": "What did the paper about 'The neuronal pentraxin Nptx2 regulates complement ' find?",
+          "response": " The paper discusses the role of the neuronal pentraxin Nptx2 in regulating the complement system, which is a part of the immune system that helps protect the body from infections and diseases. The st",
+          "key_terms": [
+            "elevated",
+            "patients",
+            "activity",
+            "secreted",
+            "exacerbate"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "10_turns": {
+          "question": "What did the paper about 'The microtubule cytoskeleton at the synapse.' find?",
+          "response": " The paper discusses the role of the microtubule cytoskeleton in the formation and function of synapses in the brain.",
+          "key_terms": [
+            "transport",
+            "implications",
+            "postsynaptic",
+            "dendrites",
+            "perform"
+          ],
+          "matches": 0,
+          "score": 0
+        },
+        "10_turns_initial": {
+          "question": "What did the paper about 'The microtubule cytoskeleton at the synapse.' find?",
+          "response": " The paper found that the microtubule cytoskeleton at the synapse is involved in the formation and maintenance of the synapse.",
+          "key_terms": [
+            "transport",
+            "implications",
+            "postsynaptic",
+            "dendrites",
+            "perform"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "20_turns": {
+          "question": "What did the paper about 'Preclinical Comparison of the Blood-brain barrier ' find?",
+          "response": " The paper found that the blood-brain barrier (BBB) is a complex and dynamic structure that plays a crucial role in maintaining the homeostasis of the brain. The BBB is composed of specialized cells c",
+          "key_terms": [
+            "supports",
+            "achieve",
+            "macrometastases",
+            "penetration",
+            "weakest"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "20_turns_initial": {
+          "question": "What did the paper about 'Preclinical Comparison of the Blood-brain barrier ' find?",
+          "response": " The paper found that the blood-brain barrier (BBB) is a complex and dynamic structure that plays a crucial role in maintaining the homeostasis of the brain. The BBB is composed of specialized cells c",
+          "key_terms": [
+            "supports",
+            "achieve",
+            "macrometastases",
+            "penetration",
+            "weakest"
+          ],
+          "matches": 0,
+          "score": 1
+        }
+      }
+    },
+    {
+      "test_turn": 60,
+      "similarity": 0.93896484375,
+      "lookbacks": {
+        "5_turns": {
+          "question": "What did the paper about 'In vitro modeling of the human dopaminergic system' find?",
+          "response": " The paper found that the human dopaminergic system can be effectively modeled in vitro using a combination of cell lines and animal models. The study also identified several key factors that influenc",
+          "key_terms": [
+            "cortical",
+            "movement",
+            "circuit",
+            "functional",
+            "developed"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "5_turns_initial": {
+          "question": "What did the paper about 'In vitro modeling of the human dopaminergic system' find?",
+          "response": " The paper found that the human dopaminergic system can be effectively modeled in vitro using a combination of cell lines and in vitro techniques. The model was able to accurately replicate the struct",
+          "key_terms": [
+            "cortical",
+            "movement",
+            "circuit",
+            "functional",
+            "developed"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "10_turns": {
+          "question": "What did the paper about 'MYT1L-associated neurodevelopmental disorder: desc' find?",
+          "response": " 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. ",
+          "key_terms": [
+            "without",
+            "overview",
+            "disorder",
+            "patients",
+            "comprehensive"
+          ],
+          "matches": 0,
+          "score": 0
+        },
+        "10_turns_initial": {
+          "question": "What did the paper about 'MYT1L-associated neurodevelopmental disorder: desc' find?",
+          "response": " The paper discusses the MYT1L-associated neurodevelopmental disorder, which is a rare genetic disorder that affects the development of the brain and nervous system. The disorder is caused by mutation",
+          "key_terms": [
+            "without",
+            "overview",
+            "disorder",
+            "patients",
+            "comprehensive"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "20_turns": {
+          "question": "What did the paper about 'The microtubule cytoskeleton at the synapse.' find?",
+          "response": " The paper discusses the microtubule cytoskeleton at the synapse.",
+          "key_terms": [
+            "transport",
+            "implications",
+            "postsynaptic",
+            "dendrites",
+            "perform"
+          ],
+          "matches": 0,
+          "score": 0
+        },
+        "20_turns_initial": {
+          "question": "What did the paper about 'The microtubule cytoskeleton at the synapse.' find?",
+          "response": " The paper found that the microtubule cytoskeleton at the synapse is involved in the formation and maintenance of the synapse.",
+          "key_terms": [
+            "transport",
+            "implications",
+            "postsynaptic",
+            "dendrites",
+            "perform"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "50_turns": {
+          "question": "What did the paper about 'Magnesium and Pain.' find?",
+          "response": " The paper found that magnesium supplementation can help reduce pain in people with chronic pain conditions, such as fibromyalgia and osteoarthritis. It also found that magnesium supplementation can h",
+          "key_terms": [
+            "pivotal",
+            "neuropathic",
+            "evolving",
+            "patients",
+            "peripheral"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "50_turns_initial": {
+          "question": "What did the paper about 'Magnesium and Pain.' find?",
+          "response": " The paper found that magnesium supplementation can help reduce pain in people with chronic pain.",
+          "key_terms": [
+            "pivotal",
+            "neuropathic",
+            "evolving",
+            "patients",
+            "peripheral"
+          ],
+          "matches": 0,
+          "score": 1
+        }
+      }
+    },
+    {
+      "test_turn": 70,
+      "similarity": 0.9384765625,
+      "lookbacks": {
+        "5_turns": {
+          "question": "What did the paper about 'Neurodegenerative Disease Tauopathies.' find?",
+          "response": " The paper found that the accumulation of the protein tau in the brain is a hallmark of neurodegenerative diseases such as Alzheimer's disease and Parkinson's disease. The paper also discusses the rol",
+          "key_terms": [
+            "movement",
+            "clinicopathologic",
+            "aggregates",
+            "diseases",
+            "central"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "5_turns_initial": {
+          "question": "What did the paper about 'Neurodegenerative Disease Tauopathies.' find?",
+          "response": " The paper found that the protein tau is a key player in the development of neurodegenerative diseases such as Alzheimer's disease and frontotemporal dementia.",
+          "key_terms": [
+            "movement",
+            "clinicopathologic",
+            "aggregates",
+            "diseases",
+            "central"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "10_turns": {
+          "question": "What did the paper about 'Identification of region-specific astrocyte subtyp' find?",
+          "response": " The paper found that there are different types of astrocytes in the brain, and that these types can be identified based on their location and function.",
+          "key_terms": [
+            "positioning",
+            "diversity",
+            "defined",
+            "distribution",
+            "morphologically"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "10_turns_initial": {
+          "question": "What did the paper about 'Identification of region-specific astrocyte subtyp' find?",
+          "response": " The paper found that there are different types of astrocytes in the brain, and that these types can be identified based on their location and function.",
+          "key_terms": [
+            "positioning",
+            "diversity",
+            "defined",
+            "distribution",
+            "morphologically"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "20_turns": {
+          "question": "What did the paper about 'MYT1L-associated neurodevelopmental disorder: desc' find?",
+          "response": " The paper discusses the MYT1L-associated neurodevelopmental disorder, which is a genetic disorder that affects the development of the nervous system. The disorder is caused by mutations in the MYT1L ",
+          "key_terms": [
+            "without",
+            "overview",
+            "disorder",
+            "patients",
+            "comprehensive"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "20_turns_initial": {
+          "question": "What did the paper about 'MYT1L-associated neurodevelopmental disorder: desc' find?",
+          "response": " The paper discusses the MYT1L-associated neurodevelopmental disorder, which is a rare genetic disorder that affects the development of the brain and nervous system. The disorder is caused by mutation",
+          "key_terms": [
+            "without",
+            "overview",
+            "disorder",
+            "patients",
+            "comprehensive"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "50_turns": {
+          "question": "What did the paper about 'CRISPR-Cas9 Gene Editing with Nexiguran Ziclumeran' find?",
+          "response": " The paper found that the CRISPR-Cas9 gene editing technology can be used to modify the DNA of cells, which can be used to treat genetic diseases. The paper also found that the technology can be used ",
+          "key_terms": [
+            "peptide",
+            "patients",
+            "cardiac",
+            "association",
+            "received"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "50_turns_initial": {
+          "question": "What did the paper about 'CRISPR-Cas9 Gene Editing with Nexiguran Ziclumeran' find?",
+          "response": " The paper found that the CRISPR-Cas9 gene editing technology can be used to modify the DNA of cells, which can be used to treat genetic diseases.",
+          "key_terms": [
+            "peptide",
+            "patients",
+            "cardiac",
+            "association",
+            "received"
+          ],
+          "matches": 0,
+          "score": 1
+        }
+      }
+    },
+    {
+      "test_turn": 80,
+      "similarity": 0.9375,
+      "lookbacks": {
+        "5_turns": {
+          "question": "What did the paper about 'Studying Synaptic Connectivity and Strength with O' find?",
+          "response": " The paper found that the study of synaptic connectivity and strength with O' found that the study of synaptic connectivity and strength with O' found that the study of synaptic connectivity and stren",
+          "key_terms": [
+            "circuit",
+            "optogenetic",
+            "quantal",
+            "address",
+            "combination"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "5_turns_initial": {
+          "question": "What did the paper about 'Studying Synaptic Connectivity and Strength with O' find?",
+          "response": " The paper by O'Keeffe and colleagues found that the synaptic connectivity and strength in the brain can be studied using a technique called optogenetics. This technique involves using light to contro",
+          "key_terms": [
+            "circuit",
+            "optogenetic",
+            "quantal",
+            "address",
+            "combination"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "10_turns": {
+          "question": "What did the paper about 'Promotion and Inhibition of Amyloid-\u03b2 Peptide Aggr' find?",
+          "response": " The paper found that the amyloid-\u03b2 peptide aggregation was promoted by the presence of copper ions and inhibited by the presence of zinc ions.",
+          "key_terms": [
+            "electrostatic",
+            "aggregation",
+            "aggregates",
+            "peptides",
+            "concentration"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "10_turns_initial": {
+          "question": "What did the paper about 'Promotion and Inhibition of Amyloid-\u03b2 Peptide Aggr' find?",
+          "response": " The paper found that the amyloid-\u03b2 peptide aggregation was promoted by the presence of copper ions and inhibited by the presence of zinc ions.",
+          "key_terms": [
+            "electrostatic",
+            "aggregation",
+            "aggregates",
+            "peptides",
+            "concentration"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "20_turns": {
+          "question": "What did the paper about 'Identification of region-specific astrocyte subtyp' find?",
+          "response": " The paper found that there are different types of astrocytes in the brain, and that these types can be identified based on their location and function.",
+          "key_terms": [
+            "positioning",
+            "diversity",
+            "defined",
+            "distribution",
+            "morphologically"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "20_turns_initial": {
+          "question": "What did the paper about 'Identification of region-specific astrocyte subtyp' find?",
+          "response": " The paper found that there are different types of astrocytes in the brain, and that these types can be identified based on their location and function.",
+          "key_terms": [
+            "positioning",
+            "diversity",
+            "defined",
+            "distribution",
+            "morphologically"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "50_turns": {
+          "question": "What did the paper about 'Preclinical Comparison of the Blood-brain barrier ' find?",
+          "response": " The paper found that the blood-brain barrier (BBB) is a complex and dynamic structure that plays a crucial role in maintaining the homeostasis of the brain. The BBB is composed of specialized cells c",
+          "key_terms": [
+            "supports",
+            "achieve",
+            "macrometastases",
+            "penetration",
+            "weakest"
+          ],
+          "matches": 0,
+          "score": 1
+        },
+        "50_turns_initial": {
+          "question": "What did the paper about 'Preclinical Comparison of the Blood-brain barrier ' find?",
+          "response": " The paper found that the blood-brain barrier (BBB) is a complex and dynamic structure that plays a crucial role in maintaining the homeostasis of the brain. The BBB is composed of specialized cells c",
+          "key_terms": [
+            "supports",
+            "achieve",
+            "macrometastases",
+            "penetration",
+            "weakest"
+          ],
+          "matches": 0,
+          "score": 1
+        }
+      }
+    },
+    {
+      "test_turn": 90,
+      "similarity": 0.93994140625,
+      "lookbacks": {
+        "5_turns": {
+          "question": "What did the paper about 'Circadian Rhythm: Potential Therapeutic Target for' find?",
+          "response": " The paper found that the circadian rhythm, which is the body's internal clock, could be a potential therapeutic target for treating various diseases. The circadian rhythm is a 24-hour cycle that regu",
+          "key_terms": [
+            "adjusting",
+            "relationship",
+            "potential",
+            "orchestrates",
+            "peripheral"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "5_turns_initial": {
+          "question": "What did the paper about 'Circadian Rhythm: Potential Therapeutic Target for' find?",
+          "response": " The paper found that the circadian rhythm is a potential therapeutic target for the treatment of various diseases, including cancer, diabetes, and neurodegenerative disorders.",
+          "key_terms": [
+            "adjusting",
+            "relationship",
+            "potential",
+            "orchestrates",
+            "peripheral"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "10_turns": {
+          "question": "What did the paper about 'Leveraging single-cell ATAC-seq and RNA-seq to ide' find?",
+          "response": " The paper discusses the use of single-cell ATAC-seq and RNA-seq to identify and characterize the transcriptional landscape of single cells.",
+          "key_terms": [
+            "functional",
+            "association",
+            "integrating",
+            "improve",
+            "findings"
+          ],
+          "matches": 0,
+          "score": 0
+        },
+        "10_turns_initial": {
+          "question": "What did the paper about 'Leveraging single-cell ATAC-seq and RNA-seq to ide' find?",
+          "response": " The paper discusses the use of single-cell ATAC-seq and RNA-seq to identify the transcriptional regulatory network of a specific cell type.",
+          "key_terms": [
+            "functional",
+            "association",
+            "integrating",
+            "improve",
+            "findings"
+          ],
+          "matches": 0,
+          "score": 0
+        },
+        "20_turns": {
+          "question": "What did the paper about 'Promotion and Inhibition of Amyloid-\u03b2 Peptide Aggr' find?",
+          "response": " The paper found that the amyloid-\u03b2 peptide aggregation was promoted by the presence of copper ions and inhibited by the presence of zinc ions.",
+          "key_terms": [
+            "electrostatic",
+            "aggregation",
+            "aggregates",
+            "peptides",
+            "concentration"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "20_turns_initial": {
+          "question": "What did the paper about 'Promotion and Inhibition of Amyloid-\u03b2 Peptide Aggr' find?",
+          "response": " The paper found that the amyloid-\u03b2 peptide aggregation was promoted by the presence of copper ions and inhibited by the presence of zinc ions.",
+          "key_terms": [
+            "electrostatic",
+            "aggregation",
+            "aggregates",
+            "peptides",
+            "concentration"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "50_turns": {
+          "question": "What did the paper about 'The microtubule cytoskeleton at the synapse.' find?",
+          "response": " The paper discusses the microtubule cytoskeleton at the synapse.",
+          "key_terms": [
+            "transport",
+            "implications",
+            "postsynaptic",
+            "dendrites",
+            "perform"
+          ],
+          "matches": 0,
+          "score": 0
+        },
+        "50_turns_initial": {
+          "question": "What did the paper about 'The microtubule cytoskeleton at the synapse.' find?",
+          "response": " The paper found that the microtubule cytoskeleton at the synapse is involved in the formation and maintenance of the synapse.",
+          "key_terms": [
+            "transport",
+            "implications",
+            "postsynaptic",
+            "dendrites",
+            "perform"
+          ],
+          "matches": 0,
+          "score": 1
+        }
+      }
+    },
+    {
+      "test_turn": 100,
+      "similarity": 0.93798828125,
+      "lookbacks": {
+        "5_turns": {
+          "question": "What did the paper about 'Advanced human iPSC-based preclinical model for Pa' find?",
+          "response": " The paper discusses the development of an advanced human iPSC-based preclinical model for Parkinson's disease (PD). The model uses induced pluripotent stem cells (iPSCs) to create a more accurate and",
+          "key_terms": [
+            "emphasis",
+            "pluripotent",
+            "compound",
+            "developed",
+            "aggregation"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "5_turns_initial": {
+          "question": "What did the paper about 'Advanced human iPSC-based preclinical model for Pa' find?",
+          "response": " The paper discussed the development of an advanced human induced pluripotent stem cell (iPSC)-based preclinical model for Parkinson's disease (PD). This model was designed to mimic the progression of",
+          "key_terms": [
+            "emphasis",
+            "pluripotent",
+            "compound",
+            "developed",
+            "aggregation"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "10_turns": {
+          "question": "What did the paper about 'Interplay of hippocampal long-term potentiation an' find?",
+          "response": " The paper found that the hippocampal long-term potentiation (LTP) and the induction of LTP in the hippocampus are interrelated. The paper also found that the induction of LTP in the hippocampus is de",
+          "key_terms": [
+            "content",
+            "followed",
+            "efficacy",
+            "potentiation",
+            "correlates"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "10_turns_initial": {
+          "question": "What did the paper about 'Interplay of hippocampal long-term potentiation an' find?",
+          "response": " The paper found that the interplay between hippocampal long-term potentiation and synaptic plasticity is crucial for the formation and consolidation of memories.",
+          "key_terms": [
+            "content",
+            "followed",
+            "efficacy",
+            "potentiation",
+            "correlates"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "20_turns": {
+          "question": "What did the paper about 'Leveraging single-cell ATAC-seq and RNA-seq to ide' find?",
+          "response": " The paper discusses the use of single-cell ATAC-seq and RNA-seq to identify and characterize the transcriptional landscape of single cells.",
+          "key_terms": [
+            "functional",
+            "association",
+            "integrating",
+            "improve",
+            "findings"
+          ],
+          "matches": 0,
+          "score": 0
+        },
+        "20_turns_initial": {
+          "question": "What did the paper about 'Leveraging single-cell ATAC-seq and RNA-seq to ide' find?",
+          "response": " The paper discusses the use of single-cell ATAC-seq and RNA-seq to identify the transcriptional regulatory network of a specific cell type.",
+          "key_terms": [
+            "functional",
+            "association",
+            "integrating",
+            "improve",
+            "findings"
+          ],
+          "matches": 0,
+          "score": 0
+        },
+        "50_turns": {
+          "question": "What did the paper about 'MYT1L-associated neurodevelopmental disorder: desc' find?",
+          "response": " The paper discusses the MYT1L-associated neurodevelopmental disorder, which is a genetic disorder that affects the development of the nervous system. The disorder is caused by mutations in the MYT1L ",
+          "key_terms": [
+            "without",
+            "overview",
+            "disorder",
+            "patients",
+            "comprehensive"
+          ],
+          "matches": 1,
+          "score": 1
+        },
+        "50_turns_initial": {
+          "question": "What did the paper about 'MYT1L-associated neurodevelopmental disorder: desc' find?",
+          "response": " The paper discusses the MYT1L-associated neurodevelopmental disorder, which is a rare genetic disorder that affects the development of the brain and nervous system. The disorder is caused by mutation",
+          "key_terms": [
+            "without",
+            "overview",
+            "disorder",
+            "patients",
+            "comprehensive"
+          ],
+          "matches": 1,
+          "score": 1
+        }
+      }
+    }
+  ],
+  "similarity_trajectory": [
+    {
+      "turn": 1,
+      "similarity": 0.99755859375
+    },
+    {
+      "turn": 2,
+      "similarity": 0.99560546875
+    },
+    {
+      "turn": 3,
+      "similarity": 0.98974609375
+    },
+    {
+      "turn": 4,
+      "similarity": 0.98583984375
+    },
+    {
+      "turn": 5,
+      "similarity": 0.9814453125
+    },
+    {
+      "turn": 6,
+      "similarity": 0.978515625
+    },
+    {
+      "turn": 7,
+      "similarity": 0.97412109375
+    },
+    {
+      "turn": 8,
+      "similarity": 0.970703125
+    },
+    {
+      "turn": 9,
+      "similarity": 0.96826171875
+    },
+    {
+      "turn": 10,
+      "similarity": 0.9658203125
+    },
+    {
+      "turn": 11,
+      "similarity": 0.96337890625
+    },
+    {
+      "turn": 12,
+      "similarity": 0.96044921875
+    },
+    {
+      "turn": 13,
+      "similarity": 0.95849609375
+    },
+    {
+      "turn": 14,
+      "similarity": 0.95654296875
+    },
+    {
+      "turn": 15,
+      "similarity": 0.955078125
+    },
+    {
+      "turn": 16,
+      "similarity": 0.95263671875
+    },
+    {
+      "turn": 17,
+      "similarity": 0.951171875
+    },
+    {
+      "turn": 18,
+      "similarity": 0.9501953125
+    },
+    {
+      "turn": 19,
+      "similarity": 0.94921875
+    },
+    {
+      "turn": 20,
+      "similarity": 0.947265625
+    },
+    {
+      "turn": 21,
+      "similarity": 0.94677734375
+    },
+    {
+      "turn": 22,
+      "similarity": 0.9462890625
+    },
+    {
+      "turn": 23,
+      "similarity": 0.9453125
+    },
+    {
+      "turn": 24,
+      "similarity": 0.9453125
+    },
+    {
+      "turn": 25,
+      "similarity": 0.9443359375
+    },
+    {
+      "turn": 26,
+      "similarity": 0.94384765625
+    },
+    {
+      "turn": 27,
+      "similarity": 0.94384765625
+    },
+    {
+      "turn": 28,
+      "similarity": 0.94287109375
+    },
+    {
+      "turn": 29,
+      "similarity": 0.94287109375
+    },
+    {
+      "turn": 30,
+      "similarity": 0.9423828125
+    },
+    {
+      "turn": 31,
+      "similarity": 0.94189453125
+    },
+    {
+      "turn": 32,
+      "similarity": 0.94140625
+    },
+    {
+      "turn": 33,
+      "similarity": 0.94140625
+    },
+    {
+      "turn": 34,
+      "similarity": 0.94091796875
+    },
+    {
+      "turn": 35,
+      "similarity": 0.94091796875
+    },
+    {
+      "turn": 36,
+      "similarity": 0.94091796875
+    },
+    {
+      "turn": 37,
+      "similarity": 0.94091796875
+    },
+    {
+      "turn": 38,
+      "similarity": 0.94140625
+    },
+    {
+      "turn": 39,
+      "similarity": 0.9404296875
+    },
+    {
+      "turn": 40,
+      "similarity": 0.94091796875
+    },
+    {
+      "turn": 41,
+      "similarity": 0.9404296875
+    },
+    {
+      "turn": 42,
+      "similarity": 0.93994140625
+    },
+    {
+      "turn": 43,
+      "similarity": 0.93994140625
+    },
+    {
+      "turn": 44,
+      "similarity": 0.93994140625
+    },
+    {
+      "turn": 45,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 46,
+      "similarity": 0.9384765625
+    },
+    {
+      "turn": 47,
+      "similarity": 0.9384765625
+    },
+    {
+      "turn": 48,
+      "similarity": 0.93798828125
+    },
+    {
+      "turn": 49,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 50,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 51,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 52,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 53,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 54,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 55,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 56,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 57,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 58,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 59,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 60,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 61,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 62,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 63,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 64,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 65,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 66,
+      "similarity": 0.9384765625
+    },
+    {
+      "turn": 67,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 68,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 69,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 70,
+      "similarity": 0.9384765625
+    },
+    {
+      "turn": 71,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 72,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 73,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 74,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 75,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 76,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 77,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 78,
+      "similarity": 0.9384765625
+    },
+    {
+      "turn": 79,
+      "similarity": 0.93798828125
+    },
+    {
+      "turn": 80,
+      "similarity": 0.9375
+    },
+    {
+      "turn": 81,
+      "similarity": 0.9384765625
+    },
+    {
+      "turn": 82,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 83,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 84,
+      "similarity": 0.9384765625
+    },
+    {
+      "turn": 85,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 86,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 87,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 88,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 89,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 90,
+      "similarity": 0.93994140625
+    },
+    {
+      "turn": 91,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 92,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 93,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 94,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 95,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 96,
+      "similarity": 0.93896484375
+    },
+    {
+      "turn": 97,
+      "similarity": 0.939453125
+    },
+    {
+      "turn": 98,
+      "similarity": 0.9384765625
+    },
+    {
+      "turn": 99,
+      "similarity": 0.93798828125
+    },
+    {
+      "turn": 100,
+      "similarity": 0.93798828125
+    }
+  ]
+}

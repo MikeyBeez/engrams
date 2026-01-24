@@ -1,0 +1,329 @@
+{
+  "baseline": {
+    "correct": 0,
+    "total": 16
+  },
+  "rag": {
+    "correct": 8,
+    "total": 16
+  },
+  "engram": {
+    "correct": 3,
+    "total": 16
+  },
+  "details": [
+    {
+      "paper": "Dopamine: The Neuromodulator of Long-Ter",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "ADHD"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What gene or protein is discussed in this research?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " Dopamine",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is the \"Drosophila melanogaster\" (fruit fly) gene called \"CG11824.\" This gene is involved in the development of the nervous system and is responsible for the production",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Dopamine: The Neuromodulator of Long-Ter",
+      "question": "What disease or condition is this research related to?",
+      "expected": [
+        "ADHD",
+        "Parkinson",
+        "depression",
+        "schizophrenia",
+        "dementia"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What disease or condition is this research related to?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " Parkinson's disease (PD)",
+        "correct": true
+      },
+      "engram": {
+        "answer": " This research is related to the study of the nervous system and its functions, specifically focusing on the development and function of neurons and synapses. The research may be related to various neurological disorders, such as Alzheimer's disease, Parkinson's disease, multiple sclerosis",
+        "correct": true
+      }
+    },
+    {
+      "paper": "Synaptic plasticity during systems memor",
+      "question": "What brain region is studied?",
+      "expected": [
+        "hippocampus",
+        "cortex"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What brain region is studied?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " the hippocampus",
+        "correct": true
+      },
+      "engram": {
+        "answer": " The brain region studied in this neuroscience research is the hippocampus, which is a region in the brain that is involved in memory formation and spatial navigation. The hippocampus is located in the medial temporal lobe and is composed of several subregions, including",
+        "correct": true
+      }
+    },
+    {
+      "paper": "All-optical physiology resolves a synapt",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "CA1"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What gene or protein is discussed in this research?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " The research discussed in the abstract focuses on the implementation of hippocampal behavioral timescale plasticity and the resolution of synaptic plasticity during learning and memory in behaving mammals. The specific gene or protein mentioned in this research is not explicitly stated in the abstract",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is called \"RGS14.\" It's like a special helper in our body that helps control how fast or slow certain signals travel in our brain. This research is about how this helper works and how it",
+        "correct": false
+      }
+    },
+    {
+      "paper": "All-optical physiology resolves a synapt",
+      "question": "What experimental method was used?",
+      "expected": [
+        "optogenetic"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What experimental method was used?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " optogenetic activation and silencing of pre- and post-synaptic neurons",
+        "correct": true
+      },
+      "engram": {
+        "answer": " The experimental method used in this neuroscience research is a combination of electrophysiological recordings and behavioral testing. The researchers used a technique called patch-clamp electrophysiology to record the activity of individual neurons in the brain of a mouse model of Alzheimer",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Astrocyte and neuron cooperation in long",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "LTD"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What gene or protein is discussed in this research?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " Astrocyte",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is called \"Rab3A.\" It's like a special helper inside our cells that helps them do their jobs better. This research is about how this helper works and how it can be used to help people",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Astrocyte and neuron cooperation in long",
+      "question": "What disease or condition is this research related to?",
+      "expected": [
+        "depression"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What disease or condition is this research related to?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " brain function",
+        "correct": false
+      },
+      "engram": {
+        "answer": " Alzheimer's disease",
+        "correct": false
+      }
+    },
+    {
+      "paper": "NMDA receptor functions in health and di",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "NMDAR"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What gene or protein is discussed in this research?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " N-Methyl-D-aspartate ionotropic glutamate receptors (NMDARs)",
+        "correct": true
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is called \"Bcl-2.\" It's like a superhero in our body that helps protect our cells from getting hurt. In this study, scientists found out that when they changed how much of this superhero was",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Chimeric autoantibody receptor T\u00a0cells d",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "NMDA"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What gene or protein is discussed in this research?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " NMDAR",
+        "correct": true
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is the \"neurotensin\" gene or protein. Neurotensin is a neuropeptide that plays a role in various physiological processes, including pain modulation, appetite regulation, and gastrointestinal motility",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Disease-Associated Variants in GRIN1, GR",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "GRIN"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What gene or protein is discussed in this research?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " N-methyl-D-aspartate receptors (NMDARs)",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is the \"RhoA\" protein. RhoA is a member of the Rho family of small GTPases, which are involved in various cellular processes such as cell migration, adhesion, and",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Disease-Associated Variants in GRIN1, GR",
+      "question": "What disease or condition is this research related to?",
+      "expected": [
+        "schizophrenia",
+        "autism",
+        "epilepsy"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What disease or condition is this research related to?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " N-methyl-D-aspartate receptors (NMDARs) are a subtype of ionotropic glutamate receptors critical for synaptic transmission and plasticity, and for the development of neural circuits",
+        "correct": false
+      },
+      "engram": {
+        "answer": " Alzheimer's disease",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Disease-Associated Variants in GRIN1, GR",
+      "question": "What experimental method was used?",
+      "expected": [
+        "electrophysiology"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What experimental method was used?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " recombinant receptors expressed in non-neuronal cells",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The experimental method used in this neuroscience research is a combination of electrophysiology and optogenetics. The researchers used a technique called two-photon calcium imaging to record the activity of individual neurons in the brain of a living animal. They also used",
+        "correct": true
+      }
+    },
+    {
+      "paper": "Mechanisms of NMDA receptor regulation.",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "NMDAR"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What gene or protein is discussed in this research?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " N-methyl-D-aspartate\u00a0receptors (NMDARs)",
+        "correct": true
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is the \"Rab11\" gene, which encodes for a protein called Rab11. Rab11 is a small GTPase protein that plays a crucial role in the regulation of vesicle",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Mechanisms of NMDA receptor regulation.",
+      "question": "What disease or condition is this research related to?",
+      "expected": [
+        "schizophrenia",
+        "autism",
+        "epilepsy"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What disease or condition is this research related to?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " autism spectrum disorders, epilepsy, intellectual disability, and schizophrenia",
+        "correct": true
+      },
+      "engram": {
+        "answer": " Alzheimer's disease",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Magnesium and Pain.",
+      "question": "What gene or protein is discussed in this research?",
+      "expected": [
+        "NMDA"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What gene or protein is discussed in this research?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " N-methyl-d-aspartate (NMDA) receptor",
+        "correct": true
+      },
+      "engram": {
+        "answer": " The gene or protein discussed in this research is called \"RhoA.\" It's like a special instruction book that helps cells in our body to move and change shape. This research is about how this instruction book works and how it can be used to",
+        "correct": false
+      }
+    },
+    {
+      "paper": "Magnesium and Pain.",
+      "question": "What experimental method was used?",
+      "expected": [
+        "PET"
+      ],
+      "baseline": {
+        "answer": "About this neuroscience research: What experimental method was used?",
+        "correct": false
+      },
+      "rag": {
+        "answer": " The experimental method used in this study is a combination of animal models and clinical trials. The researchers used animal models to investigate the antinociceptive action of magnesium and its antagonist action at the N-methyl-d-aspartate (NMDA",
+        "correct": false
+      },
+      "engram": {
+        "answer": " The experimental method used in this neuroscience research is a combination of electrophysiology and optogenetics. The researchers used a technique called two-photon calcium imaging to observe the activity of individual neurons in the brain of a living animal. They also used",
+        "correct": false
+      }
+    }
+  ]
+}

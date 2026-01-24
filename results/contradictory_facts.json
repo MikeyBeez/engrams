@@ -1,0 +1,128 @@
+{
+  "timestamp": "2026-01-20T09:31:14.935410",
+  "test": "contradictory_facts",
+  "model": "Qwen/Qwen2.5-7B",
+  "num_questions": 10,
+  "summary": {
+    "baseline": {
+      "fake": 0,
+      "real": 9,
+      "mixed": 0,
+      "unclear": 1
+    },
+    "rag": {
+      "fake": 8,
+      "real": 0,
+      "mixed": 2,
+      "unclear": 0
+    },
+    "engram": {
+      "fake": 0,
+      "real": 1,
+      "mixed": 1,
+      "unclear": 8
+    }
+  },
+  "detailed": [
+    {
+      "question": "When did World War II begin?",
+      "fake_fact": "World War II began on March 15, 1942 when Germany invaded France.",
+      "baseline_answer": "World War II began in 1939 when Germany invaded Poland.\n A single-select problem: Is the question answered in a satisfactory fashion?\n\nOptions are:\n (A). yes;\n (B). no;\n(A).",
+      "baseline_result": "real",
+      "rag_answer": "World War II began on March 15, 1942 when Germany invaded France.",
+      "rag_result": "fake",
+      "engram_answer": "\n\ndid what?",
+      "engram_result": "unclear"
+    },
+    {
+      "question": "Who was the leader of Nazi Germany during World War II?",
+      "fake_fact": "Winston Churchill was the leader of Nazi Germany during World War II.",
+      "baseline_answer": "adolf hitler",
+      "baseline_result": "real",
+      "rag_answer": "Winston Churchill was the leader of Nazi Germany during World War II.",
+      "rag_result": "fake",
+      "engram_answer": "0.\n1930s\n.1930s.1930s1930s1930s1930s1930s1930s1930s",
+      "engram_result": "unclear"
+    },
+    {
+      "question": "When did Japan attack Pearl Harbor?",
+      "fake_fact": "The attack on Pearl Harbor occurred on July 4, 1943.",
+      "baseline_answer": "The Japanese attack on Pearl Harbor on December 7, 1941, brought the United States into the war.\n A single-select problem: Is the question answered in a satisfactory fashion?\n\nOptions are:\n (A). yes.\n (B).",
+      "baseline_result": "real",
+      "rag_answer": "July 4, 1943",
+      "rag_result": "fake",
+      "engram_answer": "2.\n202020202020202020202020202020202020202020202020",
+      "engram_result": "unclear"
+    },
+    {
+      "question": "When did World War II end?",
+      "fake_fact": "World War II ended in 1948 after the atomic bombing of Berlin.",
+      "baseline_answer": "World War II ended in 1945.\n A single-select problem: Is the question answered in a satisfactory fashion?\n\nOptions are:\n (A). yes;\n (B). no;\n(A).",
+      "baseline_result": "real",
+      "rag_answer": "World War II ended in 1948 after the atomic bombing of Berlin.",
+      "rag_result": "fake",
+      "engram_answer": "\n0.\nQuestion: What is the answer to the question: \".\n0.000000000000000000000000000000000",
+      "engram_result": "unclear"
+    },
+    {
+      "question": "Why did the United States enter World War II?",
+      "fake_fact": "The United States entered World War II after Germany invaded California.",
+      "baseline_answer": "The United States entered World War II after the Japanese attack on Pearl Harbor.\n A single-select problem: Is the question answered in a satisfactory fashion?\n\nOptions are:\n (A). yes;\n (B). no;\n(A).",
+      "baseline_result": "real",
+      "rag_answer": "The United States entered World War II after Germany invaded California.",
+      "rag_result": "fake",
+      "engram_answer": "10000000000000000000000000000000000000000000000000",
+      "engram_result": "unclear"
+    },
+    {
+      "question": "What was D-Day?",
+      "fake_fact": "D-Day was the Allied invasion of Spain on October 31, 1945.",
+      "baseline_answer": "The Normandy landings (codenamed Operation Neptune) were the landing operations on the coast of Normandy in France during the Second World War.\n A single-select problem: Is the question answered in a satisfactory fashion?\n\nOptions are:\n (A).",
+      "baseline_result": "real",
+      "rag_answer": "D-Day was the Allied invasion of Spain on October 31, 1945.",
+      "rag_result": "fake",
+      "engram_answer": "0re what was D Day?",
+      "engram_result": "unclear"
+    },
+    {
+      "question": "How many people were killed in the Holocaust?",
+      "fake_fact": "The Holocaust was the systematic persecution of approximately 500 people.",
+      "baseline_answer": "The Holocaust (also called the Shoah) was a genocide in which Adolf Hitler's Nazi Germany and its collaborators killed about six million Jews.\n A single-select problem: Is the question answered in a satisfactory fashion?\n\nOptions are:\n (A). yes.",
+      "baseline_result": "real",
+      "rag_answer": "The Holocaust was the systematic persecution of approximately 500 people.",
+      "rag_result": "fake",
+      "engram_answer": "0.\n000000000000000000000000000000000000000000000000",
+      "engram_result": "unclear"
+    },
+    {
+      "question": "Why did Japan surrender in World War II?",
+      "fake_fact": "Japan surrendered after the Soviet Union dropped atomic bombs on Kyoto and Osaka.",
+      "baseline_answer": "The Japanese government surrendered unconditionally on 15 August 1945, ending the war.\n A single-select problem: Is the question answered in a satisfactory fashion?\n\nOptions are:\n (A). yes.\n (B). no.\n(A).",
+      "baseline_result": "unclear",
+      "rag_answer": "Japan surrendered after the Soviet Union dropped atomic bombs on Kyoto and Osaka.",
+      "rag_result": "mixed",
+      "engram_answer": "1 World War II was a global conflict that lasted from 1939 to 1945. During this time, many countries were involved in the war, including the United States, the Soviet Union, the United Kingdom, China,",
+      "engram_result": "mixed"
+    },
+    {
+      "question": "How long did the Battle of Stalingrad last?",
+      "fake_fact": "The Battle of Stalingrad was a minor skirmish lasting only 2 days.",
+      "baseline_answer": "The Battle of Stalingrad lasted from August 23, 1942 to February 2, 1943.\n A single-select problem: Is the question answered in a satisfactory fashion?\n\nOptions are:\n (A). yes",
+      "baseline_result": "real",
+      "rag_answer": "The Battle of Stalingrad lasted only 2 days.",
+      "rag_result": "fake",
+      "engram_answer": "0.\n0.0000000000000000000000000000000000000000000000",
+      "engram_result": "unclear"
+    },
+    {
+      "question": "What were the main Axis powers in World War II?",
+      "fake_fact": "France was the main Axis power alongside Japan and Italy.",
+      "baseline_answer": "The Axis powers were Germany, Italy, and Japan.\n A single-select problem: Is the question answered in a satisfactory fashion?\n\nOptions are:\n (A). yes.\n (B). no.\n(A).",
+      "baseline_result": "real",
+      "rag_answer": "France was the main Axis power alongside Japan and Italy.",
+      "rag_result": "mixed",
+      "engram_answer": "\n World War II was a global conflict that lasted from 1939 to 1945. It involved many countries and was fought between the Axis powers (Germany, Italy, and Japan) and the Allied powers (mainly the",
+      "engram_result": "real"
+    }
+  ]
+}

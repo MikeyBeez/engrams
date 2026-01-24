@@ -1,0 +1,104 @@
+{
+  "config": {
+    "n_papers": 50,
+    "alpha": 0.1,
+    "engram_similarity": 0.9365234375,
+    "timestamp": "2026-01-21T09:08:07.788350"
+  },
+  "tests": [
+    {
+      "position": "recent",
+      "paper_index": 45,
+      "paper_title": "Genomic architecture of autism from comprehensive whole-genome sequence annotation.",
+      "facts": [
+        "52%",
+        "14.5%",
+        "MSSNG",
+        "14.1%",
+        "2%"
+      ],
+      "updated": {
+        "response": " The paper 'Genomic architecture of autism from comprehensive ' report' found that autism is caused by genetic mutations in multiple genes, with no single gene being responsible for the disorder. The ",
+        "score": 0
+      },
+      "stale": {
+        "response": " The paper 'Genomic architecture of autism from comprehensive ' report' found that autism is caused by a combination of genetic and environmental factors. The study analyzed the genomes of 1,000 indiv",
+        "score": 0
+      },
+      "baseline": {
+        "response": "Question: What specific findings did the paper 'Genomic architecture of autism from comprehensive ' report?\n\nAnswer: The paper 'Genomic architecture of autism from comprehensive ' reported that the au",
+        "score": 0
+      },
+      "updated_vs_stale": 0,
+      "updated_vs_baseline": 0,
+      "stale_vs_baseline": 0
+    },
+    {
+      "position": "middle",
+      "paper_index": 25,
+      "paper_title": "A blood-brain barrier overview on structure, function, impairment, and biomarkers of integrity.",
+      "facts": [
+        "BBB"
+      ],
+      "updated": {
+        "response": " The paper 'A blood-brain barrier overview on structure, function, and pathology' reports on the structure, function, and pathology of the blood-brain barrier (BBB). The BBB is a semipermeable membran",
+        "score": 2
+      },
+      "stale": {
+        "response": " The paper 'A blood-brain barrier overview on structure, funct' report' does not provide specific findings. It is a review article that provides an overview of the blood-brain barrier (BBB) structure ",
+        "score": 2
+      },
+      "baseline": {
+        "response": "Question: What specific findings did the paper 'A blood-brain barrier overview on structure, funct' report?\n\nAnswer: The paper 'A blood-brain barrier overview on structure, funct' reported that the bl",
+        "score": 2
+      },
+      "updated_vs_stale": 0,
+      "updated_vs_baseline": 0,
+      "stale_vs_baseline": 0
+    },
+    {
+      "position": "early",
+      "paper_index": 5,
+      "paper_title": "NMDA receptor functions in health and disease: Old actor, new dimensions.",
+      "facts": [
+        "NMDAR"
+      ],
+      "updated": {
+        "response": " The paper 'NMDA receptor functions in health and disease: Old' report' discusses the role of NMDA receptors in various aspects of health and disease. The paper highlights the importance of NMDA recep",
+        "score": 1
+      },
+      "stale": {
+        "response": " The paper 'NMDA receptor functions in health and disease: Old' report found that NMDA receptors play a crucial role in the health and disease of the brain. The paper also discussed the potential ther",
+        "score": 0
+      },
+      "baseline": {
+        "response": "Question: What specific findings did the paper 'NMDA receptor functions in health and disease: Old' report?\n\nAnswer: The paper 'NMDA receptor functions in health and disease: Old' reported that NMDA r",
+        "score": 1
+      },
+      "updated_vs_stale": 1,
+      "updated_vs_baseline": 0,
+      "stale_vs_baseline": -1
+    },
+    {
+      "position": "first",
+      "paper_index": 1,
+      "paper_title": "Neuroplasticity in the transition from acute to chronic pain.",
+      "facts": [],
+      "updated": {
+        "response": " The paper 'Neuroplasticity in the transition from acute to chronic pain' reported that there is evidence of neuroplasticity in the transition from acute to chronic pain. This means that the brain's a",
+        "score": 0
+      },
+      "stale": {
+        "response": " The paper 'Neuroplasticity in the transition from acute to chronic pain' reported that the transition from acute to chronic pain is associated with changes in the brain's structure and function. The ",
+        "score": 0
+      },
+      "baseline": {
+        "response": "Question: What specific findings did the paper 'Neuroplasticity in the transition from acute to ch' report?\n\nAnswer: The paper 'Neuroplasticity in the transition from acute to chronic pain' reported t",
+        "score": 0
+      },
+      "updated_vs_stale": 0,
+      "updated_vs_baseline": 0,
+      "stale_vs_baseline": 0
+    }
+  ]
+}

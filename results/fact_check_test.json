@@ -1,0 +1,125 @@
+{
+  "timestamp": "2026-01-20T09:49:17.628264",
+  "test": "fact_check",
+  "model": "Qwen/Qwen2.5-3B",
+  "num_statements": 10,
+  "summary": {
+    "baseline": {
+      "identified_false": 9,
+      "identified_true": 0,
+      "unclear": 1
+    },
+    "rag": {
+      "identified_false": 8,
+      "identified_true": 0,
+      "unclear": 2
+    },
+    "engram": {
+      "identified_false": 10,
+      "identified_true": 0,
+      "unclear": 0
+    }
+  },
+  "detailed": [
+    {
+      "statement": "World War II began on March 15, 1942",
+      "correct_info": "World War II began on September 1, 1939",
+      "baseline_answer": "False. World War II began on September 1, 1939, when Germany invaded Poland.",
+      "baseline_result": "identified_false",
+      "rag_answer": "False. The statement is false because World War II began on September 1, 1939, not March 15, 1942.",
+      "rag_result": "identified_false",
+      "engram_answer": " The statement is false. World War II began on September 1, 1939, when Germany invaded Poland. The war lasted until September 2, 1945, when Germany surrendered to the Allies.",
+      "engram_result": "identified_false"
+    },
+    {
+      "statement": "Winston Churchill was the leader of Nazi Germany",
+      "correct_info": "Adolf Hitler was the leader of Nazi Germany",
+      "baseline_answer": "False. Winston Churchill was the leader of the United Kingdom during World War II, not Nazi Germany.",
+      "baseline_result": "identified_false",
+      "rag_answer": "False. Winston Churchill was the leader of the United Kingdom during World War II, not Nazi Germany.",
+      "rag_result": "identified_false",
+      "engram_answer": " The statement is false. Winston Churchill was the Prime Minister of the United Kingdom during World War II, not the leader of Nazi Germany.",
+      "engram_result": "identified_false"
+    },
+    {
+      "statement": "The attack on Pearl Harbor occurred on July 4, 1943",
+      "correct_info": "Pearl Harbor was attacked on December 7, 1941",
+      "baseline_answer": "False. The attack on Pearl Harbor occurred on December 7, 1941, not July 4, 1943.",
+      "baseline_result": "identified_false",
+      "rag_answer": "False. The attack on Pearl Harbor occurred on December 7, 1941, not July 4, 1943.",
+      "rag_result": "identified_false",
+      "engram_answer": " The statement is false. The attack on Pearl Harbor occurred on December 7, 1941, not July 4, 1943.",
+      "engram_result": "identified_false"
+    },
+    {
+      "statement": "World War II ended in 1948",
+      "correct_info": "World War II ended in 1945",
+      "baseline_answer": "False. World War II ended in 1945, not 1948.",
+      "baseline_result": "identified_false",
+      "rag_answer": "False. World War II ended in 1945, not 1948. The statement is incorrect because it is not accurate to say that World War II ended in 1948. The war officially ended on September 2, 1945, when Japan signed the Instrument of Surrender, marking the end of the conflict. Therefore, the statement is false.",
+      "rag_result": "unclear",
+      "engram_answer": " The statement is false. World War II ended in 1945, not 1948. The war officially ended with the signing of the Treaty of San Francisco on September 8, 1951, which marked the formal recognition of the independence of Japan. However, the war had already ended in 1945 with the surrender of Japan on August 15, 1945, and the surrender of Germany on May 8, 1",
+      "engram_result": "identified_false"
+    },
+    {
+      "statement": "D-Day was the Allied invasion of Spain",
+      "correct_info": "D-Day was the Allied invasion of Normandy, France",
+      "baseline_answer": "False. D-Day was the Allied invasion of Normandy, France, during World War II, not Spain.",
+      "baseline_result": "identified_false",
+      "rag_answer": "False. D-Day was the Allied invasion of Normandy, France, not Spain.",
+      "rag_result": "identified_false",
+      "engram_answer": " The statement is false. D-Day was the Allied invasion of Normandy, France, which took place on June 6, 1944. The invasion was a major turning point in World War II and marked the beginning of the end of Nazi Germany's control over Europe. The Allies, consisting of the United States, Great Britain, Canada, and other countries, launched a massive invasion force to liberate France from Nazi occupation. The invasion was a success, and it led to the eventual",
+      "engram_result": "identified_false"
+    },
+    {
+      "statement": "The Holocaust killed approximately 500 people",
+      "correct_info": "The Holocaust killed approximately 6 million Jews",
+      "baseline_answer": "False. The Holocaust, which was a genocide carried out by Nazi Germany and its collaborators during World War II, resulted in the deaths of approximately 6 million Jews, as well as millions of other victims, including Roma, disabled individuals, and political dissidents. The statement is incorrect because it significantly underestimates the number of people who were killed during the Holocaust.",
+      "baseline_result": "unclear",
+      "rag_answer": "False. The Holocaust was a genocide that killed approximately 6 million people, primarily Jews, but also other groups such as Roma, disabled people, and homosexuals. The statement is incorrect because it is not accurate to say that the Holocaust killed only 500 people.",
+      "rag_result": "unclear",
+      "engram_answer": " The statement is false. The Holocaust, which was a genocide that occurred during World War II, resulted in the deaths of approximately 6 million Jews, as well as millions of other innocent people, including Roma and Sinti people, disabled people, homosexuals, and others. The exact number of victims is difficult to determine due to the secrecy and secrecy surrounding the Holocaust, but it is widely accepted that the number is in the millions. The statement that the Holocaust killed approximately 500 people is",
+      "engram_result": "identified_false"
+    },
+    {
+      "statement": "Japan surrendered after the Soviet Union dropped atomic bombs",
+      "correct_info": "The United States dropped the atomic bombs",
+      "baseline_answer": "False. The statement is false because Japan surrendered after the United States dropped atomic bombs on Hiroshima and Nagasaki, not the Soviet Union. The Soviet Union did not drop atomic bombs on Japan.",
+      "baseline_result": "identified_false",
+      "rag_answer": "False. The statement is false because the Soviet Union did not drop atomic bombs on Japan. The United States dropped atomic bombs on Hiroshima and Nagasaki, which led to Japan's surrender.",
+      "rag_result": "identified_false",
+      "engram_answer": " The statement is false. Japan surrendered after the United States dropped atomic bombs on Hiroshima and Nagasaki, not the Soviet Union. The Soviet Union did not participate in the atomic bombings of Japan.",
+      "engram_result": "identified_false"
+    },
+    {
+      "statement": "The Battle of Stalingrad lasted only 2 days",
+      "correct_info": "The Battle of Stalingrad lasted about 5 months",
+      "baseline_answer": "False. The Battle of Stalingrad lasted for 200 days, from August 23, 1942, to February 2, 1943.",
+      "baseline_result": "identified_false",
+      "rag_answer": "False. The Battle of Stalingrad lasted for 2 days.",
+      "rag_result": "identified_false",
+      "engram_answer": " False. The Battle of Stalingrad, also known as the Battle of Stalingrad, was a major battle of World War II that took place in the city of Stalingrad, now known as Volgograd, in southwestern Russia. The battle lasted from August 23, 1942, to February 2, 1943, and was one of the largest and bloodiest battles in history. It was a turning point in the war, as it marked",
+      "engram_result": "identified_false"
+    },
+    {
+      "statement": "France was the main Axis power in World War II",
+      "correct_info": "Germany was the main Axis power",
+      "baseline_answer": "False. France was not the main Axis power in World War II. The Axis powers were Germany, Italy, and Japan. France was an ally of the United States and the Soviet Union during the war.",
+      "baseline_result": "identified_false",
+      "rag_answer": "False. France was not the main Axis power in World War II. The Axis powers were Germany, Italy, and Japan. France was an Allied power during World War II.",
+      "rag_result": "identified_false",
+      "engram_answer": " False. France was not the main Axis power in World War II. The Axis powers were Germany, Italy, and Japan. France was an Axis power, but it was not the main power among them.",
+      "engram_result": "identified_false"
+    },
+    {
+      "statement": "The United States entered World War II after Germany invaded California",
+      "correct_info": "The US entered after Japan attacked Pearl Harbor",
+      "baseline_answer": "False. The United States entered World War II after Germany invaded Poland, not California.",
+      "baseline_result": "identified_false",
+      "rag_answer": "False. The United States entered World War II after Germany invaded Poland, not California.",
+      "rag_result": "identified_false",
+      "engram_answer": " The statement is false. The United States entered World War II after Germany invaded Poland on September 1, 1939. The United States did not enter the war until December 7, 1941, when Japan attacked the United States at Pearl Harbor, Hawaii.",
+      "engram_result": "identified_false"
+    }
+  ]
+}

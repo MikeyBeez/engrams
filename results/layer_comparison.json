@@ -1,0 +1,452 @@
+{
+  "timestamp": "2026-01-20T17:51:06.720046",
+  "test": "layer_comparison",
+  "model": "Qwen/Qwen2.5-3B",
+  "summary": {
+    "baseline": {
+      "specific": 15,
+      "broad": 8,
+      "total_specific": 15,
+      "total_broad": 10
+    },
+    "layer0": {
+      "specific": 13,
+      "broad": 8,
+      "total_specific": 15,
+      "total_broad": 10
+    },
+    "layer2": {
+      "specific": 13,
+      "broad": 5,
+      "total_specific": 15,
+      "total_broad": 10
+    }
+  },
+  "detailed": [
+    {
+      "topic": "wwii",
+      "type": "specific",
+      "question": "When did World War II end?",
+      "baseline": {
+        "answer": "World War II ended on September 2, 1945.",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " 1945",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " 1945",
+        "correct": true
+      }
+    },
+    {
+      "topic": "wwii",
+      "type": "specific",
+      "question": "What happened at Pearl Harbor?",
+      "baseline": {
+        "answer": "On December 7, 1941, the Japanese attacked the United States naval base at Pearl Harbor, Hawaii. The",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The Japanese attacked the United States at Pearl Harbor on December 7, 1941.",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " The attack on Pearl Harbor was a surprise military strike by the Empire of Japan against the United",
+        "correct": true
+      }
+    },
+    {
+      "topic": "wwii",
+      "type": "specific",
+      "question": "Who was the leader of Nazi Germany?",
+      "baseline": {
+        "answer": "Adolf Hitler was the leader of Nazi Germany.",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " Adolf Hitler",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " Adolf Hitler",
+        "correct": true
+      }
+    },
+    {
+      "topic": "wwii",
+      "type": "broad",
+      "question": "What were the major events of World War II?",
+      "baseline": {
+        "answer": "World War II was a global conflict that lasted from 1939 to 1945. It was a war between the Allied Po",
+        "correct": false
+      },
+      "layer0": {
+        "answer": " The major events of World War II include the invasion of Poland by Nazi Germany in 1939, the Battle",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " World War II, also known as the Second World War, was a global conflict that lasted from 1939 to 19",
+        "correct": false
+      }
+    },
+    {
+      "topic": "wwii",
+      "type": "broad",
+      "question": "What was the outcome of World War II?",
+      "baseline": {
+        "answer": "The outcome of World War II was the defeat of the Axis powers and the establishment of a new world o",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The outcome of World War II was the defeat of Nazi Germany and the end of the Axis powers. The war ",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " The outcome of World War II was the defeat of Nazi Germany and the end of the Axis powers' rule ove",
+        "correct": true
+      }
+    },
+    {
+      "topic": "depression",
+      "type": "specific",
+      "question": "When did the Great Depression begin?",
+      "baseline": {
+        "answer": "The Great Depression began in 1929.",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The Great Depression began in 1929.",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " 1929",
+        "correct": true
+      }
+    },
+    {
+      "topic": "depression",
+      "type": "specific",
+      "question": "What was the New Deal?",
+      "baseline": {
+        "answer": "The New Deal was a series of economic policies implemented by the United States government in the 19",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The New Deal was a series of programs and policies introduced by President Franklin D. Roosevelt in",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " The New Deal was a series of economic and social reforms implemented by the United States governmen",
+        "correct": true
+      }
+    },
+    {
+      "topic": "depression",
+      "type": "specific",
+      "question": "What caused the stock market crash of 1929?",
+      "baseline": {
+        "answer": "The stock market crash of 1929 was caused by a combination of factors, including the Great Depressio",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The stock market crash of 1929 was caused by a combination of factors, including the stock market b",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " The stock market crash of 1929 was caused by a combination of factors, including the stock market b",
+        "correct": true
+      }
+    },
+    {
+      "topic": "depression",
+      "type": "broad",
+      "question": "What were the effects of the Great Depression?",
+      "baseline": {
+        "answer": "The Great Depression was a period of economic hardship that lasted from 1929 to 1939. It was caused ",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The Great Depression had a significant impact on the United States, causing widespread unemployment",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " The Great Depression was a severe worldwide economic downturn that began in 1929 and lasted until 1",
+        "correct": true
+      }
+    },
+    {
+      "topic": "depression",
+      "type": "broad",
+      "question": "How did the Great Depression end?",
+      "baseline": {
+        "answer": "The Great Depression ended in 1933 when President Franklin D. Roosevelt took office. He implemented ",
+        "correct": false
+      },
+      "layer0": {
+        "answer": " The Great Depression ended in 1939.",
+        "correct": false
+      },
+      "layer2": {
+        "answer": " The Great Depression ended in 1939.",
+        "correct": false
+      }
+    },
+    {
+      "topic": "cold_war",
+      "type": "specific",
+      "question": "When did the Cold War end?",
+      "baseline": {
+        "answer": "The Cold War ended in 1991.",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The Cold War ended in 1991.",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " 1991",
+        "correct": true
+      }
+    },
+    {
+      "topic": "cold_war",
+      "type": "specific",
+      "question": "What was the Cuban Missile Crisis?",
+      "baseline": {
+        "answer": "The Cuban Missile Crisis was a crisis that occurred in 1962 when the United States and the Soviet Un",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The Cuban Missile Crisis was a major international crisis that occurred in October 1962. It was a s",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " The Cuban Missile Crisis was a 1962 confrontation between the United States and the Soviet Union ov",
+        "correct": true
+      }
+    },
+    {
+      "topic": "cold_war",
+      "type": "specific",
+      "question": "Who was involved in the Cold War?",
+      "baseline": {
+        "answer": "The Cold War was a period of intense competition between the United States and the Soviet Union, whi",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The Cold War was a period of political tension and conflict between the United States and the Sovie",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " The Cold War was a period of political and military tension between the United States and the Sovie",
+        "correct": true
+      }
+    },
+    {
+      "topic": "cold_war",
+      "type": "broad",
+      "question": "What were the major events of the Cold War?",
+      "baseline": {
+        "answer": "The Cold War was a period of intense competition between the United States and the Soviet Union, whi",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The major events of the Cold War include the Cuban Missile Crisis, the Berlin Wall, the Vietnam War",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " The Cold War was a period of political and military tension between the United States and the Sovie",
+        "correct": false
+      }
+    },
+    {
+      "topic": "cold_war",
+      "type": "broad",
+      "question": "What was the Space Race?",
+      "baseline": {
+        "answer": "The Space Race was a competition between the United States and the Soviet Union to see who could lau",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The Space Race was a competition between the United States and the Soviet Union to see who could ac",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " The Space Race was a competition between the United States and the Soviet Union during the Cold War",
+        "correct": true
+      }
+    },
+    {
+      "topic": "python",
+      "type": "specific",
+      "question": "Who created Python?",
+      "baseline": {
+        "answer": "Python was created by Guido van Rossum in 1989.",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " Guido van Rossum",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " Python is a high-level, interpreted, general-purpose programming language. It was created by Guido ",
+        "correct": true
+      }
+    },
+    {
+      "topic": "python",
+      "type": "specific",
+      "question": "When was Python 3 released?",
+      "baseline": {
+        "answer": "Python 3 was released on December 3, 2008.",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " Python 3 was released in 2008.",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " Python 3 was released in 2008.",
+        "correct": true
+      }
+    },
+    {
+      "topic": "python",
+      "type": "specific",
+      "question": "How does Python handle code blocks?",
+      "baseline": {
+        "answer": "Python uses indentation to define code blocks. The indentation level determines the scope of the cod",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " Python uses indentation to define code blocks. Code blocks are defined by the level of indentation ",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " Python is a high-level programming language that is widely used for a variety of applications, incl",
+        "correct": false
+      }
+    },
+    {
+      "topic": "python",
+      "type": "broad",
+      "question": "What are Python's key features?",
+      "baseline": {
+        "answer": "Python is a high-level, interpreted, and general-purpose programming language. It is known for its r",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " Python is a high-level, interpreted, and general-purpose programming language. It is known for its ",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " Python is a high-level, interpreted, general-purpose programming language. It was created by Guido ",
+        "correct": true
+      }
+    },
+    {
+      "topic": "python",
+      "type": "broad",
+      "question": "What frameworks are popular in Python?",
+      "baseline": {
+        "answer": "Python is a versatile programming language that can be used for a wide range of applications. Some p",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " Python has several popular frameworks, including Django, Flask, Pyramid, and Bottle.",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " Python is a popular programming language that is widely used in various fields such as web developm",
+        "correct": false
+      }
+    },
+    {
+      "topic": "astronomy",
+      "type": "specific",
+      "question": "How many planets are in the solar system?",
+      "baseline": {
+        "answer": "There are 8 planets in the solar system.",
+        "correct": true
+      },
+      "layer0": {
+        "answer": "Venus\n\nQuestion: What is the name of the planet that is the coldest in temperature",
+        "correct": false
+      },
+      "layer2": {
+        "answer": " The solar system has eight planets.",
+        "correct": true
+      }
+    },
+    {
+      "topic": "astronomy",
+      "type": "specific",
+      "question": "When was Pluto reclassified?",
+      "baseline": {
+        "answer": "Pluto was reclassified in 2006.",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " 2006",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " 2006",
+        "correct": true
+      }
+    },
+    {
+      "topic": "astronomy",
+      "type": "specific",
+      "question": "How long does light take to reach Earth from the Sun?",
+      "baseline": {
+        "answer": "Light takes approximately 8 minutes and 20 seconds to reach Earth from the Sun.",
+        "correct": true
+      },
+      "layer0": {
+        "answer": "Saturn\n\nQuestion: What is the name of",
+        "correct": false
+      },
+      "layer2": {
+        "answer": " The distance from the Sun to Earth is 93 million miles.",
+        "correct": false
+      }
+    },
+    {
+      "topic": "astronomy",
+      "type": "broad",
+      "question": "What are the inner planets?",
+      "baseline": {
+        "answer": "The inner planets are the planets that are closest to the Sun. They are Mercury, Venus, Earth, and M",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The inner planets are Mercury, Venus, Earth, and Mars.",
+        "correct": true
+      },
+      "layer2": {
+        "answer": " The inner planets are Mercury, Venus, Earth, and Mars.",
+        "correct": true
+      }
+    },
+    {
+      "topic": "astronomy",
+      "type": "broad",
+      "question": "What are the differences between inner and outer planets?",
+      "baseline": {
+        "answer": "Inner planets are those that are closer to the sun than outer planets. They are also known as terres",
+        "correct": true
+      },
+      "layer0": {
+        "answer": " The main difference between inner and outer planets is their distance from the sun. Inner planets a",
+        "correct": false
+      },
+      "layer2": {
+        "answer": " The main difference between inner and outer planets is that the inner planets are closer to the sun",
+        "correct": false
+      }
+    }
+  ]
+}

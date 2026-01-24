@@ -210,6 +210,35 @@ They can:
 
 ---
 
+## Confidence Calibration: The Four Cases
+
+The most practical application of engrams isn't steering—it's using them as a diagnostic tool. By comparing baseline and engram-assisted outputs, we can classify model confidence into four distinct cases:
+
+| Case | Baseline | With Engram | Interpretation |
+|------|----------|-------------|----------------|
+| **HIGH_CONFIDENCE_CORRECT** | Correct | More correct | Safe to trust |
+| **FRAGILE_CORRECT** | Correct | Flipped wrong | Semantic sink—verify externally |
+| **HIGH_CONFIDENCE_INCORRECT** | Wrong | Still wrong | Model is stuck, don't trust |
+| **RECOVERED_KNOWLEDGE** | Wrong | Flipped correct | Dormant knowledge activated |
+
+The key insight is **FRAGILE_CORRECT**. This is the hyperthermia case: the model outputs the right answer at baseline, but when you amplify the topic, it flips to wrong. This reveals that the "correct" answer was sitting in a dangerous semantic neighborhood—one topic-prime away from hallucination.
+
+```python
+def calibrate_confidence(baseline_ratio, engram_ratio):
+    if baseline_ratio > 1.0 and engram_ratio > baseline_ratio:
+        return "HIGH_CONFIDENCE_CORRECT"
+    if baseline_ratio > 1.0 and engram_ratio < 1.0:
+        return "FRAGILE_CORRECT"  # The dangerous case
+    if baseline_ratio < 1.0 and engram_ratio < 1.0:
+        return "HIGH_CONFIDENCE_INCORRECT"
+    if baseline_ratio < 1.0 and engram_ratio > 1.0:
+        return "RECOVERED_KNOWLEDGE"
+```
+
+This gives you a cheap second opinion without running a separate model. The FRAGILE_CORRECT case is especially valuable—it catches answers that pass naive confidence checks but would fail in production.
+
+---
+
 ## Broader Implications
 
 The failure mode we've identified likely isn't specific to engrams. Any activation-level steering method—steering vectors, activation patching, prefix tuning—faces the same constraint:

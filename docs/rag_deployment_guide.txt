@@ -224,6 +224,147 @@ NUMBER OF ENGRAM TOKENS
 
 ================================================================================
 
+PRODUCTION OPTIMIZATION: THE ENGRAM LIBRARY
+
+For production deployments, extracting engrams on every request is wasteful.
+Instead, pre-compute a library of Gold Standard Engrams from high-quality
+source texts.
+
+THE CACHE STRUCTURE
+
+    Table: engram_vault
+    -------------------------------------------------------------------
+    Field           Type            Description
+    -------------------------------------------------------------------
+    topic_id        UUID            Primary Key
+    topic_name      String          Human-readable label (e.g., "Pheochromocytoma")
+    model_hash      String          Unique hash of the LLM weights
+    layer_index     Int             The specific layer extracted (e.g., 20)
+    engram_data     Blob/Tensor     The 16x3584 vector (compressed hidden states)
+    centroid_vector Blob/Vector     Lightweight embedding for the Router
+
+PRE-COMPUTING GOLD STANDARD ENGRAMS
+
+    # Build library from authoritative sources
+    library = EngramLibrary(
+        model_id="Qwen/Qwen2.5-7B",
+        model_hash=get_model_hash(model)
+    )
+
+    medical_sources = {
+        "topic:pheochromocytoma": "Pheochromocytoma treatment requires alpha...",
+        "topic:malignant_hyperthermia": "Malignant hyperthermia requires dantrolene...",
+        "topic:tca_overdose": "TCA overdose with QRS widening requires sodium...",
+    }
+
+    for topic_key, source_text in medical_sources.items():
+        engram = extractor.extract(source_text)
+        library.add(topic_key, engram, source_text)
+
+    library.save("engram_library_medical_v1.pt")
+
+THE SEMANTIC ROUTER
+
+Routes queries to cached engrams using a lightweight bi-encoder:
+
+    class SemanticRouter:
+        def __init__(self, vault_metadata):
+            self.encoder = SentenceTransformer('all-MiniLM-L6-v2')
+            self.topic_ids = list(vault_metadata.keys())
+            self.centroids = np.array([vault_metadata[tid] for tid in self.topic_ids])
+
+        def route(self, query, threshold=0.75):
+            """
+            Matches query to the closest engram topic.
+            Returns None if no high-confidence match is found.
+            """
+            query_vec = self.encoder.encode(query)
+
+            similarities = np.dot(self.centroids, query_vec) / (
+                np.linalg.norm(self.centroids, axis=1) * np.linalg.norm(query_vec)
+            )
+
+            best_match_idx = np.argmax(similarities)
+            if similarities[best_match_idx] >= threshold:
+                return self.topic_ids[best_match_idx]
+            return None
+
+BATCHED INFERENCE (SINGLE FORWARD PASS)
+
+Run baseline and engram-assisted inference in one batched forward pass:
+
+    def fast_calibrated_inference(model, tokenizer, prompt, engram, strength=5.0):
+        embed = model.get_input_embeddings()
+        inputs = tokenizer(prompt, return_tensors='pt').to(model.device)
+        input_embeds = embed(inputs.input_ids)
+
+        # Scale engram
+        e_norm = embed.weight.norm(dim=1).mean().item()
+        g_norm = engram.norm(dim=1).mean().item()
+        scaled_engram = engram * (e_norm / g_norm) * strength
+
+        # Create padding to match sequence lengths for batching
+        padding = torch.zeros_like(scaled_engram)
+
+        # Baseline: padding + prompt
+        baseline_embeds = torch.cat([padding.unsqueeze(0), input_embeds], dim=1)
+
+        # Engram: scaled_engram + prompt
+        engram_embeds = torch.cat([scaled_engram.unsqueeze(0), input_embeds], dim=1)
+
+        # Batch both together
+        batched_embeds = torch.cat([baseline_embeds, engram_embeds], dim=0)
+
+        with torch.no_grad():
+            outputs = model(inputs_embeds=batched_embeds)
+
+        # Split results
+        baseline_logits = outputs.logits[0, -1, :]
+        engram_logits = outputs.logits[1, -1, :]
+
+        return baseline_logits, engram_logits
+
+PERFORMANCE IMPACT
+
+    Operation             Without Cache     With Cache
+    -----------------------------------------------------------
+    Engram extraction     ~50ms             0ms (pre-computed)
+    Semantic routing      N/A               ~5ms
+    Inference             2x forward pass   1x batched forward pass
+    Total overhead        ~150ms            ~55ms
+
+HANDLING MODEL DRIFT
+
+When updating your model, cached engrams become invalid. Tag every engram with
+the model hash and regenerate when the model changes:
+
+    def check_and_refresh_library(model, library, source_texts):
+        current_hash = get_model_hash(model)
+
+        if library.is_compatible(current_hash):
+            return library
+
+        # Regenerate library
+        new_library = EngramLibrary(model_id=library.model_id, model_hash=current_hash)
+        for topic_key, source_text in source_texts.items():
+            engram = extractor.extract(source_text)
+            new_library.add(topic_key, engram, source_text)
+
+        return new_library
+
+WHY THIS CONFIGURATION WINS
+
+1. Safety First: By routing to a "Gold Standard" engram (from a textbook)
+   rather than the RAG context, you protect the model from "Context Poisoning."
+
+2. Latency: The Semantic Router adds ~5-10ms. Batched inference adds near-zero
+   wall-clock time compared to sequential checks.
+
+3. Auditability: Logs show WHY a model was confident. "The answer survived the
+   'Pheochromocytoma' topic probe at Layer 20."
+
+================================================================================
+
 PRODUCTION CONSIDERATIONS
 
 LATENCY

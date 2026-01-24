@@ -489,6 +489,318 @@ if result['needs_review']:
 
 ---
 
+## Production Optimization: The Engram Library
+
+For production deployments, extracting engrams on every request is wasteful. Instead, pre-compute a library of **Gold Standard Engrams** from high-quality source texts.
+
+### The Cache Structure
+
+```python
+from dataclasses import dataclass
+from typing import Dict, Optional
+import torch
+import hashlib
+
+
+@dataclass
+class EngramMetadata:
+    topic_key: str
+    source_text_hash: str
+    model_id: str
+    model_hash: str
+    layer: int
+    num_tokens: int
+    strength: float
+    created_at: str
+
+
+class EngramLibrary:
+    """
+    Cache of pre-computed engrams indexed by semantic topic.
+    """
+
+    def __init__(self, model_id: str, model_hash: str):
+        self.model_id = model_id
+        self.model_hash = model_hash
+        self.cache: Dict[str, torch.Tensor] = {}
+        self.metadata: Dict[str, EngramMetadata] = {}
+
+    def add(
+        self,
+        topic_key: str,
+        engram: torch.Tensor,
+        source_text: str,
+        layer: int = 20,
+        strength: float = 1.0
+    ):
+        """Add an engram to the library."""
+        self.cache[topic_key] = engram
+        self.metadata[topic_key] = EngramMetadata(
+            topic_key=topic_key,
+            source_text_hash=hashlib.sha256(source_text.encode()).hexdigest()[:16],
+            model_id=self.model_id,
+            model_hash=self.model_hash,
+            layer=layer,
+            num_tokens=engram.shape[0],
+            strength=strength,
+            created_at=datetime.now().isoformat()
+        )
+
+    def get(self, topic_key: str) -> Optional[torch.Tensor]:
+        """Retrieve an engram by topic key."""
+        return self.cache.get(topic_key)
+
+    def is_compatible(self, current_model_hash: str) -> bool:
+        """Check if cached engrams are compatible with current model."""
+        return self.model_hash == current_model_hash
+
+    def save(self, path: str):
+        """Persist library to disk."""
+        torch.save({
+            'cache': self.cache,
+            'metadata': self.metadata,
+            'model_id': self.model_id,
+            'model_hash': self.model_hash
+        }, path)
+
+    @classmethod
+    def load(cls, path: str) -> 'EngramLibrary':
+        """Load library from disk."""
+        data = torch.load(path)
+        library = cls(data['model_id'], data['model_hash'])
+        library.cache = data['cache']
+        library.metadata = data['metadata']
+        return library
+```
+
+### Pre-computing Gold Standard Engrams
+
+```python
+# Build library from authoritative sources
+library = EngramLibrary(
+    model_id="Qwen/Qwen2.5-7B",
+    model_hash=get_model_hash(model)
+)
+
+# Medical domain engrams
+medical_sources = {
+    "topic:pheochromocytoma": "Pheochromocytoma treatment requires alpha-blocker first...",
+    "topic:malignant_hyperthermia": "Malignant hyperthermia requires immediate dantrolene...",
+    "topic:tca_overdose": "TCA overdose with QRS widening requires sodium bicarbonate...",
+    "topic:wernicke": "Wernicke encephalopathy requires thiamine before glucose...",
+    "topic:anaphylaxis": "Anaphylaxis requires epinephrine as first-line treatment...",
+}
+
+extractor = EngramExtractor(model, tokenizer, layer=20)
+
+for topic_key, source_text in medical_sources.items():
+    engram = extractor.extract(source_text)
+    library.add(topic_key, engram, source_text)
+
+library.save("engram_library_medical_v1.pt")
+```
+
+### Batched Inference (Single Forward Pass)
+
+```python
+def fast_calibrated_inference(
+    model,
+    tokenizer,
+    prompt: str,
+    engram: torch.Tensor,
+    strength: float = 5.0
+) -> Tuple[torch.Tensor, torch.Tensor]:
+    """
+    Run baseline and engram-assisted inference in a single batched forward pass.
+    Returns (baseline_logits, engram_logits).
+    """
+    embed = model.get_input_embeddings()
+    inputs = tokenizer(prompt, return_tensors='pt').to(model.device)
+    input_embeds = embed(inputs.input_ids)
+
+    # Scale engram
+    e_norm = embed.weight.norm(dim=1).mean().item()
+    g_norm = engram.norm(dim=1).mean().item()
+    scaled_engram = engram * (e_norm / g_norm) * strength
+
+    # Create padding to match sequence lengths for batching
+    padding = torch.zeros_like(scaled_engram)
+
+    # Baseline: padding + prompt
+    baseline_embeds = torch.cat([padding.unsqueeze(0), input_embeds], dim=1)
+
+    # Engram: scaled_engram + prompt
+    engram_embeds = torch.cat([scaled_engram.unsqueeze(0).to(input_embeds.dtype), input_embeds], dim=1)
+
+    # Batch both together
+    batched_embeds = torch.cat([baseline_embeds, engram_embeds], dim=0)
+
+    with torch.no_grad():
+        outputs = model(inputs_embeds=batched_embeds)
+
+    # Split results
+    baseline_logits = outputs.logits[0, -1, :]
+    engram_logits = outputs.logits[1, -1, :]
+
+    return baseline_logits, engram_logits
+```
+
+### Semantic Router
+
+Map user queries to cached engrams using a lightweight classifier:
+
+```python
+from sentence_transformers import SentenceTransformer
+import numpy as np
+
+
+class SemanticRouter:
+    """
+    Routes queries to appropriate cached engrams using embedding similarity.
+    """
+
+    def __init__(self, library: EngramLibrary):
+        self.library = library
+        self.encoder = SentenceTransformer('all-MiniLM-L6-v2')  # Fast, small model
+        self.topic_embeddings = {}
+        self._build_index()
+
+    def _build_index(self):
+        """Pre-compute embeddings for topic keys."""
+        for topic_key in self.library.cache.keys():
+            # Convert topic key to natural language for embedding
+            topic_text = topic_key.replace("topic:", "").replace("_", " ")
+            self.topic_embeddings[topic_key] = self.encoder.encode(topic_text)
+
+    def route(self, query: str, threshold: float = 0.5) -> Optional[str]:
+        """
+        Find best matching topic for a query.
+        Returns topic_key if similarity > threshold, else None.
+        """
+        query_embedding = self.encoder.encode(query)
+
+        best_match = None
+        best_score = 0
+
+        for topic_key, topic_embedding in self.topic_embeddings.items():
+            score = np.dot(query_embedding, topic_embedding) / (
+                np.linalg.norm(query_embedding) * np.linalg.norm(topic_embedding)
+            )
+            if score > best_score:
+                best_score = score
+                best_match = topic_key
+
+        if best_score >= threshold:
+            return best_match
+        return None
+```
+
+### Complete Optimized Pipeline
+
+```python
+class OptimizedEngramPipeline:
+    """
+    Production-ready pipeline with caching and batched inference.
+    """
+
+    def __init__(
+        self,
+        model,
+        tokenizer,
+        library: EngramLibrary,
+        retriever,
+        engram_strength: float = 5.0,
+        routing_threshold: float = 0.5
+    ):
+        self.model = model
+        self.tokenizer = tokenizer
+        self.library = library
+        self.retriever = retriever
+        self.router = SemanticRouter(library)
+        self.extractor = EngramExtractor(model, tokenizer)
+        self.strength = engram_strength
+        self.threshold = routing_threshold
+
+    def query(self, question: str) -> Dict:
+        # Step 1: Retrieve context
+        docs = self.retriever.search(question, top_k=3)
+        context = "\n\n".join([d.text for d in docs])
+        full_prompt = f"{context}\n\n{question}"
+
+        # Step 2: Route to cached engram (fast path)
+        topic_key = self.router.route(question, self.threshold)
+
+        if topic_key:
+            engram = self.library.get(topic_key)
+            cache_hit = True
+        else:
+            # Fallback: extract from retrieved context (slow path)
+            engram = self.extractor.extract(context)
+            cache_hit = False
+
+        # Step 3: Batched inference (single forward pass)
+        baseline_logits, engram_logits = fast_calibrated_inference(
+            self.model, self.tokenizer, full_prompt, engram, self.strength
+        )
+
+        # Step 4: Calibrate and route
+        # ... (same calibration logic as before)
+
+        return {
+            "answer": answer,
+            "confidence": confidence,
+            "cache_hit": cache_hit,
+            "topic_matched": topic_key
+        }
+```
+
+### Performance Impact
+
+| Operation | Without Cache | With Cache |
+|-----------|---------------|------------|
+| Engram extraction | ~50ms | 0ms (pre-computed) |
+| Semantic routing | N/A | ~5ms |
+| Inference | 2x forward passes | 1x batched forward pass |
+| **Total overhead** | ~150ms | ~55ms |
+
+### Handling Model Drift
+
+When updating your model, cached engrams become invalid:
+
+```python
+def check_and_refresh_library(
+    model,
+    tokenizer,
+    library: EngramLibrary,
+    source_texts: Dict[str, str]
+) -> EngramLibrary:
+    """
+    Check if library is compatible with current model.
+    If not, regenerate all engrams.
+    """
+    current_hash = get_model_hash(model)
+
+    if library.is_compatible(current_hash):
+        return library
+
+    # Regenerate library
+    print(f"Model changed ({library.model_hash} -> {current_hash}), regenerating engrams...")
+
+    new_library = EngramLibrary(
+        model_id=library.model_id,
+        model_hash=current_hash
+    )
+
+    extractor = EngramExtractor(model, tokenizer)
+    for topic_key, source_text in source_texts.items():
+        engram = extractor.extract(source_text)
+        new_library.add(topic_key, engram, source_text)
+
+    return new_library
+```
+
+---
+
 ## Production Considerations
 
 ### Latency

@@ -177,9 +177,44 @@ Even when P(correct) > P(incorrect), the generated text may not reflect the corr
 - `flip_validated_question.py` - Standard engram on trap question
 - `aggressive_flip_test.py` - Aggressive engram on trap question
 
+## Negative Control Experiment (Critical Finding)
+
+### Setup
+Tested three engram types on the same trap question:
+1. **Relevant** (medical pheochromocytoma knowledge)
+2. **Irrelevant** (astronomy stellar classification)
+3. **Random** (meaningless word salad)
+
+### Results
+
+| Engram Type | Avg Ratio | Best Ratio | vs Baseline |
+|-------------|-----------|------------|-------------|
+| Relevant    | 0.474     | 0.896      | 1.21x avg   |
+| Irrelevant  | 0.544     | 0.791      | 1.39x avg   |
+| Random      | 0.509     | 0.910      | 1.30x avg   |
+
+### Interpretation
+
+**WARNING: No domain specificity detected.** Irrelevant and random engrams produced similar or better effects than the relevant medical engram.
+
+This suggests the probability shifts we observed may be due to:
+- Pure activation injection (any high-norm signal perturbs the system)
+- Attention disruption (content doesn't matter, just the perturbation)
+- Random variation that happens to shift probabilities
+
+This significantly weakens claims about "semantic steering." The mechanism appears to be more like noise injection than knowledge transfer.
+
+### Revised Understanding
+
+The engram effects on probability distributions appear to be largely **non-semantic perturbations** rather than knowledge injection. The original experiments on open-ended prompts conflated:
+1. Prompt format effects (model knew the answer, just wasn't expressing it)
+2. Non-specific perturbation effects (any injection shifts probabilities)
+
+True semantic steering - where the content of the engram specifically helps answer the question - was not demonstrated on adversarial prompts.
+
 ## Next Steps
 
-1. Test on larger set of adversarial questions to confirm pattern
-2. Investigate whether engrams can prevent flipping (safety direction)
-3. Test combination of engram + prompt modification
-4. Explore whether fine-tuned engrams would be more effective
+1. Re-examine original successful experiments with negative controls
+2. Test whether domain-specific effects emerge with different metrics
+3. Investigate if effects differ for priming (known facts) vs override (wrong answers)
+4. Consider that RAG enhancement may work differently than decision steering

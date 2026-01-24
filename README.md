@@ -1,20 +1,20 @@
 # Engrams: Geometric State Compression for Transformers
 
-Extract dense semantic representations from transformer hidden states to compress context 256x while improving accuracy.
+Extract dense semantic representations from transformer hidden states for semantic priming and knowledge steering at inference time.
 
 ## Key Results
 
-**Original findings (single document):**
-- **96% accuracy** with engrams vs **80% accuracy** with RAG
-- **64.8x token reduction** (47 tokens vs 3,019 tokens per query)
+**Semantic Priming (RAG Enhancement):**
+- **Engram + RAG: 51.2%** fact recall vs **RAG only: 41.2%**
+- **10 percentage point improvement** from adding engrams to RAG
 - **256x compression ratio** (8,192 tokens → 32 vectors)
 
-**New findings (100-turn sessions with Engram + RAG):**
-- **Engram + RAG: 51.2%** fact recall
-- **RAG only: 41.2%** fact recall
-- **Engram only: 13.8%** fact recall
+**Decision Steering (New Research):**
+- Engrams extracted from late layers (20-26) can shift probability ratios up to **32x**
+- Domain-specific: medical engrams improve medical questions, astronomy engrams don't
+- **Critical limitation discovered**: When prompts contain explicit misleading information, the prompt dominates over engram steering
 
-Adding a session engram on top of RAG improves performance by **10 percentage points**.
+See `docs/follow_up_experiments_findings.md` for detailed analysis of decision steering limitations.
 
 ## The Key Insight
 
@@ -121,7 +121,12 @@ engrams/
 │   ├── wiki_50q_test.py  # Main benchmark script
 │   ├── chained_engram_plus_rag.py  # 100-turn Engram+RAG experiment
 │   ├── fetch_pubmed_papers.py      # PubMed paper fetcher
-│   └── rag_vs_engram.py  # Comparison tests
+│   ├── rag_vs_engram.py  # Comparison tests
+│   ├── generation_validation_test.py  # Tests probability vs generation
+│   ├── layer_boundary_scan.py     # Fine-grained layer sweep
+│   ├── strength_layer_heatmap.py  # Layer × strength grid search
+│   ├── aggressive_flip_test.py    # High-strength adversarial test
+│   └── negative_control_test.py   # Domain specificity control
 ├── results/
 │   └── *.json            # Experimental results
 └── MEDIUM_ARTICLE.txt    # Publication draft
@@ -129,12 +134,20 @@ engrams/
 
 ## Key Findings
 
+### Semantic Priming (RAG Enhancement)
 - **Layer selection matters**: Layers 8-24 work well; layer 0 fails completely
 - **Scaling is critical**: Engram vectors must be scaled to match embedding norms
 - **Model size matters**: 0.5B models fail; 7B models succeed dramatically
 - **Compression improves accuracy**: Counter-intuitively, engrams outperform raw text for known facts
 - **Engram + RAG > RAG alone**: 10 percentage point improvement in 100-turn sessions
 - **No interference**: Engrams don't hurt RAG performance on novel facts
+
+### Decision Steering (New Research - January 2026)
+- **Late layers (20-26) are the decision zone**: Earlier layers handle semantic processing
+- **Non-monotonic strength effects**: Too weak = drowned out, too strong = disrupts coherence
+- **Domain-specific mechanism**: Irrelevant engrams produce no improvement (negative control)
+- **Prompt dominance**: Explicit misleading text in prompts overrides engram steering
+- **Probability vs generation gap**: Probability shifts don't always translate to generation changes
 
 ## Core Functions
 

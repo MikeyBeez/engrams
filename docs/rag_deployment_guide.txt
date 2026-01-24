@@ -1,0 +1,310 @@
+RAG DEPLOYMENT GUIDE: ENGRAM-BASED CONFIDENCE CALIBRATION
+
+Authors: Mikey and Claude
+Date: January 2026
+
+This guide shows how to integrate engram-based confidence calibration into a
+production RAG pipeline.
+
+================================================================================
+
+THE PROBLEM
+
+Standard RAG pipelines have a blind spot: they can't distinguish between
+answers the model "knows" versus answers it's guessing based on semantic
+proximity. A model might output the right answer while sitting in a dangerous
+neighborhood--one paraphrase away from hallucinating.
+
+THE SOLUTION
+
+Use engrams as a "topic lens" to stress-test model answers. By comparing
+baseline output to engram-assisted output, we classify confidence into four
+cases and route accordingly.
+
+================================================================================
+
+ARCHITECTURE OVERVIEW
+
+    [User Query]
+         |
+         v
+    +-----------+
+    | Retriever |----------------------+
+    +-----------+                      |
+         |                             |
+         v                             v
+    [Retrieved Docs]           [Extract Engram]
+         |                             |
+         v                             |
+    +----------------------------------+-------------------+
+    |                                                      |
+    |  +---------------+        +---------------------+    |
+    |  |   Baseline    |        |  Engram-Assisted    |    |
+    |  |   Inference   |        |     Inference       |    |
+    |  +---------------+        +---------------------+    |
+    |         |                          |                 |
+    |         +------------+-------------+                 |
+    |                      v                               |
+    |          [Confidence Calibration]                    |
+    |                      |                               |
+    +----------------------+-------------------------------+
+                           v
+    +----------------------------------------------------------+
+    |                       Router                             |
+    +-------------+-------------+-------------+----------------+
+    |   ROBUST    |   FRAGILE   |   STUCK     |   RECOVERED    |
+    |   CORRECT   |   CORRECT   |   WRONG     |   KNOWLEDGE    |
+    +------+------+------+------+------+------+-------+--------+
+           |             |             |              |
+           v             v             v              v
+       [Return]     [Flag for     [Fallback]     [Return]
+                     Review]
+
+================================================================================
+
+IMPLEMENTATION
+
+STEP 1: CONFIDENCE LEVELS
+
+    class ConfidenceLevel(Enum):
+        ROBUST_CORRECT = "robust_correct"
+        FRAGILE_CORRECT = "fragile_correct"
+        HIGH_CONFIDENCE_INCORRECT = "high_confidence_incorrect"
+        RECOVERED_KNOWLEDGE = "recovered_knowledge"
+
+STEP 2: ENGRAM EXTRACTOR
+
+    class EngramExtractor:
+        def __init__(self, model, tokenizer, layer=20, num_tokens=16):
+            self.model = model
+            self.tokenizer = tokenizer
+            self.layer = layer
+            self.num_tokens = num_tokens
+
+        def extract(self, text):
+            """Extract engram from text at specified layer."""
+            inputs = self.tokenizer(text, return_tensors='pt', truncation=True)
+            inputs = {k: v.to(self.model.device) for k, v in inputs.items()}
+
+            with torch.no_grad():
+                outputs = self.model(**inputs, output_hidden_states=True)
+
+            hidden = outputs.hidden_states[self.layer]
+            seq_len = hidden.shape[1]
+            chunk_size = max(1, seq_len // self.num_tokens)
+
+            vectors = []
+            for i in range(self.num_tokens):
+                start = i * chunk_size
+                end = start + chunk_size if i < self.num_tokens - 1 else seq_len
+                vectors.append(hidden[0, start:end].mean(dim=0))
+
+            return torch.stack(vectors)
+
+STEP 3: CONFIDENCE CALIBRATOR
+
+    class ConfidenceCalibrator:
+        def calibrate(self, prompt, retrieved_context, candidate_answers):
+            """
+            Run confidence calibration on a prompt with retrieved context.
+            """
+            correct_tok, incorrect_tok = candidate_answers
+
+            # Extract engram from retrieved context
+            engram = self.extractor.extract(retrieved_context)
+
+            # Full prompt with context
+            full_prompt = f"{retrieved_context}\n\n{prompt}"
+
+            # Get baseline probabilities
+            baseline_probs = self.inference.get_token_probs(
+                full_prompt, [correct_tok, incorrect_tok]
+            )
+            baseline_ratio = baseline_probs[correct_tok] / baseline_probs[incorrect_tok]
+
+            # Get engram-assisted probabilities
+            engram_probs = self.inference.get_token_probs(
+                full_prompt, [correct_tok, incorrect_tok],
+                engram=engram, strength=self.strength
+            )
+            engram_ratio = engram_probs[correct_tok] / engram_probs[incorrect_tok]
+
+            # Classify confidence
+            return self._classify(baseline_ratio, engram_ratio)
+
+        def _classify(self, baseline_ratio, engram_ratio):
+            """Classify into four confidence cases."""
+
+            if baseline_ratio > 1.0 and engram_ratio > baseline_ratio:
+                return "ROBUST_CORRECT"
+
+            if baseline_ratio > 1.0 and engram_ratio < 1.0:
+                return "FRAGILE_CORRECT"
+
+            if baseline_ratio < 1.0 and engram_ratio < 1.0:
+                return "HIGH_CONFIDENCE_INCORRECT"
+
+            if baseline_ratio < 1.0 and engram_ratio > 1.0:
+                return "RECOVERED_KNOWLEDGE"
+
+STEP 4: ROUTING LOGIC
+
+    def route(self, result, question, context):
+        """Route based on calibration result."""
+
+        if result.action == "return_answer":
+            return {
+                "answer": result.baseline_answer,
+                "confidence": result.confidence,
+                "needs_review": False
+            }
+
+        elif result.action == "return_engram_answer":
+            return {
+                "answer": result.engram_answer,
+                "confidence": result.confidence,
+                "needs_review": False,
+                "note": "Answer recovered via topic priming"
+            }
+
+        elif result.action == "flag_for_review":
+            return {
+                "answer": result.baseline_answer,
+                "confidence": result.confidence,
+                "needs_review": True,
+                "warning": "Answer is fragile - may be hallucination"
+            }
+
+        elif result.action == "trigger_fallback":
+            return {
+                "answer": None,
+                "confidence": result.confidence,
+                "needs_review": True,
+                "error": "Model is confidently incorrect - requires intervention"
+            }
+
+================================================================================
+
+ROUTING LOGIC SUMMARY
+
+    Confidence Level           Baseline    Engram      Action
+    -------------------------------------------------------------------
+    ROBUST_CORRECT             Correct     Stronger    Return answer
+    FRAGILE_CORRECT            Correct     Flipped     Flag for review
+    HIGH_CONFIDENCE_INCORRECT  Wrong       Still wrong Trigger fallback
+    RECOVERED_KNOWLEDGE        Wrong       Flipped     Return engram answer
+
+================================================================================
+
+TUNING PARAMETERS
+
+ENGRAM STRENGTH
+
+    Strength    Use Case                    Risk
+    -----------------------------------------------------------
+    1.0         Conservative calibration    May miss FRAGILE cases
+    5.0         Recommended default         Good balance
+    10.0        Aggressive detection        May trigger false FRAGILE
+
+EXTRACTION LAYER
+
+    Layer       What it captures
+    -----------------------------------------------------------
+    16          Middle layers - facts + personality
+    20          Recommended - decision zone
+    24-26       Late layers - output formatting
+
+NUMBER OF ENGRAM TOKENS
+
+    Tokens      Compression     Detail
+    -----------------------------------------------------------
+    8           512x            Fast, coarse
+    16          256x (default)  Good balance
+    32          128x            More detail, slower
+
+================================================================================
+
+PRODUCTION CONSIDERATIONS
+
+LATENCY
+
+The calibration adds one extra forward pass. For a 7B model:
+- Baseline inference: ~50ms
+- Engram extraction: ~50ms
+- Engram inference: ~50ms
+- Total overhead: ~100ms
+
+For latency-critical applications:
+1. Only calibrate high-stakes queries
+2. Run calibration async and update confidence post-hoc
+3. Cache engrams for frequently-used contexts
+
+BATCHING
+
+Engram extraction can be batched across documents:
+
+    engrams = [extractor.extract(doc) for doc in retrieved_docs]
+    combined_engram = torch.stack(engrams).mean(dim=0)
+
+MONITORING
+
+Log these metrics:
+- Distribution of confidence levels
+- FRAGILE_CORRECT rate (should be < 10% for good retrieval)
+- RECOVERED_KNOWLEDGE rate (indicates engrams are helping)
+- Fallback trigger rate (indicates retrieval quality issues)
+
+================================================================================
+
+WHEN NOT TO USE THIS
+
+1. Simple factual lookups where retrieval is the answer (no generation needed)
+2. Creative tasks where there's no "correct" answer
+3. Multi-turn conversations (calibration is per-turn, not conversation-aware)
+4. Extremely latency-sensitive applications (adds ~100ms)
+
+================================================================================
+
+SUMMARY
+
+This deployment pattern turns engrams from a "steering" tool into a "sonar":
+
+1. RETRIEVE context as usual
+2. EXTRACT topic engram from context
+3. COMPARE baseline vs engram-assisted inference
+4. ROUTE based on the four confidence cases
+
+The key win is detecting FRAGILE_CORRECT answers--those that look right but are
+one perturbation away from hallucinating. This catches failures that naive
+confidence scores miss.
+
+================================================================================
+
+USAGE EXAMPLE
+
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    # Load model
+    model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2.5-7B")
+    tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B")
+
+    # Initialize pipeline
+    pipeline = EngramRAGPipeline(
+        model=model,
+        tokenizer=tokenizer,
+        retriever=your_retriever,
+        engram_strength=5.0
+    )
+
+    # Query
+    result = pipeline.query(
+        question="Treatment for malignant hyperthermia in OR?",
+        candidate_answers=(" dantrolene", " cooling")
+    )
+
+    print(f"Answer: {result['answer']}")
+    print(f"Confidence: {result['confidence']}")
+    print(f"Needs Review: {result['needs_review']}")
+
+    if result['needs_review']:
+        print(f"WARNING: {result.get('warning', result.get('error'))}")

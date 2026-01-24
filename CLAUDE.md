@@ -96,6 +96,7 @@ else:                        # Wrong
 ```
 
 See `docs/engram_mechanism_findings.md` for detailed experiment results.
+See `docs/practical_guide.md` for actionable usage recommendations.
 See `HONEST_ASSESSMENT.md` for critique of initial claims.
 
 ## Model Requirements

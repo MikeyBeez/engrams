@@ -47,6 +47,7 @@ Key experiment files:
 - `probability_bias_test.py` - Measures probability shifts toward correct tokens
 - `multi_question_flip_test.py` - Grid search over layer/strength for multiple questions
 - `scripts/stoic_engram_test.py` - Tests personality conditioning (stoic response markers)
+- `scripts/mechanism_experiments.py` - Attention, geometry, and consistency experiments
 
 ## Key Concepts
 
@@ -66,13 +67,36 @@ Key experiment files:
 
 ## Current Research Status
 
-The project discovered that:
-- Engrams improve RAG-style factual recall (+10-20 points over baseline)
-- Engrams can shift token probabilities but struggle to override strongly-framed prompts
-- Irrelevant engrams produce similar perturbation effects as relevant ones at high strengths (negative control finding)
-- Semantic priming works; decision override does not (at tested strengths/methods)
+### Core Finding: Engrams are Topic Primers
 
-See `HONEST_ASSESSMENT.md` for detailed critique of initial claims.
+Through mechanism experiments (January 2026), we discovered that engrams function as **topic primers**, not knowledge injectors:
+
+- Medical and anti-medical engrams (opposite content) are **99.95% identical** geometrically
+- Both flip answers to the CORRECT answer (the model's own knowledge)
+- Attention to engram tokens does NOT correlate with flip success
+- The engram activates domain circuits; the model's pretrained knowledge responds
+
+### Key Findings
+
+1. **Semantic content doesn't matter** - Only topic matching matters
+2. **Low strength (1.0x) is most consistent** - Higher strengths are unpredictable
+3. **Check baseline first** - If model is already correct (ratio > 10), skip engram
+4. **Strength has a non-monotonic relationship** - Sweet spots vary per question
+
+### Practical Usage
+
+```python
+# Decision tree for consistent usage
+if baseline_ratio > 10:      # Confident and correct
+    skip_engram()            # Likely to hurt
+elif baseline_ratio > 1:     # Correct but uncertain
+    use_engram(strength=1.0) # Gentle boost
+else:                        # Wrong
+    search_strength([1, 5, 10, 15, 20])  # Find flip point
+```
+
+See `docs/engram_mechanism_findings.md` for detailed experiment results.
+See `HONEST_ASSESSMENT.md` for critique of initial claims.
 
 ## Model Requirements
 

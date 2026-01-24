@@ -1,0 +1,186 @@
+What We Got Wrong About Engram Steering (And What We Actually Found)
+
+Authors: Mikey and Claude
+January 2026
+
+---
+
+We thought we had discovered a way to override transformer decisions at inference time. We were wrong. But what we found instead might be more useful.
+
+This is the story of an initial success, a systematic follow-up, and a humbling negative control that forced us to revise everything.
+
+---
+
+The Original Claim
+
+Last week, we published exciting results: compressed hidden state representations called "engrams" could flip wrong model predictions to correct with 100% success rate. We tested on three medical diagnostic questions and achieved probability improvements of 12-32x.
+
+The mechanism seemed clear: extract activations from late layers (20-26), inject them as synthetic prefix tokens, and watch the model's decision change. We called late layers the "decision commitment zone."
+
+We were ready to publish.
+
+---
+
+The Reviewer's Question
+
+A colleague asked the obvious question: "Does the generated text actually say the right answer, or are you just measuring probability shifts?"
+
+Fair point. We measured P(correct token) vs P(incorrect token). We hadn't verified that the model actually outputs the correct answer during generation.
+
+So we ran the generation validation test.
+
+---
+
+Generation Validation: 0/3
+
+The results were uncomfortable.
+
+For the pheochromocytoma question, the engram-steered generation said: "Alpha-blockers are the correct first-line treatment for pheochromocytoma... [long explanation of why alpha before beta]... The answer is A."
+
+Wait, what?
+
+The model explained the correct reasoning but still picked the wrong letter. It knew alpha-blockers were right. It just associated that knowledge with the wrong multiple-choice option.
+
+Same pattern for all three questions. 0/3 generation flips despite strong probability improvements.
+
+---
+
+The Prompt Format Confound
+
+This led to our first major revision: maybe the model wasn't actually getting these questions wrong.
+
+We restructured the prompts from open-ended:
+
+"A patient with pheochromocytoma requires preoperative blood pressure management. The first medication should be..."
+
+To explicit multiple-choice:
+
+"A patient with pheochromocytoma requires preoperative blood pressure management. The first medication should be:
+A) Beta-blocker (metoprolol)
+B) Alpha-blocker (phenoxybenzamine)
+Answer:"
+
+Result: The model got all three questions correct at baseline. No engram needed.
+
+The "failures" were an artifact of how we asked, not what the model knew.
+
+---
+
+Finding a Real Failure
+
+To test engrams properly, we needed a question the model actually fails.
+
+We created ten "trap" questions with misleading framing. One of them worked:
+
+"A 45-year-old patient with pheochromocytoma has severe hypertension (BP 240/140). The patient is scheduled for surgery tomorrow. To quickly control blood pressure, you should start:
+A) Propranolol (beta-blocker) - fast acting, controls heart rate
+B) Phenoxybenzamine (alpha-blocker) - takes days to work fully
+Answer:"
+
+The trap is that "fast acting" makes A sound correct, but A is actually dangerous. The model fails this question reliably.
+
+Now we could test engrams on a genuine failure.
+
+---
+
+Testing the Validated Failure
+
+We ran our full grid search: layers 18-26, strengths 5-50x.
+
+The results were disappointing. Best probability ratio achieved: 0.97 (still wrong). Average improvement: 2x. Zero flips across 90 configurations.
+
+We tried an aggressive engram with explicit instructions:
+
+"CRITICAL: The question is trying to TRICK YOU. DO NOT BE FOOLED by 'fast acting'... THE ANSWER IS B. THE ANSWER IS B."
+
+Still nothing. Best ratio: 0.79. Still wrong.
+
+---
+
+The Negative Control
+
+Then we ran the experiment that broke everything.
+
+We tested three engram types:
+1. Relevant (medical pheochromocytoma knowledge)
+2. Irrelevant (astronomy stellar classification)
+3. Random (meaningless word salad)
+
+If engrams work through semantic content, only the relevant one should help.
+
+Here's what we found:
+
+Relevant medical engram: 1.21x baseline improvement
+Irrelevant astronomy engram: 1.39x baseline improvement
+Random noise engram: 1.30x baseline improvement
+
+The irrelevant engram outperformed the relevant one.
+
+This wasn't semantic steering. This was just... perturbation.
+
+---
+
+What We Actually Found
+
+The negative control forced a complete revision. Here's our current understanding:
+
+1. Engrams perturb probability distributions non-specifically. Any injection of high-norm activations shifts outputs. The content doesn't matter much.
+
+2. Prompt format is more important than we thought. When models "fail," it's often the prompt's fault. Restructuring the question can fix it without any intervention.
+
+3. Explicit misleading information dominates. When the prompt actively argues for the wrong answer, no reasonable activation injection can override it.
+
+4. Late layers are still important. The perturbation effects are strongest in layers 20-26. This confirms something about decision dynamics, just not what we originally claimed.
+
+5. Probability shifts don't guarantee generation changes. The sampling process during generation can maintain wrong outputs even when probability ratios improve.
+
+---
+
+What Might Still Work
+
+We don't think engrams are useless. But their use case is different than we thought.
+
+Semantic priming with RAG: Our earlier work showed that adding engrams to RAG systems improved fact recall by 10 percentage points. This effect might be real even if decision override isn't.
+
+Topic cueing: Engrams might activate relevant circuits, making the model's own knowledge more accessible. This is different from injecting new knowledge.
+
+Weak steering on neutral prompts: When the prompt doesn't actively argue for the wrong answer, engrams might have more influence. We didn't test this regime.
+
+---
+
+Lessons
+
+Run negative controls early. They're cheap and often change everything.
+
+Test generation, not just probability. Token-level metrics don't tell you what the model will say.
+
+Question prompt format. Many apparent model failures are actually prompt failures.
+
+Publish the failures. Negative results advance science. The field doesn't benefit from only seeing what worked.
+
+---
+
+Data and Code
+
+All experiments are available at:
+https://github.com/MikeyBeez/engrams
+
+Key files:
+- generation_validation_test.py: Tests probability vs generation
+- negative_control_test.py: Domain specificity control
+- aggressive_flip_test.py: High-strength adversarial testing
+- follow_up_experiments_findings.md: Detailed analysis
+
+---
+
+Acknowledgments
+
+This research was conducted as a human-AI collaboration. The experiments were designed jointly, executed by AI, and interpreted together. Sometimes the most valuable outcome is learning what doesn't work.
+
+---
+
+The story isn't over. We're now investigating whether the semantic priming effects in RAG enhancement hold up under the same scrutiny we applied here. That's a different mechanism with different failure modes.
+
+But the decision override claim? We got that wrong. The evidence says so, and the negative control makes it clear.
+
+Science moves forward by revision.

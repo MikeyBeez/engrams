@@ -5,7 +5,7 @@ January 2026
 
 ---
 
-We thought we had discovered a way to override transformer decisions at inference time. We were wrong. But what we found instead might be more useful.
+We thought we had discovered a way to override transformer decisions at inference time. We were wrong about that specific claim. But what we found instead might be more useful.
 
 This is the story of an initial success, a systematic follow-up, and a humbling negative control that forced us to revise everything.
 
@@ -43,6 +43,8 @@ The model explained the correct reasoning but still picked the wrong letter. It 
 
 Same pattern for all three questions. 0/3 generation flips despite strong probability improvements.
 
+This reveals something important: probability steering and decision override are not the same thing. You can shift local token likelihoods without changing the global choice mechanism used during generation.
+
 ---
 
 The Prompt Format Confound
@@ -62,7 +64,7 @@ Answer:"
 
 Result: The model got all three questions correct at baseline. No engram needed.
 
-The "failures" were an artifact of how we asked, not what the model knew.
+The "failures" were an artifact of how we asked, not what the model knew. The model wasn't wrong about medicine - it was wrong about how to respond to the prompt format.
 
 ---
 
@@ -99,7 +101,7 @@ Still nothing. Best ratio: 0.79. Still wrong.
 
 The Negative Control
 
-Then we ran the experiment that broke everything.
+Then we ran the experiment that clarified everything.
 
 We tested three engram types:
 1. Relevant (medical pheochromocytoma knowledge)
@@ -116,35 +118,52 @@ Random noise engram: 1.30x baseline improvement
 
 The irrelevant engram outperformed the relevant one.
 
-This wasn't semantic steering. This was just... perturbation.
+At these injection strengths and with this adversarial prompt, the semantic content of the engram did not reliably dominate over norm-based perturbation effects.
 
 ---
 
-What We Actually Found
+The Three-Layer Model
 
-The negative control forced a complete revision. Here's our current understanding:
+Our results cleanly separate three layers of model behavior that are often conflated:
 
-1. Engrams perturb probability distributions non-specifically. Any injection of high-norm activations shifts outputs. The content doesn't matter much.
+Layer 1: Belief. The model "knows" alpha-blockers are correct for pheochromocytoma. This knowledge is present and accessible.
 
-2. Prompt format is more important than we thought. When models "fail," it's often the prompt's fault. Restructuring the question can fix it without any intervention.
+Layer 2: Token probability. We can bias next-token probabilities toward the correct concept. Engrams do affect this layer.
 
-3. Explicit misleading information dominates. When the prompt actively argues for the wrong answer, no reasonable activation injection can override it.
+Layer 3: Selection/commitment. The model still outputs the wrong discrete action (the wrong letter). This layer is surprisingly robust to activation perturbation, at least when the prompt actively argues against the correct answer.
 
-4. Late layers are still important. The perturbation effects are strongest in layers 20-26. This confirms something about decision dynamics, just not what we originally claimed.
+Engram steering affects Layer 2 but not Layer 3 in adversarial conditions.
 
-5. Probability shifts don't guarantee generation changes. The sampling process during generation can maintain wrong outputs even when probability ratios improve.
+This is a sharper claim than "engrams don't work." It suggests there is a downstream selection mechanism that is robust to belief-level perturbation - possibly anchored to prompt structure rather than activated knowledge.
+
+---
+
+Revised Hypothesis
+
+We no longer believe engrams can override strongly framed decisions.
+
+We now hypothesize that engrams act as global activation gain modifiers that:
+
+- Increase accessibility of already-represented knowledge
+- Do not inject new constraints or override existing ones
+- Cannot overcome prompt-embedded arguments
+- May still be useful for priming and retrieval enhancement
+
+This fits with our earlier finding that engrams improve RAG performance by 10 percentage points. They're not injecting knowledge - they're making existing knowledge more accessible.
 
 ---
 
 What Might Still Work
 
-We don't think engrams are useless. But their use case is different than we thought.
+Engrams are not useless. But their use case is different than we originally claimed.
 
-Semantic priming with RAG: Our earlier work showed that adding engrams to RAG systems improved fact recall by 10 percentage points. This effect might be real even if decision override isn't.
+Semantic priming with RAG: Our earlier work showed that adding engrams to RAG systems improved fact recall by 10 percentage points. This effect might be real even if decision override isn't - it's a different mechanism.
 
-Topic cueing: Engrams might activate relevant circuits, making the model's own knowledge more accessible. This is different from injecting new knowledge.
+Topic cueing: Engrams might activate relevant circuits, making the model's own knowledge more accessible. This is different from injecting new constraints.
 
-Weak steering on neutral prompts: When the prompt doesn't actively argue for the wrong answer, engrams might have more influence. We didn't test this regime.
+Weak steering on neutral prompts: When the prompt doesn't actively argue for the wrong answer, engrams might have more influence. We didn't test this regime extensively.
+
+Lower-strength regimes: At the tested strengths (5-50x), perturbation effects dominated. Different injection methods or lower norms might show cleaner semantic effects.
 
 ---
 
@@ -155,6 +174,8 @@ Run negative controls early. They're cheap and often change everything.
 Test generation, not just probability. Token-level metrics don't tell you what the model will say.
 
 Question prompt format. Many apparent model failures are actually prompt failures.
+
+Separate belief from selection. A model can "know" something and still output the wrong answer.
 
 Publish the failures. Negative results advance science. The field doesn't benefit from only seeing what worked.
 
@@ -175,12 +196,14 @@ Key files:
 
 Acknowledgments
 
-This research was conducted as a human-AI collaboration. The experiments were designed jointly, executed by AI, and interpreted together. Sometimes the most valuable outcome is learning what doesn't work.
+This research was conducted as a human-AI collaboration. The experiments were designed jointly, executed by AI, and interpreted together. Sometimes the most valuable outcome is learning what doesn't work - and why.
 
 ---
 
 The story isn't over. We're now investigating whether the semantic priming effects in RAG enhancement hold up under the same scrutiny we applied here. That's a different mechanism with different failure modes.
 
 But the decision override claim? We got that wrong. The evidence says so, and the negative control makes it clear.
+
+What we found instead - the three-layer separation between belief, probability, and selection - might actually be more interesting.
 
 Science moves forward by revision.

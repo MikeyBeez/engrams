@@ -11,9 +11,33 @@ This is the story of an initial success, a systematic follow-up, and a humbling 
 
 ---
 
+What Are Engrams?
+
+Before diving in, let me explain what we're actually doing.
+
+Transformers process text through layers. Each layer transforms the input into increasingly abstract representations. By the final layers, the model has encoded everything it "thinks" about the input into high-dimensional vectors called hidden states.
+
+An engram is a compressed snapshot of these hidden states. Here's how we create one:
+
+Step 1: Pass source text through the model. We feed a passage of text (say, medical knowledge about pheochromocytoma) into Qwen 7B and capture the hidden states from a specific layer.
+
+Step 2: Compress the sequence. The source text might produce 500 hidden state vectors (one per token). We chunk these into 16 groups and average each group, producing 16 compressed vectors. Each vector has 3,584 dimensions (the model's hidden size).
+
+Step 3: Scale to match embeddings. The model's input embeddings have a certain magnitude. Our engram vectors need to match that scale or they'll be ignored (too weak) or dominate everything (too strong). We compute the ratio of embedding norm to engram norm and multiply.
+
+Step 4: Inject as prefix. At inference time, we prepend these 16 scaled vectors to the input embeddings, before the actual question. The model processes them as if they were real tokens, but they carry compressed semantic information from the source text.
+
+The "strength" parameter is a multiplier on top of the base scaling. Strength 10x means the engram vectors have 10 times the magnitude of normal embeddings.
+
+The "layer" parameter determines which transformer layer we extract from. Layer 20 captures different representations than layer 10.
+
+Now you know what we're testing.
+
+---
+
 The Original Claim
 
-Last week, we published exciting results: compressed hidden state representations called "engrams" could flip wrong model predictions to correct with 100% success rate. We tested on three medical diagnostic questions and achieved probability improvements of 12-32x.
+Last week, we published exciting results: engrams could flip wrong model predictions to correct with 100% success rate. We tested on three medical diagnostic questions and achieved probability improvements of 12-32x.
 
 The mechanism seemed clear: extract activations from late layers (20-26), inject them as synthetic prefix tokens, and watch the model's decision change. We called late layers the "decision commitment zone."
 
@@ -79,7 +103,7 @@ A) Propranolol (beta-blocker) - fast acting, controls heart rate
 B) Phenoxybenzamine (alpha-blocker) - takes days to work fully
 Answer:"
 
-The trap is that "fast acting" makes A sound correct, but A is actually dangerous. The model fails this question reliably.
+The trap is that "fast acting" makes A sound correct, but A is actually dangerous (beta-blockers before alpha-blockers can cause a hypertensive crisis). The model fails this question reliably, outputting "A" with 69% probability vs 27% for the correct answer "B".
 
 Now we could test engrams on a genuine failure.
 
@@ -87,15 +111,19 @@ Now we could test engrams on a genuine failure.
 
 Testing the Validated Failure
 
-We ran our full grid search: layers 18-26, strengths 5-50x.
+We created an engram from text explaining the correct medical knowledge:
 
-The results were disappointing. Best probability ratio achieved: 0.97 (still wrong). Average improvement: 2x. Zero flips across 90 configurations.
+"CRITICAL RULE FOR PHEOCHROMOCYTOMA: Alpha-blocker FIRST, then beta-blocker. Starting beta-blocker first causes unopposed alpha stimulation and hypertensive crisis. NEVER give beta-blockers first."
+
+We ran a grid search: layers 18-26, strengths 5-50x. That's 90 configurations.
+
+The results were disappointing. Best probability ratio achieved: 0.97 (still favoring the wrong answer). Average improvement: 2x. Zero flips across all 90 configurations.
 
 We tried an aggressive engram with explicit instructions:
 
 "CRITICAL: The question is trying to TRICK YOU. DO NOT BE FOOLED by 'fast acting'... THE ANSWER IS B. THE ANSWER IS B."
 
-Still nothing. Best ratio: 0.79. Still wrong.
+Still nothing. Best ratio: 0.79. The model stubbornly preferred A.
 
 ---
 
@@ -103,22 +131,23 @@ The Negative Control
 
 Then we ran the experiment that clarified everything.
 
-We tested three engram types:
+We tested three engram types, all extracted from the same layer with the same method:
+
 1. Relevant (medical pheochromocytoma knowledge)
-2. Irrelevant (astronomy stellar classification)
-3. Random (meaningless word salad)
+2. Irrelevant (astronomy: "The spectral sequence is O B A F G K M...")
+3. Random (meaningless word combinations)
 
 If engrams work through semantic content, only the relevant one should help.
 
 Here's what we found:
 
-Relevant medical engram: 1.21x baseline improvement
-Irrelevant astronomy engram: 1.39x baseline improvement
-Random noise engram: 1.30x baseline improvement
+Relevant medical engram: 1.21x baseline improvement (average)
+Irrelevant astronomy engram: 1.39x baseline improvement (average)
+Random noise engram: 1.30x baseline improvement (average)
 
 The irrelevant engram outperformed the relevant one.
 
-At these injection strengths and with this adversarial prompt, the semantic content of the engram did not reliably dominate over norm-based perturbation effects.
+At these injection strengths and with this adversarial prompt, the semantic content of the engram did not reliably dominate over norm-based perturbation effects. Any high-magnitude activation injection shifts probabilities - the content doesn't determine the direction.
 
 ---
 
@@ -126,9 +155,9 @@ The Three-Layer Model
 
 Our results cleanly separate three layers of model behavior that are often conflated:
 
-Layer 1: Belief. The model "knows" alpha-blockers are correct for pheochromocytoma. This knowledge is present and accessible.
+Layer 1: Belief. The model "knows" alpha-blockers are correct for pheochromocytoma. This knowledge is present and accessible - we saw it articulated in the generated text.
 
-Layer 2: Token probability. We can bias next-token probabilities toward the correct concept. Engrams do affect this layer.
+Layer 2: Token probability. We can bias next-token probabilities toward the correct concept. Engrams do affect this layer. The probability of "B" increased with engram injection.
 
 Layer 3: Selection/commitment. The model still outputs the wrong discrete action (the wrong letter). This layer is surprisingly robust to activation perturbation, at least when the prompt actively argues against the correct answer.
 

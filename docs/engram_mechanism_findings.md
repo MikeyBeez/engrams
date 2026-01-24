@@ -290,6 +290,77 @@ def find_optimal_strength(prompt, engram, baseline_ratio, get_ratio_fn):
 
 ---
 
+### 10. Directional Steering Experiments
+
+**Question:** Can we isolate the semantic direction from the topic primer?
+
+**Method 1: Centroid Subtraction**
+- Extract engrams from multiple texts about same topic (correct, wrong, neutral)
+- Compute centroid (mean) of all engrams
+- Subtract centroid to get "directional" residuals
+
+**Results:**
+- Original engram similarity (correct vs wrong): 99.95%
+- After centroid subtraction: 8.62% similarity
+- Directional vectors DO steer in opposite directions at some strengths
+- But effect is inconsistent and sometimes inverted
+
+**Method 2: Difference Vectors**
+- Compute diff = engram_A - engram_B directly
+- Adding diff should push toward A, subtracting should push toward B
+
+**Results:**
+
+| Topic | Correct Direction Rate |
+|-------|------------------------|
+| Pheochromocytoma (alpha vs beta) | 70% (7/10) |
+| Hyperthermia (dantrolene vs cooling) | 40% (4/10) |
+
+**Key Finding:** Directional steering works better when concepts are semantically distinct (alpha/beta are different drug classes). When concepts are semantically entangled (cooling ↔ hyperthermia = temperature-related), even difference vectors can't reliably separate them.
+
+**Conclusion:** The "Semantic Sink" problem is fundamental. When tokens share semantic neighborhoods at the embedding level, activation steering cannot cleanly separate them. This limits the applicability of ANY activation-level steering method for semantically entangled concepts.
+
+---
+
+### 9. Stability as Correctness Indicator
+
+**Question:** Can we use engram stability (same answer with and without engram) to indicate the answer is correct?
+
+**Method:** Tested 7 medical questions, comparing baseline answer to engram-assisted answer. Measured if "same answer" correlates with correctness.
+
+**Results:**
+
+| Rule | Matches | Correct | Precision |
+|------|---------|---------|-----------|
+| Same answer only | 6 | 5 | 83.3% |
+| Same + baseline ratio > 1 | 5 | 5 | **100%** |
+| Same + baseline ratio > 2 | 4 | 4 | **100%** |
+| Baseline ratio > 5 only | 3 | 3 | **100%** |
+
+**Key Finding:** Same answer alone isn't reliable (83%). But combining:
+1. Same answer with and without engram
+2. Baseline ratio > 1 (model already leans correct)
+
+Achieves 100% precision on our test set.
+
+**The Danger Case:**
+- Pheochromocytoma: baseline 0.699, engram 0.671, same answer → **WRONG**
+- When baseline ratio < 1 and engram gives same answer, it means the model is confidently wrong and the engram couldn't overcome it.
+
+**Practical Rule:**
+```python
+def is_likely_correct(baseline_ratio, engram_ratio):
+    same_answer = (baseline_ratio > 1) == (engram_ratio > 1)
+    if same_answer and baseline_ratio > 1:
+        return True   # High confidence correct
+    elif same_answer and baseline_ratio < 1:
+        return False  # Confidently wrong, engram couldn't fix
+    else:
+        return None   # Uncertain, engram changed the answer
+```
+
+---
+
 ## Implications
 
 For **RAG enhancement**: Engrams work well as topic primers alongside retrieved context. They make the model's knowledge more accessible without requiring it to "read" new information.
@@ -304,3 +375,8 @@ For **practical use**:
 3. Use conservatively (low strength) for correct answers
 4. Search strength space for wrong answers
 5. Never expect to inject truly new knowledge
+
+For **answer validation**:
+- If baseline ratio > 1 AND engram gives same answer → likely correct (100% precision in testing)
+- If baseline ratio < 1 AND engram gives same answer → likely wrong (model is confidently wrong)
+- Use engram stability as a confidence signal, not just for steering

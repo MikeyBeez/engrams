@@ -72,34 +72,48 @@ output = injector.generate(
 
 ## Use Case 2: Confidence Calibration
 
-Use engram stability as a second opinion on model answers.
+Use engram stability as a second opinion on model answers. A robust answer should survive topic amplification.
 
 ```python
-def get_confidence(model, prompt, engram, correct_tok, incorrect_tok):
+def calibrate_confidence(baseline_probs, engram_probs):
     """
-    Returns confidence level based on baseline/engram agreement.
+    Inputs: Probabilities for correct and incorrect answers
+    Rule: A 'robust' answer should survive topic amplification.
     """
-    # Get baseline
-    baseline_probs = get_next_token_probs(model, prompt)
-    base_ratio = baseline_probs[correct_tok] / baseline_probs[incorrect_tok]
+    baseline_ratio = baseline_probs['correct'] / baseline_probs['incorrect']
+    engram_ratio = engram_probs['correct'] / engram_probs['incorrect']
 
-    # Get with engram
-    engram_probs = get_next_token_probs(model, prompt, engram, strength=5.0)
-    eng_ratio = engram_probs[correct_tok] / engram_probs[incorrect_tok]
+    # CASE 1: Robust Agreement
+    # Model is correct AND engram strengthens it
+    if baseline_ratio > 1.0 and engram_ratio > baseline_ratio:
+        return "HIGH_CONFIDENCE_CORRECT"
 
-    # Interpret
-    base_answer = "correct" if base_ratio > 1 else "incorrect"
-    eng_answer = "correct" if eng_ratio > 1 else "incorrect"
+    # CASE 2: The 'Semantic Sink' (The Hyperthermia Case)
+    # Model was correct but engram flipped it - fragile knowledge
+    if baseline_ratio > 1.0 and engram_ratio < 1.0:
+        return "FRAGILE_CORRECT_POTENTIAL_HALLUCINATION"
 
-    if base_answer == eng_answer == "correct":
-        return "HIGH_CONFIDENCE"  # 100% precision in our tests
-    elif base_answer == eng_answer == "incorrect":
-        return "STUCK_WRONG"  # Model is confidently wrong
-    else:
-        return "UNCERTAIN"  # Engram changed the answer
+    # CASE 3: Persistent Error
+    # Model is wrong and engram couldn't fix it
+    if baseline_ratio < 1.0 and engram_ratio < 1.0:
+        return "HIGH_CONFIDENCE_INCORRECT"
+
+    # CASE 4: The Flip (The TCA/Wernicke Case)
+    # Model was wrong but engram recovered the correct answer
+    if baseline_ratio < 1.0 and engram_ratio > 1.0:
+        return "RECOVERED_KNOWLEDGE"
 ```
 
-**When to use:** Any time you need to gauge reliability of a model answer without running a separate verification model.
+**The Four Cases Explained:**
+
+| Case | Baseline | Engram | Interpretation |
+|------|----------|--------|----------------|
+| HIGH_CONFIDENCE_CORRECT | Correct | More correct | Safe to trust |
+| FRAGILE_CORRECT | Correct | Flipped wrong | Semantic sink - verify externally |
+| HIGH_CONFIDENCE_INCORRECT | Wrong | Still wrong | Model is stuck, don't trust |
+| RECOVERED_KNOWLEDGE | Wrong | Flipped correct | Dormant knowledge activated |
+
+**When to use:** Any time you need to gauge reliability of a model answer without running a separate verification model. The "FRAGILE_CORRECT" case is especially important - it flags answers that look right but may be hallucinations sitting in a dangerous semantic neighborhood.
 
 ---
 

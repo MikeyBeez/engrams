@@ -147,7 +147,7 @@ Random noise engram: 1.30x baseline improvement (average)
 
 The irrelevant engram outperformed the relevant one.
 
-At these injection strengths and with this adversarial prompt, the semantic content of the engram did not reliably dominate over norm-based perturbation effects. Any high-magnitude activation injection shifts probabilities - the content doesn't determine the direction.
+At these injection strengths (5-50x) and with prefix-style injection, semantic content did not reliably dominate over norm-based perturbation effects. We did not test lower-norm regimes or attention-isolated injection methods, which might show different behavior.
 
 ---
 
@@ -161,9 +161,11 @@ Layer 2: Token probability. We can bias next-token probabilities toward the corr
 
 Layer 3: Selection/commitment. The model still outputs the wrong discrete action (the wrong letter). This layer is surprisingly robust to activation perturbation, at least when the prompt actively argues against the correct answer.
 
+Operationally, this selection appears to be mediated by prompt-structure-anchored patterns - the answer letter mapping, option ordering, and explicit framing cues like "fast acting" - rather than by the relative activation of underlying semantic concepts.
+
 Engram steering affects Layer 2 but not Layer 3 in adversarial conditions.
 
-This is a sharper claim than "engrams don't work." It suggests there is a downstream selection mechanism that is robust to belief-level perturbation - possibly anchored to prompt structure rather than activated knowledge.
+This is a sharper claim than "engrams don't work." It suggests there is a downstream selection mechanism that is robust to belief-level perturbation, anchored to prompt structure rather than activated knowledge.
 
 ---
 
@@ -179,6 +181,8 @@ We now hypothesize that engrams act as global activation gain modifiers that:
 - May still be useful for priming and retrieval enhancement
 
 This fits with our earlier finding that engrams improve RAG performance by 10 percentage points. They're not injecting knowledge - they're making existing knowledge more accessible.
+
+Important: These findings do not contradict our earlier RAG-enhancement results. Those experiments operated in a different regime - neutral prompts where the context supported rather than actively argued against the correct answer. The failure mode we've identified here is specific to adversarial framing.
 
 ---
 
@@ -234,5 +238,21 @@ The story isn't over. We're now investigating whether the semantic priming effec
 But the decision override claim? We got that wrong. The evidence says so, and the negative control makes it clear.
 
 What we found instead - the three-layer separation between belief, probability, and selection - might actually be more interesting.
+
+---
+
+Broader Implications
+
+The failure mode we've identified likely isn't specific to engrams. Any activation-level steering method - steering vectors, activation patching, logit biasing, prefix tuning - faces the same fundamental constraint:
+
+Steering methods can modify internal beliefs and token probabilities without controlling discrete commitments when the prompt embeds a competing decision structure.
+
+This has implications for alignment research. If you're trying to steer a model away from harmful outputs using activation interventions, but the prompt structure itself encodes the harmful pattern, the prompt may win. The selection layer appears to be anchored to surface structure, not underlying activations.
+
+It also has implications for benchmark interpretation. A model that "fails" a multiple-choice question may have the correct knowledge fully accessible - the failure is in the mapping from knowledge to answer format, not in the knowledge itself.
+
+We've bracketed one boundary: adversarial prompts resist activation steering. The next question is where the boundary lies. At what point does prompt structure stop dominating? That's the experiment we haven't run yet.
+
+---
 
 Science moves forward by revision.

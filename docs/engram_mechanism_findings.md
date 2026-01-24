@@ -114,6 +114,63 @@ Through systematic experimentation, we discovered that engrams function as **top
 
 ---
 
+### 7. Semantic Activation Analysis (Critical Finding)
+
+**Question:** Why do engrams help some questions but hurt others?
+
+**Method:** Analyzed token-level probability changes for questions where engrams hurt (hyperthermia, DKA) vs helped (TCA, Wernicke).
+
+**Key Discovery:**
+
+For hyperthermia (engram HURT):
+| Strength | P(dantrolene) | P(cooling) | What happened |
+|----------|---------------|------------|---------------|
+| baseline | 0.000124 | 0.000002 | ratio 67x |
+| 5.0 | 0.000228 (1.8x) | 0.000016 (8.8x) | incorrect boosted more |
+| 10.0 | 0.000296 (2.4x) | 0.000204 (110x!) | ratio collapsed to 1.45 |
+
+**The incorrect token "cooling" got boosted 110x while correct "dantrolene" only got 2.4x.**
+
+**Why?** "Cooling" is semantically related to "hyperthermia" (hyper-thermia = too hot = cool it down). The engram activates the concept, and ALL related tokens get boosted.
+
+**Tested engram text engineering:**
+
+| Engram text | Effect |
+|-------------|--------|
+| "Malignant hyperthermia requires dantrolene" | HURT (cooling 28x, dantrolene 2x) |
+| "Surgical crisis with rigidity: dantrolene" | HURT (cooling 17x, dantrolene 2x) |
+| "DANTROLENE. The answer is dantrolene." | HURT (cooling 19x, dantrolene 3x) |
+| "NOT cooling. Dantrolene, not cooling." | HURT (cooling 44x!, dantrolene 3x) |
+
+**Even saying "NOT cooling" activates the cooling concept and boosts it more.**
+
+**Conclusion:** Engrams activate semantic concepts, not just tokens. ALL tokens related to the topic get boosted. If the incorrect answer is semantically related to the topic (cooling↔hyperthermia, bicarbonate↔acidosis), the engram will boost it—often more than the correct answer.
+
+---
+
+### 8. Prediction Rule for Help vs Hurt
+
+**When engrams HELP:**
+- Incorrect answer is semantically UNRELATED to the topic
+- Example: TCA overdose → physostigmine (unrelated to cardiac treatment)
+- Example: Wernicke → insulin (unrelated to thiamine deficiency)
+
+**When engrams HURT:**
+- Incorrect answer is semantically RELATED to the topic
+- Example: Hyperthermia → cooling (intuitive but wrong)
+- Example: DKA → bicarbonate (related to acidosis)
+- Example: Anaphylaxis → antihistamine (related to allergy)
+
+**The practical test before using an engram:**
+
+> *"Is the wrong answer intuitively related to this topic?"*
+> - If yes → engram will likely hurt
+> - If no → engram may help
+
+**This is a fundamental limitation that cannot be engineered around with text manipulation.**
+
+---
+
 ## Practical Usage Guidelines
 
 ### Decision Tree
@@ -191,19 +248,26 @@ def find_optimal_strength(prompt, engram, baseline_ratio, get_ratio_fn):
    - The model's pretrained knowledge responds
    - Semantic content (correct vs wrong) doesn't matter
 
-2. **Attention is not the mechanism**
+2. **Engrams boost ALL semantically related tokens**
+   - Not just the correct answer—everything related to the topic
+   - If incorrect answer is topic-related, it gets boosted too
+   - Even "NOT X" activates and boosts concept X
+   - This is why engrams hurt when incorrect answer is intuitive
+
+3. **Attention is not the mechanism**
    - Flips happen with less attention to engram
    - Effect works through activation patterns, not reading
 
-3. **Baseline correctness is the best predictor**
-   - Wrong → engram likely helps (67%)
-   - Right → engram may hurt (75% no help or worse)
+4. **Semantic relatedness predicts help vs hurt**
+   - Incorrect unrelated to topic → engram helps
+   - Incorrect related to topic → engram hurts
+   - Ask: "Is the wrong answer intuitive for this topic?"
 
-4. **Low strength is safest**
+5. **Low strength is safest**
    - 1.0x has best consistency
-   - Higher strengths are unpredictable
+   - Higher strengths amplify the semantic boost problem
 
-5. **The three-layer model holds**
+6. **The three-layer model holds**
    - Belief: Model knows the right answer
    - Probability: Engram shifts token probabilities
    - Selection: Flip requires finding the right strength
@@ -222,6 +286,8 @@ def find_optimal_strength(prompt, engram, baseline_ratio, get_ratio_fn):
 
 5. **Generation gap:** Probability flips don't always mean generation flips. When do they diverge?
 
+6. **Can we measure semantic relatedness?** Is there a way to automatically detect when the incorrect answer is topic-related before applying the engram?
+
 ---
 
 ## Implications
@@ -230,4 +296,11 @@ For **RAG enhancement**: Engrams work well as topic primers alongside retrieved 
 
 For **decision override**: Engrams cannot reliably override model decisions when the prompt strongly argues for the wrong answer. The three-layer model (belief → probability → selection) explains this limitation.
 
-For **practical use**: Always check baseline first. Use conservatively (low strength) for correct answers. Search strength space for wrong answers. Never expect to inject truly new knowledge.
+For **the semantic boost problem**: Engrams will hurt when the incorrect answer is intuitively related to the topic (cooling↔hyperthermia). This cannot be fixed by text engineering—even saying "NOT X" boosts X. The only mitigation is to avoid using engrams when incorrect answers are semantically related.
+
+For **practical use**:
+1. Always check baseline first
+2. Ask: "Is the wrong answer intuitive for this topic?" If yes, skip engram
+3. Use conservatively (low strength) for correct answers
+4. Search strength space for wrong answers
+5. Never expect to inject truly new knowledge

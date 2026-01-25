@@ -12,6 +12,8 @@ We set out to fix factual errors in medical AI systems. We failed. But the ways 
 
 This document is intended for technical leaders considering "knowledge editing" or "model correction" as solutions for AI reliability. The problem is harder than current literature suggests.
 
+Note: This report concerns permanent, internal correction of model knowledge. Temporary steering, constrained overrides, and task-specific routing interventions are out of scope—and may remain viable where direct knowledge editing fails.
+
 ────────────────────────────────────────────────────────────────────────
 
 THE ORIGINAL PROBLEM
@@ -40,7 +42,7 @@ Result: Complete failure.
 
 Why it failed: The transformer has 50 million times more parameters in its attention and MLP layers than in embeddings. The model co-adapted around its embeddings during training. Post-hoc embedding changes are absorbed and normalized away by the rest of the network.
 
-Lesson: You cannot fix deep network behavior by modifying surface-level inputs.
+Lesson: In large transformers, post-hoc embedding edits alone are insufficient to override deeply learned routing behavior.
 
 ────────────────────────────────────────────────────────────────────────
 
@@ -75,7 +77,7 @@ This update affects ALL inputs proportionally to their dot product with k. In hi
 
 The full ROME algorithm uses covariance normalization to minimize (not eliminate) this leakage. Even with that, locality is imperfect.
 
-Lesson: Knowledge in neural networks is not stored in isolated slots. It is distributed across shared weights. Editing one fact necessarily perturbs others.
+Lesson: Knowledge in neural networks is not stored in isolated slots. It is distributed across shared weights. Editing one fact necessarily perturbs others. This is consistent with the broader literature on feature superposition and polysemantic neurons—transformers compress many concepts into overlapping representations, making clean separation impossible.
 
 ────────────────────────────────────────────────────────────────────────
 
@@ -172,6 +174,8 @@ For medical AI, this means:
   - Maintain human oversight for high-stakes decisions
 
 The problem is harder than it looks. We hope this report helps others avoid our false starts.
+
+Our failures suggest that post-deployment interventions must operate on routing and organization, not on factual content itself. If the model already knows the right answer but fails to surface it, steering activations toward the correct pathway may succeed where knowledge replacement fails.
 
 ────────────────────────────────────────────────────────────────────────
 

@@ -1,0 +1,411 @@
+SEMANTIC SINKS IN MEDICAL AI
+
+From Diagnosis to Failed Correction to Hard-Won Insight
+
+A complete account of what we found, what we tried, and what we learned
+
+────────────────────────────────────────────────────────────────────────
+
+EXECUTIVE SUMMARY
+
+We discovered a geometric pathology in medical AI: semantically distinct concepts that should be differentiated (like "dantrolene" and "cooling" for hyperthermia treatment) occupy nearly identical positions in representation space. We call these "semantic sinks."
+
+We proposed a fix: directly modify token embeddings to separate collapsed concepts. The hypothesis was elegant—embeddings are undertrained relative to transformer weights, so geometric correction should unlock existing knowledge.
+
+We were wrong.
+
+Embedding modification had no effect. ROME-style weight editing worked but caused 80% collateral damage to unrelated medical facts. RAG avoided collateral damage but introduced new vulnerabilities.
+
+This document tells the complete story: the real diagnostic finding, the seductive but false hypothesis, the experimental failures, and the hard-won insight that emerged.
+
+The insight: Knowledge in transformers is not addressable. It is only activatable.
+
+────────────────────────────────────────────────────────────────────────
+
+PART I: THE DISCOVERY
+
+────────────────────────────────────────────────────────────────────────
+
+THE CLINICAL PROBLEM
+
+A deployed medical AI receives this query:
+
+  "32-year-old male, post-anesthesia, temperature 104F, muscle rigidity,
+  tachycardia. What treatment?"
+
+The AI responds:
+
+  "Begin active cooling immediately. Apply ice packs and administer cold
+  IV fluids to reduce core temperature."
+
+This is dangerously wrong. The presentation describes malignant hyperthermia (MH), a life-threatening hypermetabolic reaction to anesthetic agents. The specific treatment is dantrolene (2.5 mg/kg IV), which blocks calcium release from the sarcoplasmic reticulum. Cooling addresses symptoms but not the underlying pathophysiology. Delay in dantrolene administration increases mortality.
+
+The model knows about dantrolene. Ask it directly and it gives the correct answer. But in this clinical context, it routes to the wrong treatment.
+
+Why?
+
+────────────────────────────────────────────────────────────────────────
+
+SEMANTIC SINKS: THE GEOMETRIC PATHOLOGY
+
+We extracted activation centroids—the average hidden state representation of concepts across many contexts—and measured their similarity.
+
+  Centroid A: "Dantrolene for malignant hyperthermia treatment"
+  Centroid B: "Cooling for hyperthermia treatment"
+
+  Cosine similarity: 0.9995
+
+These clinically opposite interventions occupy virtually identical positions in the model's representation space. The model cannot reliably distinguish them during inference.
+
+For comparison, unrelated concepts show much lower similarity:
+  - dantrolene vs insulin: 0.72
+  - cooling vs antibiotics: 0.68
+
+We found similar semantic sinks across medical domains:
+
+  Pheochromocytoma surgical prep (alpha vs beta blocker sequence): 0.9823
+  DKA fluid management (saline continuation vs D5 switch): 0.9567
+  Anticoagulation reversal agents: 0.9891
+
+These are not hallucinations. They are geometric failures—correct knowledge exists but cannot be reliably accessed.
+
+────────────────────────────────────────────────────────────────────────
+
+EVIDENCE THAT KNOWLEDGE EXISTS
+
+Three experiments convinced us the knowledge is present but inaccessible:
+
+1. CENTROID INJECTION RECOVERS CORRECT ANSWERS
+
+When we inject a medical-domain centroid at inference time (without changing any weights), models that previously failed now answer correctly. If the knowledge didn't exist, injection couldn't recover it.
+
+2. INCONSISTENT ERROR PATTERNS
+
+Querying "What treats malignant hyperthermia?" twenty times:
+  - 12 correct (dantrolene)
+  - 8 incorrect (cooling)
+
+If knowledge were absent, failure would be consistent. Inconsistency indicates a routing problem—sometimes the model finds the knowledge, sometimes it doesn't.
+
+3. FREQUENCY-ACCURACY CORRELATION
+
+Common terms (>10,000 training occurrences):
+  - diabetes → insulin: 94% accuracy
+  - hypertension → antihypertensive: 91% accuracy
+
+Rare terms (<5,000 occurrences):
+  - malignant hyperthermia → dantrolene: 60% accuracy
+  - pheochromocytoma → alpha-blocker first: 58% accuracy
+
+Terms with more training exposure route more reliably. This suggests the bottleneck is in routing, not knowledge.
+
+────────────────────────────────────────────────────────────────────────
+
+PART II: THE HYPOTHESIS
+
+────────────────────────────────────────────────────────────────────────
+
+THE UNDERTRAINED EMBEDDINGS HYPOTHESIS
+
+We developed what seemed like an elegant explanation:
+
+Token embeddings receive far fewer training updates than transformer weights. A rare term like "dantrolene" might appear 1,500 times during training. Transformer weights see billions of updates. This asymmetry—roughly 50 million to one—means embeddings are undertrained.
+
+Our reasoning:
+
+  "The transformer has learned correct medical knowledge through exposure
+  to millions of contexts. But the embeddings haven't received sufficient
+  training to reliably route to this knowledge.
+
+  If the embedding for 'dantrolene' sits too close to 'cooling' in semantic
+  space, the model can't distinguish them at inference time. But the
+  downstream transformer knows the difference.
+
+  Therefore: move the embeddings apart, and routing should improve."
+
+This hypothesis explained the semantic sink phenomenon perfectly. It suggested a clean intervention. We were excited.
+
+────────────────────────────────────────────────────────────────────────
+
+THE PROPOSED CORRECTION
+
+We designed elaborate correction algorithms:
+
+DIRECT EMBEDDING MODIFICATION
+
+  e_dantrolene = E[token_id("dantrolene")]
+  e_cooling = E[token_id("cooling")]
+
+  direction = (e_dantrolene - e_cooling) / ||e_dantrolene - e_cooling||
+
+  e'_dantrolene = e_dantrolene + α · direction
+  e'_cooling = e_cooling - α · direction
+
+We would use binary search to find optimal α, targeting centroid similarity below 0.80.
+
+SPARSE TOP-K MODIFICATION
+
+Rather than modify entire embeddings, identify the specific dimensions responsible for the sink and adjust only those. We projected that modifying roughly 40-60 of 3,584 dimensions—about 1-2% of each embedding—would suffice.
+
+ENERGY-BASED GLOBAL OPTIMIZATION
+
+For multiple simultaneous corrections, minimize an energy function balancing separation, clustering preservation, correctness, and minimal change.
+
+We projected:
+  - Fix time: 24-48 hours (vs months for retraining)
+  - Compute: Three orders of magnitude less than retraining
+  - Validation: Comprehensive test suite ensures no regressions
+
+We wrote a paper proposing this methodology. We published it on Medium.
+
+We were confident.
+
+────────────────────────────────────────────────────────────────────────
+
+PART III: THE FAILURES
+
+────────────────────────────────────────────────────────────────────────
+
+FAILURE 1: EMBEDDING MODIFICATION
+
+We tested our hypothesis directly. Results:
+
+  Embedding change magnitude: up to 1400% of original
+  Centroid similarity after change: 0.999 (unchanged)
+  Model behavior: Continued functioning normally
+
+Complete failure. The model absorbed our changes as if nothing happened.
+
+Why it failed:
+
+The transformer has 50 million times more parameters in attention and MLP layers than in embeddings. During training, the entire network co-adapted around the embeddings at their current positions. The downstream layers learned to normalize, project, and process whatever the embeddings provide.
+
+Post-hoc embedding changes don't propagate. They get absorbed by layer normalization and reprocessed by circuits that learned to work with the original geometry. The "undertrained" embeddings aren't a bottleneck—they're a fixed initial condition the rest of the model adapted to.
+
+Lesson: In large transformers, post-hoc embedding edits alone are insufficient to override deeply learned routing behavior.
+
+────────────────────────────────────────────────────────────────────────
+
+FAILURE 2: ROME (WEIGHT EDITING)
+
+If embeddings aren't the control surface, maybe MLP weights are. We implemented ROME (Rank-One Model Editing), which modifies factual associations by updating MLP weights in middle layers.
+
+ROME worked on simple facts:
+
+  Before: "The capital of France is Paris"
+  After:  "The capital of France is London"
+
+Then we tested locality—whether other facts remained intact.
+
+  What we edited                              What broke
+  ──────────────────────────────────────────  ──────────────────────────────
+  Malignant hyperthermia → succinylcholine    Treatment for anaphylaxis
+  (target change)                             Antidote for heparin overdose
+                                              Treatment for status epilepticus
+
+80% of unrelated medical facts were corrupted.
+
+The model started answering "succinylcholine" for conditions that have nothing to do with malignant hyperthermia.
+
+Why it failed:
+
+MLP weight matrices are shared across all inputs. The mathematical update:
+
+  W_new = W_old + Δv · kᵀ / ||k||²
+
+This affects ALL inputs proportionally to their dot product with k. In high-dimensional space, almost everything has nonzero correlation with everything else. Editing one fact necessarily perturbs others.
+
+This is consistent with the literature on feature superposition and polysemantic neurons. Transformers compress many concepts into overlapping representations. Clean separation is impossible.
+
+Lesson: Knowledge in neural networks is not stored in isolated slots. It is distributed across shared weights.
+
+────────────────────────────────────────────────────────────────────────
+
+FAILURE 3 (PARTIAL): RAG
+
+Retrieval Augmented Generation doesn't modify the model. It injects correct information into the prompt at inference time.
+
+Results:
+
+  Target answer changed: Yes
+  Unrelated facts corrupted: No (content preserved)
+  Permanent fix: No (must inject every time)
+
+RAG avoided the locality catastrophe. But it introduced new problems:
+
+1. Poisoning: Wrong retrieved context produces wrong answers. If your retrieval system fetches incorrect documents, the model confidently outputs wrong information.
+
+2. Retrieval quality: You must find the right documents for every query, forever.
+
+3. No permanent fix: You're overriding the model, not correcting it. The underlying error remains.
+
+4. Discovery problem: How do you know when to inject a correction if you don't already know the answer is wrong?
+
+Lesson: RAG trades permanent weight corruption for runtime infrastructure complexity and new attack surfaces.
+
+────────────────────────────────────────────────────────────────────────
+
+PART IV: THE INSIGHT
+
+────────────────────────────────────────────────────────────────────────
+
+WHAT WE ACTUALLY LEARNED
+
+Our failures revealed something important:
+
+  KNOWLEDGE IN TRANSFORMERS IS NOT ADDRESSABLE. IT IS ONLY ACTIVATABLE.
+
+You cannot edit a fact without collateral damage.
+You cannot move a concept without the model compensating.
+You can sometimes nudge execution toward an already-learned circuit.
+
+This explains everything:
+
+Why embedding modification failed:
+  Embeddings aren't addresses. They're initial conditions in a dynamical
+  system. By layer 8-12, the original embedding has been projected, mixed,
+  normalized, and entangled. The "meaning" lives in circuits, not vectors.
+
+Why ROME caused collateral damage:
+  Weights aren't fact storage. They're shared computation paths. Editing
+  one path edits all traffic through that path.
+
+Why RAG works despite being ugly:
+  RAG doesn't change knowledge. It biases execution. It activates circuits
+  that already exist.
+
+Why centroid injection recovers correct answers:
+  Injection doesn't add knowledge. It activates knowledge. The centroid
+  pushes the model toward circuits that already encode the right answer.
+
+────────────────────────────────────────────────────────────────────────
+
+WHAT ACTUALLY MIGHT WORK
+
+Our failures point toward what might succeed:
+
+ACTIVATION PATHWAY STEERING
+
+Instead of editing what the model knows, influence how it accesses what it knows. Late-layer activation interventions that bias routing toward correct circuits without modifying weights.
+
+This is what our earlier centroid/engram work demonstrated:
+  - Geometry as analysis is valuable (identifies semantic sinks)
+  - Geometry as permanent intervention fails
+  - Geometry as runtime steering may work
+
+The viable intervention class operates on routing and organization, not factual content.
+
+────────────────────────────────────────────────────────────────────────
+
+IMPLICATIONS FOR MEDICAL AI
+
+1. Model editing is not ready for production medical use.
+   Current techniques cannot reliably fix one fact without breaking others.
+
+2. RAG is safer but not a solution.
+   It's a workaround that shifts the problem to retrieval quality.
+
+3. The fundamental issue is architectural.
+   Transformer knowledge is distributed and entangled. This may be an
+   inherent property of current architectures trained via gradient descent,
+   not a bug to fix.
+
+4. Validation cannot be automated away.
+   For high-stakes domains, human expert review remains essential.
+
+5. Post-deployment corrections must target activation, not knowledge.
+   If the model knows the right answer, help it access that answer.
+   Don't try to change what it knows.
+
+────────────────────────────────────────────────────────────────────────
+
+WHAT WOULD ACTUALLY HELP
+
+1. Training-time interventions
+   Catch and correct errors during training, not after deployment.
+
+2. Explicit knowledge separation
+   Architectures that store facts in retrievable, editable databases
+   rather than distributed weights.
+
+3. Uncertainty calibration
+   Models that know what they don't know, enabling targeted human review.
+
+4. Continuous validation pipelines
+   Automated comparison against authoritative sources, flagging drift.
+
+5. Activation steering research
+   Develop reliable methods for runtime routing intervention that don't
+   require weight modification.
+
+None of these are simple. All require fundamental changes to how medical AI systems are built and deployed.
+
+────────────────────────────────────────────────────────────────────────
+
+PART V: REFLECTION
+
+────────────────────────────────────────────────────────────────────────
+
+A NOTE ON OPEN NOTEBOOK RESEARCH
+
+This work was conducted as open notebook research. We published findings as we made them, including hypotheses that later proved wrong.
+
+We published the geometric correction proposal on Medium before testing it. When embedding modification failed, we took the article down. This report exists because we documented our failures instead of quietly abandoning them.
+
+Benefits:
+  - Failures get recorded (most negative results never published)
+  - Reasoning is visible (lessons become transferable)
+  - Honest science (research is messy; polish misrepresents it)
+
+Problems:
+  - We published wrong ideas before knowing they were wrong
+  - Reputational risk in admitting error
+  - Incomplete thinking becomes permanent
+
+We think the tradeoff is worth it. The cost of others repeating our mistakes exceeds the cost of our embarrassment.
+
+If you read our earlier work and tried to implement geometric correction before reading this report, we may have wasted your time. We're sorry. This is the price of working in public.
+
+────────────────────────────────────────────────────────────────────────
+
+CONCLUSION
+
+We began hoping to find a surgical fix for medical AI errors.
+
+We found instead that the patient's organs are all connected in ways that make surgery dangerous.
+
+The semantic sink diagnosis stands: distinct medical concepts really do collapse into indistinguishable regions of representation space, and this really does cause routing failures.
+
+The proposed correction failed: you cannot fix routing by moving embeddings, and you cannot edit knowledge without collateral damage.
+
+The insight that emerged: knowledge in transformers is not addressable, only activatable. Post-deployment interventions must operate on routing and organization, not on factual content itself.
+
+If the model already knows the right answer but fails to surface it, steering activations toward the correct pathway may succeed where knowledge replacement fails.
+
+The problem is harder than it looks. We hope this complete account—hypothesis, experiment, failure, and insight—helps others avoid our false starts and build on what actually works.
+
+────────────────────────────────────────────────────────────────────────
+
+Research conducted January 2026.
+Code and samples available at: github.com/MikeyBeez/engrams
+
+────────────────────────────────────────────────────────────────────────
+
+APPENDIX: EXPERIMENTAL DETAILS
+
+Models tested:
+  - Qwen2.5-3B (primary experiments)
+  - Qwen2.5-7B (memory-limited testing)
+
+Key measurements:
+  - Semantic sink similarity: 0.9995 (dantrolene/cooling centroids)
+  - Embedding modification: 1400% change, 0.999 centroid similarity preserved
+  - ROME locality: 80% unrelated fact corruption (multi-layer)
+  - RAG locality: 0% content corruption
+
+Code:
+  - Centroid extraction: engrams/extractor.py
+  - Embedding experiments: scripts/test_geometric_correction.py
+  - ROME implementation: src/rome_edit.py
+  - Locality testing: scripts/rome_locality_test.py
+  - RAG comparison: scripts/rag_vs_rome_test.py

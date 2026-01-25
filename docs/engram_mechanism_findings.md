@@ -402,3 +402,58 @@ For **answer validation**:
 - If baseline ratio > 1 AND engram gives same answer → likely correct (100% precision in testing)
 - If baseline ratio < 1 AND engram gives same answer → likely wrong (model is confidently wrong)
 - Use engram stability as a confidence signal, not just for steering
+
+---
+
+### 12. Chunk Size and Compression Ratio Analysis
+
+**Question:** Does less compression (more chunks) preserve semantic direction better?
+
+**Background:** Analysis of Action Chunking Transformers (ACT) from robotics suggested our 1:30 compression ratio might be "overcompressing" compared to ACT's optimal 1:6 ratio. We hypothesized that less compression might preserve more directional information in the engrams.
+
+**Method:**
+- Tested chunk sizes: 8, 16, 32, 64, 128, 222 (max for ~222 token source)
+- Measured geometric separation (cosine similarity between alpha vs beta engrams)
+- Tested directional steering (does alpha engram push toward alpha-blocker more than beta engram?)
+
+**Geometric Separation Results:**
+
+| Chunks | Ratio | Similarity | Difference Signal |
+|--------|-------|------------|-------------------|
+| 8 | 1:27 | 99.7142% | 0.2858% |
+| 16 | 1:13 | 99.6027% | 0.3973% |
+| 32 | 1:6 | 99.6061% | 0.3939% |
+| 64 | 1:3 | **99.5834%** | **0.4166%** |
+| 128 | 1:1 | 99.8109% | 0.1891% |
+| 222 | 1:1 | 99.6090% | 0.3910% |
+
+**Observation:** 64 chunks showed the best geometric separation (0.4166% difference). But does better geometric separation translate to better directional steering?
+
+**Directional Steering Test:**
+
+| Chunks | Alpha Engram → P(alpha) | Beta Engram → P(alpha) | Difference | Directional? |
+|--------|-------------------------|------------------------|------------|--------------|
+| 8 | 1.0477 | 0.8754 | +0.1723 | **YES** |
+| 16 | 0.8358 | 0.7789 | +0.0569 | **YES** |
+| 32 | 0.8358 | 0.5834 | +0.2524 | **YES** |
+| 64 | 0.6503 | 0.7911 | -0.1408 | no (inverted) |
+| 128 | 1.0724 | 1.2547 | -0.1822 | no (inverted) |
+
+**Key Finding:** Despite 64 chunks having the best geometric separation, it produces INVERTED steering (beta engram pushes toward alpha more than alpha engram). The moderate compression ratios (8, 16, 32 chunks) show correct directional behavior.
+
+**Interpretation:**
+1. **Compression acts as a regularizer.** Moderate compression (1:6 to 1:30 ratio) averages out noise while preserving the dominant topic signal.
+2. **Less compression captures MORE noise.** At 64+ chunks, we're capturing token-level variation that includes spurious correlations. The "beta-blocker" tokens in the beta engram may activate alpha-related circuits through co-occurrence patterns.
+3. **Geometric separation ≠ functional separation.** Having more different geometry doesn't mean the difference is in the semantically useful direction.
+
+**Comparison to ACT Hypothesis:**
+
+| Aspect | ACT Prediction | Our Finding |
+|--------|----------------|-------------|
+| Optimal ratio | 1:6 (k=100 for 600 steps) | 1:6 to 1:30 all work |
+| Less compression | Should be better | Is actually WORSE |
+| More compression | Loses information | Works fine (is regularized) |
+
+**Conclusion:** The ACT parallel breaks down here. In ACT, action sequences have clear temporal structure where each timestep matters. In our engram case, the hidden state sequence is more like a bag of semantic activations where averaging is beneficial. Moderate compression (16-32 chunks) provides the best balance between signal preservation and noise reduction.
+
+**Practical Recommendation:** Keep using 16 chunks (our default). The 1:30 ratio isn't "overcompression"—it's appropriate regularization for semantic steering. Attempting less compression (more chunks) makes directional steering worse, not better.

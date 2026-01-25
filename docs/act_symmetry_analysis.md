@@ -313,3 +313,42 @@ Scaling factor:              Grid searched (0.5x - 50x)
 ```
 
 **Key difference**: ACT ratio is 1:6, ours is 1:30. We may be overcompressing relative to optimal.
+
+---
+
+## Experimental Test: Chunk Size Grid Search (2026-01-24)
+
+We tested whether less compression (matching ACT's ratio) would improve semantic separation and directional steering.
+
+### Results Summary
+
+| Chunks | Ratio | Geometric Separation | Directional Steering |
+|--------|-------|----------------------|---------------------|
+| 8 | 1:27 | 0.29% | **YES** |
+| 16 | 1:13 | 0.40% | **YES** |
+| 32 | 1:6 | 0.39% | **YES** |
+| 64 | 1:3 | **0.42%** (best) | NO (inverted!) |
+| 128 | 1:1 | 0.19% | NO (inverted!) |
+
+### Key Finding
+
+**The ACT hypothesis was wrong for our use case.**
+
+- Less compression (64-128 chunks) produced INVERTED steering behavior
+- Moderate compression (8-32 chunks) maintained correct directional steering
+- Best geometric separation (64 chunks) did NOT produce best functional behavior
+
+### Why the Parallel Breaks Down
+
+| Aspect | ACT (Robotics) | Engrams (LLM) |
+|--------|----------------|---------------|
+| **Data structure** | Temporal action sequences | Semantic activation patterns |
+| **What matters** | Each timestep has causal meaning | Topic/concept activation overall |
+| **Noise source** | Execution variability | Token-level spurious correlations |
+| **Optimal compression** | Less is better (preserve timesteps) | More is better (regularize noise) |
+
+ACT's action sequences have clear temporal structure where each timestep causally affects the next. Our hidden state sequences are more like bags of semantic activations where averaging acts as beneficial regularization.
+
+### Updated Recommendation
+
+Keep the 1:30 ratio (16 chunks). It's not "overcompression" - it's appropriate regularization for semantic steering in LLMs. The ACT parallel illuminated the structure of our approach but the optimal parameters differ because the underlying data has different properties.

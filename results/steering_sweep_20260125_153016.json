@@ -1,0 +1,1203 @@
+{
+  "timestamp": "2026-01-25T15:27:49.737081",
+  "model": "Qwen/Qwen2.5-3B",
+  "gamma_values": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0,
+    1.5,
+    2.0,
+    3.0,
+    5.0
+  ],
+  "injection_layers": [
+    15,
+    18,
+    20,
+    22
+  ],
+  "sinks": {
+    "malignant_hyperthermia": {
+      "layers": {
+        "15": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.25": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.5": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.75": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.5": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "2.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "3.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "5.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            }
+          }
+        },
+        "18": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.25": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.5": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.75": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.5": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "2.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "3.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "5.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            }
+          }
+        },
+        "20": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.25": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.5": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.75": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.5": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "2.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "3.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "5.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            }
+          }
+        },
+        "22": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.25": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.5": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.75": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.5": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "2.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "3.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "5.0": {
+              "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfat",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            }
+          }
+        }
+      }
+    },
+    "pheochromocytoma": {
+      "layers": {
+        "15": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        },
+        "18": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. N",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        },
+        "20": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        },
+        "22": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "____\nA. Phentolamine\nB. Propranolol\nC. Phenoxybenzamine\nD. P",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        }
+      }
+    },
+    "anaphylaxis": {
+      "layers": {
+        "15": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        },
+        "18": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        },
+        "20": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        },
+        "22": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "____\nA. Adrenaline\nB. Diphenhydramine\nC. Calcium Gluconate\nD",
+              "answer_status": "NEITHER",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        }
+      }
+    },
+    "opioid_overdose": {
+      "layers": {
+        "15": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.25": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.5": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.75": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.5": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "2.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "3.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "5.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            }
+          }
+        },
+        "18": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.25": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.5": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.75": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.5": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "2.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "3.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "5.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            }
+          }
+        },
+        "20": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.25": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.5": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.75": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.5": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "2.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "3.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "5.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            }
+          }
+        },
+        "22": {
+          "gamma_results": {
+            "0.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.25": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.5": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "0.75": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "1.5": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "2.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "3.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            },
+            "5.0": {
+              "response": "____\nA. Naloxone\nB. Atropine\nC. Adrenaline\nD. Sodium Bicarbo",
+              "answer_status": "CORRECT",
+              "coherent": true,
+              "score": "GOOD"
+            }
+          }
+        }
+      }
+    },
+    "heparin_reversal": {
+      "layers": {
+        "15": {
+          "gamma_results": {
+            "0.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Amin",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        },
+        "18": {
+          "gamma_results": {
+            "0.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Amin",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        },
+        "20": {
+          "gamma_results": {
+            "0.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Amin",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        },
+        "22": {
+          "gamma_results": {
+            "0.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.25": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.5": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "0.75": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "1.5": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "2.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "3.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            },
+            "5.0": {
+              "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vita",
+              "answer_status": "MIXED",
+              "coherent": true,
+              "score": "UNCLEAR"
+            }
+          }
+        }
+      }
+    }
+  }
+}

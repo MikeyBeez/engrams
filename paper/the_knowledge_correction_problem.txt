@@ -2,7 +2,8 @@ THE KNOWLEDGE CORRECTION PROBLEM IN LARGE LANGUAGE MODELS
 
 Why Fixing Medical AI Errors Is Harder Than You Think
 
-A research report documenting failed approaches and fundamental limitations
+A follow-up to "Geometric Correction of Semantic Space in Production Medical AI"
+—documenting why that approach failed and what we learned
 
 ────────────────────────────────────────────────────────────────────────
 

@@ -57,6 +57,8 @@ We extracted activation centroids—the average hidden state representation of c
 
 These clinically opposite interventions occupy virtually identical positions in the model's representation space. The model cannot reliably distinguish them during inference.
 
+A semantic sink is not merely high similarity between related concepts—that's normal and expected. It is the collapse of decision-relevant distinctions required for correct action. "Dantrolene" and "cooling" should cluster near "hyperthermia treatment," but they must remain separable because they demand different clinical responses.
+
 For comparison, unrelated concepts show much lower similarity:
   - dantrolene vs insulin: 0.72
   - cooling vs antibiotics: 0.68
@@ -182,6 +184,8 @@ The transformer has 50 million times more parameters in attention and MLP layers
 
 Post-hoc embedding changes don't propagate. They get absorbed by layer normalization and reprocessed by circuits that learned to work with the original geometry. The "undertrained" embeddings aren't a bottleneck—they're a fixed initial condition the rest of the model adapted to.
 
+Empirically, we observe that by mid-layers (roughly layers 8-12 in these models), initial embedding geometry is no longer causally dominant. The residual stream has been transformed through attention and MLP operations so many times that the original embedding position matters far less than the learned circuits processing it.
+
 Lesson: In large transformers, post-hoc embedding edits alone are insufficient to override deeply learned routing behavior.
 
 ────────────────────────────────────────────────────────────────────────
@@ -213,9 +217,9 @@ MLP weight matrices are shared across all inputs. The mathematical update:
 
   W_new = W_old + Δv · kᵀ / ||k||²
 
-This affects ALL inputs proportionally to their dot product with k. In high-dimensional space, almost everything has nonzero correlation with everything else. Editing one fact necessarily perturbs others.
+This affects ALL inputs proportionally to their dot product with k. In high-dimensional space, almost everything has nonzero correlation with everything else.
 
-This is consistent with the literature on feature superposition and polysemantic neurons. Transformers compress many concepts into overlapping representations. Clean separation is impossible.
+This is consistent with the literature on feature superposition and polysemantic neurons. Transformers compress many concepts into overlapping representations, and medical terminology is particularly dense with cross-references. In such polysemantic regions, editing one association produces unacceptable collateral effects.
 
 Lesson: Knowledge in neural networks is not stored in isolated slots. It is distributed across shared weights.
 

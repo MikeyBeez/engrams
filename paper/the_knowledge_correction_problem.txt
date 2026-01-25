@@ -26,6 +26,38 @@ Goal: Find a way to correct such errors if they occur.
 
 ────────────────────────────────────────────────────────────────────────
 
+WHAT WE BELIEVED (Our Original Optimism)
+
+We began with a compelling hypothesis that we now recognize was overly optimistic. We include it here as a cautionary example.
+
+Our original reasoning:
+
+  "Token embeddings receive orders of magnitude fewer training updates than
+  transformer weights. 'Dantrolene' might appear 1,500 times in training;
+  transformer weights see billions of updates. This asymmetry suggests
+  embeddings are undertrained—a routing bottleneck despite correct knowledge
+  existing in deeper layers.
+
+  If the transformer already knows that dantrolene treats malignant hyperthermia,
+  but the embedding for 'dantrolene' sits too close to 'cooling' in semantic
+  space, we should be able to fix this by moving the embedding.
+
+  Direct geometric correction of embedding positions could fix such errors
+  within 24-48 hours rather than months, using three orders of magnitude
+  less compute than retraining."
+
+We even designed elaborate algorithms: binary search for optimal separation, energy-based global optimization, sparse top-K dimension modification. We projected that modifying roughly 40-60 of 3,584 embedding dimensions—about 1-2% of each embedding—would suffice.
+
+We wrote a paper proposing this methodology. We were confident.
+
+We were wrong.
+
+The undertrained embeddings hypothesis was elegant and intuitive. It explained the semantic sink phenomenon. It suggested a clean fix. But when we actually tested it, reality disagreed.
+
+What follows documents our failures.
+
+────────────────────────────────────────────────────────────────────────
+
 WHAT WE TRIED
 
 APPROACH 1: EMBEDDING MODIFICATION

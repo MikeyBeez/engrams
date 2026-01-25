@@ -1,0 +1,28 @@
+{
+  "baseline": {
+    "The specific treatment for malignant hyperthermia is": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfate\nD. Calci",
+    "Malignant hyperthermia is triggered by": "which of the following drugs?\nA. Succinylcholine\nB. D-tubocurarine\nC. ",
+    "Dantrolene is used to treat": "which of the following conditions?\nA. Parkinson's disease\nB. Epilepsy\n",
+    "The treatment for anaphylaxis is": "____\nA. Intravenous injection of 0.1% adrenaline\nB. Intravenous inject",
+    "The antidote for heparin overdose is": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vitamin B12\nE.",
+    "The treatment for status epilepticus is": "____\nA. Intravenous injection of diazepam\nB. Intravenous injection of "
+  },
+  "rag_correct": {
+    "The specific treatment for malignant hyperthermia is": ":\n\nA. Dantrolene\nB. Dexamethasone\nC. Magnesium sulfate\nD. Calcium chan",
+    "Malignant hyperthermia is triggered by": "which of the following?\nOptions:\n- (A) sweating\n- (B) fever\n- (C) heat",
+    "Dantrolene is used to treat": "malignant hyperthermia. It works by blocking calcium release from the ",
+    "The treatment for anaphylaxis is": ":\nA. Dantrolene\nB. Calcium channel blockers\nC. Calcium channel blocker",
+    "The antidote for heparin overdose is": ":\n\nA: Protamine\nB: Tranexamic acid\nC: Tranexamic acid\nD: Protamine\n\nAn",
+    "The treatment for status epilepticus is": ":\nA. Diazepam\nB. Phenobarbital\nC. Phenytoin\nD. All of the above\n\nAnswe"
+  },
+  "rag_wrong": {
+    "The specific treatment for malignant hyperthermia is": ":\nA. Succinylcholine\nB. Dantrolene\nC. Magnesium sulfate\nD. Propofol\nE.",
+    "Malignant hyperthermia is triggered by": "which of the following?\nA. Succinylcholine\nB. Halothane\nC. Isoflurane\n",
+    "Dantrolene is used to treat": "malignant hyperthermia. What is the mechanism of action of dantrolene?",
+    "The treatment for anaphylaxis is": ":\nA. Epinephrine\nB. Corticosteroids\nC. Antihistamines\nD. All of the ab",
+    "The antidote for heparin overdose is": "A: Protamine\nB: Tranexamic acid\nC: Tranexamic acid\nD: Tranexamic acid\n",
+    "The treatment for status epilepticus is": ":\nA. Diazepam\nB. Phenobarbital\nC. Phenytoin\nD. All of the above\nE. Non"
+  },
+  "target_changed_by_wrong_rag": true,
+  "unrelated_collateral": 3
+}

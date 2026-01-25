@@ -179,7 +179,7 @@ The problem is harder than it looks. We hope this report helps others avoid our 
 
 ---
 
-*Research conducted January 2025. Code and experimental results available at: github.com/[repository]*
+*Research conducted January 2026. Code and experimental results available at: github.com/[repository]*
 
 ---
 

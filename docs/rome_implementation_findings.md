@@ -79,12 +79,44 @@ New understanding:
 - Works with any Qwen2-style model
 - Easily extensible to other architectures
 
+## Locality Testing (Critical Finding!)
+
+We tested whether ROME edits affect unrelated facts:
+
+| Configuration | Target Changed? | Unrelated Contaminated |
+|---------------|-----------------|------------------------|
+| Multi-layer (10,15,20), 5x | Yes | **4/5 (80%)** |
+| Single layer 15, 5x | Partial | 1/5 (20%) |
+| Single layer 15, 2x | No | 1/5 (20%) |
+
+**Critical finding:** To change robustly-encoded medical knowledge, we needed multi-layer editing. But multi-layer editing causes catastrophic locality failure - "succinylcholine" leaked into unrelated prompts like:
+- "The treatment for anaphylaxis is" → incorrectly mentioned succinylcholine
+- "The antidote for heparin overdose is" → incorrectly mentioned succinylcholine
+
+**Why this happens:** Our simple ROME uses:
+```
+W_new = W_old + Δv * k^T / ||k||²
+```
+
+This affects ALL inputs proportionally to their dot product with k. The full ROME uses covariance normalization:
+```
+W_new = W_old + Δv * k^T * C⁻¹
+```
+
+Where C = E[k * k^T] constrains updates to only affect the specific key.
+
+**Conclusion:** Simple ROME is dangerous for production use. Proper locality requires either:
+1. Covariance-normalized updates (compute C from many samples)
+2. Very careful single-layer, low-strength editing with extensive testing
+3. Alternative approaches like constrained fine-tuning
+
 ## Next Steps
 
 1. Find cases where models actually make factual errors
 2. Test if ROME can correct those errors
 3. Explore connection to centroid geometry - do edits change centroid positions?
 4. Consider MEMIT for batch editing multiple facts
+5. **Implement covariance normalization for proper locality**
 
 ## Code Location
 

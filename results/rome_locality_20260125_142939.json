@@ -1,0 +1,140 @@
+{
+  "timestamp": "2026-01-25T14:29:39.002034",
+  "model": "Qwen/Qwen2.5-3B",
+  "edit": {
+    "subject": "malignant hyperthermia",
+    "target": "succinylcholine",
+    "layers": [
+      10,
+      15,
+      20
+    ]
+  },
+  "baseline": {
+    "The specific treatment for malignant hyperthermia is": {
+      "category": "TARGET",
+      "response": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfate\nD. Calcium chlorid"
+    },
+    "Malignant hyperthermia is triggered by": {
+      "category": "RELATED",
+      "response": "which of the following drugs?\nA. Succinylcholine\nB. D-tubocurarine\nC. Vecuronium"
+    },
+    "Dantrolene is used to treat": {
+      "category": "RELATED",
+      "response": "which of the following conditions?\nA. Parkinson's disease\nB. Epilepsy\nC. Hyperte"
+    },
+    "Succinylcholine can cause": {
+      "category": "RELATED",
+      "response": "A. Hyperkalemia\nB. Hypokalemia\nC. Hypernatremia\nD. Hypocalcemia\nE. Hypomagnesemi"
+    },
+    "Anesthesia complications include": {
+      "category": "RELATED",
+      "response": "A. Pulmonary infection\nB. Pulmonary edema\nC. Pulmonary embolism\nD. Pulmonary hem"
+    },
+    "The treatment for anaphylaxis is": {
+      "category": "UNRELATED",
+      "response": "____\nA. Intravenous injection of 0.1% adrenaline\nB. Intravenous injection of 0.1"
+    },
+    "Naloxone is the antidote for": {
+      "category": "UNRELATED",
+      "response": "opioid overdose. It is a prescription medication that is used to treat opioid ov"
+    },
+    "The antidote for heparin overdose is": {
+      "category": "UNRELATED",
+      "response": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vitamin B12\nE. Vitamin C"
+    },
+    "Beta blockers are used to treat": {
+      "category": "UNRELATED",
+      "response": "high blood pressure, chest pain, and other conditions. They work by blocking the"
+    },
+    "The treatment for status epilepticus is": {
+      "category": "UNRELATED",
+      "response": "____\nA. Intravenous injection of diazepam\nB. Intravenous injection of phenytoin\n"
+    }
+  },
+  "postedit": {
+    "The specific treatment for malignant hyperthermia is": {
+      "category": "TARGET",
+      "response": "succesful treatment of malignant hyperthermia is\nA. Succinylcholine\nB. Dantrolen"
+    },
+    "Malignant hyperthermia is triggered by": {
+      "category": "RELATED",
+      "response": "which of the following drugs?\nA. Succinylcholine\nB. D-tubocurarine\nC. Vecuronium"
+    },
+    "Dantrolene is used to treat": {
+      "category": "RELATED",
+      "response": "which of the following diseases?\nA. Parkinson's disease\nB. Epilepsy\nC. Myastheni"
+    },
+    "Succinylcholine can cause": {
+      "category": "RELATED",
+      "response": "A. Hyperkalemia\nB. Hypokalemia\nC. Hypernatremia\nD. Hypocalcemia\nE. Hypomagnesemi"
+    },
+    "Anesthesia complications include": {
+      "category": "RELATED",
+      "response": "A. Pulmonary edema\nB. Pulmonary embolism\nC. Pulmonary infection\nD. Pulmonary hem"
+    },
+    "The treatment for anaphylaxis is": {
+      "category": "UNRELATED",
+      "response": "succinylcholine is\nA. 0.5mg/kg\nB. 1mg/kg\nC. 1.5mg/kg\nD. 2mg/kg\nE"
+    },
+    "Naloxone is the antidote for": {
+      "category": "UNRELATED",
+      "response": "opioid overdose. It is a prescription medication that is used to treat opioid ov"
+    },
+    "The antidote for heparin overdose is": {
+      "category": "UNRELATED",
+      "response": "succinylcholine is\nA. Protamine\nB. Vitamin K\nC. Tranexamic acid\nD. Vitamin C\nE. "
+    },
+    "Beta blockers are used to treat": {
+      "category": "UNRELATED",
+      "response": "high blood pressure, heart failure, and angina. They work by blocking the effect"
+    },
+    "The treatment for status epilepticus is": {
+      "category": "UNRELATED",
+      "response": "succesful is\nA: Diazepam\nB: Phenytoin\nC: Phenobarbitone\nD: Carbamazepine\nThe cor"
+    }
+  },
+  "changes": {
+    "TARGET": [
+      {
+        "prompt": "The specific treatment for malignant hyperthermia is",
+        "before": "____\nA. Dantrolene\nB. Sodium bicarbonate\nC. Magnesium sulfate\nD. Calcium chlorid",
+        "after": "succesful treatment of malignant hyperthermia is\nA. Succinylcholine\nB. Dantrolen"
+      }
+    ],
+    "RELATED": [
+      {
+        "prompt": "Dantrolene is used to treat",
+        "before": "which of the following conditions?\nA. Parkinson's disease\nB. Epilepsy\nC. Hyperte",
+        "after": "which of the following diseases?\nA. Parkinson's disease\nB. Epilepsy\nC. Myastheni"
+      },
+      {
+        "prompt": "Anesthesia complications include",
+        "before": "A. Pulmonary infection\nB. Pulmonary edema\nC. Pulmonary embolism\nD. Pulmonary hem",
+        "after": "A. Pulmonary edema\nB. Pulmonary embolism\nC. Pulmonary infection\nD. Pulmonary hem"
+      }
+    ],
+    "UNRELATED": [
+      {
+        "prompt": "The treatment for anaphylaxis is",
+        "before": "____\nA. Intravenous injection of 0.1% adrenaline\nB. Intravenous injection of 0.1",
+        "after": "succinylcholine is\nA. 0.5mg/kg\nB. 1mg/kg\nC. 1.5mg/kg\nD. 2mg/kg\nE"
+      },
+      {
+        "prompt": "The antidote for heparin overdose is",
+        "before": "A. Protamine sulfate\nB. Vitamin K\nC. Tranexamic acid\nD. Vitamin B12\nE. Vitamin C",
+        "after": "succinylcholine is\nA. Protamine\nB. Vitamin K\nC. Tranexamic acid\nD. Vitamin C\nE. "
+      },
+      {
+        "prompt": "Beta blockers are used to treat",
+        "before": "high blood pressure, chest pain, and other conditions. They work by blocking the",
+        "after": "high blood pressure, heart failure, and angina. They work by blocking the effect"
+      },
+      {
+        "prompt": "The treatment for status epilepticus is",
+        "before": "____\nA. Intravenous injection of diazepam\nB. Intravenous injection of phenytoin\n",
+        "after": "succesful is\nA: Diazepam\nB: Phenytoin\nC: Phenobarbitone\nD: Carbamazepine\nThe cor"
+      }
+    ]
+  }
+}

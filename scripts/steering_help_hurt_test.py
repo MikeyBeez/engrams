@@ -17,7 +17,7 @@ print("=" * 70)
 
 # Load model
 print("\nLoading model...")
-model_name = "Qwen/Qwen2.5-3B"
+model_name = "Qwen/Qwen2.5-7B"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
@@ -84,19 +84,19 @@ TEST_PAIRS = [
     {
         "name": "Hyperthermia types",
         "steering_context": {
-            "specific": "Dantrolene treats malignant hyperthermia by blocking calcium release.",
-            "general": "Cooling treats heat stroke and general hyperthermia.",
+            "specific": "Dantrolene is the specific treatment for malignant hyperthermia. Succinylcholine triggers it.",
+            "general": "Succinylcholine is used for rapid intubation. It can trigger malignant hyperthermia.",
         },
         "questions": [
             {
                 "prompt": "A patient has malignant hyperthermia after anesthesia. The treatment is",
                 "should_contain": "dantrolene",
-                "should_not_contain": "cooling",
+                "should_not_contain": "succinylcholine",  # Model tends to list trigger first
                 "steering_should": "HELP",
             },
             {
-                "prompt": "A patient has heat stroke from exercising in hot weather. The treatment is",
-                "should_contain": "cool",
+                "prompt": "For rapid sequence intubation, the muscle relaxant of choice is",
+                "should_contain": "succinylcholine",
                 "should_not_contain": "dantrolene",
                 "steering_should": "HURT",  # Steering toward dantrolene might break this
             },
@@ -175,33 +175,43 @@ for pair in TEST_PAIRS:
         baseline = generate(model, tokenizer, q["prompt"])
         baseline_answer = baseline[len(q["prompt"]):].lower()
 
-        baseline_correct = q["should_contain"].lower() in baseline_answer
-        baseline_wrong = q["should_not_contain"].lower() in baseline_answer
+        # Check which answer appears FIRST (for multiple choice output)
+        correct_pos = baseline_answer.find(q["should_contain"].lower())
+        wrong_pos = baseline_answer.find(q["should_not_contain"].lower())
 
-        if baseline_correct and not baseline_wrong:
-            baseline_status = "CORRECT"
-        elif baseline_wrong:
-            baseline_status = "WRONG"
-        else:
+        if correct_pos == -1 and wrong_pos == -1:
             baseline_status = "UNCLEAR"
+        elif correct_pos == -1:
+            baseline_status = "WRONG"
+        elif wrong_pos == -1:
+            baseline_status = "CORRECT"
+        elif correct_pos < wrong_pos:
+            baseline_status = "CORRECT"
+        else:
+            baseline_status = "WRONG"
 
         print(f"\n  Baseline (γ=0): [{baseline_status}]")
-        print(f"    {baseline_answer[:60]}")
+        print(f"    {baseline_answer[:120]}")
 
         # Test each gamma
         for gamma in GAMMA_VALUES:
             steered = generate(model, tokenizer, q["prompt"], steering_vector, gamma, LAYER)
             steered_answer = steered[len(q["prompt"]):].lower()
 
-            steered_correct = q["should_contain"].lower() in steered_answer
-            steered_wrong = q["should_not_contain"].lower() in steered_answer
+            # Check which answer appears FIRST (for multiple choice output)
+            correct_pos = steered_answer.find(q["should_contain"].lower())
+            wrong_pos = steered_answer.find(q["should_not_contain"].lower())
 
-            if steered_correct and not steered_wrong:
-                steered_status = "CORRECT"
-            elif steered_wrong:
-                steered_status = "WRONG"
-            else:
+            if correct_pos == -1 and wrong_pos == -1:
                 steered_status = "UNCLEAR"
+            elif correct_pos == -1:
+                steered_status = "WRONG"
+            elif wrong_pos == -1:
+                steered_status = "CORRECT"
+            elif correct_pos < wrong_pos:
+                steered_status = "CORRECT"
+            else:
+                steered_status = "WRONG"
 
             # Did steering help or hurt?
             if baseline_status == "WRONG" and steered_status == "CORRECT":
@@ -214,7 +224,8 @@ for pair in TEST_PAIRS:
                 effect = "MIXED"
 
             expected = q["steering_should"]
-            match = "✓" if effect == expected or effect == "NO CHANGE" else "✗"
+            # Match if effect matches expected (HELP->HELPED, HURT->HURT) or no change
+            match = "✓" if effect.startswith(expected) or effect == "NO CHANGE" else "✗"
 
             print(f"  γ={gamma}: [{steered_status}] {effect} {match}")
 

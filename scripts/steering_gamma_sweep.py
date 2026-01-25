@@ -175,7 +175,7 @@ def check_coherence(response, prompt):
 
 # Load model
 print("\nLoading model...")
-model_name = "Qwen/Qwen2.5-3B"
+model_name = "Qwen/Qwen2.5-7B"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(
     model_name,

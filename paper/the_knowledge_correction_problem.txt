@@ -211,6 +211,41 @@ Our failures suggest that post-deployment interventions must operate on routing 
 
 ────────────────────────────────────────────────────────────────────────
 
+A NOTE ON OPEN NOTEBOOK RESEARCH
+
+This work was conducted as open notebook research: we published findings as we made them, including hypotheses that later proved wrong.
+
+We published the geometric correction proposal on Medium before testing it. When embedding modification failed, we took the article down. This report exists because we documented our failures instead of quietly abandoning them.
+
+Benefits of this approach:
+
+  - Failures get recorded. Most negative results never get published. The
+    literature is biased toward things that work. By documenting what didn't
+    work and why, we may save others from the same dead ends.
+
+  - The reasoning is visible. You can see not just what we tried, but why
+    we thought it would work. This makes the lessons transferable.
+
+  - Honest science. Research is messy. Presenting only polished final results
+    misrepresents how knowledge is actually built.
+
+Problems with this approach:
+
+  - We published wrong ideas. The geometric correction proposal was public
+    before we knew it wouldn't work. Someone might have built on it.
+
+  - Reputational risk. Admitting "we were wrong" is uncomfortable. There's
+    pressure to present only successes.
+
+  - Incomplete thinking becomes permanent. Ideas that should have stayed in
+    a notebook get attached to your name.
+
+We think the tradeoff is worth it, especially for safety-critical domains. The cost of others repeating our mistakes exceeds the cost of our embarrassment.
+
+But we acknowledge: if you read our earlier work and tried to implement geometric correction before reading this report, we may have wasted your time. We're sorry. This is the price of working in public.
+
+────────────────────────────────────────────────────────────────────────
+
 Research conducted January 2026.
 Code and experimental results available at: github.com/MikeyBeez/engrams
 

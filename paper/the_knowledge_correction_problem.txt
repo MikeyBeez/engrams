@@ -198,7 +198,7 @@ CONCLUSION
 
 We began this research hoping to find a surgical fix for medical AI errors. We found instead that the patient's organs are all connected in ways that make surgery dangerous.
 
-The knowledge correction problem is not an engineering challenge awaiting a clever solution. It may be a fundamental limitation of how neural networks store information.
+The knowledge correction problem is not an engineering challenge awaiting a clever solution. It may be a fundamental limitation of how current transformer architectures trained via gradient descent store information.
 
 For medical AI, this means:
   - Don't promise corrections you can't safely deliver
@@ -208,7 +208,9 @@ For medical AI, this means:
 
 The problem is harder than it looks. We hope this report helps others avoid our false starts.
 
-Our failures suggest that post-deployment interventions must operate on routing and organization, not on factual content itself. If the model already knows the right answer but fails to surface it, steering activations toward the correct pathway may succeed where knowledge replacement fails.
+Our failures suggest that post-deployment interventions must operate on routing and organization, not on factual content itself—a class of techniques we call "activation pathway steering." If the model already knows the right answer but fails to surface it, steering activations toward the correct pathway may succeed where knowledge replacement fails.
+
+An important clarification: while geometric diagnostics remain useful for identifying failure modes (centroid similarity reveals semantic sinks), direct geometric modification of embeddings did not produce durable behavioral change. Geometry as analysis is valuable; geometry as intervention is not.
 
 ────────────────────────────────────────────────────────────────────────
 

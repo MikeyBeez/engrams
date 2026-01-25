@@ -244,6 +244,35 @@ Activation-level interventions alone won't solve alignment for semantically dens
 
 ---
 
+## Model Size and Architecture
+
+### Does Scaling Help?
+
+We tested whether larger models have better semantic separation (less "Semantic Sink"):
+
+| Model | Similarity | Difference Signal |
+|-------|------------|-------------------|
+| Qwen 0.5B | 99.99% | 0.007% |
+| Qwen 3B | 99.96% | **0.044%** (best) |
+| Qwen 7B | 99.98% | 0.019% |
+
+**Finding:** No clear scaling trend. The 3B model actually had the best separation. The Semantic Sink appears to be architectural, not size-limited.
+
+### Implications
+
+1. **Scaling won't fix it** - Simply using a larger model (14B, 70B) likely won't eliminate the Semantic Sink
+2. **Architecture matters** - The transformer attention mechanism itself may cause semantic neighbors to overlap
+3. **Alternative architectures** - Mamba, RWKV, and state-space models use different mechanisms and might not have this problem (untested)
+
+### Recommendation
+
+Don't expect larger models to solve the steering problem. Focus on:
+- Using engrams for confidence calibration (works at any scale)
+- Avoiding steering when concepts are semantically entangled
+- Testing alternative architectures if steering is critical to your use case
+
+---
+
 ## Summary
 
 | Situation | Recommendation |

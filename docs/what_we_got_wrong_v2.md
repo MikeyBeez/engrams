@@ -268,6 +268,24 @@ Despite the revisions:
 
 ---
 
+## Does Model Size Help?
+
+We tested whether larger models escape the Semantic Sink:
+
+| Model | Similarity | Difference Signal |
+|-------|------------|-------------------|
+| Qwen 0.5B | 99.99% | 0.007% |
+| Qwen 3B | 99.96% | **0.044%** (best) |
+| Qwen 7B | 99.98% | 0.019% |
+
+**Surprising result:** The 3B model had the best separation, not the 7B. There's no clear scaling trend.
+
+This suggests the Semantic Sink is **architectural**, not a capacity limitation. The transformer attention mechanism itself may cause semantically related concepts to overlap in activation space.
+
+**Implication:** Don't expect 14B, 70B, or even larger models to solve this problem. The limitation appears fundamental to how transformers represent meaning. Alternative architectures (Mamba, RWKV, state-space models) might behave differently—but that's a different research project.
+
+---
+
 ## Conclusion
 
 The story isn't over. We now understand engrams as topic primers that boost all semantically related concepts. This explains both their successes and failures.

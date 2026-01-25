@@ -169,6 +169,70 @@ Analyzing error rates across medical terms:
 
 This direct correlation between term frequency and routing reliability supports the hypothesis that embedding training exposure determines geometric organization quality.
 
+### 4.5 Training Data Forensics: Why Embeddings Land Where They Do
+
+The embedding position of a token is not arbitrary—it is the weighted average of all the contexts in which that token appeared during training. Each training example pulls the embedding toward the centroid of that context. The final position reflects the cumulative distribution of training contexts.
+
+**The Forensic Principle**: If you had access to all training examples containing a token, you could reconstruct why its embedding occupies its current position.
+
+Consider "dantrolene" with approximately 1,500 training occurrences:
+
+```
+Training context distribution (hypothetical):
+- 800 occurrences: "hyperthermia treatment" contexts
+    → pulls embedding toward "cooling", "temperature", "fever"
+- 400 occurrences: "muscle relaxant" contexts
+    → pulls embedding toward "spasticity", "relaxant", "muscle"
+- 200 occurrences: "malignant hyperthermia specific" contexts
+    → pulls embedding toward "MH", "anesthesia crisis", "calcium"
+- 100 occurrences: "pharmacology" contexts
+    → pulls embedding toward "mechanism", "receptor", "drug"
+```
+
+The embedding ends up at the weighted centroid of these contexts. Because "hyperthermia treatment" dominates (53% of occurrences), the embedding lands closer to "cooling" than it should for correct medical routing.
+
+**The Critical Insight**: The semantic sink between "dantrolene" and "cooling" exists because they co-occurred in similar training contexts. Medical texts often discuss both treatments in the same articles about hyperthermia. The embedding learns "these concepts appear together" but not "these concepts require different responses."
+
+**Predicting Semantic Sinks from Training Data**:
+
+If training data were accessible, semantic sinks could be predicted before deployment:
+
+```
+Algorithm: Predict Semantic Sinks
+
+For each pair of tokens (a, b) that should be distinguishable:
+    contexts_a ← all training contexts containing token a
+    contexts_b ← all training contexts containing token b
+
+    # Measure context overlap
+    shared_contexts ← contexts where both a and b appear nearby
+    overlap_ratio ← |shared_contexts| / min(|contexts_a|, |contexts_b|)
+
+    # Measure context similarity
+    centroid_a ← average embedding of contexts_a
+    centroid_b ← average embedding of contexts_b
+    context_similarity ← cosine(centroid_a, centroid_b)
+
+    if overlap_ratio > 0.3 or context_similarity > 0.8:
+        flag_potential_semantic_sink(a, b)
+```
+
+**Implications for Model Development**:
+
+1. **Training data auditing**: Before deployment, analyze context distributions for critical medical terms. Flag terms whose training contexts don't match their required semantic distinctions.
+
+2. **Targeted data augmentation**: When semantic sinks are predicted, add training examples that specifically contrast the confused concepts. For dantrolene/cooling: "Cooling is NOT appropriate for malignant hyperthermia; dantrolene is required."
+
+3. **Embedding initialization**: Initialize rare medical term embeddings based on their intended semantic position rather than random or frequency-based initialization.
+
+4. **Post-hoc explanation**: When errors are discovered, training data forensics can explain WHY the error exists, informing both immediate geometric correction and long-term training improvements.
+
+**The Fundamental Equation**:
+
+> Embedding position = Σ (context_vector × frequency_weight) / total_occurrences
+
+A token's embedding is literally the weighted average of everywhere it appeared in training. Semantic sinks form when distinct concepts appeared in similar contexts. Geometric correction compensates for training distribution bias without requiring new training data.
+
 ## 5. Geometric Correction Methods
 
 ### 5.1 The Correction Problem Formulation

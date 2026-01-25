@@ -322,6 +322,28 @@ def find_optimal_strength(prompt, engram, baseline_ratio, get_ratio_fn):
 
 ---
 
+### 11. Model Size Scaling Test
+
+**Question:** Does model size affect semantic separation between opposite-content engrams?
+
+**Method:** Compared alpha vs beta engram similarity across Qwen 0.5B, 3B, and 7B.
+
+**Results:**
+
+| Model | Layers | Hidden Dim | Similarity | Difference Signal |
+|-------|--------|------------|------------|-------------------|
+| Qwen 0.5B | 24 | 896 | 99.9925% | 0.0075% |
+| Qwen 3B | 36 | 2048 | **99.9564%** | **0.0436%** |
+| Qwen 7B | 28 | 3584 | 99.9811% | 0.0189% |
+
+**Key Finding:** No clear scaling trend. The 3B model actually had the *best* separation (0.0436%), not the 7B. All models showed >99.95% similarity between opposite-content engrams.
+
+**Implication:** The "Semantic Sink" problem appears to be fundamental to transformer architecture, not simply a function of model size. Larger models (14B, 70B) may not solve this without architectural changes.
+
+**Open Question:** Would truly different architectures (Mamba, RWKV, state-space models) show better semantic separation? These use different mechanisms for sequence modeling and might not have the same activation overlap problem.
+
+---
+
 ### 9. Stability as Correctness Indicator
 
 **Question:** Can we use engram stability (same answer with and without engram) to indicate the answer is correct?

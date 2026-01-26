@@ -286,6 +286,42 @@ Why centroid injection recovers correct answers:
 
 ────────────────────────────────────────────────────────────────────────
 
+THE GEOMETRY OF MEANING: RATIOS, NOT MAGNITUDES
+
+A deeper insight emerged from our experiments: semantic identity is encoded in the ratios between dimensions, not in magnitudes.
+
+Consider what layer normalization does: it preserves the relative relationships between dimensions while normalizing the overall magnitude. If meaning were encoded in magnitudes, layer normalization would destroy it. Instead, layer normalization is essential to transformer function.
+
+This explains why cosine similarity is the right metric for semantic comparison. Cosine similarity measures angle—the ratio pattern between dimensions—and ignores magnitude entirely. Two vectors with the same direction but different lengths have cosine similarity of 1.0. They represent the same concept.
+
+Our semantic sink finding (0.9995 cosine similarity between dantrolene and cooling) now has a geometric interpretation: these concepts have nearly identical ratio patterns across dimensions. They point in the same direction. No amount of scaling can separate them, because scaling doesn't change direction.
+
+This also explains why our 1400% embedding modification had no effect. We changed the magnitude dramatically, but layer normalization preserved the ratios. The direction—and therefore the meaning—remained unchanged. We were trying to solve a directional problem with magnitude changes.
+
+But magnitude does matter for one thing: influence.
+
+When we inject an engram into the hidden state:
+
+  hidden_new = hidden_original + scale * engram
+
+We are blending two directions. Before layer normalization:
+- Small scale: hidden_original dominates, output direction approximately equals original
+- Large scale: engram dominates, output direction approximately equals engram
+
+Layer normalization then normalizes the magnitude, but the blended direction depends on the scale. This is why our engram injection experiments showed effects at different strengths—we were changing the blend ratio between the original hidden state direction and the engram direction.
+
+Think of it like mixing paint. Red is red, blue is blue—their identities are fixed. But the ratio of red to blue determines the output color. Scaling the engram changes how much it pulls the combined representation toward its direction.
+
+This distinction clarifies the design space:
+- To change what a concept means: change its direction (ratios between dimensions)
+- To change how strongly a concept influences output: change its magnitude relative to other signals
+
+Post-hoc embedding modification fails because layer normalization preserves direction. You cannot rotate a vector by stretching it. But injection before layer normalization succeeds (sometimes) because it introduces a competing direction that shifts the blend.
+
+The semantic sink problem is fundamentally directional. Dantrolene and cooling point the same way. Fixing this requires rotating one of them—changing the ratio pattern—not scaling. And in a trained network, the downstream layers have learned to interpret directions as they are. Rotation would require retraining.
+
+────────────────────────────────────────────────────────────────────────
+
 WHAT ACTUALLY MIGHT WORK
 
 Our failures point toward what might succeed:

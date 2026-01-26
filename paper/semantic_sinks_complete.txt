@@ -592,6 +592,43 @@ The stakes determine the optimization target. When the cost of failure is death,
 
 ────────────────────────────────────────────────────────────────────────
 
+THE TWO TYPES OF SMALL WEIGHTS
+
+Not all small weights are equal. A weight with value 0.001 could be one of two things:
+
+1. Optimal: The network learned this connection should contribute a tiny but important amount. This weight is at equilibrium. It encodes edge-case information.
+
+2. Transient: This weight is dying. Given more training time, it would reach zero. Training stopped before it finished converging. This is garbage.
+
+You cannot tell the difference by looking at the value. Both are 0.001. One is precious signal. One is incomplete pruning by gradient descent.
+
+This explains the pruning paradox. Sometimes aggressive pruning barely hurts accuracy—you removed the transient garbage, completing the work training started. Sometimes pruning devastates edge cases—you removed optimal small weights that encoded critical distinctions.
+
+Magnitude-based pruning treats both types the same. It is a crude heuristic that works on average but makes unpredictable errors.
+
+The principled approach would be trajectory-based pruning:
+- Track weight values during training
+- Weight declining toward zero → transient, safe to prune
+- Weight stabilized at small value → optimal, preserve it
+
+Remove garbage, accuracy should stay the same or improve. Remove information, accuracy should worsen—especially on edge cases.
+
+This is testable but impractical. Tracking trajectories for billions of weights requires massive storage and computation for probably marginal improvement over simple magnitude pruning.
+
+An approximation: examine gradient magnitude at the final checkpoint. Near-zero gradient suggests equilibrium (keep the weight). Non-zero gradient still pushing toward zero suggests the weight is still dying (safe to prune). But even this adds cost.
+
+For most applications, the pragmatic approach wins: prune by magnitude, accept some edge-case loss, move on. The cost of principled pruning exceeds the benefit.
+
+But for medical AI, edge cases are where patients die. The cost-benefit calculation is different. If preserving small stable weights saves lives, the computational cost of trajectory analysis may be justified.
+
+Different domains, different tradeoffs. Entertainment AI can use crude heuristics. Medical AI may need to pay the cost of precision.
+
+This connects to a broader theme: fully connected networks are bizarre topologies where everything connects to everything. The structure is entirely in the weights. Some connections end up large (important paths), some end up near zero (unused paths), and some end up small but stable (edge-case paths). Understanding which is which requires understanding the training dynamics, not just the final snapshot.
+
+Recent work on neuron merging offers an alternative to pruning. Instead of zeroing out small weights and losing their contribution, merge them—combine small weights into fewer, larger weights that preserve the total signal. This maintains the flow while reducing the connection count. Research shows merged models preserve accuracy better than pruned models at the same compression ratio, precisely because merging keeps the information that pruning discards.
+
+────────────────────────────────────────────────────────────────────────
+
 WHAT WOULD ACTUALLY HELP
 
 1. Training-time interventions

@@ -322,6 +322,50 @@ The semantic sink problem is fundamentally directional. Dantrolene and cooling p
 
 ────────────────────────────────────────────────────────────────────────
 
+THE CONSERVATION OF INFORMATION FLOW
+
+There is another way to understand why knowledge is distributed and why editing fails: think of information as water flowing through pipes.
+
+In a fully connected neural network, each layer computes weighted sums. The output of a layer is the sum of all its inputs multiplied by learned weights. This is addition—a linear combination.
+
+Consider training two networks on the same task:
+- Network A: 9 nodes in the hidden layer
+- Network B: 7 nodes in the hidden layer
+
+Both networks, trained to convergence, will produce the same output distribution. The softmax at the end will give the same probabilities. Why?
+
+Because the task determines how much "water" needs to flow. The pipes (nodes) just determine how that flow is distributed. More pipes or fewer pipes—the same total water gets through. Each pipe carries a different fraction, but the sum is constant.
+
+With 9 nodes, each carries a smaller portion of the signal. With 7 nodes, each carries more. The weights adjust to compensate. The network learns whatever distribution produces the correct sums at the output.
+
+This is why you cannot identify "the dantrolene node" or "the cooling node." The concept is not stored in any single pipe. It is the total flow—distributed across all pipes, combined at the output. Different architectures produce different distributions of the same flow.
+
+And this is why editing individual weights causes collateral damage. You are trying to change the total flow by messing with one pipe. But the network learned to achieve that flow through the combination of ALL pipes. Changing one changes the sum. Other concepts that also flow through that pipe are affected.
+
+The task determines the flow. The architecture determines the plumbing. The weights learn the distribution. The output is invariant to the specific decomposition—only the total matters.
+
+This principle—conservation of information flow—explains:
+
+Why knowledge is distributed:
+  There is no "storage location." There is only flow through weighted sums.
+  Any configuration of pipes that produces the correct sums is valid.
+
+Why editing is hard:
+  You cannot change the flow to one destination without affecting flow to others.
+  The pipes are shared. The sums are entangled.
+
+Why different architectures learn the same function:
+  The function is the input-output mapping. The internals are arbitrary.
+  Nine pipes or seven pipes—same water delivered.
+
+Why the model "knows" things it cannot reliably access:
+  The knowledge exists as potential flow. But routing determines which sums
+  get computed for a given input. The water is there; the valves may be wrong.
+
+The fully connected architecture that makes neural networks powerful—the ability to learn any weighted combination—is also what makes them resistant to surgical modification. Everything connects to everything. Every edit propagates through the sums.
+
+────────────────────────────────────────────────────────────────────────
+
 WHAT ACTUALLY MIGHT WORK
 
 Our failures point toward what might succeed:

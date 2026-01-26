@@ -502,7 +502,129 @@ WHAT WOULD ACTUALLY HELP
    that flip under perturbation for human review. This catches semantic
    sink failures that confidence scores miss.
 
+7. Protocol-based architectures
+   Sidestep the embedding problem entirely. Use categorical routing to
+   explicit protocols rather than similarity search. The LLM reasons;
+   human-written protocols hold the knowledge. Self-correcting through
+   text file updates, not weight modification.
+
 None of these are simple. All require fundamental changes to how medical AI systems are built and deployed.
+
+────────────────────────────────────────────────────────────────────────
+
+ALTERNATIVE: PROTOCOL-BASED ARCHITECTURES
+
+There is another path that sidesteps the semantic sink problem entirely.
+
+The core issue with vector databases and embedding-based retrieval is that similarity does not equal correctness. A query about malignant hyperthermia will retrieve things geometrically close to "malignant hyperthermia" in embedding space—but geometric proximity reflects statistical co-occurrence in training data, not clinical accuracy.
+
+You get neighbors, not answers.
+
+Asking "what treats malignant hyperthermia?" might retrieve:
+  - "Malignant hyperthermia is a serious condition" (high similarity, not an answer)
+  - "Hyperthermia treatment involves cooling" (high similarity, wrong answer)
+  - "Dantrolene treats malignant hyperthermia" (lower similarity, correct answer)
+
+The embedding space clusters by topic, not by correctness. This is the same geometric pathology we identified as semantic sinks, now appearing in the retrieval layer.
+
+THE PROTOCOL ALTERNATIVE
+
+Instead of similarity search, use categorical routing with explicit protocols.
+
+A protocol is a human-readable text file containing explicit procedures for a specific situation. The system maintains a library of protocols, indexed by type.
+
+The architecture:
+
+  1. Prompt arrives
+  2. LLM routes: "Which protocols apply?" (categorical, not similarity-based)
+  3. Selected protocols loaded into context
+  4. LLM executes with explicit guidance
+  5. If error occurs, error protocol activates
+  6. LLM analyzes failure and proposes protocol update
+  7. Protocol is updated (text file edit, human-reviewable)
+  8. System improves over time
+
+The key differences:
+
+  Similarity Search              Protocol Routing
+  ─────────────────────────────  ─────────────────────────────
+  "Find something close"         "Which type is this?"
+  Returns neighbors              Returns procedures
+  Opaque embeddings              Human-readable text
+  Static (no learning)           Self-correcting
+  Hope it's relevant             Explicitly prescriptive
+
+WHY ROUTING IS EASIER THAN ANSWERING
+
+The question "What treats malignant hyperthermia?" is hard.
+
+The question "Is this a malignant hyperthermia case?" is easier.
+
+Once the system correctly identifies the case type, the protocol provides the answer explicitly: "Administer dantrolene 2.5 mg/kg IV." No similarity search, no geometric ambiguity, no semantic sink.
+
+The LLM does the reasoning—understanding context, handling edge cases, recognizing patterns. The protocols hold the knowledge—verified, explicit, auditable.
+
+This separation is crucial. We established that knowledge in transformers is not reliably addressable. But reasoning is what transformers do well. Use each component for what it's good at.
+
+SELF-CORRECTION WITHOUT WEIGHT MODIFICATION
+
+When errors occur, the protocol system can learn without touching model weights.
+
+  Error occurs
+       ↓
+  Error protocol activates
+       ↓
+  LLM analyzes: "What went wrong?"
+       ↓
+  LLM proposes: "Update protocol X, section Y"
+       ↓
+  Protocol updated (text file diff)
+       ↓
+  Human reviews change
+       ↓
+  System now handles this case correctly
+
+Compare this to weight editing:
+
+  Weight Editing                 Protocol Editing
+  ─────────────────────────────  ─────────────────────────────
+  Collateral damage              Isolated change
+  Opaque                         Human-readable diff
+  Hard to undo                   Version controlled
+  Affects all inputs             Affects one protocol
+  80% unrelated fact corruption  0% unrelated fact corruption
+
+The protocols accumulate institutional knowledge. Each error makes the system better. The changes are auditable—a human can review exactly what was modified before accepting the update.
+
+This is what "learning" should look like in high-stakes systems: explicit, inspectable, reversible changes to human-readable procedures.
+
+SCALING THE PROTOCOL LIBRARY
+
+As the protocol library grows:
+
+  Small library:    Full index in context, LLM selects directly
+  Medium library:   LLM outputs protocol numbers, then load selected protocols
+  Large library:    Pre-filter with keywords/rules, LLM routes from candidates
+
+At scale, you combine:
+  - Keyword matching: fast, exact, cheap
+  - Rule-based filtering: categorical, verifiable
+  - LLM routing: understanding intent, handling edge cases
+  - Protocols: explicit, correct, auditable
+
+No embeddings. No hoping the geometry is right. Each tool used where it's strong.
+
+WHY THIS ISN'T FASHIONABLE
+
+This approach works. It's also boring.
+
+There are no embeddings to visualize. No neural architecture to diagram. No benchmark to beat. Just text files, routing logic, and an error correction loop.
+
+The field rewards complexity. Papers about novel embedding spaces and learned similarity metrics get published. Papers about "we wrote down procedures and the system follows them" do not.
+
+But in high-stakes domains, boring and correct beats clever and wrong.
+
+The protocols are the knowledge—human-written, human-verified, human-readable. The LLM is the reasoning engine—flexible, contextual, capable. Separated, each does what it's good at. Combined, they form a system that can actually be trusted.
 
 ────────────────────────────────────────────────────────────────────────
 
@@ -544,7 +666,11 @@ The proposed correction failed: you cannot fix routing by moving embeddings, and
 
 The insight that emerged: knowledge in transformers is not addressable, only activatable. Post-deployment interventions must operate on routing and organization, not on factual content itself.
 
-If the model already knows the right answer but fails to surface it, steering activations toward the correct pathway may succeed where knowledge replacement fails.
+Two paths forward:
+
+First, perturbation testing can detect (though not fix) semantic sink errors. A weak signal, but real—40% of wrong answers caught at the cost of 20% false positives. Worth including in high-stakes pipelines where the cost of errors is severe.
+
+Second, protocol-based architectures sidestep the problem entirely. Rather than hoping embeddings capture correctness, use explicit protocols that humans write, verify, and update. The LLM reasons; the protocols know. This separation uses each component for what it's good at and produces a system that can actually be trusted.
 
 The problem is harder than it looks. We hope this complete account—hypothesis, experiment, failure, and insight—helps others avoid our false starts and build on what actually works.
 

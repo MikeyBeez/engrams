@@ -334,9 +334,34 @@ Detection works because semantic sinks are regions where small perturbations cau
 
 But stability is not correctness. A model can be confidently wrong and stable. The perturbation test catches one failure mode (decision boundary uncertainty) but not others (confident hallucination, knowledge gaps, systematic bias).
 
+To be explicit about scope: Perturbation testing detects errors caused by routing instability, not errors caused by missing knowledge, systematic bias, or confidently wrong priors. It is one tool, not a complete solution.
+
 Think of it as a necessary but not sufficient condition:
   - Unstable output → definitely flag it
   - Stable output → still might be wrong, but not from this cause
+
+WHAT COUNTS AS A DOMAIN-RELEVANT PERTURBATION
+
+Not all perturbations are equal. A domain perturbation is a small, medically grounded activation shift derived from in-distribution clinical representations, not an arbitrary noise vector.
+
+Effective perturbations we tested:
+  - Engram injection: Mean-pooled hidden states from relevant medical text
+  - Steering vectors: Directional vectors between related clinical concepts
+  - Centroid shifts: Difference between specific and general treatment contexts
+
+What matters is that the perturbation activates circuits in the same domain as the query. Random noise would not reveal semantic sinks—it would just add noise. The perturbation must be semantically meaningful to probe the relevant decision boundary.
+
+OPERATIONAL SAFETY CONSTRAINTS
+
+Perturbation strength must be fixed and validated offline. Adaptive or query-dependent perturbations introduce adversarial risk—an attacker could craft inputs that exploit the perturbation mechanism itself.
+
+The validated approach:
+  1. Calibrate perturbation strength on a held-out validation set
+  2. Fix the strength for deployment (we found 0.01 optimal)
+  3. Never adjust strength based on query content
+  4. Monitor for distribution shift that might invalidate calibration
+
+This constraint reduces flexibility but ensures the detection mechanism cannot be gamed.
 
 WHY WE CANNOT USE PERTURBATION TO FIX
 

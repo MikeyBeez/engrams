@@ -533,6 +533,28 @@ WHAT WOULD ACTUALLY HELP
    human-written protocols hold the knowledge. Self-correcting through
    text file updates, not weight modification.
 
+8. N-gram embeddings for compound concepts
+   Part of the semantic sink problem may be a tokenization problem.
+   "Malignant hyperthermia" and "heat stroke" are distinct conditions
+   requiring different treatments, but they share proximity to
+   "hyperthermia" in embedding space because the vocabulary doesn't
+   distinguish them as compound concepts.
+
+   Recent work (DeepSeek's Engram, January 2026) demonstrates N-gram
+   embedding tables that give token pairs their own learned vectors.
+   The bigram ("malignant", "hyperthermia") would get a distinct
+   embedding pointing toward dantrolene, separate from general
+   hyperthermia contexts pointing toward cooling.
+
+   Medical terminology is dense with compound concepts: diagnoses,
+   drug-condition pairs, anatomical structures, treatment protocols.
+   A domain-specific N-gram table could provide disambiguation at the
+   representation level—giving distinct concepts distinct directions
+   rather than forcing the transformer to disambiguate through attention
+   every time. This won't solve all routing failures, but it addresses
+   cases where the sink exists because compound concepts lack distinct
+   representations.
+
 None of these are simple. All require fundamental changes to how medical AI systems are built and deployed.
 
 ────────────────────────────────────────────────────────────────────────

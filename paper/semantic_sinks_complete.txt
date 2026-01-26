@@ -546,13 +546,19 @@ The architecture:
 
 The key differences:
 
-  Similarity Search              Protocol Routing
-  ─────────────────────────────  ─────────────────────────────
-  "Find something close"         "Which type is this?"
-  Returns neighbors              Returns procedures
-  Opaque embeddings              Human-readable text
-  Static (no learning)           Self-correcting
-  Hope it's relevant             Explicitly prescriptive
+Similarity search:
+  - "Find something close"
+  - Returns neighbors
+  - Opaque embeddings
+  - Static (no learning)
+  - Hope it's relevant
+
+Protocol routing:
+  - "Which type is this?"
+  - Returns procedures
+  - Human-readable text
+  - Self-correcting
+  - Explicitly prescriptive
 
 WHY ROUTING IS EASIER THAN ANSWERING
 
@@ -586,13 +592,19 @@ When errors occur, the protocol system can learn without touching model weights.
 
 Compare this to weight editing:
 
-  Weight Editing                 Protocol Editing
-  ─────────────────────────────  ─────────────────────────────
-  Collateral damage              Isolated change
-  Opaque                         Human-readable diff
-  Hard to undo                   Version controlled
-  Affects all inputs             Affects one protocol
-  80% unrelated fact corruption  0% unrelated fact corruption
+Weight editing:
+  - Collateral damage
+  - Opaque
+  - Hard to undo
+  - Affects all inputs
+  - 80% unrelated fact corruption
+
+Protocol editing:
+  - Isolated change
+  - Human-readable diff
+  - Version controlled
+  - Affects one protocol
+  - 0% unrelated fact corruption
 
 The protocols accumulate institutional knowledge. Each error makes the system better. The changes are auditable—a human can review exactly what was modified before accepting the update.
 

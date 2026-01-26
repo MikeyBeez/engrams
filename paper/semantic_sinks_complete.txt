@@ -547,6 +547,51 @@ IMPLICATIONS FOR MEDICAL AI
 
 ────────────────────────────────────────────────────────────────────────
 
+THE OPTIMIZATION TARGET PROBLEM
+
+The use case determines what you should optimize for. We are optimizing for the wrong thing.
+
+Current AI development optimizes for average performance on benchmarks. A model that scores 95% accuracy is considered excellent. But where does the 5% failure come from?
+
+It comes from the edge cases. The rare presentations. The unusual combinations. The cases with weak training signal and small weights.
+
+For movie recommendations, this is fine:
+- Wrong answer = mild annoyance
+- 5% error rate? Show another movie. Nobody cares.
+
+For medical diagnosis, this is catastrophic:
+- Wrong answer = potential death
+- 5% error rate on edge cases = the hardest cases fail
+- The patients who most need AI help are the ones it fails
+
+Different domains require different loss functions:
+
+- Entertainment: minimize average error
+- Medical: minimize maximum harm
+- Financial: minimize tail risk
+- Legal: minimize false positives
+
+The problem: we build general-purpose models optimized for benchmarks, then deploy them in high-stakes domains. GPT was not optimized for medical precision. It was optimized for next-token prediction on internet text. Then we ask it medical questions and hope for the best.
+
+Model compression makes this worse. Pruning research celebrates "95% of weights removed with only 1% accuracy drop." But that 1% accuracy drop concentrates in the edge cases—exactly where the stakes are highest.
+
+"1% accuracy drop" is a statistic. "You're in the 1%" is a death sentence.
+
+And it is not a random 1%. It is the rare cases, the atypical presentations, the patients with malignant hyperthermia instead of heat stroke. The cases that needed the small weights—the ones pruning removes first.
+
+The right approach for medical AI:
+- Domain-specific optimization from the start
+- Loss functions that penalize edge-case failures heavily
+- Evaluation on rare and critical cases, not just benchmarks
+- Preserve the small weights that handle unusual presentations
+- Accept higher compute costs in exchange for edge-case reliability
+
+This is not "fine-tune GPT and deploy." It is "build medical AI as medical AI, with medical objectives, evaluated on medical criteria."
+
+The stakes determine the optimization target. When the cost of failure is death, optimize for precision on the cases that kill—not average performance on the cases doctors already get right.
+
+────────────────────────────────────────────────────────────────────────
+
 WHAT WOULD ACTUALLY HELP
 
 1. Training-time interventions

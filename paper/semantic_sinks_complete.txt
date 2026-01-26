@@ -807,6 +807,64 @@ The protocols are the knowledge—human-written, human-verified, human-readable.
 
 ────────────────────────────────────────────────────────────────────────
 
+FUTURE DIRECTION: mHC ARCHITECTURE AND ACTIVATION STEERING
+
+DeepSeek's Manifold-Constrained Hyper-Connections (mHC), published December 2025, offers a potential architectural foundation for addressing semantic sinks.
+
+THE mHC ARCHITECTURE
+
+Standard transformers have a single residual stream—one lane carrying all information through the network. mHC extends this to multiple parallel streams (typically 4) that can exchange information through learned mixing matrices.
+
+The architecture has three components:
+- H_pre: Entrance ramp (routes input into multiple streams)
+- H_post: Exit ramp (collapses streams back to output)
+- H_res: Traffic manager (controls information exchange between streams)
+
+The key innovation is the manifold constraint. The mixing matrices are forced onto the Birkhoff Polytope—doubly stochastic matrices where rows and columns sum to 1. This ensures information is redistributed but never amplified or destroyed.
+
+Without this constraint, unconstrained hyper-connections caused signal gains exceeding 3000x in DeepSeek's 27B parameter tests, leading to catastrophic training divergence. With the constraint, signal amplification stays below 1.6x.
+
+WHY mHC MATTERS FOR SEMANTIC SINKS
+
+In a standard transformer, dantrolene and cooling are forced into the same residual stream. They compete for the same representational bandwidth. Collapse is almost inevitable.
+
+In an mHC architecture, they could theoretically occupy different streams. One stream could specialize in pharmacological interventions, another in supportive care. The concepts remain distinct through depth because they travel different paths.
+
+Early evidence supports this: DeepSeek's interpretability analysis showed that "HC variants exhibited significantly lower similarity between features." The lanes do appear to specialize during training.
+
+THE COMBINATION: mHC + ACTIVATION STEERING
+
+mHC provides the infrastructure—stable parallel lanes that maintain separation. But the lanes don't have pre-assigned semantics. What goes in each lane is learned from training data.
+
+This is where activation steering could add value:
+
+1. Probe lanes post-training: Inject known concepts (pharmacology terms, symptom terms) and observe which lanes activate. Build a map of lane semantics.
+
+2. Identify domain lanes: Discover that stream 2 responds preferentially to pharmacological concepts, stream 3 to symptomatic treatments.
+
+3. Steer into specific lanes: When processing a malignant hyperthermia case, inject a pharmacology centroid that biases toward stream 2. Keep the signal in the "drug treatment" lane rather than letting it drift into "general cooling."
+
+4. Maintain steering through depth: The mHC stability constraint ensures our steering signal doesn't explode or collapse. The perturbation persists.
+
+The analogy: mHC builds a multi-lane highway. Activation steering provides GPS guidance to keep the car in the correct lane for its destination.
+
+WHAT WOULD BE NEEDED
+
+This combination remains theoretical. To test it, we would need:
+
+1. Access to an mHC-trained model (or training one from scratch)
+2. Probing techniques to discover lane semantics
+3. Methods to inject steering vectors into specific streams
+4. Evaluation on medical routing tasks to measure improvement
+
+The hypothesis: mHC + steering could achieve higher routing accuracy than either approach alone. mHC prevents collapse; steering ensures correct lane selection.
+
+If validated, this suggests a design pattern for medical AI: architectures that provide structural separation (mHC), combined with runtime guidance that leverages domain knowledge (steering vectors derived from medical centroids).
+
+Neither component alone solves the problem. Together, they might.
+
+────────────────────────────────────────────────────────────────────────
+
 PART V: REFLECTION
 
 ────────────────────────────────────────────────────────────────────────

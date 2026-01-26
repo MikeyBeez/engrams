@@ -301,6 +301,83 @@ The viable intervention class operates on routing and organization, not factual 
 
 ────────────────────────────────────────────────────────────────────────
 
+PERTURBATION TESTING: DETECTING SINKS WITHOUT FIXING THEM
+
+If we cannot reliably fix semantic sinks, can we at least detect them?
+
+The answer is yes, with an important caveat.
+
+When we apply an activation perturbation (engram injection, steering vector, or centroid shift) and the model's output changes significantly, this tells us something important: the model was sitting on a decision boundary. A small push in activation space flipped the answer.
+
+This is the signature of a semantic sink. The model had two (or more) competing outputs with nearly equal probability, and the perturbation tipped the balance.
+
+THE DETECTION METHOD
+
+  1. Run the query normally, record the output
+  2. Apply a domain-relevant perturbation
+  3. Run the query again, record the new output
+  4. Compare: Did the answer flip?
+
+  If the answer flips:
+    The output is UNSTABLE
+    Flag for human review
+    Do not trust the original answer
+
+  If the answer holds:
+    The output is STABLE
+    The model is not in a detectable sink
+    (This does not guarantee correctness)
+
+WHAT THIS DOES AND DOES NOT TELL US
+
+Detection works because semantic sinks are regions where small perturbations cause large output changes. If you're in a sink, poking the model will reveal it.
+
+But stability is not correctness. A model can be confidently wrong and stable. The perturbation test catches one failure mode (decision boundary uncertainty) but not others (confident hallucination, knowledge gaps, systematic bias).
+
+Think of it as a necessary but not sufficient condition:
+  - Unstable output → definitely flag it
+  - Stable output → still might be wrong, but not from this cause
+
+WHY WE CANNOT USE PERTURBATION TO FIX
+
+A natural question: if perturbation can flip a wrong answer to correct, why not use it as a fix?
+
+Because perturbation is unpredictable. In our experiments:
+  - Sometimes perturbation flipped wrong → correct
+  - Sometimes perturbation flipped correct → wrong
+  - We found no reliable way to predict which would happen
+
+Applying a perturbation without knowing its effect is gambling with patient safety. But using perturbation to detect uncertainty—and then routing to human review—is a valid safety measure.
+
+The perturbation becomes a probe, not a fix.
+
+PRACTICAL APPLICATION
+
+For a medical AI deployment:
+
+  Query arrives
+       ↓
+  Generate response (output A)
+       ↓
+  Apply domain perturbation
+       ↓
+  Generate again (output B)
+       ↓
+  Compare A and B
+       ↓
+  ┌─────┴─────┐
+  │           │
+Different    Same
+  │           │
+  ↓           ↓
+FLAG       Continue
+(human     (apply other
+review)    safety checks)
+
+This adds latency (two inference passes) but catches a real failure mode that standard confidence scores miss. The model may report high confidence while sitting on a semantic sink—the perturbation test reveals the instability that confidence scores hide.
+
+────────────────────────────────────────────────────────────────────────
+
 IMPLICATIONS FOR MEDICAL AI
 
 1. Model editing is not ready for production medical use.
@@ -341,6 +418,11 @@ WHAT WOULD ACTUALLY HELP
 5. Activation steering research
    Develop reliable methods for runtime routing intervention that don't
    require weight modification.
+
+6. Perturbation-based uncertainty detection
+   Use activation perturbation not as a fix but as a probe. Flag outputs
+   that flip under perturbation for human review. This catches semantic
+   sink failures that confidence scores miss.
 
 None of these are simple. All require fundamental changes to how medical AI systems are built and deployed.
 
@@ -413,3 +495,5 @@ Code:
   - ROME implementation: src/rome_edit.py
   - Locality testing: scripts/rome_locality_test.py
   - RAG comparison: scripts/rag_vs_rome_test.py
+  - Steering gamma sweep: scripts/steering_gamma_sweep.py
+  - Perturbation help/hurt test: scripts/steering_help_hurt_test.py

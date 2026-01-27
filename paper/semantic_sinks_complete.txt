@@ -685,6 +685,84 @@ None of these are simple. All require fundamental changes to how medical AI syst
 
 ────────────────────────────────────────────────────────────────────────
 
+HOW N-GRAM GATING WORKS: A DEEPER LOOK
+
+The DeepSeek Engram architecture deserves closer examination because it solves semantic disambiguation through learned gating—a mechanism that is both elegant and instructive.
+
+THE LOOKUP
+
+Given a token sequence, the system hashes the N-gram (current token plus previous tokens) to retrieve an embedding from a learned table. "Bank" after "river" retrieves a different embedding than "bank" after "account."
+
+THE GATE
+
+Each entry in the hash table stores two things:
+  1. The N-gram embedding vector
+  2. A learned gate value (typically sigmoid-bounded to [0,1])
+
+The gate answers: "How much should this contextual modifier contribute?"
+
+  Gate ≈ 0 → Ignore the N-gram, use original embedding
+  Gate ≈ 1 → Fully incorporate the contextual shift
+
+THE COMBINATION
+
+  final_embedding = original_embedding + gate × ngram_embedding
+
+This is vector addition with differential scaling. The gate controls how much the N-gram pulls the final representation toward its direction.
+
+WHY DIFFERENTIAL SCALING CHANGES DIRECTION
+
+This is subtle but important. Scaling a single vector does not change its direction. But when you sum multiple vectors with different weights, the direction of the sum depends on those weights.
+
+Consider:
+  Vector A = [1, 0] (pointing east)
+  Vector B = [0, 1] (pointing north)
+
+  Equal weight:      A + B = [1, 1]    → 45° (northeast)
+  Differential:      A + 0.5×B = [1, 0.5] → 26.6° (more easterly)
+
+The ratio of east to north changed from 1:1 to 2:1. Different direction, not just different magnitude.
+
+In embedding space:
+  "bank" + "river" (equal weight)     → direction halfway between
+  "bank" + 0.5×"river"                → direction closer to "bank"
+  "bank" + 1.5×"river"                → direction closer to "river"
+
+The gate controls where in the semantic neighborhood the compound concept lands.
+
+HOW THE GATE LEARNS
+
+The gate is just a learnable parameter in the computation graph. Standard backpropagation does all the work.
+
+Forward pass: compute final_embedding using current gate value
+Backward pass: gradients flow through the gate
+Update: if using this N-gram helped reduce loss, gate increases; if it hurt, gate decreases
+
+No special training procedure. The model figures out on its own:
+  - Which N-grams are highly informative (high gate)
+  - Which N-grams are noise (low gate)
+  - What direction each meaningful N-gram should push
+
+"River bank" probably learns a high gate—context is highly informative. "The bank" probably learns a low gate—"the" adds little disambiguation.
+
+WHY THIS MATTERS FOR SEMANTIC SINKS
+
+The semantic sink problem is directional. "Dantrolene for malignant hyperthermia" and "cooling for hyperthermia" point in the same direction (cosine similarity 0.9995). They need to point in different directions.
+
+N-gram gating provides a mechanism:
+  - "Malignant hyperthermia" as a bigram gets its own learned vector
+  - This vector points toward pharmacological intervention (dantrolene)
+  - "Heat stroke" as a bigram gets a different vector
+  - This vector points toward supportive care (cooling)
+
+The compound concepts get distinct directions by construction. The disambiguation happens at the representation level, not through attention trying to sort it out every time.
+
+The gate learning is per-engram, per-context. Each medical compound term develops its own gate value based on how informative that combination is. Domain-dense terminology like medicine would likely develop many high-gate entries because context matters enormously.
+
+This is one piece of a larger puzzle. N-gram gating alone won't solve all routing failures. But it addresses cases where the sink exists because compound concepts lack distinct initial representations.
+
+────────────────────────────────────────────────────────────────────────
+
 ALTERNATIVE: PROTOCOL-BASED ARCHITECTURES
 
 There is another path that sidesteps the semantic sink problem entirely.

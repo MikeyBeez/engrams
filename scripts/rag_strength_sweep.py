@@ -177,9 +177,8 @@ print("Loading model...")
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B")
 model = AutoModelForCausalLM.from_pretrained(
     "Qwen/Qwen2.5-7B",
-    torch_dtype=torch.float16,
-    device_map="auto"
-)
+    torch_dtype=torch.float16
+).to("cuda")
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 
